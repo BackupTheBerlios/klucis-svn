@@ -1,0 +1,14 @@
+<profilesXml>
+	<profiles>
+		<profile>
+			<id>kalvis</id>
+			<properties>
+				<installDir>c:/temp/cargo-installs</installDir>
+				<jboss.home>c:/tools/jboss-4.0.4.GA/server/default</jboss.home>
+			</properties>
+		</profile>
+	</profiles>
+	<activeProfiles>
+		<activeProfile>kalvis</activeProfile>
+	</activeProfiles>
+</profilesXml>

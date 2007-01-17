@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+	
+	<bean id="velocityConfig"
+		class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+		<property name="resourceLoaderPath">
+			<value>/WEB-INF/templates/velocity/</value>
+		</property>
+		<property name="velocityProperties">
+			<props>
+				<prop key="input.encoding">UTF-8</prop>
+				<prop key="output.encoding">UTF-8</prop>
+				<!--				
+				<prop key="marsMacro.resource.loader.class">org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader</prop>
+				<prop key="resource.loader">file,marsMacro</prop>
+				<prop key="velocimacro.library">com/hp/hpl/mars/portal/mvc/util/marsmacro.vm</prop>
+				-->
+			</props>
+		</property>
+	</bean>
+	
+	<!--	
+	<bean id="servletContextFactory"
+	class="org.springframework.web.context.support.ServletContextFactoryBean"/>
+	
+	<bean id="servletBaseDirFactory"
+	class="com.hp.hpl.mars.portal.spring.ServletBaseDirFactory">
+	<property name="servletContext">
+	<ref bean="servletContextFactory"/>
+	</property>
+	</bean>
+	-->
+	
+	<bean id="urlMapping"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/*">imageController</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
+		<property name="viewClass">
+			<value>
+				org.springframework.web.servlet.view.velocity.VelocityView</value>
+		</property>
+		<property name="suffix">
+			<value>.vm</value>
+		</property>
+		<property name="exposeSpringMacroHelpers">
+			<value>true</value>
+		</property>
+		<property name="toolboxConfigLocation" value="/WEB-INF/toolbox.xml"/>
+		<property name="order">
+			<value>1</value>
+		</property>
+		<property name="contentType">
+			<value>image/svg+xml;charset=UTF-8</value>
+		</property>
+	</bean>
+	
+	<!--
+	<bean id="portalDescription"
+	class="com.hp.hpl.mars.portal.spring.FileModelFactory">
+	<property name="path">
+	<value>/WEB-INF/conf/</value>
+	</property>
+	<property name="fileName">
+	<value>portal1.n3</value>
+	</property>
+	<property name="baseDir">
+	<ref bean="servletBaseDirFactory"/>
+	</property>
+	</bean>
+	
+	-->
+	
+	<bean id="imageController" class="lv.webkursi.web2007a.lab01.ImageController">
+		<!--		<property name="portal" ref="portal"/>
+		<property name="viewResolver" ref="viewResolver"/> -->
+	</bean>
+	
+	<!--
+	<bean id="portal" class="com.hp.hpl.mars.portal.Portal">
+	<property name="componentFactoryCatalog" ref="factoryCatalog"/>
+	<property name="portalDescription" ref="portalDescription"/>
+	</bean>
+	
+	<bean id="factoryCatalog"
+	class="com.hp.hpl.mars.portal.component.ComponentFactoryCatalog">
+	<property name="catalog">
+	<map>
+	<entry key="http://www.example.com/ontology#CompositeWidget">
+	<bean
+	class="lv.webkursi.stuff.CompositeWidgetFactory"/>
+	</entry>
+	</map>
+	</property>
+	</bean>	
+	-->
+</beans>

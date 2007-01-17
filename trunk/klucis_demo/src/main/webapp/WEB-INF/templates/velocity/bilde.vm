@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     version="1.1"
+     baseProfile="full">
+
+<g transform="translate(0, 0)
+">
+<rect x="0" y="0" width="50" height="50"
+      style="fill: #ffffff; stroke: black;"/>
+<path d="M 10 10 l 30 30 l -8 -16 l 4 12 z" fill="blue" stroke="blue" 
+stroke-width="3"
+/>
+    
+</g>
+<g transform="translate(0, 0)">
+</g>
+
+<g transform="translate(70, 0)
+">
+<rect x="0" y="0" width="50" height="50"
+      style="fill: #ffffff; stroke: black;"/>
+
+<g transform="rotate(-180,25,25)">
+
+<path d="M 10 10 l 30 30 l -8 -16 l 4 12 z" fill="blue" stroke="blue" 
+stroke-width="3"
+/>
+
+
+
+</g>
+    
+</g>
+<g transform="translate(70, 0)">
+</g>
+
+<g transform="translate(140, 0)
+">
+<rect x="0" y="0" width="50" height="50"
+      style="fill: #ffffff; stroke: black;"/>
+
+<g transform="translate(50 0) scale(-1,1)">
+
+<path d="M 10 10 l 30 30 l -8 -16 l 4 12 z" fill="blue" stroke="blue" 
+stroke-width="3"
+/>
+
+
+</g>
+
+    
+</g>
+<g transform="translate(140, 0)">
+</g>
+
+
+
+</svg>
