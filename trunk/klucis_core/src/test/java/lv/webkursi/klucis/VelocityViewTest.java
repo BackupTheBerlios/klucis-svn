@@ -1,4 +1,4 @@
-package lv.webkursi.web2007a.lab01;
+package lv.webkursi.klucis;
 
 import static org.junit.Assert.assertTrue;
 
