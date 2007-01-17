@@ -1,0 +1,1 @@
+mvn archetype:create -DgroupId=lv.webkursi.klucis -DartifactId=klucis_core -DpackageName=lv.webkursi.klucis
