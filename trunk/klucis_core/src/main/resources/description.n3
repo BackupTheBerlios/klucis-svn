@@ -1,0 +1,420 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix blocks: <http://www.mtest.lv/schema/20061008/blocks#> .
+@prefix : <http://example.com/bildes#> .
+
+:bilde_11a
+  a blocks:TopComponent ;
+  blocks:output "bilde_11a.svg" ;
+  blocks:hasContent [
+    a rdf:Seq ;
+    a blocks:HorizontalRow ;
+    rdf:_1 [
+      a blocks:SquareBox ;
+      blocks:hasLabel "A" ; # izsecina, ka apakshaa
+      blocks:hasContent :blueTriangle 
+    ] ;
+    rdf:_2 [
+      a blocks:SquareBox ;
+      blocks:hasLabel "B" ; # izsecina, ka apakshaa
+      blocks:hasContent :greenArrowHead 
+    ]
+  ] .
+
+:bilde_11d
+  a blocks:TopComponent ;
+  blocks:output "bilde_11d.svg" ;
+  blocks:hasContent [
+    a rdf:Seq ;
+    a blocks:HorizontalRow ;
+    rdf:_1 [
+      a blocks:SquareBox ;
+      blocks:hasContent [
+        a blocks:Transform ;      
+        blocks:hasContent :blueTriangle ;
+        blocks:rotate 90 
+      ]
+    ] ;
+    rdf:_2 [
+      a blocks:SquareBox ;
+      blocks:hasContent [
+        a blocks:Transform ;      
+        blocks:hasContent :greenArrowHead ;
+        blocks:rotate -90
+      ]
+    ] 
+  ] .
+
+
+:bilde_11e
+  a blocks:TopComponent ;
+  blocks:output "bilde_11e.svg" ;
+  blocks:hasContent [
+    a rdf:Seq ;
+    a blocks:HorizontalRow ;
+    rdf:_1 [
+      a blocks:SquareBox ;
+      blocks:hasContent :blueTriangle 
+    ] ;
+    rdf:_2 [
+      a blocks:SquareBox ;
+      blocks:hasContent :greenArrowHead 
+    ] 
+  ] .
+
+
+:bilde_15a
+  a blocks:TopComponent ;
+  blocks:output "bilde_15a.svg" ;
+  blocks:hasContent [
+    a rdf:Seq ;
+    a blocks:HorizontalRow ;
+    rdf:_1 [
+      a blocks:SquareBox ;
+      blocks:hasLabel "A" ; 
+      blocks:hasContent :blueTriangle ;
+      blocks:rotate 90
+    ] ;
+    rdf:_2 [
+      a blocks:SquareBox ;
+      blocks:hasLabel "B" ; 
+      blocks:hasContent :violetTrapezoid 
+    ] ;
+    rdf:_3 [
+      a blocks:SquareBox ;
+      blocks:hasLabel "C" ; 
+      blocks:hasContent :greenArrowHead 
+    ]
+  ] .
+
+:bilde_15b
+  a blocks:TopComponent ;
+  blocks:output "bilde_15b.svg" ;
+  blocks:hasContent [
+    a rdf:Seq ;
+    a blocks:HorizontalRow ;
+    rdf:_1 [
+      a blocks:SquareBox ;
+      blocks:hasContent :blueTriangle ;
+      blocks:rotate -90
+    ] ;
+    rdf:_2 [
+      a blocks:SquareBox ;
+      blocks:hasContent :violetTrapezoid ;
+      blocks:rotate 90
+    ] ;
+    rdf:_3 [
+      a blocks:SquareBox ;
+      blocks:hasContent :greenArrowHead ;
+      blocks:rotate -90
+    ]
+  ] .
+
+:bilde_15c
+  a blocks:TopComponent ;
+  blocks:output "bilde_15c.svg" ;
+  blocks:hasContent [
+    a rdf:Seq ;
+    a blocks:HorizontalRow ;
+    rdf:_1 [
+      a blocks:SquareBox ;
+      blocks:hasContent :blueTriangle 
+    ] ;
+    rdf:_2 [
+      a blocks:SquareBox ;
+      blocks:hasContent :violetTrapezoid ;
+      blocks:rotate 180
+    ] ;
+    rdf:_3 [
+      a blocks:SquareBox ;
+      blocks:hasContent :greenArrowHead 
+    ]
+  ] .
+
+:bilde_15d
+  a blocks:TopComponent ;
+  blocks:output "bilde_15d.svg" ;
+  blocks:hasContent [
+    a rdf:Seq ;
+    a blocks:HorizontalRow ;
+    rdf:_1 [
+      a blocks:SquareBox ;
+      blocks:hasContent :blueTriangle ;
+      blocks:rotate -90
+    ] ;
+    rdf:_2 [
+      a blocks:SquareBox ;
+      blocks:hasContent :violetTrapezoid ;
+      blocks:rotate 90
+    ] ;
+    rdf:_3 [
+      a blocks:SquareBox ;
+      blocks:hasContent :greenArrowHead ;
+      blocks:rotate 90
+    ]
+  ] .
+
+
+:bilde_15e
+  a blocks:TopComponent ;
+  blocks:output "bilde_15e.svg" ;
+  blocks:hasContent [
+    a rdf:Seq ;
+    a blocks:HorizontalRow ;
+    rdf:_1 [
+      a blocks:SquareBox ;
+      blocks:hasContent :blueTriangle ;
+      blocks:rotate -90
+    ] ;
+    rdf:_2 [
+      a blocks:SquareBox ;
+      blocks:hasContent :violetTrapezoid ;
+      blocks:rotate -90
+    ] ;
+    rdf:_3 [
+      a blocks:SquareBox ;
+      blocks:hasContent :greenArrowHead ;
+      blocks:rotate 90
+    ]
+  ] .
+
+:bilde_15f
+  a blocks:TopComponent ;
+  blocks:output "bilde_15f.svg" ;
+  blocks:hasContent [
+    a rdf:Seq ;
+    a blocks:HorizontalRow ;
+    rdf:_1 [
+      a blocks:SquareBox ;
+      blocks:hasContent :blueTriangle ;
+      blocks:rotate 90
+    ] ;
+    rdf:_2 [
+      a blocks:SquareBox ;
+      blocks:hasContent :violetTrapezoid ;
+      blocks:rotate 90
+    ] ;
+    rdf:_3 [
+      a blocks:SquareBox ;
+      blocks:hasContent :greenArrowHead ;
+      blocks:rotate 90
+    ]
+  ] .
+
+
+
+:bilde_22a
+  a blocks:TopComponent ;
+  blocks:output "bilde_22a.svg" ;
+  blocks:hasContent [
+    a rdf:Seq ;
+    a blocks:HorizontalRow ;
+    blocks:hasOffset 0 ;
+    blocks:hasSeparator :fullBlackArrow ;
+    rdf:_1 [
+      a blocks:SquareBox ;
+      blocks:hasContent [
+        a blocks:Transform ;            
+        blocks:hasContent :isoscelesRightangleBlueTriangle ;
+        blocks:rotate 180
+      ]
+    ] ;
+    rdf:_2 [
+      a blocks:SquareBox ;
+      blocks:hasContent [
+        a blocks:Transform ;            
+        blocks:hasContent :isoscelesRightangleBlueTriangle ;
+        blocks:rotate 90
+      ]
+    ] ;
+    rdf:_3 [
+      a blocks:SquareBox ;
+      blocks:hasContent [
+        a blocks:Transform ;            
+        blocks:hasContent :isoscelesRightangleBlueTriangle ;
+        blocks:rotate -135
+      ]
+    ]
+  ] .
+
+:bilde_22b
+  a blocks:TopComponent ;
+  blocks:output "bilde_22b.svg" ;
+  blocks:hasContent [
+    a rdf:Seq ;
+    a blocks:HorizontalRow ;
+    blocks:hasOffset 0 ;
+    blocks:hasSeparator :fullBlackArrow ;
+    rdf:_1 [
+      a blocks:SquareBox ;
+      blocks:hasContent :hackBlueArrow ;
+    ] ;
+    rdf:_2 [
+      a blocks:SquareBox ;
+      blocks:hasContent [
+        a blocks:Transform ;      
+        blocks:hasContent :hackBlueArrow ;
+        blocks:rotate 180
+      ]
+    ] ;
+    rdf:_3 [
+      a blocks:SquareBox ;
+      blocks:hasContent [
+        a blocks:Transform ;            
+        blocks:hasContent :hackBlueArrow ;
+        blocks:scaleX -1
+      ]
+    ]
+  ] .
+
+
+:bilde_22c
+  a blocks:TopComponent ;
+  blocks:output "bilde_22c.svg" ;
+  blocks:hasContent [
+    a rdf:Seq ;
+    a blocks:HorizontalRow ;
+    blocks:hasOffset 0 ;
+    blocks:hasSeparator :fullBlackArrow ;
+    rdf:_1 [
+      a blocks:SquareBox ;
+      blocks:hasContent [
+        a blocks:Transform ;            
+        blocks:hasContent :redEquilateralTriangle ;
+        blocks:rotate 30
+      ]
+    ] ;
+    rdf:_2 [
+      a blocks:SquareBox ;
+      blocks:hasContent [
+        a blocks:Transform ;            
+        blocks:hasContent :redEquilateralTriangle ;
+        blocks:rotate 60
+      ]
+    ] ;
+    rdf:_3 [
+      a blocks:SquareBox ;
+      blocks:hasContent [
+        a blocks:Transform ;            
+        blocks:hasContent :redEquilateralTriangle ;
+        blocks:rotate -30
+      ]
+    ]
+  ] .
+
+
+:bilde_22d
+  a blocks:TopComponent ;
+  blocks:output "bilde_22d.svg" ;
+  blocks:hasContent [
+    a rdf:Seq ;
+    a blocks:HorizontalRow ;
+    blocks:hasOffset 0 ;
+    blocks:hasSeparator :fullBlackArrow ;
+    rdf:_1 [
+      a blocks:SquareBox ;
+      blocks:hasContent :redObtuseTriangle ;
+    ] ;
+    rdf:_2 [
+      a blocks:SquareBox ;
+      blocks:hasContent [
+        a blocks:Transform ;            
+        blocks:hasContent :redObtuseTriangle ;
+        blocks:rotate 180
+      ]
+    ] ;
+    rdf:_3 [
+      a blocks:SquareBox ;
+      blocks:hasContent [
+        a blocks:Transform ;            
+        blocks:hasContent :redObtuseTriangle ;
+        blocks:rotate -135
+      ]
+    ]
+  ] .
+
+# TODO: bilde_22e
+
+
+:bilde_22f
+  a blocks:TopComponent ;
+  blocks:output "bilde_22f.svg" ;
+  blocks:hasContent [
+    a rdf:Seq ;
+    a blocks:HorizontalRow ;
+    blocks:hasOffset 0 ;
+    blocks:hasSeparator :fullBlackArrow ;
+    rdf:_1 [
+      a blocks:SquareBox ;
+      blocks:hasContent :limeRegularPentagon  ;
+    ] ;
+    rdf:_2 [
+      a blocks:SquareBox ;
+      blocks:hasContent [
+        a blocks:Transform ;            
+        blocks:hasContent :limeRegularPentagon ;
+        blocks:rotate -90
+      ]
+    ] ;
+    rdf:_3 [
+      a blocks:SquareBox ;
+      blocks:hasContent [
+        a blocks:Transform ;            
+        blocks:hasContent :limeRegularPentagon ;
+        blocks:rotate 45
+      ]
+    ]
+  ] .
+
+
+:blueTriangle
+  a blocks:Polygon ;
+  blocks:hasColor "blue" ;
+  blocks:hasPath "M 12 17 l 26 0 l -26 16 z" .
+
+:greenArrowHead
+  a blocks:Polygon ;
+  blocks:hasColor "#006600" ; # green
+  blocks:hasPath "M 30 12 l 0 24 l -18 -18 l 16 6 z" .
+
+:violetTrapezoid 
+  a blocks:Polygon ;
+  blocks:hasColor "#990099" ;
+  blocks:hasPath "M 9 13 L 11 38 L 17 38 L 40 13 z" .
+
+
+  
+:isoscelesRightangleBlueTriangle
+  a blocks:Polygon ;
+  blocks:hasColor "blue" ;
+  blocks:hasPath "M 10 10 l 0 30 l 30 0 z" .
+  
+:fullBlackArrow
+  a blocks:Polygon ;
+  blocks:hasColor "black" ;
+  blocks:strokeWidth 3 ;
+  blocks:hasPath "M 10 25 l 20 0 l 0 -5 l 10 5 l -10 5 l 0 -5 z" .
+
+:hackBlueArrow
+  a blocks:Polygon ;
+  blocks:hasColor "blue" ;
+  blocks:strokeWidth 3 ;
+  blocks:hasPath "M 10 10 l 30 30 l -8 -16 l 4 12 z" .
+  
+:redEquilateralTriangle
+  a blocks:Polygon ;
+  # TODO: compute the path from a qualitative description
+  blocks:shape blocks:EquilateralTriangle ;
+  blocks:hasColor "red" ;
+  blocks:hasPath "M 40 25 L 17.5 12 L 17.5 38 z" .
+  
+:redObtuseTriangle
+  a blocks:Polygon ;
+  blocks:hasColor "red" ;
+  blocks:hasPath "M 8 10 L 8 25 L 39 37 z" .
+
+:limeRegularPentagon  
+  a blocks:Polygon ;
+  blocks:hasColor "#00ff00" ;
+  blocks:hasPath "M 41 25 L 30 10 L 12 16 L 12 34 L 30 40 z" .

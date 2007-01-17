@@ -1,0 +1,7 @@
+<path d="${_path}" fill="${_color}" stroke="${_color}" 
+#if($_strokeWidth)
+stroke-width="${_strokeWidth}"
+#else
+stroke-width="0"
+#end
+/>
