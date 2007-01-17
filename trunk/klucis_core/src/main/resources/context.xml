@@ -17,12 +17,12 @@
 		</property>
 	</bean>
 	
-	<bean id="converter" class="lv.webkursi.web2007a.lab01.MainConverter">
+	<bean id="converter" class="lv.webkursi.klucis.MainConverter">
 		<property name="model" ref="model"/>
 		<property name="componentManager" ref="componentManager"/>
 	</bean>
 	
-	<bean id="model" class="lv.webkursi.web2007a.lab01.FileModelFactory">
+	<bean id="model" class="lv.webkursi.klucis.FileModelFactory">
 		<property name="path">
 			<value>/src/main/resources/</value>
 		</property>
@@ -31,37 +31,37 @@
 		</property>
 	</bean>
 	
-	<bean id="componentManager" class="lv.webkursi.web2007a.lab01.ComponentManager">
+	<bean id="componentManager" class="lv.webkursi.klucis.ComponentManager">
 		<property name="factoryCatalog" ref="factoryCatalog"/>
 	</bean>
 	
-	<bean id="factoryCatalog" class="lv.webkursi.web2007a.lab01.FactoryCatalog">
+	<bean id="factoryCatalog" class="lv.webkursi.klucis.FactoryCatalog">
 		<property name="catalog">
 			<map>
 				<entry
 					key="http://www.mtest.lv/schema/20061008/blocks#TopComponent">
 					<bean
-						class="lv.webkursi.web2007a.lab01.blocks.TopComponentFactory"/>
+						class="lv.webkursi.klucis.blocks.TopComponentFactory"/>
 				</entry>
 				<entry
 					key="http://www.mtest.lv/schema/20061008/blocks#HorizontalRow">
 					<bean
-						class="lv.webkursi.web2007a.lab01.blocks.HorizontalRowFactory"/>
+						class="lv.webkursi.klucis.blocks.HorizontalRowFactory"/>
 				</entry>
 				<entry
 					key="http://www.mtest.lv/schema/20061008/blocks#SquareBox">
 					<bean
-						class="lv.webkursi.web2007a.lab01.blocks.SquareBoxFactory"/>
+						class="lv.webkursi.klucis.blocks.SquareBoxFactory"/>
 				</entry>
 				<entry
 					key="http://www.mtest.lv/schema/20061008/blocks#Transform">
 					<bean
-						class="lv.webkursi.web2007a.lab01.blocks.TransformFactory"/>
+						class="lv.webkursi.klucis.blocks.TransformFactory"/>
 				</entry>
 				<entry
 					key="http://www.mtest.lv/schema/20061008/blocks#Polygon">
 					<bean
-						class="lv.webkursi.web2007a.lab01.blocks.PolygonFactory"/>
+						class="lv.webkursi.klucis.blocks.PolygonFactory"/>
 				</entry>
 			</map>
 		</property>
