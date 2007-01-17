@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faqs id="General FAQ">
+	<part id="General">
+		<title>General</title>
+		<faq id="what">
+			<question>What is KLUCIS doing?</question>
+			<answer>Java software to manipulate simple vector images. An RDF ontology
+				suggests "building-blocks" - image components, with configurable
+				defaults. Could be useful in facetted browsers etc., where an image (e.g. a
+				chart) is a response to a SPARQL query.</answer>
+		</faq>
+		<faq id="status">
+			<question>Status of the project?</question>
+			<answer>Klucis is not functional yet - it is in planning stage.</answer>
+		</faq>
+		<faq id="goal">
+			<question>What is the goal of the project</question>
+			<answer>It is meant to be a simple and extensible mini-framework, which can be
+				used to illustrate concepts of OO, Spring, Semantic Web. Its purpose is
+				mostly educational - it could offer students opportunity to design and
+				implement various extensions and to give "instant satisfaction" for
+				those, who have programmed these extensions correctly. And furthermore -
+				it could also generate a few useful images.</answer>
+		</faq>
+		<faq id="rationale">
+			<question>Why would anyone need RDF-driven vector images?</question>
+			<answer>KLUCIS should provide vocabulary (RDF/RDFS classes and their
+				properties) to describe simple vector images. Its components have some
+				default configuration (sizes, colors, layout parameters, etc.), which
+				would allow to describe certain categories of useful vector images as
+				concise RDF. It could be useful to output charts, board-game positions,
+				function graphics and some other images, which could be too verbose to
+				describe with the low-level SVG constructs.</answer>
+		</faq>
+		<faq id="name">
+			<question>Why the name KLUCIS?</question>
+			<answer>"Klucis" in Latvian means "block", e.g. a building block, brick, log,
+				lego piece. Cf. German "der Klotz".</answer>
+		</faq>
+		<faq id="what">
+			<question>What are the main dependencies?</question>
+			<answer>KLUCIS is supposed to be configurable by
+				<a href="http://www.springframework.org/">Spring Framework</a>.
+				While it is certainly possible to set up KLUCIS' components by other means by
+				some explicit code, the preferred way is Spring configuration, e.g. from an
+				XML config file, or an RDF config file or any other method one could set up an
+				<code>org.springframework.context.ApplicationContext</code>.
+				KLUCIS uses Jena as RDF library, and generates SVG by means of recursive
+				rendering of Velocity templates, possibly containing further Velocity
+				templates.</answer>
+		</faq>
+	</part>
+	<!--
+	<part id="design_guidelines">
+	<title>Design guidelines</title>  
+	<faq id="open_world">
+	<question>"Open World Assumption" or "Future Compatibility" or 
+	"What you do not need, won't bother you much"</question>
+	<answer>
+	KLUCIS behavior should not be affected by any garbage
+	that may be present in the configuration data (e.g.  
+	in the N3 file containing KLUCIS' component properties)
+	as long as all the necessary stuff is in place.
+	</answer>
+	</faq>
+	<faq id="fail_fast">
+	<question>Fail fast</question>
+	<answer>
+	If component configurations have inconsistent structure (instead
+	of the open-world-garbage as in 1st guideline), 
+	then throw unchecked exception and kill the Webapp, so 
+	that the portal developer becomes aware of the problem as
+	early as possible. Unlike HTML browsers, we do not recover from 
+	things that are most likely configuration errors.
+	</answer>
+	</faq>    
+	<faq id="friendly_names">
+	<question>Friendly names</question>
+	<answer>
+	Intuitive/descriptive class and property names are used 
+	in preference to too technical or data-structure oriented notation.
+	</answer>
+	</faq>
+	<faq id="convention">
+	<question>Convention over configuration</question>
+	<answer>
+	Like Ruby on Rails or Maven, KLUCIS should have most features working 
+	"out of the box" or with minimal 
+	configuration. This behavior is achieved by having 
+	some default "master configuration" with lots of reasonable defaults.
+	This principle is used to generate charts in traditional spreadsheets
+	as well. To get usable charts one does 
+	not need to do very much explicit configuration, e.g. to choose the grid, choose
+	how wide the bars in the barchart are going to be, etc. All these things come
+	from a configuration. Quite many Spring, J2EE and RDF applications need
+	quite large explicit configurations.
+	</answer>
+	</faq>
+	</part>
+	-->
+</faqs>

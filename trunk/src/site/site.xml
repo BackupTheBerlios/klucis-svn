@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Web tehnologijas,2007a">
+  <bannerLeft>
+    <name>Web technologies 2007</name>
+    <src>images/pix.gif</src>
+    <href>#</href>
+  </bannerLeft>
+  <body>
+    <links>
+	  <!--
+      <item name="DE" href="de/index.html" />
+	  -->
+      <item name="BerliOS" href="http://www.berlios.de/" />
+      <item name="KLUCIS Home" href="http://klucis.berlios.de/" />
+    </links>
+    <menu>
+	  <item name="Home" href="index.html"/>
+      <item name="FAQ" href="faq.html"/>
+<!--      <item name="Problems" href="labs.html">
+        <item name="1.Vector Images" href="lab01.html"/>
+        <item name="2.Quiz App" href="lab02.html"/>
+		<item name="3.Quiz Composing" href="lab03.html"/>
+        <item name="4.Facetted Browse" href="lab04.html"/>
+		<item name="5.CMS" href="lab05.html"/>
+		<item name="MC Test" href="labs_test.html"/>
+      </item>
+-->	
+    </menu>
+  </body>
+</project>
