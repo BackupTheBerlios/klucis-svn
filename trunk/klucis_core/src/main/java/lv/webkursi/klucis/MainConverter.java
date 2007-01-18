@@ -24,8 +24,10 @@ public class MainConverter {
 	}
 
 	public static void main(String[] args) {
+		ApplicationParams params = new ApplicationParams(args);
+		String contextPath = (String)params.getParam("config");		
 		FileSystemXmlApplicationContext ctx = new FileSystemXmlApplicationContext(
-				"src/main/resources/context.xml");
+				contextPath);
 		MainConverter converter = (MainConverter) ctx.getBean("converter");
 		ResIterator i = converter.model.listSubjectsWithProperty(BLOCKS.output);
 		while (i.hasNext()) {

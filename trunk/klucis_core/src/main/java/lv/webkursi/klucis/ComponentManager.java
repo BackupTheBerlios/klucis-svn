@@ -16,6 +16,8 @@ import com.hp.hpl.jena.vocabulary.RDF;
  * A ComponentManager is used to create various items used in drawings. It ensures
  * that each component in a request has a unique name, mutually injects
  * various component references and tries to optimize component retrieval through caching.
+ * 
+ * @author kap
  */
 public class ComponentManager {
 
