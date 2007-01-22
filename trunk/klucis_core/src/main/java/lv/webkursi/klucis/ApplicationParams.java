@@ -18,12 +18,13 @@ public class ApplicationParams {
 	
 	private Map<String,Object> params;
 	
+	
 	/**
-	 * Initialize default values of params
+	 * Initialize default values of params; all the system parameters should start with "_"
 	 */
 	public ApplicationParams() {
 		params = new HashMap<String,Object>();		
-		params.put("config", "context.xml");
+		params.put("_config", "context.xml");
 	}
 	
 	public ApplicationParams(String[] args) {
@@ -57,5 +58,7 @@ public class ApplicationParams {
 	public Object getParam(String key) {
 		return params.get(key);
 	}
+	
+
 
 }
