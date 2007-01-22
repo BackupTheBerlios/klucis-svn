@@ -18,7 +18,7 @@ public class TopComponent extends AbstractComponent implements Writeable {
 
 	public void output() {
 		VelocityView view = new VelocityView();
-		view.setTemplateName("TopComponent");
+		view.setTemplateName("TopComponent1");
 		this.addObject("_content", content);
 		view.setContextParams(model);
 		view.write(fileName);

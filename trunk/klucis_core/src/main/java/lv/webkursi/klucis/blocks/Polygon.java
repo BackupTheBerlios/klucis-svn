@@ -24,7 +24,7 @@ public class Polygon extends AbstractComponent {
 	
 	public String render() {
 		VelocityView view = new VelocityView();
-		view.setTemplateName("Polygon");
+		view.setTemplateName("Polygon1");
 		this.addObject("_name", name);
 		this.addObject("_color", color);
 		this.addObject("_path", path);

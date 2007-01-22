@@ -24,7 +24,7 @@ public class ApplicationParams {
 	 */
 	public ApplicationParams() {
 		params = new HashMap<String,Object>();		
-		params.put("_config", "context.xml");
+		params.put("_context", "context.xml");
 	}
 	
 	public ApplicationParams(String[] args) {

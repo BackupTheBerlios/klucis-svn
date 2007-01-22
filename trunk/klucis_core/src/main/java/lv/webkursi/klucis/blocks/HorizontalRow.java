@@ -20,7 +20,7 @@ public class HorizontalRow extends AbstractComponent {
 		int count = 0;
 		for (Component c: components) {
 			if (c instanceof SquareBox) {
-				((SquareBox)c).setNum(count++);
+				((SquareBox)c).setNumX(count++);
 			}
 		}		
 		model.put("_components", components);

@@ -25,7 +25,7 @@ public class MainConverter {
 
 	public static void main(String[] args) {
 		ApplicationParams params = new ApplicationParams(args);
-		String contextPath = (String)params.getParam("_config");	
+		String contextPath = (String)params.getParam("_context");	
 		FileSystemXmlApplicationContext ctx = new FileSystemXmlApplicationContext(
 				contextPath);
 		MainConverter converter = (MainConverter) ctx.getBean("converter");

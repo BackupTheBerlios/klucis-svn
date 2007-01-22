@@ -4,9 +4,19 @@
 @prefix blocks: <http://www.mtest.lv/schema/20061008/blocks#> .
 @prefix : <http://example.com/bildes#> .
 
+
+:bilde_triangle_ruler
+  a blocks:TopComponent ;
+  blocks:output "bilde_triangle_ruler.svg" ;
+  blocks:hasContent [
+      a blocks:SquareBox ;
+      blocks:hasContent :triangleRuler 
+  ] .
+
+
 :bilde_11a
   a blocks:TopComponent ;
-  blocks:output "bilde_11a.svg" ;
+#  blocks:output "bilde_11a.svg" ;
   blocks:hasContent [
     a rdf:Seq ;
     a blocks:HorizontalRow ;
@@ -24,7 +34,7 @@
 
 :bilde_11d
   a blocks:TopComponent ;
-  blocks:output "bilde_11d.svg" ;
+#  blocks:output "bilde_11d.svg" ;
   blocks:hasContent [
     a rdf:Seq ;
     a blocks:HorizontalRow ;
@@ -49,7 +59,7 @@
 
 :bilde_11e
   a blocks:TopComponent ;
-  blocks:output "bilde_11e.svg" ;
+#  blocks:output "bilde_11e.svg" ;
   blocks:hasContent [
     a rdf:Seq ;
     a blocks:HorizontalRow ;
@@ -66,7 +76,7 @@
 
 :bilde_15a
   a blocks:TopComponent ;
-  blocks:output "bilde_15a.svg" ;
+#  blocks:output "bilde_15a.svg" ;
   blocks:hasContent [
     a rdf:Seq ;
     a blocks:HorizontalRow ;
@@ -90,7 +100,7 @@
 
 :bilde_15b
   a blocks:TopComponent ;
-  blocks:output "bilde_15b.svg" ;
+#  blocks:output "bilde_15b.svg" ;
   blocks:hasContent [
     a rdf:Seq ;
     a blocks:HorizontalRow ;
@@ -113,7 +123,7 @@
 
 :bilde_15c
   a blocks:TopComponent ;
-  blocks:output "bilde_15c.svg" ;
+#  blocks:output "bilde_15c.svg" ;
   blocks:hasContent [
     a rdf:Seq ;
     a blocks:HorizontalRow ;
@@ -134,7 +144,7 @@
 
 :bilde_15d
   a blocks:TopComponent ;
-  blocks:output "bilde_15d.svg" ;
+#  blocks:output "bilde_15d.svg" ;
   blocks:hasContent [
     a rdf:Seq ;
     a blocks:HorizontalRow ;
@@ -158,7 +168,7 @@
 
 :bilde_15e
   a blocks:TopComponent ;
-  blocks:output "bilde_15e.svg" ;
+#  blocks:output "bilde_15e.svg" ;
   blocks:hasContent [
     a rdf:Seq ;
     a blocks:HorizontalRow ;
@@ -181,7 +191,7 @@
 
 :bilde_15f
   a blocks:TopComponent ;
-  blocks:output "bilde_15f.svg" ;
+#  blocks:output "bilde_15f.svg" ;
   blocks:hasContent [
     a rdf:Seq ;
     a blocks:HorizontalRow ;
@@ -206,7 +216,7 @@
 
 :bilde_22a
   a blocks:TopComponent ;
-  blocks:output "bilde_22a.svg" ;
+#  blocks:output "bilde_22a.svg" ;
   blocks:hasContent [
     a rdf:Seq ;
     a blocks:HorizontalRow ;
@@ -240,7 +250,7 @@
 
 :bilde_22b
   a blocks:TopComponent ;
-  blocks:output "bilde_22b.svg" ;
+#  blocks:output "bilde_22b.svg" ;
   blocks:hasContent [
     a rdf:Seq ;
     a blocks:HorizontalRow ;
@@ -271,7 +281,7 @@
 
 :bilde_22c
   a blocks:TopComponent ;
-  blocks:output "bilde_22c.svg" ;
+#  blocks:output "bilde_22c.svg" ;
   blocks:hasContent [
     a rdf:Seq ;
     a blocks:HorizontalRow ;
@@ -306,7 +316,7 @@
 
 :bilde_22d
   a blocks:TopComponent ;
-  blocks:output "bilde_22d.svg" ;
+#  blocks:output "bilde_22d.svg" ;
   blocks:hasContent [
     a rdf:Seq ;
     a blocks:HorizontalRow ;
@@ -339,7 +349,7 @@
 
 :bilde_22f
   a blocks:TopComponent ;
-  blocks:output "bilde_22f.svg" ;
+#  blocks:output "bilde_22f.svg" ;
   blocks:hasContent [
     a rdf:Seq ;
     a blocks:HorizontalRow ;
@@ -366,6 +376,14 @@
       ]
     ]
   ] .
+
+# The 30-60-90 triangle as a ruler
+# See http://en.wikipedia.org/wiki/Incircle#Coordinates_of_the_incenter
+:triangleRuler 
+  a blocks:Polygon ;
+  blocks:hasColor "blue" ;
+  blocks:boundingRectangle "-100 -100 200 200" ;
+  blocks:hasPath "M -86.6 -50.0 L 86.6 -50.0 L -86.6 50.0 z  M -62.2 -25.6 L -62.2 7.7  L -4.4 -25.6  z" .
 
 
 :blueTriangle
