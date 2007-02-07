@@ -1,5 +1,0 @@
-#foreach ( $_component in $_components )
-#if ($_component) 
-$_component.render()
-#end
-#end
