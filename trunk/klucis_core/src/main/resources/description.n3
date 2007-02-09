@@ -1,0 +1,496 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix klucis: <http://www.webkursi.lv/schema/20061008/klucis#> .
+@prefix : <http://example.com/bildes#> .
+
+
+:bilde_triangle_ruler
+  a klucis:TopComponent ;
+  klucis:output "bilde_triangle_ruler.svg" ;
+  klucis:hasContent [
+      a klucis:Rectangle ;
+      klucis:hasContent :triangleRuler 
+  ] .
+
+
+:bilde_11a
+  a klucis:TopComponent ;
+  klucis:output "bilde_11a.svg" ;
+  klucis:hasContent [
+    a rdf:Seq ;
+    a klucis:HorizontalRow ;
+    rdf:_1 [
+      a klucis:Rectangle ;
+      klucis:hasLabel "A" ; # izsecina, ka apakshaa
+      klucis:hasContent :blueTriangle 
+    ] ;
+    rdf:_2 [
+      a klucis:Rectangle ;
+      klucis:hasLabel "B" ; # izsecina, ka apakshaa
+      klucis:hasContent :greenArrowHead 
+    ]
+  ] .
+
+:bilde_11d
+  a klucis:TopComponent ;
+  klucis:output "bilde_11d.svg" ;
+  klucis:hasContent [
+    a rdf:Seq ;
+    a klucis:HorizontalRow ;
+    rdf:_1 [
+      a klucis:Rectangle ;
+      klucis:hasContent [
+        a klucis:Transform ;      
+        klucis:hasContent :blueTriangle ;
+        klucis:rotate 90 
+      ]
+    ] ;
+    rdf:_2 [
+      a klucis:Rectangle ;
+      klucis:hasContent [
+        a klucis:Transform ;        
+        klucis:hasContent :greenArrowHead ;
+        klucis:rotate -90
+      ]
+    ] 
+  ] .
+
+
+:bilde_11e
+  a klucis:TopComponent ;
+  klucis:output "bilde_11e.svg" ;
+  klucis:hasContent [
+    a rdf:Seq ;
+    a klucis:HorizontalRow ;
+    rdf:_1 [
+      a klucis:Rectangle ;
+      klucis:hasContent :blueTriangle 
+    ] ;
+    rdf:_2 [
+      a klucis:Rectangle ;
+      klucis:hasContent :greenArrowHead 
+    ] 
+  ] .
+
+
+:bilde_15a
+  a klucis:TopComponent ;
+  klucis:output "bilde_15a.svg" ;
+  klucis:hasContent [
+    a rdf:Seq ;
+    a klucis:HorizontalRow ;
+    rdf:_1 [
+      a klucis:Rectangle ;
+      klucis:hasLabel "A" ; 
+      klucis:hasContent :blueTriangle ;
+      klucis:rotate 90
+    ] ;
+    rdf:_2 [
+      a klucis:Rectangle ;
+      klucis:hasLabel "B" ; 
+      klucis:hasContent :violetTrapezoid 
+    ] ;
+    rdf:_3 [
+      a klucis:Rectangle ;
+      klucis:hasLabel "C" ; 
+      klucis:hasContent :greenArrowHead 
+    ]
+  ] .
+
+:bilde_15b
+  a klucis:TopComponent ;
+  klucis:output "bilde_15b.svg" ;
+  klucis:hasContent [
+    a rdf:Seq ;
+    a klucis:HorizontalRow ;
+    rdf:_1 [
+      a klucis:Rectangle ;
+      klucis:hasContent :blueTriangle ;
+      klucis:rotate -90
+    ] ;
+    rdf:_2 [
+      a klucis:Rectangle ;
+      klucis:hasContent :violetTrapezoid ;
+      klucis:rotate 90
+    ] ;
+    rdf:_3 [
+      a klucis:Rectangle ;
+      klucis:hasContent :greenArrowHead ;
+      klucis:rotate -90
+    ]
+  ] .
+
+:bilde_15c
+  a klucis:TopComponent ;
+  klucis:output "bilde_15c.svg" ;
+  klucis:hasContent [
+    a rdf:Seq ;
+    a klucis:HorizontalRow ;
+    rdf:_1 [
+      a klucis:Rectangle ;
+      klucis:hasContent :blueTriangle 
+    ] ;
+    rdf:_2 [
+      a klucis:Rectangle ;
+      klucis:hasContent :violetTrapezoid ;
+      klucis:rotate 180
+    ] ;
+    rdf:_3 [
+      a klucis:Rectangle ;
+      klucis:hasContent :greenArrowHead 
+    ]
+  ] .
+
+:bilde_15d
+  a klucis:TopComponent ;
+  klucis:output "bilde_15d.svg" ;
+  klucis:hasContent [
+    a rdf:Seq ;
+    a klucis:HorizontalRow ;
+    rdf:_1 [
+      a klucis:Rectangle ;
+      klucis:hasContent :blueTriangle ;
+      klucis:rotate -90
+    ] ;
+    rdf:_2 [
+      a klucis:Rectangle ;
+      klucis:hasContent :violetTrapezoid ;
+      klucis:rotate 90
+    ] ;
+    rdf:_3 [
+      a klucis:Rectangle ;
+      klucis:hasContent :greenArrowHead ;
+      klucis:rotate 90
+    ]
+  ] .
+
+
+:bilde_15e
+  a klucis:TopComponent ;
+  klucis:output "bilde_15e.svg" ;
+  klucis:hasContent [
+    a rdf:Seq ;
+    a klucis:HorizontalRow ;
+    rdf:_1 [
+      a klucis:Rectangle ;
+      klucis:hasContent :blueTriangle ;
+      klucis:rotate -90
+    ] ;
+    rdf:_2 [
+      a klucis:Rectangle ;
+      klucis:hasContent :violetTrapezoid ;
+      klucis:rotate -90
+    ] ;
+    rdf:_3 [
+      a klucis:Rectangle ;
+      klucis:hasContent :greenArrowHead ;
+      klucis:rotate 90
+    ]
+  ] .
+
+:bilde_15f
+  a klucis:TopComponent ;
+  klucis:output "bilde_15f.svg" ;
+  klucis:hasContent [
+    a rdf:Seq ;
+    a klucis:HorizontalRow ;
+    rdf:_1 [
+      a klucis:Rectangle ;
+      klucis:hasContent :blueTriangle ;
+      klucis:rotate 90
+    ] ;
+    rdf:_2 [
+      a klucis:Rectangle ;
+      klucis:hasContent :violetTrapezoid ;
+      klucis:rotate 90
+    ] ;
+    rdf:_3 [
+      a klucis:Rectangle ;
+      klucis:hasContent :greenArrowHead ;
+      klucis:rotate 90
+    ]
+  ] .
+
+
+
+:bilde_22a
+  a klucis:TopComponent ;
+  klucis:output "bilde_22a.svg" ;
+  klucis:hasContent [
+    a rdf:Seq ;
+    a klucis:HorizontalRow ;
+    klucis:hasGap 0 ;
+    rdf:_1 [
+      a klucis:Rectangle ;
+      klucis:hasContent [
+        a klucis:Transform ;                       
+        klucis:hasContent :isoscelesRightangleBlueTriangle ;
+        klucis:rotate 180
+      ]
+    ] ;
+    rdf:_2 [
+      a klucis:Rectangle ;
+      klucis:hasRectWidth "140" ;
+      klucis:hasRectHeight "140" ;
+      klucis:showRectangle "false" ;
+      klucis:hasContent :fullBlackArrow 
+    ] ;
+    rdf:_3 [
+      a klucis:Rectangle ;
+      klucis:hasContent [
+        a klucis:Transform ;               
+        klucis:hasContent :isoscelesRightangleBlueTriangle ;
+        klucis:rotate 90
+      ]
+    ] ;
+    rdf:_4 [
+      a klucis:Rectangle ;
+      klucis:hasRectWidth "140" ;
+      klucis:hasRectHeight "140" ;
+      klucis:showRectangle "false" ;
+      klucis:hasContent :fullBlackArrow 
+    ] ;
+    rdf:_5 [
+      a klucis:Rectangle ;
+      klucis:hasContent [
+        a klucis:Transform ;                        
+        klucis:hasContent :isoscelesRightangleBlueTriangle ;
+        klucis:rotate -135
+      ]
+    ]
+  ] .
+
+:bilde_22b
+  a klucis:TopComponent ;
+  klucis:output "bilde_22b.svg" ;
+  klucis:hasContent [
+    a rdf:Seq ;
+    a klucis:HorizontalRow ;
+    klucis:hasGap 0 ;
+    rdf:_1 [
+      a klucis:Rectangle ;
+      klucis:hasContent :hackBlueArrow ;
+    ] ;
+    rdf:_2 [
+      a klucis:Rectangle ;
+      klucis:hasContent :fullBlackArrow 
+    ] ;
+    rdf:_3 [
+      a klucis:Rectangle ;
+      klucis:hasContent [
+        a klucis:Transform ;      
+        klucis:hasContent :hackBlueArrow ;
+        klucis:rotate 180
+      ]
+    ] ;
+    rdf:_4 [
+      a klucis:Rectangle ;
+      klucis:hasContent :fullBlackArrow 
+    ] ;
+    rdf:_5 [
+      a klucis:Rectangle ;
+      klucis:hasContent [
+        a klucis:Transform ;            
+        klucis:hasContent :hackBlueArrow ;
+        klucis:scaleX -1
+      ]
+    ]
+  ] .
+
+
+:bilde_22c
+  a klucis:TopComponent ;
+  klucis:output "bilde_22c.svg" ;
+  klucis:hasContent [
+    a rdf:Seq ;
+    a klucis:HorizontalRow ;
+    klucis:hasGap 0 ;
+    rdf:_1 [
+      a klucis:Rectangle ;
+      klucis:hasContent [
+        a klucis:Transform ;            
+        klucis:hasContent :redEquilateralTriangle ;
+        klucis:rotate 30
+      ]
+    ] ;
+    rdf:_2 [
+      a klucis:Rectangle ;
+      klucis:hasContent :fullBlackArrow 
+    ] ;
+    rdf:_3 [
+      a klucis:Rectangle ;
+      klucis:hasContent [
+        a klucis:Transform ;            
+        klucis:hasContent :redEquilateralTriangle ;
+        klucis:rotate 60
+      ]
+    ] ;
+    rdf:_4 [
+      a klucis:Rectangle ;
+      klucis:hasContent :fullBlackArrow 
+    ] ;
+    rdf:_5 [
+      a klucis:Rectangle ;
+      klucis:hasContent [
+        a klucis:Transform ;            
+        klucis:hasContent :redEquilateralTriangle ;
+        klucis:rotate -30
+      ]
+    ]
+  ] .
+
+
+:bilde_22d
+  a klucis:TopComponent ;
+  klucis:output "bilde_22d.svg" ;
+  klucis:hasContent [
+    a rdf:Seq ;
+    a klucis:HorizontalRow ;
+    klucis:hasGap 0 ;
+    rdf:_1 [
+      a klucis:Rectangle ;
+      klucis:hasContent :redObtuseTriangle ;
+    ] ;
+    rdf:_2 [
+      a klucis:Rectangle ;
+      klucis:hasContent :fullBlackArrow 
+    ] ;
+    rdf:_3 [
+      a klucis:Rectangle ;
+      klucis:hasContent [
+        a klucis:Transform ;            
+        klucis:hasContent :redObtuseTriangle ;
+        klucis:rotate 180
+      ]
+    ] ;
+    rdf:_4 [
+      a klucis:Rectangle ;
+      klucis:hasContent :fullBlackArrow 
+    ] ;
+    rdf:_5 [
+      a klucis:Rectangle ;
+      klucis:hasContent [
+        a klucis:Transform ;            
+        klucis:hasContent :redObtuseTriangle ;
+        klucis:rotate -135
+      ]
+    ]
+  ] .
+
+# TODO: bilde_22e
+
+
+:bilde_22f
+  a klucis:TopComponent ;
+  klucis:output "bilde_22f.svg" ;
+  klucis:hasContent [
+    a rdf:Seq ;
+    a klucis:HorizontalRow ;
+    klucis:hasGap 0 ;
+    rdf:_1 [
+      a klucis:Rectangle ;
+      klucis:hasContent :limeRegularPentagon  ;
+    ] ;
+    rdf:_2 [
+      a klucis:Rectangle ;
+      klucis:hasContent :fullBlackArrow 
+    ] ;
+    rdf:_3 [
+      a klucis:Rectangle ;
+      klucis:hasContent [
+        a klucis:Transform ;            
+        klucis:hasContent :limeRegularPentagon ;
+        klucis:rotate -90
+      ]
+    ] ;
+    rdf:_4 [
+      a klucis:Rectangle ;
+      klucis:hasContent :fullBlackArrow 
+    ] ;
+    rdf:_5 [
+      a klucis:Rectangle ;
+      klucis:hasContent [
+        a klucis:Transform ;            
+        klucis:hasContent :limeRegularPentagon ;
+        klucis:rotate 45
+      ]
+    ]
+  ] .
+  
+
+###############################################################
+# Abstract Components store default values for the properties #
+###############################################################
+
+:applicationPath 
+  a klucis:AbstractComponent ;
+  a klucis:Path ;
+  klucis:context "/" ;  
+  klucis:hasColor "black" ;
+  klucis:hasViewName "Path" ;
+  klucis:hasWidth "200" ;
+  klucis:hasHeight "200" ;
+  klucis:hasStrokeWidth "0" .
+
+
+###############################################################
+# Constants used in various pictures                          #
+###############################################################
+
+# The 30-60-90 triangle as a ruler (trijstuurveida lineaala figuura)
+# See http://en.wikipedia.org/wiki/Incircle#Coordinates_of_the_incenter
+:triangleRuler 
+  a klucis:Path ;
+  klucis:hasColor "blue" ;
+  klucis:hasPath "M -86.6 -50.0 L 86.6 -50.0 L -86.6 50.0 z  M -62.2 -25.6 L -62.2 7.7  L -4.4 -25.6  z" .
+
+:blueTriangle
+  klucis:parent :aTriangle ;
+  klucis:hasColor "blue" .
+
+:aTriangle
+  a klucis:Path ;
+  klucis:hasPath "M -86.6 -50.0 L 86.6 -50.0 L -86.6 50.0 z  M -62.2 -25.6 L -62.2 7.7  L -4.4 -25.6  z" .
+
+:greenArrowHead
+  a klucis:Path ;
+  klucis:hasColor "#006600" ; # green
+  klucis:hasPath "M 20 -52 L 20 44 L -52 -28 L 12 -4 z" .
+
+:violetTrapezoid 
+  a klucis:Path ;
+  klucis:hasColor "#990099" ;
+  klucis:hasPath "M -64 -48 L -56 52 L -32 52 L 60 -48 z" .
+ 
+:isoscelesRightangleBlueTriangle
+  a klucis:Path ;
+  klucis:hasColor "blue" ;
+  klucis:hasPath "M -60 -60 L -60 60 L 60 60 z" .
+  
+:fullBlackArrow
+  a klucis:Path ;
+  klucis:hasColor "black" ;
+  klucis:hasStrokeWidth 3 ;
+  klucis:hasPath "M -60 0 L 20 0 L 20 -20 L 60 0 L 20 20 L 20 0 z" .
+
+:hackBlueArrow
+  a klucis:Path ;
+  klucis:hasColor "blue" ;
+  klucis:hasStrokeWidth 6 ;
+  klucis:hasPath "M -60 -60 L 60 60 L 28 -4 L 44 44 z" .
+  
+:redEquilateralTriangle
+  a klucis:Path ;
+  klucis:hasColor "red" ;
+  klucis:hasPath "M 60 0 L -30 -52 L -30 52 z" .
+  
+:redObtuseTriangle
+  a klucis:Path ;
+  klucis:hasColor "red" ;
+  klucis:hasPath "M -68 -60 L -68 0 L 56 48 z" .
+
+:limeRegularPentagon
+  a klucis:Path ;
+  klucis:hasColor "#00ff00" ;
+  klucis:hasPath "M 64 0 L 20 -60 L -52 -36 L -52 36 L 20 60 z" .

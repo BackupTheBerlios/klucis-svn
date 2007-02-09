@@ -1,0 +1,73 @@
+# #############################################################
+# WARNING!!! You might want to override these values
+# in your local build.properties file; these defaults will not work for everyone!
+# jboss.home=c:/tools/jboss-4.0.5.GA
+# harddeploy.dir=${jboss.home}/server/default/deploy
+# ##############################################################
+
+
+# Java sources, which are compiled and compilation results are put to the classpath 
+src.dir=src/main/java
+
+# Various resources (like log4j.properties), 
+# which should be copied directly to the classpath
+resources.dir=src/main/resources
+test.resources.dir=src/test/resources
+
+# Where all the build results are placed
+target.dir=target
+
+# Location for extra-copies of those dependencies
+# which have in pom.xml scope=provided, i.e. needed for compilation, 
+# but not redeployed on the Tomcat
+locallib.dir=src/locallib
+
+# Parent directory of the static web files and parent of WEB-INF
+web.dir=src/main/webapp
+war.lib.dir=${web.dir}/WEB-INF/lib
+war.classes.dir=${web.dir}/WEB-INF/classes
+
+# For JAR projects - the lib directory and the classes directory
+jar.lib.dir=lib
+jar.classes.dir=${target.dir}/classes
+jar.test.classes.dir=${target.dir}/test-classes
+
+# Directory, where local copies XML Schemas are located for validation
+schema.dir=schemas
+
+# JAR files, which should not end up in the WAR-file, but are used for compilation only
+compile-lib.dir=compile-lib
+
+# The relative path from klucis_demo to klucis_core
+portal.core.dir=../klucis_core
+
+# distribution directory under each project, where the compiled artifact end up
+dist.dir=target
+
+# Copilation-destination directory is different for WAR and JAR projects
+war.build.dir=${web.dir}/WEB-INF/classes
+
+# Sharedlib directory (contains consistent set of JARs)
+sharedlib.dir = ../sharedlib
+
+# Reference to buildtools
+anttools.dir=${sharedlib.dir}/anttools
+
+# Slave build file
+${sharedlib.dir}/slave-build.xml
+
+javadoc.dir=docs/api
+
+reports.dir=${target.dir}/reports
+
+war.name=${ant.project.name}.war
+
+# DEFINE jboss.home in your build.properties file (but NOT here), e.g. 
+#jboss.home=c:/tools/jboss-4.0.5.GA
+#jboss.deploy.dir=${jboss.home}/server/default/deploy
+
+# Manifest.mf constants
+mf.built.by=Some developers
+mf.implementation.vendor=Webkursi
+mf.implementation.vendor.id=lv.webkursi
+mf.extension.name=lv.webkursi.klucis

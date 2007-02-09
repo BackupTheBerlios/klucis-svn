@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+	
+	<bean id="velocityConfig"
+		class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+		<property name="resourceLoaderPath">
+			<value>/WEB-INF/templates/velocity/</value>
+		</property>
+		<property name="velocityProperties">
+			<props>
+			    <prop key="toolboxConfigLocation">/src/main/resources/toolbox.xml</prop>
+				<prop key="input.encoding">UTF-8</prop>
+				<prop key="output.encoding">UTF-8</prop>
+			</props>
+		</property>
+	</bean>	
+	
+	<bean id="converter" class="lv.webkursi.klucis.KlucisMain">
+		<property name="model" ref="model"/>
+		<property name="componentManager" ref="componentManager"/>
+	</bean>
+	
+	<bean id="model" class="lv.webkursi.klucis.data.FileModelFactory">
+		<property name="path">
+			<value>/src/main/resources/</value>
+		</property>
+		<property name="fileName">
+			<value>description.n3</value>
+		</property>
+	</bean>
+	
+	<bean id="componentManager" class="lv.webkursi.klucis.component.ComponentManager">
+		<property name="factoryCatalog" ref="factoryCatalog"/>
+	</bean>
+	
+	<bean id="factoryCatalog" class="lv.webkursi.klucis.component.FactoryCatalog">
+		<property name="catalog">
+			<map>
+				<entry
+					key="http://www.webkursi.lv/schema/20061008/klucis#TopComponent">
+					<bean
+						class="lv.webkursi.klucis.component.geom2d.TopComponentFactory"/>
+				</entry>
+				<entry
+					key="http://www.webkursi.lv/schema/20061008/klucis#HorizontalRow">
+					<bean
+						class="lv.webkursi.klucis.component.geom2d.HorizontalRowFactory"/>
+				</entry>
+				<entry
+					key="http://www.webkursi.lv/schema/20061008/klucis#Rectangle">
+					<bean
+						class="lv.webkursi.klucis.component.geom2d.RectangleFactory"/>
+				</entry>
+				<entry
+					key="http://www.webkursi.lv/schema/20061008/klucis#Transform">
+					<bean
+						class="lv.webkursi.klucis.component.geom2d.TransformFactory"/>
+				</entry>
+				<entry
+					key="http://www.webkursi.lv/schema/20061008/klucis#Path">
+					<bean
+						class="lv.webkursi.klucis.component.geom2d.PathFactory"/>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	
+</beans>

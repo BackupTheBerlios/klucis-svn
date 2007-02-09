@@ -1,0 +1,6 @@
+<!-- HorizontalRow (width = "${_width}", height = "${_height}") -->
+<g transform="translate(${_offsetX}, ${_offsetY})">
+#foreach ( $_component in $_components )
+$_component.render()
+#end
+</g><!-- HorizontalRow ends -->

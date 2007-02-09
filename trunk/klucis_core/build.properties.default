@@ -1,0 +1,59 @@
+# Java sources, which are compiled and compilation results are put to the classpath 
+src.dir=src/main/java
+test.dir=src/test/java
+
+# Various resources (like log4j.properties), 
+# which should be copied directly to the classpath
+resources.dir=src/main/resources
+
+# Where all the build results are placed
+target.dir=target
+
+# Parent directory of the static web files and parent of WEB-INF
+web.dir=src/main/webapp
+war.lib.dir=${web.dir}/WEB-INF/lib
+war.classes.dir=${web.dir}/WEB-INF/classes
+
+# For JAR projects - the lib directory and the classes directory
+jar.lib.dir=lib
+jar.classes.dir=${target.dir}/classes
+jar.test.classes.dir=${target.dir}/test-classes
+
+
+compile-lib.dir=compile-lib
+
+# distribution directory under each project, where the compiled artifact end up
+dist.dir=target
+
+# Copilation-destination directory is different for WAR and JAR projects
+war.build.dir=${web.dir}/WEB-INF/classes
+
+# Sharedlib directory (contains consistent set of JARs)
+# sharedlib.dir = ../sharedlib
+
+# Reference to buildtools
+anttools.dir=${compile-lib.dir}
+
+# Slave build file
+# ${sharedlib.dir}/slave-build.xml
+
+javadoc.dir=docs/api
+
+reports.dir=${target.dir}/reports
+
+# A few Tomcat-related things
+# tomcat.home=c:/Program Files/Apache Software Foundation/Tomcat 5.5
+# tomcat.manager.url=http://localhost:8080/manager/html
+# tomcat.manager.username=tomcat
+# tomcat.manager.password=tomcat
+
+jboss.home = c:/tools/jboss-4.0.5.GA
+
+# Manifest.mf constants
+mf.built.by=Some developers
+mf.implementation.vendor=Webkursi
+mf.implementation.vendor.id=lv.webkursi
+mf.extension.name=lv.webkursi.klucis
+
+# release number
+rel.num=0.1.0

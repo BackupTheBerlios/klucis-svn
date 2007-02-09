@@ -1,0 +1,165 @@
+<?xml version = "1.0" encoding="UTF-8" standalone="no"?>
+<project name="portalTest" basedir="." default="compile">
+	
+	<property file="build.properties"/>
+	<property file="build.properties.default"/>
+	
+	<property environment="env"/>
+	
+	<path id="compile.classpath">
+		<fileset dir="${war.lib.dir}">
+			<include name="**/*.jar"/>
+		</fileset>
+		<fileset dir="${compile-lib.dir}">
+			<include name="**/*.jar"/>
+		</fileset>
+	</path>
+	
+	<path id="run.classpath">
+		<fileset dir="${war.lib.dir}">
+			<include name="**/*.jar"/>
+		</fileset>
+		<fileset dir="${compile-lib.dir}">
+			<include name="**/*.jar"/>
+		</fileset>
+		<pathelement location="${war.classes.dir}"/>
+		<pathelement location="${jar.test.classes.dir}"/>
+	</path>
+	
+	<target name="all" depends="clean,war" description="Rebuild war"/>
+	
+	<target name="clean" description="Deletes compiled and generated code">
+		<delete dir="${target.dir}"/>
+		<delete>
+			<fileset dir="${war.classes.dir}" includes="**/*.class"/>
+		</delete>
+		<delete>
+            <fileset dir="${war.lib.dir}" includes="**/*.jar"/>
+		</delete>
+	</target>
+	
+	<target name="precompile" description="Prepare target dir and copy resources">
+		<mkdir dir="${jar.classes.dir}"/>
+		<mkdir dir="${jar.test.classes.dir}"/>
+		<!-- convert any XML resource bundles into property format -->
+		<antcall target="transfer-resource-bundles"/>
+		<copy todir="${jar.classes.dir}">
+			<fileset dir="${resources.dir}">
+				<include name="**/*.properties"/>
+				<include name="**/*.n3"/>
+			</fileset>
+		</copy>
+		<copy todir="${war.lib.dir}" flatten="true">
+			<fileset dir="${portal.core.dir}/lib">
+				<include name="**/*.jar"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="compile" description="Compiles the Java code"
+		depends="precompile">
+		<ant antfile="${portal.core.dir}/build.xml" dir="${portal.core.dir}"
+			target="jar"/>
+		<copy file="${portal.core.dir}/target/klucisCore.jar"
+			todir="${war.lib.dir}"/>
+		 		<javac srcdir="${src.dir}" destdir="${jar.classes.dir}"
+			excludes="**/Test*.java" debug="on" deprecation="on">
+			<classpath refid="compile.classpath"/>
+		</javac>
+	</target>
+	
+	<target name="compile-test" description="Compiles the Java code"
+		depends="precompile">
+		<javac srcdir="${src.dir}" destdir="${jar.test.classes.dir}"
+			includes="**/Test*.java" debug="on" deprecation="on">
+			<classpath refid="compile.classpath"/>
+		</javac>
+	</target>
+
+	<!--
+	<target name="junit" depends="compile,compile-test"
+		description="Run JUnit Tests">
+		<junit printsummary="on" fork="true" haltonfailure="false"
+			failureproperty="tests.failed" showoutput="true">
+			<classpath refid="run.classpath"/>
+			<formatter type="xml" usefile="true"/>
+			
+			<batchtest>
+				<fileset dir="${jar.test.classes.dir}">
+					<include name="**/Test*.*"/>
+				</fileset>
+			</batchtest>
+		</junit>
+		
+		<mkdir dir="${reports.dir}"/>
+		
+		<junitreport todir="${reports.dir}">
+			<fileset dir=".">
+				<include name="TEST-*.xml"/>
+			</fileset>
+			<report format="frames" todir="${reports.dir}/html"/>
+		</junitreport>
+		
+		<delete failonerror="false">
+			<fileset dir="." includes="TEST-*.xml"/>
+		</delete>
+		
+		<fail if="tests.failed">tests.failed=${tests.failed}
+			***********************************************************
+			*********************************************************** **** One or
+			more tests failed! Check the output ... ****
+			***********************************************************
+			***********************************************************</fail>
+	</target>
+	-->
+	
+	<target name="war" depends="compile"
+		description="Packages the Web files into a WAR file">
+		<mkdir dir="${target.dir}"/>
+		<copy todir="${war.classes.dir}">
+			<fileset dir="${jar.classes.dir}"/>
+		</copy>
+		<unzip src="${test.resources.dir}/selenium-core-0.8.2.zip"
+			dest="${web.dir}">
+		</unzip>
+		<move todir="${web.dir}/selenium-core">
+			<fileset dir="${web.dir}/selenium-core-0.8.2"/>
+		</move>
+		<war destFile="${target.dir}/${ant.project.name}.war"
+			webxml="${web.dir}/WEB-INF/web.xml">
+			<fileset dir="${web.dir}" excludes="WEB-INF/web.xml"/>
+		</war>
+		<delete dir="${web.dir}/selenium-core"/>
+		
+	</target>
+	
+	<target name="jboss-deploy" depends="war"
+		description="Deploys the WAR to JBoss copying it to the deploy directory">
+		<copy file="${target.dir}/${war.name}" todir="${jboss.deploy.dir}"/>
+		<echo>JBoss is here: ${jboss.deploy.dir}</echo>
+	</target>
+	
+	<target name="jboss-undeploy" depends="war"
+		description="Removes the WAR from the JBoss deploy directory">
+		<delete file="${jboss.deploy.dir}/${war.name}"/>
+	</target>
+	
+
+	
+	<target name="validate-message" unless="validate.xml">
+		<echo>Skipping validation - variable "validate.xml" is not set.</echo>
+		<echo>Your Ant version is ${ant.version}.</echo>
+		<echo>To validate you need Ant version 1.7.0Beta1.</echo>
+	</target>
+	
+		
+	<target name="transfer-resource-bundles" description="populate WEB-INF/classes with property files">
+	    <native2ascii encoding="UTF-8" src="${resources.dir}" dest="${war.classes.dir}"
+		includes="**/*.xml"/>
+		<xslt basedir="${war.classes.dir}" destdir="${war.classes.dir}"
+		includes="**/*.xml" extension=".properties" style="${web.dir}/WEB-INF/conf/xml2properties.xsl">
+		</xslt>
+		<delete dir="${war.classes.dir}" includes="**/*.xml"/>
+	</target>
+	
+</project>

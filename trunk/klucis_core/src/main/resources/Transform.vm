@@ -1,0 +1,17 @@
+#if($_rotate)
+<g transform="rotate(${_rotate},0,0)">
+#end
+#if($_scaleX)
+##<g transform="translate(50 0) scale(-1,1)">
+<g transform="scale(-1,1)">
+#end
+
+$_content.render()
+
+#if($_scaleX)
+</g>
+#end
+
+#if($_rotate)
+</g>
+#end

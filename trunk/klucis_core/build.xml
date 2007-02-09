@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project name="klucisCore" basedir="." default="compile_core">
+	<property file="build.properties"/>
+	
+	<property file="build.properties.default"/>
+	
+	<!--
+	<path id="anttools.tomcat">
+		<pathelement path="${anttools.dir}/catalina-ant.jar"/>
+	</path>
+	-->
+	<!--
+	<path id="anttools.antelope">
+		<pathelement path="${anttools.dir}/AntelopeTasks.jar"/>
+	</path>
+	-->
+	<!--
+	<taskdef name="deploy" classpathref="anttools.tomcat"
+		classname="org.apache.catalina.ant.DeployTask"/>
+	
+	<taskdef name="list" classpathref="anttools.tomcat"
+		classname="org.apache.catalina.ant.ListTask"/>
+	
+	<taskdef name="reload" classpathref="anttools.tomcat"
+		classname="org.apache.catalina.ant.ReloadTask"/>
+	
+	<taskdef name="undeploy" classpathref="anttools.tomcat"
+		classname="org.apache.catalina.ant.UndeployTask"/>
+	
+	<taskdef name="start" classpathref="anttools.tomcat"
+		classname="org.apache.catalina.ant.StartTask"/>
+	
+	<taskdef name="stop" classpathref="anttools.tomcat"
+		classname="org.apache.catalina.ant.StopTask"/>
+	-->
+	<!--
+	<taskdef name="assert" classpathref="anttools.antelope"
+		classname="ise.antelope.tasks.Assert"/>
+	
+	<property name="ant.enable.asserts" value="true"/>
+
+	<taskdef name="deploy" classpathref="anttools.tomcat"
+		classname="org.apache.catalina.ant.DeployTask"/>
+	-->
+	
+	<path id="compile.classpath">
+		<fileset dir="${jar.lib.dir}">
+			<include name="**/*.jar"/>
+		</fileset>
+		
+		<fileset dir="${compile-lib.dir}">
+			<include name="**/*.jar"/>
+		</fileset>
+	</path>
+	
+	<path id="compile-test.classpath">
+		<fileset dir="${jar.lib.dir}">
+			<include name="**/*.jar"/>
+		</fileset>
+		
+		<fileset dir="${compile-lib.dir}">
+			<include name="**/*.jar"/>
+		</fileset>
+		<pathelement location="${jar.classes.dir}"/>
+	</path>
+	
+	<path id="run.classpath">
+		<fileset dir="${jar.lib.dir}">
+			<include name="**/*.jar"/>
+		</fileset>
+		
+		<fileset dir="${compile-lib.dir}">
+			<include name="**/*.jar"/>
+		</fileset>
+		
+		<pathelement location="${jar.classes.dir}"/>
+		
+		<pathelement location="${jar.test.classes.dir}"/>
+	</path>
+	
+	<target name="all" depends="clean,jar" description="Rebuild jar"/>
+	
+	<target name="clean" description="Deletes compiled and generated code">
+		<delete dir="${target.dir}" failonerror="false"/>
+	</target>
+	
+	<target name="precompile_core"
+		description="Prepare target dir and copy resources">
+		<mkdir dir="${jar.classes.dir}"/>
+		
+		<mkdir dir="${jar.test.classes.dir}"/>
+		
+		<copy todir="${jar.classes.dir}">
+			<fileset dir="${resources.dir}">
+				<include name="**/*.properties"/>
+				
+				<include name="**/*.xml"/>
+				
+				<include name="**/*.n3"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="compile_core" description="Compiles the Java code"
+		depends="precompile_core">
+		<javac srcdir="${src.dir}" destdir="${jar.classes.dir}" debug="on"
+			deprecation="on">
+			<classpath refid="compile.classpath"/>
+		</javac>
+		<copy todir="${jar.classes.dir}">
+			<fileset dir="${src.dir}">
+				<include name="**/*.vm"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="compile-test" description="Compiles the Java code"
+		depends="precompile_core">
+		<javac srcdir="${test.dir}" destdir="${jar.test.classes.dir}" debug="on"
+			deprecation="on">
+			<classpath refid="compile-test.classpath"/>
+		</javac>
+	</target>
+	
+	<target name="jar" depends="compile_core"
+		description="Builds the jar file">
+		<jar destfile="${target.dir}/${ant.project.name}.jar">
+			<fileset dir="${jar.classes.dir}"/>
+			<manifest>
+				<attribute name="Built-By" value="${mf.built.by}"/>
+				
+				<attribute name="Implementation-Title"
+					value="${ant.project.name}"/>
+				
+				<attribute name="Implementation-Version" value="${rel.num}"/>
+				
+				<attribute name="Implementation-Vendor"
+					value="${mf.implementation.vendor}"/>
+				
+				<attribute name="Implementation-Vendor-Id"
+					value="${mf.implementation.vendor.id}"/>
+				
+				<attribute name="Extension-Name" value="${mf.extension.name}"/>
+			</manifest>
+			
+		</jar>
+	</target>
+	
+	<target name="javadoc" description="Creates the javadoc">
+		<javadoc destdir="${javadoc.dir}" author="true"
+			additionalparam="-J-DproxyHost=web-proxy.hpl.hp.com -J-DproxyPort=8088">
+			
+			<classpath refid="compile.classpath"/>
+			
+			<fileset dir="${src.dir}" defaultexcludes="yes">
+				<include name="**/*.java"/>
+			</fileset>
+			
+			<!--
+			<fileset dir="${test.dir}" defaultexcludes="yes">
+			<include name="**/*.java"/>
+			</fileset>
+			-->
+			
+			<link href="http://static.springframework.org/spring/docs/2.0.x/api/"
+				offline="false"/>
+			
+			<link href="http://java.sun.com/j2se/1.5.0/docs/api/"
+				offline="false"/>
+			
+			<link href="http://jena.sourceforge.net/javadoc/" offline="false"/>
+			
+			<link href="http://java.sun.com/j2ee/1.4/docs/api/" offline="false"/>
+		</javadoc>
+	</target>
+	
+	<target name="junit" depends="compile_core,compile-test"
+		description="Run JUnit Tests">
+		<junit printsummary="on" fork="true" haltonfailure="false"
+			failureproperty="tests.failed" showoutput="true">
+			<classpath refid="run.classpath"/>
+			
+			<formatter type="xml" usefile="true"/>
+			
+			<batchtest>
+				<fileset dir="${jar.test.classes.dir}">
+					<include name="**/*Test.*"/>
+					<exclude name="**/Abstract*.*"/>
+					<exclude name="**/*$*.*"/>
+				</fileset>
+			</batchtest>
+		</junit>
+		
+		<mkdir dir="${reports.dir}"/>
+		
+		<junitreport todir="${reports.dir}">
+			<fileset dir=".">
+				<include name="TEST-*.xml"/>
+			</fileset>
+			
+			<report format="frames" todir="${reports.dir}/html"/>
+		</junitreport>
+		
+		<delete failonerror="false">
+			<fileset dir="." includes="TEST-*.xml"/>
+		</delete>
+		
+		<fail if="tests.failed">tests.failed=${tests.failed}
+			***********************************************************
+			*********************************************************** **** One or
+			more tests failed! Check the output ... ****
+			***********************************************************
+			***********************************************************</fail>
+	</target>
+	
+	<target name="install" description="Publish JAR as a new release"
+		depends="jar">
+		<assert name="rel.num"
+			message="Release number is mandatory, e.g.: ant -Drel.num=1.2.17 install"/>		
+		<copy file="${target.dir}/${ant.project.name}.jar"
+			todir="${sharedlib.dir}"/>
+	</target>
+	
+	<target name="make-portalblank"
+		description="Make a PortalBlank.zip deliverable" depends="jar">
+		<assert name="rel.num"
+			message="Indicate release number,e.g.: ant -Drel.num=0.1.0 make-portalblank"/>
+		
+		<mkdir dir="${target.dir}/temp/PortalBlank"/>
+		<copy todir="${target.dir}/temp/PortalBlank">
+			<fileset dir="${resources.dir}/PortalBlank" includes="**/*"/>
+		</copy>
+		
+		<unzip src="${resources.dir}/selenium-core-0.8.0.zip"
+			dest="${target.dir}/temp/PortalBlank/webapp">
+		</unzip>
+		
+		<move todir="${target.dir}/temp/PortalBlank/webapp/selenium-core">
+			<fileset
+				dir="${target.dir}/temp/PortalBlank/webapp/selenium-core-0.8.0"/>
+		</move>
+		
+		<copy file="${resources.dir}/selenium_index.html"
+			tofile="${target.dir}/temp/PortalBlank/webapp/selenium-core/index.html"/>
+		
+		<!--
+		<copy todir="${target.dir}/temp/PortalBlank/webapp/WEB-INF/templates">
+		<fileset dir="${resources.dir}/templates"/>
+		</copy>
+		-->
+		
+		<mkdir dir="${target.dir}/temp/PortalBlank/webapp/WEB-INF/lib"/>
+		<copy todir="${target.dir}/temp/PortalBlank/webapp/WEB-INF/lib">
+			<fileset dir="${jar.lib.dir}" includes="**/*.jar"/>
+		</copy>
+		<copy file="${target.dir}/${ant.project.name}.jar"
+			todir="${target.dir}/temp/PortalBlank/webapp/WEB-INF/lib"/>
+		
+		<mkdir dir="${target.dir}/temp/PortalBlank/compile-lib"/>
+		<copy todir="${target.dir}/temp/PortalBlank/compile-lib">
+			<fileset dir="${compile-lib.dir}" includes="**/*.jar"/>
+		</copy>
+		
+		<zip destfile="${target.dir}/PortalBlank-${rel.num}.zip"
+			basedir="${target.dir}/temp">
+		</zip>
+	</target>
+	
+	<target name="antlr"
+		description="Generate antlr lexer Java source for SPARQL query parametrization">
+		<antlr target="src/main/resources/antlr/PlaceholderFilter.g"
+			outputdirectory="${src.dir}/com/hp/hpl/mars/portal/util/lexer"/>
+	</target>
+</project>

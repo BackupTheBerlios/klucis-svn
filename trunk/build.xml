@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project name="klucisTrunk" basedir="." default="clean">
+	
+  <target name="clean"
+		description="Deletes Subversion directories">
+	<defaultexcludes remove="**/.svn"/>
+    <defaultexcludes remove="**/.svn/**"/>
+    <delete includeemptydirs="true"> 
+	    <fileset dir=".">
+          <include name="**/.svn/**"/>
+        </fileset>
+    </delete>
+    <defaultexcludes default="true"/>
+  </target>
+</project>
