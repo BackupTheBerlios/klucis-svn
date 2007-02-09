@@ -221,8 +221,9 @@ public class KlucisDAOTest {
 		public void testParentWithNoType() {
 			Resource typeRectangle = model.createResource(KLUCIS.NS + "Rectangle");
 			List<Resource> list = klucisDAO.getAbstractComponents(typeRectangle);
-			System.err.println("types = " + list);
-
+			assertEquals(4,list.size());
+			assertEquals("http://example.com/bildes#rootDefaultRectangle",list.get(0).getURI());
+			assertEquals("http://example.com/bildes#puukaSession2Rectangle",list.get(3).getURI());
 		}
 	}
 }
