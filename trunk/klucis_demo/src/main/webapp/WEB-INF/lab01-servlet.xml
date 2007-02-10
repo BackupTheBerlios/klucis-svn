@@ -38,7 +38,7 @@
 		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="mappings">
 			<props>
-				<prop key="/*">imageController</prop>
+				<prop key="/*">staticImageController</prop>
 			</props>
 		</property>
 	</bean>
@@ -81,7 +81,7 @@
 	
 	-->
 	
-	<bean id="imageController" class="lv.webkursi.klucis.mvc.ImageController">
+	<bean id="staticImageController" class="lv.webkursi.klucis.mvc.StaticImageController">
 		<!--		<property name="portal" ref="portal"/>
 		<property name="viewResolver" ref="viewResolver"/> -->
 	</bean>

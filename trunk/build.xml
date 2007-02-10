@@ -12,4 +12,22 @@
     </delete>
     <defaultexcludes default="true"/>
   </target>
+	
+	<target name="transform"
+		description="Converts SVG to HTML">
+		<xslt in="klucis_core/bilde_11a.svg" out="temp.html"
+			style="klucis_demo/src/main/webapp/xslt/html.xsl">
+			<!--
+			<xmlcatalog>
+				<dtd publicId="-//SPRING//DTD BEAN//EN"
+					location="schemas/spring-beans.dtd"/>
+			</xmlcatalog>
+			-->
+			<!--
+			<param name="default_namespace"
+				expression="http://example.com/portal#"/>
+				-->
+		</xslt>
+    </target>
+
 </project>

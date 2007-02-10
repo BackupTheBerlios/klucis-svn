@@ -20,7 +20,16 @@ public class StaticImageController implements Controller {
 
 	public ModelAndView handleRequest(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		String path = request.getServletPath().substring(1);
+		String path = request.getPathInfo().substring(1);
+		int extensionPosition = path.lastIndexOf(".");
+		if (extensionPosition > 0) {
+			path = path.substring(0,extensionPosition);
+		}
+		int filenamePosition = path.lastIndexOf("/");
+		if (filenamePosition >= 0) {
+			path = path.substring(filenamePosition+1);
+		}
+		
 		log.info("Trying to find a template '" + path + "'");
 		return new ModelAndView(path);
 	}

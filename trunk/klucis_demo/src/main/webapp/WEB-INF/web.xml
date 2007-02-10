@@ -15,11 +15,12 @@
 	
 	<filter>
       <filter-name>XSLTFilter</filter-name>
-      <filter-class>XSLTFilter</filter-class>
+      <filter-class>lv.webkursi.klucis.web.XSLTFilter</filter-class>
     </filter>
+    
     <filter-mapping>
       <filter-name>XSLTFilter</filter-name>
-      <url-pattern>*.html</url-pattern>
+      <url-pattern>/images/html/*</url-pattern>
     </filter-mapping> 
 	
 	<listener>

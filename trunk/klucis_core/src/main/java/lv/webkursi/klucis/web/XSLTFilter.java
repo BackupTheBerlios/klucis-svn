@@ -24,21 +24,21 @@ public class XSLTFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
-		String contentType;
-		String styleSheet;
-		String type = request.getParameter("type");
-		if (type == null || type.equals("")) {
-			contentType = "text/html";
-			styleSheet = "/xml/html.xsl";
-		} else {
-			if (type.equals("xml")) {
-				contentType = "text/plain";
-				styleSheet = "/xml/xml.xsl";
-			} else {
-				contentType = "text/html";
-				styleSheet = "/xml/html.xsl";
-			}
-		}
+		System.err.println("Running XSLT Filter!!!");
+		String contentType = "text/html";
+		String styleSheet = "/xslt/html.xsl";
+
+		// String type = null;
+
+		// request.getParameter("type");
+		/*
+		 * String pathInfo = ((HttpServletRequest) request).getPathInfo(); int
+		 * lastIndex = pathInfo.lastIndexOf("."); if (lastIndex > 0) { type =
+		 * pathInfo.substring(lastIndex + 1); } System.err.println("Extension is = '" +
+		 * type + "'"); if (type == null || type.equals("html")) { contentType =
+		 * "text/html"; styleSheet = "/xslt/html.xsl"; }
+		 */
+
 		response.setContentType(contentType);
 		String stylePath = filterConfig.getServletContext().getRealPath(
 				styleSheet);
