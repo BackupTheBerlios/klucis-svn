@@ -42,7 +42,7 @@ public class KLUCIS {
 	public static final Property hasViewName =  m_model.createProperty( NS + "hasViewName" );
 	public static final Property hasWidth = m_model.createProperty( NS + "hasWidth" );
 	public static final Property id = m_model.createProperty( NS + "id" );
-    public static final Property output = m_model.createProperty( NS + "output" );
+    public static final Property hasFileName = m_model.createProperty( NS + "hasFileName" );
 	public static final Property parent = m_model.createProperty( NS + "parent" );
 	public static final Property rotate = m_model.createProperty( NS + "rotate" );
 	public static final Property scaleX = m_model.createProperty( NS + "scaleX" );

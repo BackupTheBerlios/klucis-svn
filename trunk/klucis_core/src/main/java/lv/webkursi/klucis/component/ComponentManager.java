@@ -159,7 +159,7 @@ public class ComponentManager implements LifecycleManager, InitializingBean {
 			nameTable.put(cId, c);
 		}
 		/**
-		 * TODO deal with servlet params
+		 * TODO kap: deal with servlet params
 		if (servletRequest.getParameterMap().containsKey(cId)) {
 			c.setInteractionState(servletRequest.getParameter(cId));
 		}

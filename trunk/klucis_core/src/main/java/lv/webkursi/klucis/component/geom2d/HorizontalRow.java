@@ -43,10 +43,8 @@ public class HorizontalRow extends AbstractVisibleComponent implements
 		VelocityMerge view = new VelocityMerge();
 		view.setTemplateName(viewName);
 		model.put("_components", components);
-		// TODO this assumes that horiz.row is the only component in the world!
 		model.put("_offsetX", offsetX);
 		model.put("_offsetY", offsetY);
-
 		model.put("_width", getWidth());
 		model.put("_height", getHeight());
 		view.setContextParams(model);
@@ -55,11 +53,9 @@ public class HorizontalRow extends AbstractVisibleComponent implements
 
 	public void lifecycleEvent(LifecycleEvent event) {
 		if (event.getKind().equals(LifecycleEvent.Kind.prepareToRender)) {
-			// could compute offset from the parent and call its findOffset(),
-			// but right now it is not necessary since this is always the top
-			// element anyway and is centered in its middle point.
-			offsetX = getWidth() / 2.0F;
-			offsetY = getHeight() / 2.0F;
+			Point2D.Float offset = enclosing.findOffset(this);
+			offsetX = offset.x;
+			offsetY = offset.y;
 		}
 	}
 

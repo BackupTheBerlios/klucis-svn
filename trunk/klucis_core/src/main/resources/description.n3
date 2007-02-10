@@ -7,7 +7,7 @@
 
 :bilde_triangle_ruler
   a klucis:TopComponent ;
-  klucis:output "bilde_triangle_ruler.svg" ;
+  klucis:hasFileName "bilde_triangle_ruler.svg" ;
   klucis:hasContent [
       a klucis:Rectangle ;
       klucis:hasContent :triangleRuler 
@@ -16,7 +16,7 @@
 
 :bilde_11a
   a klucis:TopComponent ;
-  klucis:output "bilde_11a.svg" ;
+  klucis:hasFileName "bilde_11a.svg" ;
   klucis:hasContent [
     a rdf:Seq ;
     a klucis:HorizontalRow ;
@@ -34,7 +34,7 @@
 
 :bilde_11d
   a klucis:TopComponent ;
-  klucis:output "bilde_11d.svg" ;
+  klucis:hasFileName "bilde_11d.svg" ;
   klucis:hasContent [
     a rdf:Seq ;
     a klucis:HorizontalRow ;
@@ -59,7 +59,7 @@
 
 :bilde_11e
   a klucis:TopComponent ;
-  klucis:output "bilde_11e.svg" ;
+  klucis:hasFileName "bilde_11e.svg" ;
   klucis:hasContent [
     a rdf:Seq ;
     a klucis:HorizontalRow ;
@@ -76,7 +76,7 @@
 
 :bilde_15a
   a klucis:TopComponent ;
-  klucis:output "bilde_15a.svg" ;
+  klucis:hasFileName "bilde_15a.svg" ;
   klucis:hasContent [
     a rdf:Seq ;
     a klucis:HorizontalRow ;
@@ -100,7 +100,7 @@
 
 :bilde_15b
   a klucis:TopComponent ;
-  klucis:output "bilde_15b.svg" ;
+  klucis:hasFileName "bilde_15b.svg" ;
   klucis:hasContent [
     a rdf:Seq ;
     a klucis:HorizontalRow ;
@@ -123,7 +123,7 @@
 
 :bilde_15c
   a klucis:TopComponent ;
-  klucis:output "bilde_15c.svg" ;
+  klucis:hasFileName "bilde_15c.svg" ;
   klucis:hasContent [
     a rdf:Seq ;
     a klucis:HorizontalRow ;
@@ -144,7 +144,7 @@
 
 :bilde_15d
   a klucis:TopComponent ;
-  klucis:output "bilde_15d.svg" ;
+  klucis:hasFileName "bilde_15d.svg" ;
   klucis:hasContent [
     a rdf:Seq ;
     a klucis:HorizontalRow ;
@@ -168,7 +168,7 @@
 
 :bilde_15e
   a klucis:TopComponent ;
-  klucis:output "bilde_15e.svg" ;
+  klucis:hasFileName "bilde_15e.svg" ;
   klucis:hasContent [
     a rdf:Seq ;
     a klucis:HorizontalRow ;
@@ -191,7 +191,7 @@
 
 :bilde_15f
   a klucis:TopComponent ;
-  klucis:output "bilde_15f.svg" ;
+  klucis:hasFileName "bilde_15f.svg" ;
   klucis:hasContent [
     a rdf:Seq ;
     a klucis:HorizontalRow ;
@@ -216,7 +216,7 @@
 
 :bilde_22a
   a klucis:TopComponent ;
-  klucis:output "bilde_22a.svg" ;
+  klucis:hasFileName "bilde_22a.svg" ;
   klucis:hasContent [
     a rdf:Seq ;
     a klucis:HorizontalRow ;
@@ -251,7 +251,7 @@
 
 :bilde_22b
   a klucis:TopComponent ;
-  klucis:output "bilde_22b.svg" ;
+  klucis:hasFileName "bilde_22b.svg" ;
   klucis:hasContent [
     a rdf:Seq ;
     a klucis:HorizontalRow ;
@@ -283,7 +283,7 @@
 
 :bilde_22c
   a klucis:TopComponent ;
-  klucis:output "bilde_22c.svg" ;
+  klucis:hasFileName "bilde_22c.svg" ;
   klucis:hasContent [
     a rdf:Seq ;
     a klucis:HorizontalRow ;
@@ -319,7 +319,7 @@
 
 :bilde_22d
   a klucis:TopComponent ;
-  klucis:output "bilde_22d.svg" ;
+  klucis:hasFileName "bilde_22d.svg" ;
   klucis:hasContent [
     a rdf:Seq ;
     a klucis:HorizontalRow ;
@@ -350,7 +350,7 @@
 
 :bilde_22f
   a klucis:TopComponent ;
-  klucis:output "bilde_22f.svg" ;
+  klucis:hasFileName "bilde_22f.svg" ;
   klucis:hasContent [
     a rdf:Seq ;
     a klucis:HorizontalRow ;
@@ -411,6 +411,12 @@
   klucis:rotate "0" ;
   klucis:showRectangle "true" ;
   klucis:hasViewName "Rectangle" .
+  
+:applicationDefaultTopComponent
+  a klucis:AbstractComponent ;
+  a klucis:TopComponent ;
+  klucis:context "/" ;
+  klucis:hasViewName "TopComponent" .
 
 
 ###############################################################

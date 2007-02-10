@@ -1,5 +1,7 @@
 package lv.webkursi.klucis.component.geom2d;
 
+import java.awt.geom.Point2D;
+
 import lv.webkursi.klucis.component.AbstractVisibleComponent;
 import lv.webkursi.klucis.component.VisibleComponent;
 import lv.webkursi.klucis.mvc.VelocityMerge;
@@ -15,28 +17,25 @@ import org.apache.commons.logging.LogFactory;
 public class TopComponent extends AbstractVisibleComponent {
 	
 	/**
-	 * TODO should come from config
+	 * TODO kap: should come from config
 	 * Local horizontal coordinate unit size in mm
 	 */
 	protected float unitSizeX = 0.1F;
 	
 	/**
-	 * TODO should come from config
+	 * TODO kap: should come from config
 	 * Local vertical coordinate unit size in mm
 	 */
 	protected float unitSizeY = 0.1F;
-	
+		
 	/**
-	 * TODO should come from config
-	 * Each integer box is 200x200 in local coordinates - a coordinate
-	 * square of [-100,100] by [-100,100].
-	 */
-	protected float localUnits = 200F;
-	
-	// TODO 
+	 * At which local x coordinate the image starts 
+	 */ 
 	protected float x0 = 0.0F;
 	
-	// TODO 
+	/**
+	 * At which local y coordinate the image starts 
+	 */ 
 	protected float y0 = 0.0F;
 
 	
@@ -56,7 +55,7 @@ public class TopComponent extends AbstractVisibleComponent {
 
 	public void output() {
 		VelocityMerge view = new VelocityMerge();
-		view.setTemplateName("TopComponent");
+		view.setTemplateName(viewName);
 		addObject("_content", content);
 		float width = getWidth();
 		float height = getHeight();
@@ -73,7 +72,8 @@ public class TopComponent extends AbstractVisibleComponent {
 		view.write(fileName);
 	}
 
-	// TODO kap this is never called!
+	// TODO kap:
+	// this is never called!
 	public String render() {
 		/*
 		VelocityView view = new VelocityView();
@@ -107,5 +107,11 @@ public class TopComponent extends AbstractVisibleComponent {
 	
 	public float getHeight() {
 		return content.getHeight();
+	}
+	
+	public Point2D.Float findOffset(VisibleComponent box) {
+		float dx = getWidth() / 2.0F;
+		float dy = getHeight() / 2.0F;
+		return new Point2D.Float(dx, dy);
 	}
 }

@@ -42,7 +42,7 @@ public class KlucisMain {
 		FileSystemXmlApplicationContext ctx = new FileSystemXmlApplicationContext(
 				contextPath);
 		KlucisMain converter = (KlucisMain) ctx.getBean("converter");
-		ResIterator i = converter.model.listSubjectsWithProperty(KLUCIS.output);
+		ResIterator i = converter.model.listSubjectsWithProperty(KLUCIS.hasFileName);
 		while (i.hasNext()) {
 			Resource rComponent = i.nextResource();
 			log.info("Output component " + rComponent);
