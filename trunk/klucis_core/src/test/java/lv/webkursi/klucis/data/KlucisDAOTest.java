@@ -30,9 +30,6 @@ import com.hp.hpl.jena.util.iterator.ExtendedIterator;
 public class KlucisDAOTest {
 	private static KlucisDAO klucisDAO = new KlucisDAO("/");
 
-	public static final String PREFIXES = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> . "
-			+ "@prefix klucis: <http://www.webkursi.lv/schema/20061008/klucis#> . "
-			+ "@prefix : <http://example.com/bildes#> . ";
 
 	private static Model model = null;
 
@@ -41,7 +38,7 @@ public class KlucisDAOTest {
 	 */
 	public static class TypeUtilities {
 
-		private static final String typeUtilities = PREFIXES
+		private static final String typeUtilities = MockDescriptionFactory.PREFIXES
 				+ ":r1 klucis:width \"200\" . "
 				+ ":r2 a klucis:TopComponent ; a klucis:Rectangle . "
 				+ ":r3 a klucis:B ; a klucis:C ; a klucis:A ; a klucis:D ; a klucis:E . "
@@ -128,7 +125,7 @@ public class KlucisDAOTest {
 	 * properties.
 	 */
 	public static class CatalogTypeUtilities {
-		private static final String catalogTypeUtilities = PREFIXES
+		private static final String catalogTypeUtilities = MockDescriptionFactory.PREFIXES
 				+ ":r2 a klucis:TopComponent ; a klucis:Rectangle . "
 				+ ":r3 a klucis:InvalidType . "
 				+ ":r1 a klucis:InvalidType ; a klucis:Rectangle . "
@@ -202,7 +199,7 @@ public class KlucisDAOTest {
 	}
 
 	public static class AbstractComponentUtilities {
-		public static final String abstractComponentUtilities = PREFIXES
+		public static final String abstractComponentUtilities = MockDescriptionFactory.PREFIXES
 				+ ":rootDefaultRectangle a klucis:AbstractComponent ; a klucis:Rectangle ; klucis:context \"/\" . "
 				+ ":septinjJudzuMezhaRectangle a klucis:AbstractComponent ; a klucis:Rectangle ; klucis:context \"/sjm/\" . "
 				+ ":puukaRectangle a klucis:AbstractComponent ; a klucis:Rectangle ; klucis:context \"/sjm/puuks/\" . "

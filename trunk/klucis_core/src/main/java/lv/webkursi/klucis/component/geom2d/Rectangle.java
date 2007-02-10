@@ -2,9 +2,9 @@ package lv.webkursi.klucis.component.geom2d;
 
 import java.awt.geom.Point2D;
 
-import lv.webkursi.klucis.component.AbstractComponent;
-import lv.webkursi.klucis.component.Component;
+import lv.webkursi.klucis.component.AbstractVisibleComponent;
 import lv.webkursi.klucis.component.LabeledComponent;
+import lv.webkursi.klucis.component.VisibleComponent;
 import lv.webkursi.klucis.event.LifecycleEvent;
 import lv.webkursi.klucis.event.LifecycleEventListener;
 import lv.webkursi.klucis.mvc.VelocityMerge;
@@ -16,7 +16,7 @@ import lv.webkursi.klucis.mvc.VelocityMerge;
  * 
  * @author kap
  */
-public class Rectangle extends AbstractComponent implements LabeledComponent,
+public class Rectangle extends AbstractVisibleComponent implements LabeledComponent,
 		LifecycleEventListener {
 
 	/**
@@ -29,7 +29,7 @@ public class Rectangle extends AbstractComponent implements LabeledComponent,
 
 	/**
 	 * Full width of the element; the default is the width of the rectangle's
-	 * content; rectangle can also be padded (larger than its content)
+	 * content; rectangle could also be padded (larger than necessary for its content)
 	 */
 	protected float width;
 
@@ -37,14 +37,13 @@ public class Rectangle extends AbstractComponent implements LabeledComponent,
 
 	protected float coreHeight;
 
-	// This default value is no rotation
-	private float rotate = 0.0F;
+	private float rotate;
 
 	private float offsetX;
 
 	private float offsetY;
 
-	private Component content;
+	private VisibleComponent content;
 
 	/**
 	 * If no default value is configured, null is the hard-coded default value -
@@ -52,10 +51,9 @@ public class Rectangle extends AbstractComponent implements LabeledComponent,
 	 */
 	protected String label;
 
-	public void setContent(Component content) {
+	public void setContent(VisibleComponent content) {
 		this.content = content;
-		// TODO: Copy the size down, so it can rotate
-
+		// TODO kap: Copy the size down, so it can rotate
 		// if (content instanceof Transform) {
 		// ((Transform)content).setSize(size);
 		// }
@@ -84,9 +82,6 @@ public class Rectangle extends AbstractComponent implements LabeledComponent,
 	public String render() {
 		VelocityMerge view = new VelocityMerge();
 		view.setTemplateName(viewName);
-
-		// TODO: this should be accessible from the template as
-		// $_component.getSize() etc.
 		this.addObject("_offsetX", offsetX);
 		this.addObject("_offsetY", offsetY);
 		this.addObject("_showRectangle", showRectangle);
@@ -95,7 +90,7 @@ public class Rectangle extends AbstractComponent implements LabeledComponent,
 		this.addObject("_label", label);
 		this.addObject("_content", content);
 
-		// TODO: find out about the sign of '-'
+		// TODO kap: find out about the sign of '-'
 		this.addObject("_rotate", -rotate);
 		
 		view.setContextParams(model);
@@ -154,7 +149,7 @@ public class Rectangle extends AbstractComponent implements LabeledComponent,
 
 	public void lifecycleEvent(LifecycleEvent event) {
 		if (event.getKind().equals(LifecycleEvent.Kind.prepareToRender)) {
-			Point2D.Float offset = parent.findOffset(this);
+			Point2D.Float offset = enclosing.findOffset(this);
 			offsetX = offset.x;
 			offsetY = offset.y;
 		}

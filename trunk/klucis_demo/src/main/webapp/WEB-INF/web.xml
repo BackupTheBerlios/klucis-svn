@@ -13,6 +13,15 @@
 		<param-value>/WEB-INF/lab01-data.xml</param-value>
 	</context-param>
 	
+	<filter>
+      <filter-name>XSLTFilter</filter-name>
+      <filter-class>XSLTFilter</filter-class>
+    </filter>
+    <filter-mapping>
+      <filter-name>XSLTFilter</filter-name>
+      <url-pattern>*.html</url-pattern>
+    </filter-mapping> 
+	
 	<listener>
 		<listener-class>
 			org.springframework.web.context.ContextLoaderListener</listener-class>

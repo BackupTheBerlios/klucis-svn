@@ -3,10 +3,11 @@ package lv.webkursi.klucis.component.geom2d;
 import lv.webkursi.klucis.component.AbstractComponentFactory;
 import lv.webkursi.klucis.component.Component;
 import lv.webkursi.klucis.component.ComponentManager;
+import lv.webkursi.klucis.component.VisibleComponent;
+import lv.webkursi.klucis.data.KlucisDAO;
 import lv.webkursi.klucis.vocabulary.KLUCIS;
 
 import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.rdf.model.Statement;
 
 public class RectangleFactory extends AbstractComponentFactory {
 	
@@ -14,6 +15,15 @@ public class RectangleFactory extends AbstractComponentFactory {
 		Rectangle result = new Rectangle();
 		configureCommonProperties(result,r,id);
 		
+		KlucisDAO dao = componentManager.getKlucisDAO();
+		result.setLabel(dao.getStringProperty(r, KLUCIS.hasLabel)); 
+		result.setCoreWidth(dao.getFloatProperty(r, KLUCIS.hasRectWidth)); 
+		result.setCoreHeight(dao.getFloatProperty(r, KLUCIS.hasRectHeight));
+		result.setRotate(dao.getFloatProperty(r, KLUCIS.rotate)); 
+		result.setShowRectangle(dao.getBooleanProperty(r,KLUCIS.showRectangle)); 
+		result.setViewName(dao.getStringProperty(r, KLUCIS.hasViewName)); 
+		
+		/*
 		Statement stmtLabel = r.getProperty(KLUCIS.hasLabel);
 		if (stmtLabel != null) {
 			result.setLabel(stmtLabel.getString());
@@ -46,13 +56,12 @@ public class RectangleFactory extends AbstractComponentFactory {
 			showRectangle = stmtShowRectangle.getBoolean(); 
 		}
 		result.setShowRectangle(showRectangle);
+		*/
 		
 		Resource rContent = r.getRequiredProperty(KLUCIS.hasContent).getResource();
-		Component content = componentManager.getStaticComponent(rContent);
-		content.setParent(result);
-		result.setContent(content);		
-		
-		result.setViewName("Rectangle");
+		VisibleComponent content = (VisibleComponent)componentManager.getStaticComponent(rContent);
+		content.setEnclosing(result);
+		result.setContent(content);				
 		return result;
 	}
 }

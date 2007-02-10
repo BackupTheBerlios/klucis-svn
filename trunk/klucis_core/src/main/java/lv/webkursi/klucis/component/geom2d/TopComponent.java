@@ -1,7 +1,7 @@
 package lv.webkursi.klucis.component.geom2d;
 
-import lv.webkursi.klucis.component.AbstractComponent;
-import lv.webkursi.klucis.component.Component;
+import lv.webkursi.klucis.component.AbstractVisibleComponent;
+import lv.webkursi.klucis.component.VisibleComponent;
 import lv.webkursi.klucis.mvc.VelocityMerge;
 
 import org.apache.commons.logging.Log;
@@ -12,7 +12,7 @@ import org.apache.commons.logging.LogFactory;
  * all the global SVG parameters
  * @author kap
  */
-public class TopComponent extends AbstractComponent {
+public class TopComponent extends AbstractVisibleComponent {
 	
 	/**
 	 * TODO should come from config
@@ -42,11 +42,11 @@ public class TopComponent extends AbstractComponent {
 	
 	protected String fileName;
 	
-	protected Component content;
+	protected VisibleComponent content;
 	
 	private Log log = LogFactory.getLog(TopComponent.class);
 
-	public void setContent(Component content) {
+	public void setContent(VisibleComponent content) {
 		this.content = content;
 	}
 	
@@ -73,7 +73,7 @@ public class TopComponent extends AbstractComponent {
 		view.write(fileName);
 	}
 
-	// TODO this is never called!
+	// TODO kap this is never called!
 	public String render() {
 		/*
 		VelocityView view = new VelocityView();

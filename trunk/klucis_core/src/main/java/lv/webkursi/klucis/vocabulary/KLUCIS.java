@@ -19,7 +19,7 @@ public class KLUCIS {
      * Resources in the ontology
      */
 	public static final Resource AbstractComponent = m_model.createResource( NS + "AbstractComponent");
-	public static final Resource HorizontalRow = m_model.createResource( NS + "TopComponent");
+	public static final Resource HorizontalRow = m_model.createResource( NS + "HorizontalRow");
 	public static final Resource Immutable = m_model.createResource( NS + "Immutable");
 	public static final Resource Path = m_model.createResource( NS + "Path" );
     public static final Resource Rectangle = m_model.createResource( NS + "Rectangle");

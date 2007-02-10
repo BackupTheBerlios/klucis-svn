@@ -1,10 +1,10 @@
 package lv.webkursi.klucis.component.geom2d;
 
-import lv.webkursi.klucis.component.AbstractComponent;
-import lv.webkursi.klucis.component.Component;
+import lv.webkursi.klucis.component.AbstractVisibleComponent;
+import lv.webkursi.klucis.component.VisibleComponent;
 import lv.webkursi.klucis.mvc.VelocityMerge;
 
-public class Transform extends AbstractComponent {
+public class Transform extends AbstractVisibleComponent {
 	
 	private int rotate = 0;
 	
@@ -14,7 +14,7 @@ public class Transform extends AbstractComponent {
 
 	private int scaleY = 1;
 
-	private Component content;
+	private VisibleComponent content;
 	
 	public void setRotate(int rotate) {
 		this.rotate = rotate;
@@ -27,7 +27,7 @@ public class Transform extends AbstractComponent {
 	public String render() {
 		VelocityMerge view = new VelocityMerge();
 		view.setTemplateName("Transform");
-		// TODO: understand, why the sign -
+		// TODO kap: why the sign '-'? Could switch to the right-handed coordinates?
 		if (rotate != 0) {
 			this.addObject("_rotate", -rotate);
 		}
@@ -44,7 +44,7 @@ public class Transform extends AbstractComponent {
 		return view.render();
 	}
 
-	public void setContent(Component content) {
+	public void setContent(VisibleComponent content) {
 		this.content = content;
 	}
 

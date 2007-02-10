@@ -60,7 +60,8 @@
 			<value>1</value>
 		</property>
 		<property name="contentType">
-			<value>image/svg+xml;charset=UTF-8</value>
+			<!-- <value>image/svg+xml;charset=UTF-8</value> -->
+			<value>text/xml;charset=UTF-8</value>
 		</property>
 	</bean>
 	
@@ -80,7 +81,7 @@
 	
 	-->
 	
-	<bean id="imageController" class="lv.webkursi.web2007a.lab01.ImageController">
+	<bean id="imageController" class="lv.webkursi.klucis.mvc.ImageController">
 		<!--		<property name="portal" ref="portal"/>
 		<property name="viewResolver" ref="viewResolver"/> -->
 	</bean>

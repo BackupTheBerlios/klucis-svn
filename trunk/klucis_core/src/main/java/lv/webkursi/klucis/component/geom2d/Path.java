@@ -1,6 +1,6 @@
 package lv.webkursi.klucis.component.geom2d;
 
-import lv.webkursi.klucis.component.AbstractComponent;
+import lv.webkursi.klucis.component.AbstractVisibleComponent;
 import lv.webkursi.klucis.mvc.VelocityMerge;
 
 /**
@@ -9,7 +9,7 @@ import lv.webkursi.klucis.mvc.VelocityMerge;
  * 
  * @author kap
  */
-public class Path extends AbstractComponent {
+public class Path extends AbstractVisibleComponent {
 
 	protected String color;
 

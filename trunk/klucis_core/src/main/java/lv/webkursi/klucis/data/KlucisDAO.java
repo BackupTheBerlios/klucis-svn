@@ -341,6 +341,17 @@ public class KlucisDAO {
 		}
 		return ((Literal) node).getString();		
 	}
+	
+	public boolean getBooleanProperty(Resource r, Property p) {
+		RDFNode node = getCascadedProperty(r, p);
+		if (node == null) {
+			throw new KlucisConfigurationException("Boolean property " + p
+					+ " for resource " + r + " cannot be resolved");
+		}
+		return ((Literal) node).getBoolean();		
+	}
+	
+	
 
 	/**
 	 * @param r

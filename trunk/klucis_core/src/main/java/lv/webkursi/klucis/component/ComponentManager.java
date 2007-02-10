@@ -52,6 +52,7 @@ public class ComponentManager implements LifecycleManager, InitializingBean {
 	
 	public void setFactoryCatalog(FactoryCatalog factoryCatalog) {
 		this.factoryCatalog = factoryCatalog;
+		KlucisDAO.setFactoryCatalog(factoryCatalog);
 	}
 	
 	

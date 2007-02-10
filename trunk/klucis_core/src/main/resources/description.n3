@@ -423,7 +423,7 @@
 # Abstract Components store default values for the properties #
 ###############################################################
 
-:applicationPath 
+:applicationDefaultPath 
   a klucis:AbstractComponent ;
   a klucis:Path ;
   klucis:context "/" ;  
@@ -432,6 +432,24 @@
   klucis:hasWidth "200" ;
   klucis:hasHeight "200" ;
   klucis:hasStrokeWidth "0" .
+  
+:applicationDefaultHorizontalRow
+  a klucis:AbstractComponent ;
+  a klucis:HorizontalRow ;
+  klucis:context "/" ;
+  klucis:hasGap "60" ;
+  klucis:hasViewName "HorizontalRow" .
+
+:applicationDefaultRectangle
+  a klucis:AbstractComponent ;
+  a klucis:Rectangle ;
+  klucis:context "/" ;
+  klucis:hasLabel "" ;
+  klucis:hasRectWidth "200" ;
+  klucis:hasRectHeight "200" ;
+  klucis:rotate "0" ;
+  klucis:showRectangle "true" ;
+  klucis:hasViewName "Rectangle" .
 
 
 ###############################################################
