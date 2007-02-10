@@ -15,29 +15,25 @@ import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.Seq;
 
 public class HorizontalRowFactory extends AbstractComponentFactory {
-	
-	public Component localGetComponent(Resource r, ComponentManager componentManager, String id) {
+
+	public Component localGetComponent(Resource r,
+			ComponentManager componentManager, String id) {
 		HorizontalRow result = new HorizontalRow();
-		configureCommonProperties(result,r,id);
-		
-		/*
-		float gap = 60.0F; 
-		Statement stmtGap = r.getProperty(KLUCIS.hasGap);
-		if (stmtGap != null) {
-			gap = stmtGap.getFloat();
-		}
-		result.setGap(gap);
-		*/
+		configureCommonProperties(result, r, id);
+
 		KlucisDAO dao = componentManager.getKlucisDAO();
 		result.setGap(dao.getFloatProperty(r, KLUCIS.hasGap));
 		result.setViewName(dao.getStringProperty(r, KLUCIS.hasViewName));
-		
 
-		Seq seq = (Seq)r.as(Seq.class);
+		Seq seq = (Seq) r.as(Seq.class);
 		List<VisibleComponent> components = new ArrayList<VisibleComponent>();
-		for (NodeIterator i = seq.iterator(); i.hasNext(); ) {
-			Resource rChild = (Resource)i.nextNode();
-			VisibleComponent child = (VisibleComponent)componentManager.getStaticComponent(rChild);
+		int count = 0;
+		for (NodeIterator i = seq.iterator(); i.hasNext();) {
+			Resource rChild = (Resource) i.nextNode();
+			// assign unique id to each child in a row as children resources may repeat
+			VisibleComponent child = (VisibleComponent) componentManager
+					.getDynamicComponent(rChild, result.getId() + "."
+							+ (count++));
 			child.setEnclosing(result);
 			components.add(child);
 		}

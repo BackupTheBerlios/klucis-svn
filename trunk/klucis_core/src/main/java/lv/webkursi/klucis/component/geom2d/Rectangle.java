@@ -82,16 +82,18 @@ public class Rectangle extends AbstractVisibleComponent implements LabeledCompon
 	public String render() {
 		VelocityMerge view = new VelocityMerge();
 		view.setTemplateName(viewName);
-		this.addObject("_offsetX", offsetX);
-		this.addObject("_offsetY", offsetY);
-		this.addObject("_showRectangle", showRectangle);
-		this.addObject("_width", getCoreWidth());
-		this.addObject("_height", getCoreHeight());
-		this.addObject("_label", label);
-		this.addObject("_content", content);
+		addObject("_offsetX", offsetX);
+		addObject("_offsetY", offsetY);
+		addObject("_showRectangle", showRectangle);
+		addObject("_width", getCoreWidth());
+		addObject("_height", getCoreHeight());
+		if (!label.equals("")){
+			addObject("_label", label);
+		}
+		addObject("_content", content);
 
 		// TODO kap: find out about the sign of '-'
-		this.addObject("_rotate", -rotate);
+		addObject("_rotate", -rotate);
 		
 		view.setContextParams(model);
 		return view.render();
@@ -106,7 +108,7 @@ public class Rectangle extends AbstractVisibleComponent implements LabeledCompon
 	}
 
 	public float getHeight() {
-		float labelHeight = (label != null) ? 60.0F : 0.0F;
+		float labelHeight = (label != null && !label.equals("")) ? 60.0F : 0.0F;
 		return (coreHeight > 0 ? coreHeight : content.getHeight())
 				+ labelHeight;
 	}

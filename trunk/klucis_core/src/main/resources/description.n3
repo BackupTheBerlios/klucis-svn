@@ -229,13 +229,7 @@
         klucis:rotate 180
       ]
     ] ;
-    rdf:_2 [
-      a klucis:Rectangle ;
-      klucis:hasRectWidth "140" ;
-      klucis:hasRectHeight "140" ;
-      klucis:showRectangle "false" ;
-      klucis:hasContent :fullBlackArrow 
-    ] ;
+    rdf:_2 :smallArrow ;
     rdf:_3 [
       a klucis:Rectangle ;
       klucis:hasContent [
@@ -244,13 +238,7 @@
         klucis:rotate 90
       ]
     ] ;
-    rdf:_4 [
-      a klucis:Rectangle ;
-      klucis:hasRectWidth "140" ;
-      klucis:hasRectHeight "140" ;
-      klucis:showRectangle "false" ;
-      klucis:hasContent :fullBlackArrow 
-    ] ;
+    rdf:_4 :smallArrow ;
     rdf:_5 [
       a klucis:Rectangle ;
       klucis:hasContent [
@@ -272,10 +260,7 @@
       a klucis:Rectangle ;
       klucis:hasContent :hackBlueArrow ;
     ] ;
-    rdf:_2 [
-      a klucis:Rectangle ;
-      klucis:hasContent :fullBlackArrow 
-    ] ;
+    rdf:_2 :smallArrow ;
     rdf:_3 [
       a klucis:Rectangle ;
       klucis:hasContent [
@@ -284,10 +269,7 @@
         klucis:rotate 180
       ]
     ] ;
-    rdf:_4 [
-      a klucis:Rectangle ;
-      klucis:hasContent :fullBlackArrow 
-    ] ;
+    rdf:_4 :smallArrow ;
     rdf:_5 [
       a klucis:Rectangle ;
       klucis:hasContent [
@@ -314,10 +296,7 @@
         klucis:rotate 30
       ]
     ] ;
-    rdf:_2 [
-      a klucis:Rectangle ;
-      klucis:hasContent :fullBlackArrow 
-    ] ;
+    rdf:_2 :smallArrow ;
     rdf:_3 [
       a klucis:Rectangle ;
       klucis:hasContent [
@@ -326,10 +305,7 @@
         klucis:rotate 60
       ]
     ] ;
-    rdf:_4 [
-      a klucis:Rectangle ;
-      klucis:hasContent :fullBlackArrow 
-    ] ;
+    rdf:_4 :smallArrow ;
     rdf:_5 [
       a klucis:Rectangle ;
       klucis:hasContent [
@@ -352,10 +328,7 @@
       a klucis:Rectangle ;
       klucis:hasContent :redObtuseTriangle ;
     ] ;
-    rdf:_2 [
-      a klucis:Rectangle ;
-      klucis:hasContent :fullBlackArrow 
-    ] ;
+    rdf:_2 :smallArrow ;
     rdf:_3 [
       a klucis:Rectangle ;
       klucis:hasContent [
@@ -364,10 +337,7 @@
         klucis:rotate 180
       ]
     ] ;
-    rdf:_4 [
-      a klucis:Rectangle ;
-      klucis:hasContent :fullBlackArrow 
-    ] ;
+    rdf:_4 :smallArrow ;
     rdf:_5 [
       a klucis:Rectangle ;
       klucis:hasContent [
@@ -377,9 +347,6 @@
       ]
     ]
   ] .
-
-# TODO: bilde_22e
-
 
 :bilde_22f
   a klucis:TopComponent ;
@@ -392,10 +359,7 @@
       a klucis:Rectangle ;
       klucis:hasContent :limeRegularPentagon  ;
     ] ;
-    rdf:_2 [
-      a klucis:Rectangle ;
-      klucis:hasContent :fullBlackArrow 
-    ] ;
+    rdf:_2 :smallArrow ;
     rdf:_3 [
       a klucis:Rectangle ;
       klucis:hasContent [
@@ -404,10 +368,7 @@
         klucis:rotate -90
       ]
     ] ;
-    rdf:_4 [
-      a klucis:Rectangle ;
-      klucis:hasContent :fullBlackArrow 
-    ] ;
+    rdf:_4 :smallArrow ;
     rdf:_5 [
       a klucis:Rectangle ;
       klucis:hasContent [
@@ -445,8 +406,8 @@
   a klucis:Rectangle ;
   klucis:context "/" ;
   klucis:hasLabel "" ;
-  klucis:hasRectWidth "200" ;
-  klucis:hasRectHeight "200" ;
+  klucis:hasCoreWidth "200" ;
+  klucis:hasCoreHeight "200" ;
   klucis:rotate "0" ;
   klucis:showRectangle "true" ;
   klucis:hasViewName "Rectangle" .
@@ -486,6 +447,13 @@
   klucis:hasColor "blue" ;
   klucis:hasPath "M -60 -60 L -60 60 L 60 60 z" .
   
+:smallArrow
+  a klucis:Rectangle ;
+  klucis:hasCoreWidth "140" ;
+  klucis:hasCoreHeight "140" ;
+  klucis:showRectangle "false" ;
+  klucis:hasContent :fullBlackArrow .
+    
 :fullBlackArrow
   a klucis:Path ;
   klucis:hasColor "black" ;

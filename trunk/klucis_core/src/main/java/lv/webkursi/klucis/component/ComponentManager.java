@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.InitializingBean;
 
 import lv.webkursi.klucis.KlucisConfigurationException;
+import lv.webkursi.klucis.KlucisException;
 import lv.webkursi.klucis.data.KlucisDAO;
 import lv.webkursi.klucis.event.LifecycleEvent;
 import lv.webkursi.klucis.event.LifecycleEventListener;
@@ -56,6 +57,20 @@ public class ComponentManager implements LifecycleManager, InitializingBean {
 	}
 	
 	
+	/**
+	 * Get a component from an RDF component description.
+	 * 
+	 * <p>
+	 * Multiple calls with the same argument will return the same (==)
+	 * component.
+	 * </p>
+	 * 
+	 * @param r
+	 *            the RDF description of the component.
+	 * @return the requested component.
+	 * @throws PortalConfigurationException
+	 *             if factory for the resource cannot be found
+	 */
 	public Component getStaticComponent(Resource r) {
 		Component result = null;
 		if (cache.containsKey(r)) {
@@ -65,6 +80,37 @@ public class ComponentManager implements LifecycleManager, InitializingBean {
 			cache.put(r, c);
 			result = c;
 		}
+		return result;
+	}
+
+	
+
+	/**
+	 * Return a cloned component given a resource description. Does not affect
+	 * cache
+	 * 
+	 * <p>
+	 * <b>Contract</b>
+	 * <p>
+	 * 
+	 * <ol>
+	 * <li>Returns a component as described by <code>resource</code></li>
+	 * <li>Returns a new instance of the component each time it is called.</li>
+	 * </ol>
+	 * 
+	 * @param resource
+	 *            a description of the component to be cloned.
+	 * @param id
+	 *            an id for the component - must not be null
+	 * @return the newly minted component.
+	 */
+	public Component getDynamicComponent(Resource resource, String id) {
+		if (id == null) {
+			throw new KlucisException(
+					"Could not initialize dynamic component for resource "
+							+ resource + ", id should not be null");
+		}
+		Component result = (Component) createNewComponent(resource, id);
 		return result;
 	}
 

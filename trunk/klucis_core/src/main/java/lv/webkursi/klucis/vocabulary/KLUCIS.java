@@ -36,8 +36,8 @@ public class KLUCIS {
 	public static final Property hasHeight = m_model.createProperty( NS + "hasHeight" );
 	public static final Property hasLabel = m_model.createProperty( NS + "hasLabel" );
 	public static final Property hasPath = m_model.createProperty( NS + "hasPath" );
-	public static final Property hasRectHeight =  m_model.createProperty( NS + "hasRectHeight" );
-	public static final Property hasRectWidth =  m_model.createProperty( NS + "hasRectWidth" );
+	public static final Property hasCoreHeight =  m_model.createProperty( NS + "hasCoreHeight" );
+	public static final Property hasCoreWidth =  m_model.createProperty( NS + "hasCoreWidth" );
 	public static final Property hasStrokeWidth = m_model.createProperty( NS + "hasStrokeWidth" );
 	public static final Property hasViewName =  m_model.createProperty( NS + "hasViewName" );
 	public static final Property hasWidth = m_model.createProperty( NS + "hasWidth" );
