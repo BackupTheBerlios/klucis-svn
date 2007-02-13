@@ -4,6 +4,7 @@ import lv.webkursi.klucis.component.AbstractComponentFactory;
 import lv.webkursi.klucis.component.Component;
 import lv.webkursi.klucis.component.ComponentManager;
 import lv.webkursi.klucis.component.VisibleComponent;
+import lv.webkursi.klucis.data.KlucisDAO;
 import lv.webkursi.klucis.vocabulary.KLUCIS;
 
 import com.hp.hpl.jena.rdf.model.Resource;
@@ -15,7 +16,8 @@ public class TransformFactory extends AbstractComponentFactory {
 	public Component localGetComponent(Resource r, ComponentManager componentManager, String id) {
 		Transform result = new Transform();
 		configureCommonProperties(result,r,id);
-		result.setViewName("Transform");
+		KlucisDAO dao = componentManager.getKlucisDAO();
+		result.setViewName(dao.getStringProperty(r, KLUCIS.hasViewName));
 		Statement stmtRotate = r.getProperty(KLUCIS.rotate);
 		if (stmtRotate != null) {
 			result.setRotate(stmtRotate.getInt());
