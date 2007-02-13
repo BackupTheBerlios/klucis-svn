@@ -15,7 +15,7 @@ war.lib.dir=${web.dir}/WEB-INF/lib
 war.classes.dir=${web.dir}/WEB-INF/classes
 
 # For JAR projects - the lib directory and the classes directory
-jar.lib.dir=lib
+jar.lib.dir=../lib
 jar.classes.dir=${target.dir}/classes
 jar.test.classes.dir=${target.dir}/test-classes
 
@@ -28,14 +28,11 @@ dist.dir=target
 # Copilation-destination directory is different for WAR and JAR projects
 war.build.dir=${web.dir}/WEB-INF/classes
 
-# Sharedlib directory (contains consistent set of JARs)
-# sharedlib.dir = ../sharedlib
+# Distribution directory (place for KLUCIS' JARs and WARs). 
+dist.dir = ../dist
 
 # Reference to buildtools
 anttools.dir=${compile-lib.dir}
-
-# Slave build file
-# ${sharedlib.dir}/slave-build.xml
 
 javadoc.dir=docs/api
 
