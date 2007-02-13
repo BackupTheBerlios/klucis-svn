@@ -3,9 +3,7 @@ package lv.webkursi.klucis.event;
 import java.util.EventListener;
 
 /**
- * @author kap
- * 
- * Courtesy of Brian McBride (HP, MARS)
+ * Interface for all those components, which are affected by the events. 
  */
 public interface LifecycleEventListener extends EventListener {
     

@@ -4,9 +4,7 @@
 #if($_scaleX)
 <g transform="scale(-1,1)">
 #end
-
-##render($_content)
-$_renderContext.render($_content)
+#render($_content)
 #if($_scaleX)
 </g>
 #end

@@ -8,9 +8,6 @@ import java.util.Set;
  * Simple implementation of LifecycleManager: Announces all kinds of events to
  * all the listeners; it is up to the listeners to take appropriate actions or
  * ignore the events.
- * 
- * @author kap 
- * Courtesy of Brian McBride (HP, MARS)
  */
 public class LifecycleManagerImpl implements LifecycleManager {
 

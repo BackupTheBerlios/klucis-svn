@@ -4,6 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.util.Map;
+import java.util.Properties;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -17,6 +18,7 @@ import org.apache.velocity.tools.generic.MathTool;
 
 /**
  * This class is responsible for offline (non-Web) Velocity template processing
+ * 
  * @author kap
  */
 public class VelocityMerge {
@@ -25,15 +27,32 @@ public class VelocityMerge {
 
 	private String templateName;
 
-	private String prefix = "src/main/resources/";
+	// private String prefix = "src/main/resources/";
 
-	private String suffix = ".vm";
+	// private String suffix = ".vm";
 
 	private Log log = LogFactory.getLog(VelocityMerge.class);
 
 	public VelocityMerge() {
-		try {			
-			Velocity.init();
+		try {
+			Properties props = new Properties();
+			props.put("resource.loader", "file, class");
+
+			props.put("file.resource.loader.description",
+					"Velocity File Resource Loader");
+			props
+					.put("file.resource.loader.class",
+							"org.apache.velocity.runtime.resource.loader.FileResourceLoader");
+			props.put("file.resource.loader.path", "userTemplateDirectory");
+			props.put("file.resource.loader.cache", "false");
+			props.put("file.resource.loader.modificationCheckInterval", "0");
+
+			props.put("class.resource.loader.description",
+					"Velocity Classpath Resource Loader");
+			props
+					.put("class.resource.loader.class",
+							"org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader");
+			Velocity.init(props);
 		} catch (Exception e) {
 			log.error("VelocityView not initialized.", e);
 		}
@@ -44,6 +63,7 @@ public class VelocityMerge {
 			context.put(key, params.get(key));
 		}
 		context.put("math", new MathTool());
+		context.put("_renderContext", new OfflineRenderContext());
 	}
 
 	public void setTemplateName(String templateName) {
@@ -54,11 +74,11 @@ public class VelocityMerge {
 		StringWriter result = new StringWriter();
 		Template template = null;
 		try {
-			template = Velocity.getTemplate(prefix + templateName + suffix);
+			// template = Velocity.getTemplate(prefix + templateName + suffix);
+			template = Velocity.getTemplate(templateName);
 			template.merge(context, result);
 		} catch (ResourceNotFoundException e) {
-			log.error("Could not find file " + prefix + templateName + suffix,
-					e);
+			log.error("Could not find resource '" + templateName + "'", e);
 		} catch (ParseErrorException e) {
 			log.error("Syntax error in template " + templateName, e);
 		} catch (MethodInvocationException e) {
@@ -75,12 +95,12 @@ public class VelocityMerge {
 		FileWriter fw = null;
 		try {
 			fw = new FileWriter(fileName);
-			Template template = Velocity.getTemplate(prefix + templateName
-					+ suffix);
+			// Template template = Velocity.getTemplate(prefix + templateName
+			// + suffix);
+			Template template = Velocity.getTemplate(templateName);
 			template.merge(context, fw);
 		} catch (ResourceNotFoundException e) {
-			log.error("Could not find file " + prefix + templateName + suffix,
-					e);
+			log.error("Could not find resource '" + templateName + "'", e);
 		} catch (ParseErrorException e) {
 			log.error("Syntax error in template " + templateName, e);
 		} catch (MethodInvocationException e) {

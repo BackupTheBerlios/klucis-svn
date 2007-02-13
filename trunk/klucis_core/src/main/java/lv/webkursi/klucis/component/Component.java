@@ -16,4 +16,19 @@ public interface Component {
 	public void setId(String id);
 	
 	public String getId();
+	
+    /**
+     * Perform an action
+     * 
+     * @param action the action to be performed
+     */
+    public  void doAction(String action);
+    
+    /**
+     * Set interaction state
+     * 
+     * @param state the interaction state to be set
+     */
+    public void setInteractionState(String state);
+
 }

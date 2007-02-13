@@ -2,6 +2,5 @@
 <svg xmlns="http://www.w3.org/2000/svg"
   xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" baseProfile="full" 
   width="${_sizeX}mm" height="${_sizeY}mm" viewBox="${_x0} ${_y0} ${_width} ${_height}">
-##render($_content)
-$_renderContext.render($_content)
+#render($_content)
 </svg>

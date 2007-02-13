@@ -4,9 +4,6 @@ package lv.webkursi.klucis.event;
  * A manager of the request lifecycle.
  * Objects that support this interface are required to
  * implement the request lifecycle contract.
- *    
- * @author kap
- * Courtesy of Brian McBride (HP, MARS)
  */
 public interface LifecycleManager {
     

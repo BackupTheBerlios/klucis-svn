@@ -11,9 +11,7 @@ style="fill: #ffffee; stroke: black; stroke-width: 2"
 style="fill: none; stroke: none;"      
 #end
 />
-##render($_content)
-$_renderContext.render($_content)
-
+#render($_content)
 </g>
 
 #if($_label)

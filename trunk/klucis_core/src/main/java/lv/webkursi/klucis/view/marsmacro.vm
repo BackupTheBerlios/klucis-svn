@@ -1,0 +1,2 @@
+## This uses com.hp.hpl.mars.portal.mvc.RenderContext to display ModelAndView's recursively
+#macro( render $__widget )$_renderContext.render($__widget)#end

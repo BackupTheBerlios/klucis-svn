@@ -16,8 +16,6 @@ import java.util.EventObject;
  * </ul>
  * 
  * More complex request lifecycle may support other kinds of events as well. 
- *  
- * @author Courtesy of Brian McBride (HP, MARS)
  */
 @SuppressWarnings("serial")
 public class LifecycleEvent extends EventObject {

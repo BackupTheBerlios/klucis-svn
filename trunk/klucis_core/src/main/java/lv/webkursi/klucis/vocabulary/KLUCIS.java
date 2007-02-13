@@ -34,6 +34,7 @@ public class KLUCIS {
 	public static final Property hasContent = m_model.createProperty( NS + "hasContent" );
 	public static final Property hasGap = m_model.createProperty( NS + "hasGap" );
 	public static final Property hasHeight = m_model.createProperty( NS + "hasHeight" );
+	public static final Property hasImageName = m_model.createProperty( NS + "hasImageName" );
 	public static final Property hasLabel = m_model.createProperty( NS + "hasLabel" );
 	public static final Property hasPath = m_model.createProperty( NS + "hasPath" );
 	public static final Property hasCoreHeight =  m_model.createProperty( NS + "hasCoreHeight" );
@@ -42,12 +43,13 @@ public class KLUCIS {
 	public static final Property hasViewName =  m_model.createProperty( NS + "hasViewName" );
 	public static final Property hasWidth = m_model.createProperty( NS + "hasWidth" );
 	public static final Property id = m_model.createProperty( NS + "id" );
-    public static final Property hasFileName = m_model.createProperty( NS + "hasFileName" );
+//    public static final Property hasFileName = m_model.createProperty( NS + "hasFileName" );
 	public static final Property parent = m_model.createProperty( NS + "parent" );
 	public static final Property rotate = m_model.createProperty( NS + "rotate" );
 	public static final Property scaleX = m_model.createProperty( NS + "scaleX" );
 	public static final Property scaleY = m_model.createProperty( NS + "scaleY" );
 	public static final Property showRectangle = m_model.createProperty( NS + "showRectangle" );
+
 
 
 }

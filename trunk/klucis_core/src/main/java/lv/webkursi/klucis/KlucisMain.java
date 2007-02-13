@@ -20,7 +20,7 @@ import com.hp.hpl.jena.rdf.model.Resource;
  * @author kap
  *
  */
-public class KlucisMain {
+public class KlucisMain implements KlucisAware {
 	
 	private static Log log = LogFactory.getLog(KlucisMain.class);
 
@@ -42,7 +42,7 @@ public class KlucisMain {
 		FileSystemXmlApplicationContext ctx = new FileSystemXmlApplicationContext(
 				contextPath);
 		KlucisMain converter = (KlucisMain) ctx.getBean("converter");
-		ResIterator i = converter.model.listSubjectsWithProperty(KLUCIS.hasFileName);
+		ResIterator i = converter.model.listSubjectsWithProperty(KLUCIS.hasImageName);
 		while (i.hasNext()) {
 			Resource rComponent = i.nextResource();
 			log.info("Output component " + rComponent);
@@ -55,5 +55,13 @@ public class KlucisMain {
 
 	protected void doLifecycle() {
 		componentManager.announce(this, LifecycleEvent.Kind.prepareToRender);
+	}
+
+	public ComponentManager getComponentManager() {
+		return componentManager;
+	}
+
+	public Model getModel() {
+		return model;
 	}
 }

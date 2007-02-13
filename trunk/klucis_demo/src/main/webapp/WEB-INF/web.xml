@@ -20,7 +20,12 @@
     
     <filter-mapping>
       <filter-name>XSLTFilter</filter-name>
-      <url-pattern>/images/html/*</url-pattern>
+      <url-pattern>/01/img/html/*</url-pattern>
+    </filter-mapping> 
+
+    <filter-mapping>
+      <filter-name>XSLTFilter</filter-name>
+      <url-pattern>/01/main/html/*</url-pattern>
     </filter-mapping> 
 	
 	<listener>
@@ -37,7 +42,7 @@
 	
 	<servlet-mapping>
 		<servlet-name>lab01</servlet-name>
-		<url-pattern>/images/*</url-pattern>
+		<url-pattern>/01/*</url-pattern>
 	</servlet-mapping>
 	
 </web-app>

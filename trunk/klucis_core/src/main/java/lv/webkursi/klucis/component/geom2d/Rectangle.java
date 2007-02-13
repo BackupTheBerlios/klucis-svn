@@ -7,7 +7,6 @@ import lv.webkursi.klucis.component.LabeledComponent;
 import lv.webkursi.klucis.component.VisibleComponent;
 import lv.webkursi.klucis.event.LifecycleEvent;
 import lv.webkursi.klucis.event.LifecycleEventListener;
-import lv.webkursi.klucis.mvc.VelocityMerge;
 
 /**
  * This component displays a rectangular area and fills it with appropriate
@@ -16,8 +15,8 @@ import lv.webkursi.klucis.mvc.VelocityMerge;
  * 
  * @author kap
  */
-public class Rectangle extends AbstractVisibleComponent implements LabeledComponent,
-		LifecycleEventListener {
+public class Rectangle extends AbstractVisibleComponent implements
+		LabeledComponent, LifecycleEventListener {
 
 	/**
 	 * Wheather to display the rectangle itself (true), or only its contents
@@ -25,11 +24,10 @@ public class Rectangle extends AbstractVisibleComponent implements LabeledCompon
 	 */
 	protected boolean showRectangle;
 
-	protected String viewName;
-
 	/**
 	 * Full width of the element; the default is the width of the rectangle's
-	 * content; rectangle could also be padded (larger than necessary for its content)
+	 * content; rectangle could also be padded (larger than necessary for its
+	 * content)
 	 */
 	protected float width;
 
@@ -79,26 +77,6 @@ public class Rectangle extends AbstractVisibleComponent implements LabeledCompon
 		this.showRectangle = showRectangle;
 	}
 
-	public String render() {
-		VelocityMerge view = new VelocityMerge();
-		view.setTemplateName(viewName);
-		addObject("_offsetX", offsetX);
-		addObject("_offsetY", offsetY);
-		addObject("_showRectangle", showRectangle);
-		addObject("_width", getCoreWidth());
-		addObject("_height", getCoreHeight());
-		if (!label.equals("")){
-			addObject("_label", label);
-		}
-		addObject("_content", content);
-
-		// TODO kap: find out about the sign of '-'
-		addObject("_rotate", -rotate);
-		
-		view.setContextParams(model);
-		return view.render();
-	}
-
 	public void setRotate(float rotate) {
 		this.rotate = rotate;
 	}
@@ -145,15 +123,22 @@ public class Rectangle extends AbstractVisibleComponent implements LabeledCompon
 		this.coreHeight = coreHeight;
 	}
 
-	public void setViewName(String viewName) {
-		this.viewName = viewName;
-	}
-
 	public void lifecycleEvent(LifecycleEvent event) {
 		if (event.getKind().equals(LifecycleEvent.Kind.prepareToRender)) {
 			Point2D.Float offset = enclosing.findOffset(this);
 			offsetX = offset.x;
 			offsetY = offset.y;
+
+			addObject("_offsetX", offsetX);
+			addObject("_offsetY", offsetY);
+			addObject("_showRectangle", showRectangle);
+			addObject("_width", getCoreWidth());
+			addObject("_height", getCoreHeight());
+			if (!label.equals("")) {
+				addObject("_label", label);
+			}
+			addObject("_content", content);
+			addObject("_rotate", -rotate);
 		}
 	}
 }

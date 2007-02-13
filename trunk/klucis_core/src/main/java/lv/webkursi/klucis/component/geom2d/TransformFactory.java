@@ -15,6 +15,7 @@ public class TransformFactory extends AbstractComponentFactory {
 	public Component localGetComponent(Resource r, ComponentManager componentManager, String id) {
 		Transform result = new Transform();
 		configureCommonProperties(result,r,id);
+		result.setViewName("Transform");
 		Statement stmtRotate = r.getProperty(KLUCIS.rotate);
 		if (stmtRotate != null) {
 			result.setRotate(stmtRotate.getInt());

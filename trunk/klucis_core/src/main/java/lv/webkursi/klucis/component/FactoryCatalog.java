@@ -32,7 +32,7 @@ public class FactoryCatalog {
 	 * @param map
 	 *            a map from URLs to factories.
 	 */
-	public void setCatalog(Map<String, ComponentFactory> map) {
+	public void setMap(Map<String, ComponentFactory> map) {
 		this.map = map;
 	}
 }

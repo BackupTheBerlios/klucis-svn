@@ -1,6 +1,7 @@
 package lv.webkursi.klucis.component;
 
 import java.awt.geom.Point2D;
+import java.util.Map;
 
 /**
  * A visible component (a.k.a. a widget) - something which can be drawn and converted to SVG
@@ -24,6 +25,10 @@ public interface VisibleComponent extends Component {
 	public void setEnclosing(VisibleComponent enclosing);
 	
 	public Point2D.Float findOffset(VisibleComponent box);
-		
+	
 	public void setViewName(String viewName);
+	
+	public String getViewName();
+	
+	public Map<String,Object> getMap();
 }

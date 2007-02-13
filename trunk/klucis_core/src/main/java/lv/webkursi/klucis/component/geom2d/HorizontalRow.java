@@ -9,7 +9,6 @@ import lv.webkursi.klucis.component.LabeledComponent;
 import lv.webkursi.klucis.component.VisibleComponent;
 import lv.webkursi.klucis.event.LifecycleEvent;
 import lv.webkursi.klucis.event.LifecycleEventListener;
-import lv.webkursi.klucis.mvc.VelocityMerge;
 
 public class HorizontalRow extends AbstractVisibleComponent implements
 		LifecycleEventListener {
@@ -20,8 +19,6 @@ public class HorizontalRow extends AbstractVisibleComponent implements
 
 	protected float offsetY;
 	
-	protected String viewName;
-
 	protected List<VisibleComponent> components = new ArrayList<VisibleComponent>();
 
 	public void setComponents(List<VisibleComponent> components) {
@@ -39,23 +36,17 @@ public class HorizontalRow extends AbstractVisibleComponent implements
 
 	protected float height = -1.0F;
 
-	public String render() {
-		VelocityMerge view = new VelocityMerge();
-		view.setTemplateName(viewName);
-		model.put("_components", components);
-		model.put("_offsetX", offsetX);
-		model.put("_offsetY", offsetY);
-		model.put("_width", getWidth());
-		model.put("_height", getHeight());
-		view.setContextParams(model);
-		return view.render();
-	}
-
 	public void lifecycleEvent(LifecycleEvent event) {
 		if (event.getKind().equals(LifecycleEvent.Kind.prepareToRender)) {
 			Point2D.Float offset = enclosing.findOffset(this);
 			offsetX = offset.x;
 			offsetY = offset.y;
+			
+			map.put("_components", components);
+			map.put("_offsetX", offsetX);
+			map.put("_offsetY", offsetY);
+			map.put("_width", getWidth());
+			map.put("_height", getHeight());
 		}
 	}
 
@@ -126,16 +117,8 @@ public class HorizontalRow extends AbstractVisibleComponent implements
 		return width;
 	}
 
-	public void setViewName(String viewName) {
-		this.viewName = viewName;
-	}
-
 	public float getGap() {
 		return gap;
-	}
-
-	public String getViewName() {
-		return viewName;
 	}
 
 	public List<VisibleComponent> getComponents() {

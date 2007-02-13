@@ -22,7 +22,7 @@ public class MockComponentFactoryCatalog {
 		map.put(KLUCIS.Transform.getURI(), new TransformFactory());
 		map.put(KLUCIS.Path.getURI(), new PathFactory());
 
-		catalog.setCatalog(map);
+		catalog.setMap(map);
 		return catalog;
 	}
 }

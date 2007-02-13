@@ -11,9 +11,11 @@
 		</property>
 		<property name="velocityProperties">
 			<props>
-			    <prop key="toolboxConfigLocation">/src/main/resources/toolbox.xml</prop>
 				<prop key="input.encoding">UTF-8</prop>
 				<prop key="output.encoding">UTF-8</prop>
+				<prop key="marsMacro.resource.loader.class">org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader</prop>
+				<prop key="resource.loader">file,marsMacro</prop>
+				<prop key="velocimacro.library">lv/webkursi/klucis/view/marsmacro.vm</prop>				
 			</props>
 		</property>
 	</bean>	
@@ -37,7 +39,7 @@
 	</bean>
 	
 	<bean id="factoryCatalog" class="lv.webkursi.klucis.component.FactoryCatalog">
-		<property name="catalog">
+		<property name="map">
 			<map>
 				<entry
 					key="http://www.webkursi.lv/schema/20061008/klucis#TopComponent">

@@ -15,7 +15,7 @@ public class TopComponentFactory extends AbstractComponentFactory {
 		TopComponent result = new TopComponent();
 		configureCommonProperties(result,r,id);
 		KlucisDAO dao = componentManager.getKlucisDAO();
-		result.setFileName(dao.getStringProperty(r, KLUCIS.hasFileName));
+		result.setImageName(dao.getStringProperty(r, KLUCIS.hasImageName));
 		result.setViewName(dao.getStringProperty(r, KLUCIS.hasViewName));
 		Resource rContent = r.getRequiredProperty(KLUCIS.hasContent).getResource();
 		VisibleComponent content = (VisibleComponent)componentManager.getStaticComponent(rContent);

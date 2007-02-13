@@ -1,8 +1,16 @@
 package lv.webkursi.klucis.component;
 
+import java.net.URLEncoder;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.InitializingBean;
 
 import lv.webkursi.klucis.KlucisConfigurationException;
@@ -15,6 +23,7 @@ import lv.webkursi.klucis.event.LifecycleManagerImpl;
 
 import com.hp.hpl.jena.rdf.model.Resource;
 
+
 /**
  * A ComponentManager is used to create various items used in drawings. It ensures
  * that each component in a request has a unique name, mutually injects
@@ -23,8 +32,14 @@ import com.hp.hpl.jena.rdf.model.Resource;
  * @author kap
  */
 public class ComponentManager implements LifecycleManager, InitializingBean {
+	
+	private final Log log = LogFactory.getLog(ComponentManager.class);
 
 	private FactoryCatalog factoryCatalog;
+	
+	protected HttpServletRequest servletRequest;
+
+	protected HttpServletResponse servletResponse;
 	
 	protected LifecycleManagerImpl lifecycleManager = new LifecycleManagerImpl();
 
@@ -33,6 +48,9 @@ public class ComponentManager implements LifecycleManager, InitializingBean {
 	protected Map<String, Object> nameTable = new HashMap<String, Object>();
 	
 	protected KlucisDAO klucisDAO; 
+	
+	private Map<String, String> interactionStates = new HashMap<String, String>();
+
 	
 	/**
 	 * At this point everything works only at the root context
@@ -168,6 +186,22 @@ public class ComponentManager implements LifecycleManager, InitializingBean {
 			addLifecycleEventListener((LifecycleEventListener)c);
 		}
 	}
+	
+	/**
+	 * Find a component, which needs action to be performed
+	 */
+	public void doAction() {
+		String componentName = servletRequest.getParameter("_ac");
+		String action = servletRequest.getParameter("_aa");
+		Component component = (Component) nameTable.get(componentName);
+		if (component != null) {
+			component.doAction(action);
+		} else {
+			log.warn("Action '" + action + "' on component '" + componentName
+					+ "' ignored; component does not exist");
+		}
+	}
+
 
 	
 	public void announce(Object source, LifecycleEvent.Kind kind) {
@@ -181,4 +215,117 @@ public class ComponentManager implements LifecycleManager, InitializingBean {
 	public void removeLifecycleEventListener(LifecycleEventListener listener) {
 		lifecycleManager.removeLifecycleEventListener(listener);
 	}
+	
+	
+	/**
+	 * For arguments "pageSetId", "linkObject" and list ["p1","v1","p2","v2"]
+	 * produce the following:<br />
+	 * &lt;a href="pageSetId?p1=v1&p2=v2"&gt;linkObject&lt;/a&gt; The parameter
+	 * names "p1", "p2", etc. are always strings. The respective values ("v1",
+	 * "v2", etc.) may be any type that was passed from Velocity template; they
+	 * are converted to strings - first with some datatype-dependent SPARQL
+	 * escaping and then URL-encoded.
+	 * 
+	 * @param pageSetId
+	 *            indicates the pageset we are linking to
+	 * @param linkObject
+	 *            the string (HTML construct), which is surrounded by
+	 *            anchor(&lt;a&gt;) tags
+	 * @param parameters
+	 *            a list of even length, containing parameters and their values
+	 *            (not yet URLEncoded)
+	 * @param actionComponent
+	 *            a component ID on which an action is to be performed
+	 * @param action
+	 *            the action to be performed by the actionComponent
+	 * @return HTML construct enclosed in anchor tags.
+	 */
+	public String getLinkToPageSet(String pageSetId, String linkObject,
+			List parameters, String actionComponent, String action) {
+		String url = getUrlToPageSet(pageSetId, parameters, actionComponent,
+				action);
+
+		return "<a href=\"" + url + "\">" + linkObject + "</a>";
+	}
+
+	/**
+	 * See getLinkToPageSet() for explanation of parameters
+	 */
+	public String getUrlToPageSet(String pageSetId, List parameters,
+			String actionComponent, String action) {
+		String url = pageSetId;
+		Iterator iter = parameters.iterator();
+		String sep = "?";
+		if (actionComponent != null) {
+			url = url + sep + "_ac=" + encodeAsUtf(actionComponent);
+			sep = "&amp;";
+			if (action != null) {
+				url = url + sep + "_aa=" + encodeAsUtf(action);
+			}
+		}
+		while (iter.hasNext()) {
+			// will fail, if parameter name is not a string - as it should
+			String pName = (String) iter.next();
+			String pValue = null;
+			if (iter.hasNext()) {
+				Object val = iter.next();
+				pValue = "" + val;
+			}
+			url = url + sep + encodeAsUtf(pName) + "=" + encodeAsUtf(pValue);
+			sep = "&amp;";
+		}
+		for (String key : interactionStates.keySet()) {
+			url = url + sep + encodeAsUtf(key) + "="
+					+ encodeAsUtf(interactionStates.get(key));
+			sep = "&amp;";
+		}
+
+		return url;
+	}
+
+	private String encodeAsUtf(String arg) {
+		if (arg == null) {
+			log.warn("Argument to encode should not be null");
+			return "null";
+		}
+		try {
+			String result = URLEncoder.encode(arg, "UTF-8");
+			return result;
+		} catch (Exception e) {
+			log.error("Unexpected: Bad encoding UTF-8", e);
+			throw new KlucisException("Unexpected: Bad encoding UTF-8");
+		}
+	}
+
+	
+	/**
+	 * @return the servletRequest
+	 */
+	public HttpServletRequest getServletRequest() {
+		return servletRequest;
+	}
+
+	/**
+	 * @param servletRequest
+	 *            the servletRequest to set
+	 */
+	public void setServletRequest(HttpServletRequest servletRequest) {
+		this.servletRequest = servletRequest;
+	}
+
+	/**
+	 * @return the servletResponse
+	 */
+	public HttpServletResponse getServletResponse() {
+		return servletResponse;
+	}
+
+	/**
+	 * @param servletResponse
+	 *            the servletResponse to set
+	 */
+	public void setServletResponse(HttpServletResponse servletResponse) {
+		this.servletResponse = servletResponse;
+	}
+
 }

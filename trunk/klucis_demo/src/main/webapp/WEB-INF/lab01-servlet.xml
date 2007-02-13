@@ -12,33 +12,32 @@
 		<property name="velocityProperties">
 			<props>
 				<prop key="input.encoding">UTF-8</prop>
-				<prop key="output.encoding">UTF-8</prop>
-				<!--				
+				<prop key="output.encoding">UTF-8</prop>				
 				<prop key="marsMacro.resource.loader.class">org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader</prop>
 				<prop key="resource.loader">file,marsMacro</prop>
-				<prop key="velocimacro.library">com/hp/hpl/mars/portal/mvc/util/marsmacro.vm</prop>
-				-->
+				<prop key="velocimacro.library">lv/webkursi/klucis/view/marsmacro.vm</prop>
 			</props>
 		</property>
 	</bean>
 	
-	<!--	
+	
 	<bean id="servletContextFactory"
 	class="org.springframework.web.context.support.ServletContextFactoryBean"/>
 	
 	<bean id="servletBaseDirFactory"
-	class="com.hp.hpl.mars.portal.spring.ServletBaseDirFactory">
+	class="lv.webkursi.klucis.web.ServletBaseDirFactory">
 	<property name="servletContext">
 	<ref bean="servletContextFactory"/>
 	</property>
 	</bean>
-	-->
+	
 	
 	<bean id="urlMapping"
 		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="mappings">
 			<props>
-				<prop key="/*">staticImageController</prop>
+				<prop key="/img/**">staticImageController</prop>
+				<prop key="/main/**">mainController</prop>
 			</props>
 		</property>
 	</bean>
@@ -60,48 +59,62 @@
 			<value>1</value>
 		</property>
 		<property name="contentType">
-			<!-- <value>image/svg+xml;charset=UTF-8</value> -->
-			<value>text/xml;charset=UTF-8</value>
+			<value>image/svg+xml;charset=UTF-8</value> 
+			<!-- <value>text/xml;charset=UTF-8</value> -->
 		</property>
 	</bean>
 	
-	<!--
-	<bean id="portalDescription"
-	class="com.hp.hpl.mars.portal.spring.FileModelFactory">
+	<bean id="klucisDescription"
+	class="lv.webkursi.klucis.data.FileModelFactory">
 	<property name="path">
 	<value>/WEB-INF/conf/</value>
 	</property>
 	<property name="fileName">
-	<value>portal1.n3</value>
+	<value>description.n3</value>
 	</property>
 	<property name="baseDir">
 	<ref bean="servletBaseDirFactory"/>
 	</property>
 	</bean>
 	
-	-->
-	
 	<bean id="staticImageController" class="lv.webkursi.klucis.mvc.StaticImageController">
-		<!--		<property name="portal" ref="portal"/>
-		<property name="viewResolver" ref="viewResolver"/> -->
 	</bean>
 	
-	<!--
-	<bean id="portal" class="com.hp.hpl.mars.portal.Portal">
-	<property name="componentFactoryCatalog" ref="factoryCatalog"/>
-	<property name="portalDescription" ref="portalDescription"/>
+	<bean id="mainController" class="lv.webkursi.klucis.mvc.MainController">
+	    <property name="componentManager" ref="componentManager"/>
+	    <property name="viewResolver" ref="viewResolver" /> 
+		<property name="model" ref="klucisDescription"/>
 	</bean>
+	
+	<bean id="componentManager" class="lv.webkursi.klucis.component.ComponentManager">
+		<property name="factoryCatalog" ref="factoryCatalog"/>	
+	</bean>
+
 	
 	<bean id="factoryCatalog"
-	class="com.hp.hpl.mars.portal.component.ComponentFactoryCatalog">
-	<property name="catalog">
+	class="lv.webkursi.klucis.component.FactoryCatalog">
+	<property name="map">
 	<map>
-	<entry key="http://www.example.com/ontology#CompositeWidget">
-	<bean
-	class="lv.webkursi.stuff.CompositeWidgetFactory"/>
-	</entry>
+		<entry
+			key="http://www.webkursi.lv/schema/20061008/klucis#TopComponent">
+			<bean class="lv.webkursi.klucis.component.geom2d.TopComponentFactory"/>
+		</entry>
+		<entry key="http://www.webkursi.lv/schema/20061008/klucis#HorizontalRow">
+			<bean class="lv.webkursi.klucis.component.geom2d.HorizontalRowFactory"/>
+		</entry>
+		<entry
+			key="http://www.webkursi.lv/schema/20061008/klucis#Rectangle">
+			<bean class="lv.webkursi.klucis.component.geom2d.RectangleFactory"/>
+		</entry>
+		<entry
+			key="http://www.webkursi.lv/schema/20061008/klucis#Transform">
+			<bean class="lv.webkursi.klucis.component.geom2d.TransformFactory"/>
+		</entry>
+		<entry
+			key="http://www.webkursi.lv/schema/20061008/klucis#Path">
+			<bean class="lv.webkursi.klucis.component.geom2d.PathFactory"/>
+		</entry>	
 	</map>
 	</property>
 	</bean>	
-	-->
 </beans>

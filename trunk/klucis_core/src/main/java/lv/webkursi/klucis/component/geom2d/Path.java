@@ -1,7 +1,8 @@
 package lv.webkursi.klucis.component.geom2d;
 
 import lv.webkursi.klucis.component.AbstractVisibleComponent;
-import lv.webkursi.klucis.mvc.VelocityMerge;
+import lv.webkursi.klucis.event.LifecycleEvent;
+import lv.webkursi.klucis.event.LifecycleEventListener;
 
 /**
  * A class to manipulate vector graphic paths; can be used to populate svg:path. 
@@ -9,15 +10,13 @@ import lv.webkursi.klucis.mvc.VelocityMerge;
  * 
  * @author kap
  */
-public class Path extends AbstractVisibleComponent {
+public class Path extends AbstractVisibleComponent implements LifecycleEventListener {
 
 	protected String color;
 
 	protected String path;
 
 	protected float strokeWidth;
-	
-	protected String viewName;
 	
 	protected float width;
 	
@@ -35,21 +34,6 @@ public class Path extends AbstractVisibleComponent {
 		this.strokeWidth = strokeWidth;
 	}
 
-	public void setViewName(String viewName) {
-		this.viewName = viewName;
-	}
-
-	public String render() {
-		VelocityMerge view = new VelocityMerge();
-		view.setTemplateName(viewName);
-		this.addObject("_id", id);
-		this.addObject("_color", color);
-		this.addObject("_path", path);
-		this.addObject("_strokeWidth", strokeWidth);
-		view.setContextParams(model);
-		return view.render();
-	}
-	
 	public float getHeight() {
 		return height;
 	}
@@ -64,5 +48,14 @@ public class Path extends AbstractVisibleComponent {
 
 	public void setWidth(float width) {
 		this.width = width;
+	}
+
+	public void lifecycleEvent(LifecycleEvent event) {
+		if (event.getKind().equals(LifecycleEvent.Kind.prepareToRender)) {
+			this.addObject("_id", id);
+			this.addObject("_color", color);
+			this.addObject("_path", path);
+			this.addObject("_strokeWidth", strokeWidth);			
+		}
 	}	
 }

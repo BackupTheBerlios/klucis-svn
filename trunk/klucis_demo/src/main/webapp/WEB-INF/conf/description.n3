@@ -5,6 +5,15 @@
 @prefix : <http://example.com/bildes#> .
 
 
+:bilde
+  a klucis:TopComponent ;
+  klucis:hasImageName "bilde" ;
+  klucis:hasViewName "bilde" ;
+  klucis:hasContent [
+      a klucis:Rectangle ;
+      klucis:hasContent :triangleRuler   
+  ] .
+
 :bilde_triangle_ruler
   a klucis:TopComponent ;
   klucis:hasImageName "bilde_triangle_ruler" ;
