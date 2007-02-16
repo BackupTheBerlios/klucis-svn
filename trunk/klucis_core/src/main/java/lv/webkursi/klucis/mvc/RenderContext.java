@@ -99,6 +99,24 @@ public class RenderContext {
 		return componentManager.getUrlToPageSet(pageSetId, parameters,
 				actionComponent, action);
 	}
+	
+	public String getBrowserName() {
+		String result = null;
+		String userAgent = componentManager.getServletRequest().getHeader("User-Agent");
+		System.err.println("userAgent = " + userAgent);
+		if (userAgent.indexOf("MSIE") != -1) {
+			result = "MSIE";
+		}
+		else if (userAgent.indexOf("Firefox") != -1) {
+			result = "Firefox";
+		}
+		System.err.println("browserName = " + result);
+		return result;
+	}
+	
+	public boolean isFirefox() {
+		return componentManager.getServletRequest().getHeader("User-Agent").contains("Firefox");
+	}
 
 	public ViewResolver getViewResolver() {
 		return viewResolver;

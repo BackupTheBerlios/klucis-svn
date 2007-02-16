@@ -10,8 +10,6 @@ public class Transform extends AbstractVisibleComponent implements
 
 	private int rotate = 0;
 
-	private int size;
-
 	private int scaleX = 1;
 
 	private int scaleY = 1;
@@ -20,10 +18,6 @@ public class Transform extends AbstractVisibleComponent implements
 
 	public void setRotate(int rotate) {
 		this.rotate = rotate;
-	}
-
-	public void setSize(int size) {
-		this.size = size;
 	}
 
 	public void setContent(VisibleComponent content) {
@@ -51,7 +45,6 @@ public class Transform extends AbstractVisibleComponent implements
 			if (rotate != 0) {
 				this.addObject("_rotate", -rotate);
 			}
-			this.addObject("_size", size);
 			this.addObject("_content", content);
 
 			if (scaleX != 1) {

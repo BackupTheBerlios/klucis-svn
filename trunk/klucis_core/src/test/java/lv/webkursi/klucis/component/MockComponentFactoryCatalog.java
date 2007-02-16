@@ -3,6 +3,8 @@ package lv.webkursi.klucis.component;
 import java.util.HashMap;
 import java.util.Map;
 
+import lv.webkursi.klucis.component.control.CompositeWidgetFactory;
+import lv.webkursi.klucis.component.control.PlainComponentFactory;
 import lv.webkursi.klucis.component.geom2d.HorizontalRowFactory;
 import lv.webkursi.klucis.component.geom2d.PathFactory;
 import lv.webkursi.klucis.component.geom2d.RectangleFactory;
@@ -21,6 +23,8 @@ public class MockComponentFactoryCatalog {
 		map.put(KLUCIS.Rectangle.getURI(), new RectangleFactory());
 		map.put(KLUCIS.Transform.getURI(), new TransformFactory());
 		map.put(KLUCIS.Path.getURI(), new PathFactory());
+		map.put(KLUCIS.PlainComponent.getURI(), new PlainComponentFactory());
+		map.put(KLUCIS.CompositeWidget.getURI(), new CompositeWidgetFactory());
 
 		catalog.setMap(map);
 		return catalog;

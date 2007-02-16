@@ -1,17 +1,21 @@
 package lv.webkursi.klucis.event;
 
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Simple implementation of LifecycleManager: Announces all kinds of events to
  * all the listeners; it is up to the listeners to take appropriate actions or
  * ignore the events.
+ * 
+ * This must ensure that the events are fired in the same order, in which 
+ * the components were inserted (i.e. registered with the COmponentManager).
+ * A more robust approach would be to assign priorities to the components
+ * (the components with bigger depth in the inclusion tree should be evaluated first). 
  */
 public class LifecycleManagerImpl implements LifecycleManager {
 
-	protected Set<LifecycleEventListener> listeners = new HashSet<LifecycleEventListener>();
+	protected List<LifecycleEventListener> listeners = new ArrayList<LifecycleEventListener>();
 
 	/**
 	 * Adds a new listener to the set of listeners
@@ -37,9 +41,8 @@ public class LifecycleManagerImpl implements LifecycleManager {
 	 */
 	public void announce(Object source, LifecycleEvent.Kind kind) {
 		LifecycleEvent event = new LifecycleEvent(source, kind);
-		Iterator<LifecycleEventListener> iter = listeners.iterator();
-		while (iter.hasNext()) {
-			iter.next().lifecycleEvent(event);
+		for (int i = 0; i < listeners.size(); i++) {
+			listeners.get(i).lifecycleEvent(event);
 		}
 	}
 }

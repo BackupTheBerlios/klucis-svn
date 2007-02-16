@@ -45,7 +45,7 @@ import com.hp.hpl.jena.rdf.model.StmtIterator;
  */
 public class MainController implements Controller, KlucisAware {
 
-	private ComponentManager manager = null;
+	private ComponentManager componentManager = null;
 
 	private Model model;
 
@@ -63,15 +63,15 @@ public class MainController implements Controller, KlucisAware {
 		String imageName = getImageName(request);
 		// TODO: set componentManager bean scope to "request".
 
-		manager.setServletRequest(request);
-		manager.setServletResponse(response);
+		componentManager.setServletRequest(request);
+		componentManager.setServletResponse(response);
 		VisibleComponent widget = null;
 		// try {
 		imageName = getImageName(request);
 		Resource imageDescription = lookupImageDescription(imageName);
-		widget = (VisibleComponent) manager
+		widget = (VisibleComponent) componentManager
 				.getStaticComponent(imageDescription);
-		manager.doAction();
+		componentManager.doAction();
 		doLifecycle(widget);
 		// TODO kap:
 		// } catch (Exception exception) {
@@ -82,7 +82,7 @@ public class MainController implements Controller, KlucisAware {
 				+ widget.getViewName() + "'");
 		ModelAndView result = new ModelAndView(widget.getViewName());
 		result.addAllObjects(widget.getMap());				
-		result.addObject("_renderContext", new RenderContext(manager,
+		result.addObject("_renderContext", new RenderContext(componentManager,
 				viewResolver));
 		return result;
 	}
@@ -116,12 +116,12 @@ public class MainController implements Controller, KlucisAware {
 	}
 
 	protected void doLifecycle(VisibleComponent rootWidget) {
-		manager.announce(this, LifecycleEvent.Kind.execute);
-		manager.announce(this, LifecycleEvent.Kind.prepareToRender);
+		componentManager.announce(this, LifecycleEvent.Kind.execute);
+		componentManager.announce(this, LifecycleEvent.Kind.prepareToRender);
 	}
 
 	public ComponentManager getComponentManager() {
-		return manager;
+		return componentManager;
 	}
 
 	public Model getModel() {
@@ -129,7 +129,7 @@ public class MainController implements Controller, KlucisAware {
 	}
 
 	public void setComponentManager(ComponentManager componentManager) {
-		this.manager = componentManager;
+		this.componentManager = componentManager;
 	}
 
 	public void setModel(Model model) {

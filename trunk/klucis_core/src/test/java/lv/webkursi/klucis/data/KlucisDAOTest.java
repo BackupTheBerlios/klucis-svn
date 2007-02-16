@@ -198,6 +198,11 @@ public class KlucisDAOTest {
 
 	}
 
+	/**
+	 * These testcases find default properties for abstract components, which 
+	 * have various contexts. (A context represents a set of defaults (for the whole
+	 * application, or for a particular usergroup, or user, or user session, etc.). 
+	 */
 	public static class AbstractComponentUtilities {
 		public static final String abstractComponentUtilities = MockDescriptionFactory.PREFIXES
 				+ ":rootDefaultRectangle a klucis:AbstractComponent ; a klucis:Rectangle ; klucis:context \"/\" . "

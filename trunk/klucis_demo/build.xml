@@ -10,11 +10,12 @@
 		<fileset dir="${war.lib.dir}">
 			<include name="**/*.jar"/>
 		</fileset>
-		<fileset dir="${compile-lib.dir}">
+		<fileset dir="${jar.lib.dir}">
 			<include name="**/*.jar"/>
 		</fileset>
 	</path>
 	
+<!--	
 	<path id="run.classpath">
 		<fileset dir="${war.lib.dir}">
 			<include name="**/*.jar"/>
@@ -25,7 +26,8 @@
 		<pathelement location="${war.classes.dir}"/>
 		<pathelement location="${jar.test.classes.dir}"/>
 	</path>
-	
+-->
+		
 	<target name="all" depends="clean,war" description="Rebuild war"/>
 	
 	<target name="clean" description="Deletes compiled and generated code">
@@ -50,7 +52,7 @@
 			</fileset>
 		</copy>
 		<copy todir="${war.lib.dir}" flatten="true">
-			<fileset dir="${portal.core.dir}/lib">
+			<fileset dir="../lib">
 				<include name="**/*.jar"/>
 			</fileset>
 		</copy>
@@ -76,42 +78,6 @@
 		</javac>
 	</target>
 
-	<!--
-	<target name="junit" depends="compile,compile-test"
-		description="Run JUnit Tests">
-		<junit printsummary="on" fork="true" haltonfailure="false"
-			failureproperty="tests.failed" showoutput="true">
-			<classpath refid="run.classpath"/>
-			<formatter type="xml" usefile="true"/>
-			
-			<batchtest>
-				<fileset dir="${jar.test.classes.dir}">
-					<include name="**/Test*.*"/>
-				</fileset>
-			</batchtest>
-		</junit>
-		
-		<mkdir dir="${reports.dir}"/>
-		
-		<junitreport todir="${reports.dir}">
-			<fileset dir=".">
-				<include name="TEST-*.xml"/>
-			</fileset>
-			<report format="frames" todir="${reports.dir}/html"/>
-		</junitreport>
-		
-		<delete failonerror="false">
-			<fileset dir="." includes="TEST-*.xml"/>
-		</delete>
-		
-		<fail if="tests.failed">tests.failed=${tests.failed}
-			***********************************************************
-			*********************************************************** **** One or
-			more tests failed! Check the output ... ****
-			***********************************************************
-			***********************************************************</fail>
-	</target>
-	-->
 	
 	<target name="war" depends="compile"
 		description="Packages the Web files into a WAR file">

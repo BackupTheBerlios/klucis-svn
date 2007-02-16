@@ -13,7 +13,6 @@ style="fill: none; stroke: none;"
 />
 #render($_content)
 </g>
-
 #if($_label)
 <g transform="translate(${_offsetX}, ${_offsetY})">
 <text x="0" y="${_labelOffsetY}"

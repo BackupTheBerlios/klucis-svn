@@ -27,10 +27,6 @@ public class VelocityMerge {
 
 	private String templateName;
 
-	// private String prefix = "src/main/resources/";
-
-	// private String suffix = ".vm";
-
 	private Log log = LogFactory.getLog(VelocityMerge.class);
 
 	public VelocityMerge() {
@@ -43,7 +39,7 @@ public class VelocityMerge {
 			props
 					.put("file.resource.loader.class",
 							"org.apache.velocity.runtime.resource.loader.FileResourceLoader");
-			props.put("file.resource.loader.path", "userTemplateDirectory");
+			props.put("file.resource.loader.path", "user_templates");
 			props.put("file.resource.loader.cache", "false");
 			props.put("file.resource.loader.modificationCheckInterval", "0");
 
@@ -52,6 +48,7 @@ public class VelocityMerge {
 			props
 					.put("class.resource.loader.class",
 							"org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader");
+			props.put("velocimacro.library", "lv/webkursi/klucis/view/marsmacro.vm");
 			Velocity.init(props);
 		} catch (Exception e) {
 			log.error("VelocityView not initialized.", e);
@@ -74,7 +71,6 @@ public class VelocityMerge {
 		StringWriter result = new StringWriter();
 		Template template = null;
 		try {
-			// template = Velocity.getTemplate(prefix + templateName + suffix);
 			template = Velocity.getTemplate(templateName);
 			template.merge(context, result);
 		} catch (ResourceNotFoundException e) {
@@ -95,8 +91,6 @@ public class VelocityMerge {
 		FileWriter fw = null;
 		try {
 			fw = new FileWriter(fileName);
-			// Template template = Velocity.getTemplate(prefix + templateName
-			// + suffix);
 			Template template = Velocity.getTemplate(templateName);
 			template.merge(context, fw);
 		} catch (ResourceNotFoundException e) {

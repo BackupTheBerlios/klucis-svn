@@ -13,6 +13,7 @@ import lv.webkursi.klucis.testutil.MockDescriptionFactory;
 import lv.webkursi.klucis.vocabulary.EXAMPLE;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -49,6 +50,7 @@ public class HorizontalRowTest {
 			manager.setFactoryCatalog(MockComponentFactoryCatalog.getCatalog());
 		}
 
+		@Ignore
 		@Test
 		public void unlabeledOffset() {
 			Resource r1 = model.createResource(EXAMPLE.NS + "r1");

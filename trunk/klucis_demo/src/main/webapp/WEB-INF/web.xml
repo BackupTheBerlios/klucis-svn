@@ -14,19 +14,21 @@
 	</context-param>
 	
 	<filter>
-      <filter-name>XSLTFilter</filter-name>
-      <filter-class>lv.webkursi.klucis.web.XSLTFilter</filter-class>
-    </filter>
-    
-    <filter-mapping>
-      <filter-name>XSLTFilter</filter-name>
-      <url-pattern>/01/img/html/*</url-pattern>
-    </filter-mapping> 
-
-    <filter-mapping>
-      <filter-name>XSLTFilter</filter-name>
-      <url-pattern>/01/main/html/*</url-pattern>
-    </filter-mapping> 
+		<filter-name>XSLTFilter</filter-name>
+		<filter-class>lv.webkursi.klucis.web.XSLTFilter</filter-class>
+	</filter>
+	
+	<!--
+	<filter-mapping>
+		<filter-name>XSLTFilter</filter-name>
+		<url-pattern>/klucis/img/html/*</url-pattern>
+	</filter-mapping>
+		-->
+	
+	<filter-mapping>
+		<filter-name>XSLTFilter</filter-name>
+		<url-pattern>/klucis/main/html/*</url-pattern>
+	</filter-mapping>
 	
 	<listener>
 		<listener-class>
@@ -34,15 +36,37 @@
 	</listener>
 	
 	<servlet>
-		<servlet-name>lab01</servlet-name>
+		<servlet-name>TempServlet</servlet-name>
+		<servlet-class>lv.webkursi.klucis.temp.TempServlet</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>klucis</servlet-name>
+		<servlet-class>
+			org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>control</servlet-name>
 		<servlet-class>
 			org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	
 	<servlet-mapping>
-		<servlet-name>lab01</servlet-name>
-		<url-pattern>/01/*</url-pattern>
+		<servlet-name>TempServlet</servlet-name>
+		<url-pattern>/servlet/TempServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>klucis</servlet-name>
+		<url-pattern>/klucis/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>control</servlet-name>
+		<url-pattern>/ctrl/*</url-pattern>
 	</servlet-mapping>
 	
 </web-app>

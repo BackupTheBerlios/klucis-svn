@@ -30,7 +30,7 @@ public class HorizontalRowFactory extends AbstractComponentFactory {
 		int count = 0;
 		for (NodeIterator i = seq.iterator(); i.hasNext();) {
 			Resource rChild = (Resource) i.nextNode();
-			// assign unique id to each child in a row as children resources may repeat
+			// assign unique id to each child in a row as child resources may repeat
 			VisibleComponent child = (VisibleComponent) componentManager
 					.getDynamicComponent(rChild, result.getId() + "."
 							+ (count++));

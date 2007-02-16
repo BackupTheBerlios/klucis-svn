@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+	
+	<import resource="spring-common.xml"/>
+		
+	<bean id="urlMapping"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<!-- <prop key="/img/**">staticImageController</prop> -->
+				<prop key="/main/**">mainController</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
+		<property name="viewClass">
+			<value>
+				org.springframework.web.servlet.view.velocity.VelocityView</value>
+		</property>
+		<property name="exposeSpringMacroHelpers">
+			<value>true</value>
+		</property>
+		<property name="toolboxConfigLocation" value="/WEB-INF/toolbox.xml"/>
+		<property name="order">
+			<value>1</value>
+		</property>
+		<property name="contentType">
+			<value>image/svg+xml;charset=UTF-8</value>
+		</property>
+	</bean>
+	
+	<bean id="klucisDescription" class="lv.webkursi.klucis.data.FileModelFactory">
+		<property name="path">
+			<value>/WEB-INF/conf/</value>
+		</property>
+		<property name="fileName">
+			<value>description.n3</value>
+		</property>
+		<property name="baseDir">
+			<ref bean="servletBaseDirFactory"/>
+		</property>
+	</bean>
+</beans>

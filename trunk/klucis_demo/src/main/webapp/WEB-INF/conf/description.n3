@@ -398,7 +398,7 @@
   a klucis:Path ;
   klucis:context "/" ;  
   klucis:hasColor "black" ;
-  klucis:hasViewName "Path" ;
+  klucis:hasViewName "lv/webkursi/klucis/view/Path.vm" ;
   klucis:hasWidth "200" ;
   klucis:hasHeight "200" ;
   klucis:hasStrokeWidth "0" .
@@ -408,7 +408,7 @@
   a klucis:HorizontalRow ;
   klucis:context "/" ;
   klucis:hasGap "60" ;
-  klucis:hasViewName "HorizontalRow" .
+  klucis:hasViewName "lv/webkursi/klucis/view/HorizontalRow.vm" .
 
 :applicationDefaultRectangle
   a klucis:AbstractComponent ;
@@ -419,13 +419,20 @@
   klucis:hasCoreHeight "200" ;
   klucis:rotate "0" ;
   klucis:showRectangle "true" ;
-  klucis:hasViewName "Rectangle" .
+  klucis:hasViewName "lv/webkursi/klucis/view/Rectangle.vm" .
   
 :applicationDefaultTopComponent
   a klucis:AbstractComponent ;
   a klucis:TopComponent ;
   klucis:context "/" ;
-  klucis:hasViewName "TopComponent" .
+  klucis:hasViewName "lv/webkursi/klucis/view/TopComponent.vm" .
+
+:applicationDefaultTransformComponent
+  a klucis:AbstractComponent ;
+  a klucis:Transform ;
+  klucis:context "/" ;
+  klucis:hasViewName "lv/webkursi/klucis/view/Transform.vm" .
+
 
 
 ###############################################################

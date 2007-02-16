@@ -1,0 +1,47 @@
+<table style="margin:0px;padding:0px" width="100%" height="100%" border="1" cellspacing="0">
+<col width="200" />
+<tr style="vertical-align:top"><td>
+<h1>Navigācija</h1>
+
+<ul>
+<li><a href="/klucisDemo/klucis/main/bilde_11a">bilde_11a</a></li>
+<li><a href="/klucisDemo/klucis/main/bilde_11d">bilde_11d</a></li>
+<li><a href="/klucisDemo/klucis/main/bilde_11e">bilde_11e</a></li>
+<li><a href="/klucisDemo/klucis/main/bilde_15a">bilde_15a</a></li>
+<li><a href="/klucisDemo/klucis/main/bilde_15b">bilde_15b</a></li>
+<li><a href="/klucisDemo/klucis/main/bilde_15c">bilde_15c</a></li>
+<li><a href="/klucisDemo/klucis/main/bilde_15d">bilde_15d</a></li>
+<li><a href="/klucisDemo/klucis/main/bilde_15e">bilde_15e</a></li>
+<li><a href="/klucisDemo/klucis/main/bilde_15f">bilde_15f</a></li>
+<li><a href="/klucisDemo/klucis/main/bilde_22a">bilde_22a</a></li>
+<li><a href="/klucisDemo/klucis/main/bilde_22b">bilde_22b</a></li>
+<li><a href="/klucisDemo/klucis/main/bilde_22c">bilde_22c</a></li>
+<li><a href="/klucisDemo/klucis/main/bilde_22d">bilde_22d</a></li>
+<li><a href="/klucisDemo/klucis/main/bilde_22f">bilde_22f</a></li>
+<li><a href="/klucisDemo/klucis/main/bilde_triangle_ruler">bilde_triangle_ruler</a></li>
+</ul>
+</td>
+<td>
+<!-- 300x300 - it is NOT the right size of the image, but it should fit there. 
+May need more precise size (e.g. from SVGComponent), if the image is accompanied by some text -->
+#set($browserName = $_renderContext.getBrowserName())
+#if($browserName == "MSIE" ) 
+<p><embed src="/klucisDemo/klucis/main/bilde_11a"  width="300" height="300" type="image/svg+xml" name="bilde"
+pluginspage="http://www.adobe.com/svg/viewer/install/main.html" wmode="transparent"></p>
+#elseif ($browserName == "Firefox" ) 
+<p><object type="image/svg+xml" name="bilde" data="/klucisDemo/klucis/main/bilde_11a" width="300" height="300">
+<b>YOU SHOULD UPDATE YOUR BROWSER</b><br />
+The newest Firefox should display SVG object tags.
+</object></p>
+#else
+Unrecognized browser - neither Internet Explorer 6 nor Firefox.<br />
+Display of embedded SVG images not yet implemented by KLUCIS.
+#end
+
+
+
+
+
+</td>
+</tr>
+</table>

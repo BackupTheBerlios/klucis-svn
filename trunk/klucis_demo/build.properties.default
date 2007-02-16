@@ -28,7 +28,7 @@ war.lib.dir=${web.dir}/WEB-INF/lib
 war.classes.dir=${web.dir}/WEB-INF/classes
 
 # For JAR projects - the lib directory and the classes directory
-jar.lib.dir=lib
+jar.lib.dir=../lib
 jar.classes.dir=${target.dir}/classes
 jar.test.classes.dir=${target.dir}/test-classes
 

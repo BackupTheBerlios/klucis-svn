@@ -3,9 +3,12 @@ package lv.webkursi.klucis.mvc;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import lv.webkursi.klucis.component.ComponentManager;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.mvc.Controller;
 
 /**
@@ -17,6 +20,11 @@ import org.springframework.web.servlet.mvc.Controller;
 public class StaticImageController implements Controller {
 	
 	private static Log log = LogFactory.getLog(StaticImageController.class);
+	
+	private ComponentManager componentManager = null;
+
+	private ViewResolver viewResolver;
+
 
 	public ModelAndView handleRequest(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
@@ -31,6 +39,32 @@ public class StaticImageController implements Controller {
 		}
 		
 		log.info("Trying to find a template '" + path + "'");
-		return new ModelAndView(path);
+		ModelAndView result = new ModelAndView(path);
+		result.addObject("_renderContext", new RenderContext(componentManager,
+				viewResolver));
+		return result;
+
 	}
+
+
+	public ComponentManager getComponentManager() {
+		return componentManager;
+	}
+
+
+	public void setComponentManager(ComponentManager componentManager) {
+		this.componentManager = componentManager;
+	}
+
+
+	public ViewResolver getViewResolver() {
+		return viewResolver;
+	}
+
+
+	public void setViewResolver(ViewResolver viewResolver) {
+		this.viewResolver = viewResolver;
+	}
+	
+	
 }

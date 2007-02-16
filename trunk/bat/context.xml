@@ -27,7 +27,7 @@
 	
 	<bean id="model" class="lv.webkursi.klucis.data.FileModelFactory">
 		<property name="path">
-			<value>/src/main/resources/</value>
+			<value>/./</value>
 		</property>
 		<property name="fileName">
 			<value>description.n3</value>

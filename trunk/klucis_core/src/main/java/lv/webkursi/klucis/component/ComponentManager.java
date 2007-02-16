@@ -176,12 +176,9 @@ public class ComponentManager implements LifecycleManager, InitializingBean {
 		} else {
 			nameTable.put(cId, c);
 		}
-		/**
-		 * TODO kap: deal with servlet params
-		if (servletRequest.getParameterMap().containsKey(cId)) {
+		if (servletRequest != null && servletRequest.getParameterMap().containsKey(cId)) {
 			c.setInteractionState(servletRequest.getParameter(cId));
 		}
-		*/
 		if (c instanceof LifecycleEventListener) {
 			addLifecycleEventListener((LifecycleEventListener)c);
 		}

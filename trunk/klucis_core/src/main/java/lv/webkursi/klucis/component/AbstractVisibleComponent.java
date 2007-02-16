@@ -19,6 +19,8 @@ public abstract class AbstractVisibleComponent extends AbstractComponent impleme
 	
 	protected VisibleComponent enclosing;
 	
+	protected int priority;
+	
 	public String getViewName() {
 		return viewName;
 	}
@@ -27,6 +29,14 @@ public abstract class AbstractVisibleComponent extends AbstractComponent impleme
 		this.viewName = viewName;		
 	}
 	
+	public int getPriority() {
+		return priority;
+	}
+
+	public void setPriority(int priority) {
+		this.priority = priority;
+	}
+
 	public void addObject(String key, Object value) {
 		map.put(key, value);
 	}
