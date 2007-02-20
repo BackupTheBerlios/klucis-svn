@@ -1,0 +1,97 @@
+${preprocessor.warning}
+Sun Java Wireless Toolkit
+~~~
+
+    [Description:]
+    MIDlets are Java applications that can run on small devices, 
+    e.g. mobile phones. They have some GUI and Networking capabilities 
+    and can serve as clients for Web applications. Wireless Toolkit 
+    is a convenient tool from Sun Microsystems to develop wireless 
+    Java applications. 
+
+    [Download at:]
+    {{http://java.sun.com/products/sjwtoolkit/download-2_3.html}}
+
+    [Preconditions:] 
+    JDK 1.4 should be installed. (Wireless Toolkit does not work, 
+    if its JDK is set to version 5.0.) - see the subsection on JDK 
+    environment installation
+
+
+  * Run file <<<%CD%\wireless_toolkit\sun_java_wireless_toolkit-2_3-beta-windows.exe>>>
+
+  * Press \[Next\], and \[Yes\] to the Licence Agreement. 
+
+  * For Java Virtual Machine Location pick <<<C:\Program Files\Java\j2sdk1.4.2_11>>>. 
+  DO NOT pick a JDK 1.5 location (e.g. <<<C:\Program Files\Java\jdk1.5.0_07>>>), 
+  because the toolkit cannot work with JDK 1.5. Press \[Next\]
+
+  * Pick <<<C:\tools\WTK23>>> as the destination folder, press \[Next\]. 
+
+  * Agree to other default values, press \[Next\] two more times and press \[Finish\]. 
+
+  * Create a shortcut to c:\tools\WTK23\bin\ktoolbar.exe on the desktop. 
+
+* Check the installation
+~~~
+
+  * Launch the KToolbar. Press the button \[New Project\]
+
+  * Set the "Project Name" to "HelloProject" and the MIDlet class name to 
+  "HelloMIDlet". Press [Create Project] and agree to all the default settings.
+
+  * Copy the following file under <<<c:\tools\WTK23\apps\HelloProject\src>>>:
+
+  []
+
++---+
+HelloMIDlet.java
+=====================
+import javax.microedition.lcdui.*;
+import javax.microedition.midlet.*;
+
+public class HelloMIDlet extends MIDlet implements CommandListener {
+  private Form mMainForm;
+  
+  public HelloMIDlet() {
+    mMainForm = new Form("HelloMIDlet");
+    mMainForm.append(new StringItem(null, "Sveicin\u0101ti!"));
+    mMainForm.addCommand(new Command("Beigt", Command.EXIT, 0));
+    mMainForm.setCommandListener(this);
+  }
+  
+  public void startApp() {
+    Display.getDisplay(this).setCurrent(mMainForm);
+  }
+  
+  public void pauseApp() {}
+  
+  public void destroyApp(boolean unconditional) {}
+  
+  public void commandAction(Command c, Displayable s) {
+    notifyDestroyed();
+  }
+}
++---+
+
+  * Press buttons \[Build\] and \[Run\] on KToolbar. A cellphone emulator should open. 
+  By pressing the buttons on the emulator launch and exit the MIDlet application. 
+  Close the emulator window. 
+
+  * Select from the KToolbar menu: <<Project>> -> <<Package>> -> <<Create Package>>
+
+  * Two new files with extensions *.jad and *.jar should be created in the 
+  directory <<<C:\tools\WTK23\apps\HelloProject\bin>>>. These files can be sent 
+  to some Java-enabled mobile phone through infrared, blootooth or cable, 
+  and saved to the location where this phone model stores Java applications 
+  (games, etc.). The MIDlet can then be run from the phone as well. 
+
+
+* Bibliography
+~~~
+
+  * {{http://developers.sun.com/techtopics/mobility/midp/articles/wtoolkit/}} 
+  (how to run the first MIDlet application)
+
+  * {{http://developers.sun.com/techtopics/mobility/midp/reference/techart/}} 
+  (various articles about MIDlets).

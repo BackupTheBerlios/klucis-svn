@@ -1,0 +1,35 @@
+Homework 14: Wikipedia Backups
+~~~~
+
+    [Goal:]
+    Process wiki markup and implement controllable updates of
+    downloaded data. 
+
+    [Description:]
+    Regularly making offline copies of certain
+    Wikipedia data can provide data, which is both up-to-date and
+    controllable. If Wikipedia articles are reasonably short 
+    word definitions, they can be used in a glossary
+    (see <a href="hw15_glossary_vm.html">Homework 15</a>). 
+    
+
+    
+* Introduction
+~~~
+
+  Use the provided code to download articles
+  from some Web portal, desirably such that allows robots, see 
+  <<<robots.txt>>> file in the virtual Web root. 
+  The list of documents to download
+  can be taken, e.g. from the RSS feed. 
+  The code downloads documents accordingly to some 
+  pattern, assigns names accordingly to some naming convention
+  and stores them in the specified local directory. 
+
+  The objective of this homework is to transform the downloaded files
+  to another directory with the same names, but as
+  cleaned HTML documents - without any navigation or banners, 
+  with correct and minimalistic XHTML markup. 
+  
+
+  

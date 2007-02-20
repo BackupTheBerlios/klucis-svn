@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faqs id="Vaicuojumi">
+  <part id="General">
+  <title>Kūpeigī nūsacejumi</title>
+    <faq id="when">
+      <question>Kursa laiki</question>
+      <answer>
+        Kurss "Web'a tehnologejis" nūtīk 2007.goda febraļa i marta mienešūs.
+	Tys beidzuos ogri, kab studentim byutu vareiba pīraksteit 
+	magistraturys dorbu i dabeigt universitetu 2007.goda pavasarā. 
+	Aizajimšonys/nūdarbeibys nūtīk 2 reizis par nedeli; 
+	nūdarbeibu parāds byus dareits zynoms eisi pyrms kursa suoku.
+      </answer>
+    </faq>
+    <faq id="where">
+      <question>Kursa vīta</question>
+      <answer>
+        Lekcejis/paskaitys nūtīk nazkur LU MII kuormā (Raiņa bulvarī 29). 
+	Programēšonys kūpdorbus, atseviškūs aizdavumus i testu var
+	dareit sovā dorbā ci sātā i īsyuteit caur e-postu ci testu sistemu.
+      </answer>
+    </faq>
+    <faq id="lab_sessions">
+      <question>Praktiskuos aizajimšonys</question>
+      <answer>
+        Naobligatys praktiskuos aizajimšonys nūtiks 
+	Accenture's informatikys klasē, Breiveibys īlā 214, 
+	1 reizi par nedeli nu 18:00 da 21:00. 
+	Tei ir vareiba piļdeit programēšonys aizdavumus mudruok i 
+	vuiceitīs i daleitīs ar školuotuoju i cytim studentim. 
+	Atīšona iz praktiskom aizajimšonom ir breivpruoteiga, nikuo namoksoj i
+	kursa praseibys nu tuos nasamaina. No praktiskuo aizajimšonu 
+	dalinīki ir atbiļdeigi atīt iz nūdarbeibom ci syuteit
+	viesti školuotuojam naatīškys iz nūdarbeibu.
+	Seikuoku dazynujošonu ap praktiskom aizajimšonom varēs aptikt
+	pyrms kursa suoku.
+      </answer>
+    </faq>
+    <faq id="audience">
+      <question>Snāgauditoreja</question>
+      <answer>	
+	Meili aicynuoti vysi informatikys magistraturis studenti nu Latvejis Universitates; 
+	"Web'a tehnologejis" dūmuotys deļ 2.goda studentim. Ka tys natraucej 
+	obligatūs kursu kuortūšonu, 1.goda studenti ari var pīsadaleit.
+	Ka naasat informatikys magistraturys students 
+	<a href="http://www.lu.lv/eng/">Latvejis Universitatē</a>, lyudzam 
+	grīztīs pi školuotuoja pyrms īt vuiceitūs.
+      </answer>
+    </faq>
+    <faq id="instructor">
+      <question>Instructor</question>
+      <answer>
+        LU laiceigais darbinīks: Kalvis Apsītis (PhD).<br />
+	E-posts: <code>kalvis.apsitis@</code> nu domena <code>gmail.com</code>.<br />
+	Skype-ID: "kalvis.apsitis"<br />
+	Telepons: +371 2911 2997. 
+      </answer>
+    </faq>
+  </part>
+
+  <part id="Activities">	
+  <title>Activities</title>
+    <faq id="requirements">
+      <question>Kursa praseibys</question>
+      <answer>
+	Sekmeigai atdūdami školuotuojam mozuokais 2 atseviškī 
+	aizdavumi i 3 programēšonys kūpdorbus.
+	(Kursam varim veļteit vīn 8 nedelis vītoj 16 nedeļu, 
+	par tū var vīnu nu kūpdorbim nadareit.)
+	Tests i vareiba dareit vēļ 2 atseviškūs aizdavumus 
+	navā obligati, no 
+	paleidz lobuoka viertējuma sajimšonai.
+      </answer>
+    </faq>
+    <faq id="grade">
+      <question>How is the grade computed?</question>
+      <answer>
+      Programēšonys kūpdorbi dūd (leluokais) 60 punktu, tests - 20 punktu, 
+	atseviškī aizdavumi - 20 punktu. Semestrim nūsabeidzūt, 
+	vysu punktu suma ir N (N=0,...,100). 
+	Atzeime par kursu ir leluokais vasalais skaits M, kam 10*M navā leluoks nakai N. 
+	Lyudzam īvāruot, ka VYSI programēšonys kūpdorbi ir napīcīšami, kab 
+	byutu vys kaida naviņ pozitiva atzeime ("četrinīks" ci vairuok). 
+
+
+	
+	
+	
+	One CANNOT avoid doing the mandatory part of the course by gathering 
+	grade points for other activities, see <a href="#requirements">the requirements</a>.
+	Getting a positive grade ("4" or more) requires at least 40 grade points; 
+	it may become necessary to submit more work, if your team's
+	gradepoints are lost due to submitting the lab exercises late.
+      </answer>
+    </faq>
+    <faq id="installations">
+      <question>What kind of computer is needed?</question>
+      <answer>
+        For this course a reasonably good PC is recommended, e.g. 80G disk space, 
+	1G RAM, a 3GHz CPU. The parameters can also be smaller than that, but 
+        it could slow down, if Eclipse, JBoss, MySQL and a couple of browsers
+	are running simultaneously. All course material is written assuming 
+	Windows XP machines, but it can be easily adopted for Linux as well. 
+	Software needed for this course is mostly freeware or shareware 
+	listed in the <a href="install_intro.html">installation instructions</a>. 
+	It is better to install it as needed rather than all at once.
+      </answer>
+    </faq>
+    <faq id="lab_exercises_defn">
+      <question>What are the lab exercises?</question>
+      <answer>
+        There is a set of 5 interdependent <a href="labs.html">lab exercises</a>. 
+	They are intended for teams of 2-3 people and have 
+	deadlines. Packaging the solution and
+	the requirements for successful submission are explained with each lab exercise.	
+      </answer>
+    </faq>
+    <faq id="lab_exercises_grading">
+      <question>How are the lab exercises graded?</question>
+      <answer>
+      	Lab exercises have JUnit and Selenium tests.
+	There can be a few tests, which describe some verbally stated
+	requirements, but are disclosed only in the last minute - they 
+	may affect the grade, but passing them is not  mandatory,
+	i.e. team can get a slightly lowered grade for the implementation, if some
+	requirements not covered by the public tests have been overlooked. 
+	Each team member gets the same grade for the exercise. 
+	The guidelines for computing the score depends on the lab exercise, 
+	see e.g. <a href="./lab01.html#Guidelines">Lab 01: Guidelines for Evaluation</a>. 
+      </answer>
+    </faq>
+    <faq id="lab_exercises_late">
+      <question>What is the late policy for lab exercises?</question>
+	  <answer>
+	For late submissions the score for the exercise is multiplied
+	by a common ratio r = 11/12 for each day they are late. I.e. 
+	for being n days late, the total score earned by the exercise is multiplied
+	by (11/12)<sup>n</sup>. 
+	If the result is a fraction, the number is rounded
+	to the precision of 0.01 grade points before being added to the total.
+	If you submit a code that is not packaged correctly or 
+	does not compile or does not pass all the provided tests, 
+	you get another chance of submitting the project, but the grade 
+	is multiplied by the same ratio r for each extra submission.
+	If you submit only 4 lab exercises (the bare minimum), you can get 
+	up to 48 points for them. Submitting all 5 gives you up to 60 grade points.
+	</answer>
+    </faq>
+    <faq id="final_discussion">
+      <question>Final discussion</question>
+      <answer>
+        After your team has submitted the lab exercises, and possibly on other occasions, 
+        there is a discussion between the project team and the instructor. 
+	Office hours will be set up, and each team will pick a timeslot.
+	All the team members are expected to understand all portions of the 
+	code they are submitting as their lab exercises and 
+	to be articulate and professional while explaining it to the instructor. 
+	Those students who cannot explain the code they are submitting 
+        or do not show up for the final 
+	discussion can be asked extra questions about various course topics 
+	before their earned grade is recorded.
+      </answer>
+    </faq>
+    <faq id="individual_hw">
+      <question>What are individual homeworks?</question>
+      <answer>
+        These are small programming assignments on a wide range of isolated topics.
+	Individual homeworks do not have submission deadline.
+      </answer>
+    </faq>
+    <faq id="individual_hw_procedure">
+      <question>Which individual homeworks you are assigned?</question>
+      <answer>
+      Currently there is a list of some 20 individual homeworks.
+      Any student can randomly draw 4 numbers from a "hat" provided by instructor; 
+      out of the 4 numbers you then pick two, which then become your mandatory homeworks,
+      the other two numbers can be ignored. This procedure gives you some
+      freedom picking the homeworks according to your interests. 
+      On the other hand, the instructor can avoid everyone doing the same.
+      </answer>
+    </faq>
+    <faq id="individual_hw_grading">
+      <question>How are the individual homeworks graded?</question>
+      <answer>
+      Each individual homework, which satisfies the described requirements,
+      gives you 5 grade points. I.e. by submitting the two mandatory homeworks 
+      you get at least 10 grade points. You can submit two extra homeworks
+      and they also give you 5 points each. You cannot get more than 20 grade
+      points for individual homeworks. The two voluntary homeworks you can select 
+      as you wish, they do not need to come from the "hat".
+      </answer>
+    </faq>
+    <faq id="test_defn">
+      <question>What is the multiple choice test?</question>
+      <answer>
+	Multiple choice test has questions on  
+	theory and skills topics listed in <a href="topics.html">the list of topics</a>. 
+	Answering a test question means finding exactly M correct answers from 
+	given N answer options (N=2...5). The number of correct answers M &lt; N
+	is always known in advance, most often M=1. 
+      </answer>
+    </faq>
+    <faq id="test_procedure">
+      <question>What is the procedure to take the multiple-choice test?</question>
+      <answer>
+	The multiple choice test can be taken from any computer connected
+	to the Internet. There will be certain time windows, 
+	when the test is available. A student willing to take a test, 
+	registers in the testing system 
+	and tells his/her account name to the instructor.
+	A typical test has 80 questions and takes up to 120 minutes.
+	Some standard documentation (e.g. javadocs and specifications) 
+	is explicitly listed and may be used during
+	the test. If students are aware of other useful documentation, 
+	instructor can add it to the list. 
+	On the other hand, using full text search engines (e.g. Google) or software tools 
+	during the test is strongly discouraged.
+	Prior to the test sample questions are made available to avoid surprises
+	regarding the content and the style of the questions.
+      </answer>
+    </faq>
+    <faq id="test_grading">
+      <question>Grading of the tests</question>
+      <answer>
+        <em>Raw score</em> S shows, how many questions are answered correctly. 
+        Test is passed, if the raw score S>=70, i.e. 
+	at least 70 questions out of 80 are answered 
+	correctly. The number of points earned is S-60. 	
+        E.g. if someone
+	takes the test three times and gets raw scores of 55, 65 and 75, 
+	then the test is passed from the
+	third attempt and gives 75-60 = 15 grade points out of 20.
+	One can improve the grade by taking the test many times.
+      </answer>
+    </faq>
+    <faq id="other_technologies">
+      <question>Can the lab exercises use alternatives to Java/Spring?</question>
+      <answer>
+	There are many good Web programming frameworks like PHP/CakePHP, Python/ZOPE, ASP.NET, 
+	which guarantee relatively higher speed of the development 
+	than Java/Spring. Nevertheless it is deemed that object oriented Web programming can 
+	be learned on the basis of Java. We encourage you to 
+	try this language; even though you would not need it for anything else. 
+        The only possible alternative to Java is Ruby/Rails - see  
+	<a href="#extra_credit">extra credit</a>. 
+      </answer>
+    </faq>
+    <faq id="extra_credit">
+      <question>What about the extra credit?</question>
+      <answer>
+        If you like to code and test in Ruby/Rails, your team can submit 
+	an alternative solution to the same 4 or 5 lab exercises in Ruby/Rails technology.
+	It should have your own component testing suite, but 
+	also uses the provided Selenium test suite.
+	This means Web application with the same behavior, possibly using a different
+	Web server, a different port and another server-side technology. 
+        The coding might be somewhat faster in Rails, but there is more test 
+	development work for you to do. There should not be any slack on component/unit tests
+	compared to coding in Java. If you submit a Ruby/Rails version of a lab exercise on time, 
+	you can get a maximum of 16 points for each lab exercise. 
+	The common ratio r=11/12 still applies for every day your team is late and
+	for each resubmission of incorrectly packaged or wrong solution.
+      </answer>
+    </faq>
+  </part>
+
+  <part id="Communication">	
+  <title>Communication</title>
+    <faq id="teambuilding">
+      <question>How are the teams created?</question>
+      <answer>
+	The students create and announce their teams of 2 or 3 people to the instructor.  
+	It should be done BEFORE the deadline of the first
+	lab exercise. Single person "teams" are also allowed, but the
+	required amount of work remains the same. 
+	Each team announces one person, which will make the  
+	lab exercise submissions from that team.
+      </answer>
+    </faq>
+    <faq id="colaboration">
+      <question>What collaboration is allowed?</question>
+      <answer>
+        When the students are not actually writing code and are not taking 
+	the test there are no limitations of how they can help each other. 
+	Students can discuss all their assignments, draw diagrams, write 
+	and discuss pseudocode, share books and public links 
+	in the Internet, help each other to analyze sample questions for the test.
+      </answer>
+    </faq>
+    <faq id="dishonesty">
+      <question>What is considered academic dishonesty?</question>
+      <answer>
+         During the coding it is obviously OK to search the Internet
+	 or ask some general questions to others, but one should NOT use
+	 ready artifacts made by other people (or other teams in the case of lab exercises).  
+	 In other words, students should not look at others' work on the same problem 
+	 while creating their solution. 
+	 During the multiple-choice test you can use the explicitly listed 
+	 reference materials and documentation. 
+       </answer>
+     </faq>
+     <faq id="confidentiality">
+       <question>Are the evaluations and grades for the course confidential?</question>
+       <answer>
+         Instructor tries to keep everyone's grades confidential. 
+	 Grade points should be known only to the student himself/herself. 
+	 Due to the grading practicalities people from the same team might 
+	 in fact know each other's evaluations.
+         Students are asked to respect each others' personal data.
+       </answer>
+     </faq>
+     <faq id="copyright">
+       <question>Are the materials copyrighted?</question>
+       <answer>
+         The documents for this course are intended for the WebCT system of the 
+	 University of Latvia, so the restrictions imposed by the WebCT apply.
+         On the other hand, all the sample code is public domain and can be used 
+         everywhere. Same thing applies to the code submitted by students, 
+	 if they do not ask the instructor explicitly NOT to make their 
+	 solution public or reuse it. 
+         Properly attributing software artifacts to their original authors 
+	 (e.g. preserving author identification in the program comments) is encouraged.
+       </answer>
+     </faq>
+  </part>
+
+</faqs>

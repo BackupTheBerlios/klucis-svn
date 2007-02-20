@@ -1,0 +1,19 @@
+Homework 17: Spring Configuration with RDF
+~~~~
+
+    [Goal:]
+    Get acquainted with Spring and Spring MVC configuration 
+    from an unusual data source. 
+
+    [Description:]
+    Implement a custom subclass of Spring's AbstractBeanDefinitionReader
+    which initializes bean definitions from a given RDF file.
+    
+    
+* Introduction
+~~~
+  
+  
+
+
+  

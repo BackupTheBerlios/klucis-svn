@@ -1,0 +1,15 @@
+Vector and Raster Graphics
+~~~
+
+  Modern browsers (IE 6 with Adobe SVG plugin and also Firefox) can 
+  display both vector and raster images. Vector images are typically 
+  represented as SVG (Scalable Vector Graphics, a W3C standard), 
+  raster images have formats like PNG, GIF, JPEG, TIFF etc. 
+
+  Vector graphics are appropriate for artificial images; 
+  it can be easily transcoded/rasterized, e.g. to PNG. 
+  Some Web applications may need dynamically generated 
+  vector images as diagrams and charts, as game boards, 
+  annotated land maps, etc. Rasterization (converting SVG to PNG)
+  is somewhat time-consuming, therefore for high traffic sites
+  such raster images are frequently cached. 

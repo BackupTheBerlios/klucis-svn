@@ -1,0 +1,33 @@
+Īvods
+
+* Tei ir "Puorstaipteikla tehnologeju" kursa sātyslopa (<sākumlapa/pradžios tinklalapis/homepage>)
+
+  Itymā Web'a vītā (<vietne/svetainė/web site>) var skaiteit i šursyuteit
+  (<lejuplādēt/atsiųsti/download>) materialus.
+  Piļneigys dazynuošonys (<informācija/informacija/information>) i aizdavumu 
+  tekstu ite vēļ nav, a pi tuo struoduojam.
+
+  Ja Jyusim vajadzeiga dokumetaceja iz jyusu mašinas:
+
+  * Šursyuteit i atspīst (<atarhivēt/išpakuoti/unpack or unzip>) failu: 
+  {{http://www.webkursi.lv/web2007a/site/downloads/web2007a.zip}}
+
+  * Instalēt (<instalēt/įdiegti/install>) {{{./install_maven.html}Maven 2.0}} 
+  softu <programmatūra/programinė įranga/software>
+
+  * Atspīstajā suoku direktorejā
+  (<direktorija/katalogas/directory or folder>), kur atsarūn fails 
+  <<<%ROOT%/pom.xml>>>, darbynuot itū komandys aili (<komandrinda/komandos eilutė/command line>):
+
+  []
+
++-----+
+mvn -N clean site
+ant zip
++-----+
+ 
+  * Atdareit turīņa ruodeituoja (<satura rādītājs/rodyklė/index>) failu <<<%ROOT%/target/site/index.html>>>
+
+  * Arhivs ar suoku(olūta) tekstim (<izejas teksts/pirminis tekstas/source>) atsarūn
+  zamdirektorejā (<apakšdirektorija/pakatalogis/subdirectory>) <<<target/site/downloads>>>.
+  

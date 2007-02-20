@@ -1,0 +1,12 @@
+Homework 02: Text Concordance 
+~~~~
+
+  Given a directory of clean XHTML documents (e.g. 
+  the sample output data from {{{./hw01_tidy.html}Homework 01}}), 
+  build a concordance for them - i.e. 
+  a database application, which is displayed as 
+  a page consisting of 3 sections, showing the alphabet letters
+  in the above screen section, all word forms in the left frame and 
+  all environments for the given word in the right frame. 
+  
+  

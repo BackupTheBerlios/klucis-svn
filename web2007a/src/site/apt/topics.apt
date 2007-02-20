@@ -1,0 +1,322 @@
+Topics
+~~~
+
+    [Goal:] These topics characterize the scope of the 
+    overview course "Web Technologies". Other documents will 
+    point here in order to organize the course
+    material. This list definitively does NOT 
+    imply that every topic listed here will be covered 
+    in depth. 
+
+    [Description:]
+    There are theory topics and the skills,  
+    which are touched by the "Web Technologies". 
+    Most important skills, which you are likely to need to complete
+    the course are listed in the lab exercise descriptions.
+    Reviewing these topics and getting preliminary knowledge
+    on most of them could help the students to prepare for the  
+    optional multiple-choice test.
+
+
+
+* Theory Topics
+~~~
+
+  Below we list some areas of knowledge, which are reflected in 
+  our course - they are not necessarily connected to certain skills, 
+  but are categories reflecting Web development reality, which are 
+  useful to understand and to tell apart from each other. 
+  The easiest topics do not necessarily come first in this list (the
+  lecture conspects point to the theory, gradually increasing difficulty), 
+  but rather in systematic groups. During the course these topics might be 
+  tested during the multiple-choice test. Otherwise the students 
+  do not need to care about this list.
+  For the list of skills see next subsection.
+
+  [[1]] Approaches of OOP as applied to Web development
+
+    * Classes, Interfaces, Abstract classes
+    How to ensure proper encapsulation and decoupling in Web application. 
+    Also, how to avoid "breaking modularity" during development.
+    Developing classes "by contract"; preconditions and postconditions. 
+    (These notions are not Web-specific, but it does not hurt to 
+    look at OOP from Web perspective.)
+
+    * Domain object development and JUnit testing. UML diagrams - 
+    class and collaboration. Domain object layer in a 
+    {{{./info_3_tier_architecture.html}3-tier architecture}}.
+
+
+    * GoF design patterns, which are useful for web development. 
+    MVC pattern, factories pattern, template method pattern, 
+    singleton pattern, composite pattern.
+
+    * Objects and classes from the OWL perspective - open world
+    assumption, inferring class membership, subsumption relation between types, 
+    inconsistent types. 
+
+    * Object management; components and their lifecycle. 
+    Standardized infrastructure to create objects and connect them together; 
+    object factories, Spring framework's application context.
+    Contexts/containers for components (applets, servlets, EJBs, Spring
+    beans and various other contexts).
+
+    * A few notions of aspect-orientation. Adding advice to method calls, 
+    references to objects with a shorter lifespan (smaller scope) than 
+    the enclosing object, etc.
+
+
+  [[2]] Markup and data processing languages 
+
+    * Concrete examples. 
+    Basics of XHTML, CSS, SVG, XML basics, XPath, XSLT, JavaScript, DOM, 
+    RDF (XML and N3 notation), OWL. Some wiki variants,  
+    APT (almost plain text), LaTeX and MathML for mathematics. 
+
+    * Descriptive markup and how to specify how its presented;
+    how to ensure some device independence and "graceful degradation". 
+    Pragmatism vs. standards-compliance in Web development. 
+
+    * Template languages (Velocity, Freemarker, JSP/JSTL/EL, rhtml with Ruby, etc.); 
+    behaviours on exception (Freemarker's "fail early" approach),
+    internationalization for templates. 
+    
+    * Programmatic parsing of data, Java and Ruby interfaces
+    to process XML data. Simple frameworks. 
+
+    * Validating XML and related data, whati is a "fail early" validation. 
+    DTD and XML Schema to validate XML. 
+
+    * User interface layer in a Domain object layer in a 
+    {{{./info_3_tier_architecture.html}3-tier architecture}}
+
+  [[3]] Data models and data access
+    
+    * Basic notions of relational databases, and object-relational mapping. 
+    Hibernate constructs for relational mapping of various OO constructs. 
+    Ruby/Rails and the ActiveRecord. 
+
+    * RDF data models and accessing RDF data from programming 
+    languages including Java interface to Jena, 
+    Ruby interface to Redland and SWI-Prolog. 
+    Navigating model vs. SPARQL queries. SELECT vs. DESCRIBE
+    options in SPARQL. Alternatives, unions, distincts in SPARQL. 
+
+    * OWL ontologies and their use. Inference engines and rules. 
+    RDF/OWL models with Protege. {{{./info_sw_layer_cakes.html}Semantic Web layer cakes}}.
+
+    * A tradeoff between roundtrips to a datasource and amount of 
+    obtained data. How to deal with the tradeoff in Hibernate (for SQL)  
+    and Jena/Arq (for SPARQL) data access. 
+
+    * Abstracting access to a datasource. Decoupling and avoiding dependencies
+    on particular data access method. Improving performance through connection 
+    pools. Data access layer in a {{{./info_3_tier_architecture.html}3-tier architecture}}.
+
+
+  [[4]] Web at a low-level
+
+    * HTTP protocol basics. Different types of requests. When to use POST
+    and when to use GET. Idempotent requests and caching their results. 
+    Return codes of HTTP; what behavior is expected from interactive Web
+    components. URL-encoded parameters. 
+
+    * Various HTTP headers - accept language, content length, content type.
+    Form encoding types, file uploading, imagemaps. 
+    Cookie mechanisms - session cookies and persistant cookies. 
+
+    * Encodings and internationalization. 
+    UTF-8 encoding algorithm. Various other encodings. Form parameters for
+    GET and POST requests. Handling non-ASCII characters by Java Web application
+    containers. Reacting to "Accept language" header. 
+
+    * HTTP data compression. Base authentication. Welcome pages. 
+    Custom error pages. How to configure these on a Java Application container.
+
+  
+  [[5]] Component naming and state
+
+    * 3 useful kinds of Web links (absolute with host, absolute without host, 
+    relative). Designing easy to use links in a Web application; some LinkHelper 
+    paradigms. Referring header in HTTP, using access logs to investigate user behavior.
+    Bookmarking pages and making links friendly to Web search engines. 
+
+    * Application state on the client - AJAX-proper development patterns. 
+    Synchronization of application state with the server, if needed. 
+    "Create a bookmark" approach to save state in AJAX applications. 
+
+    * Form submissions as action objects. Form validation - client side and
+    server side. Property editors mapping form fields to object attributes. 
+    Specialized controller classes. 
+
+    * Policy of assigning names to components in a Web application; 
+    Using component state in paging database records, sorting displayed records, 
+    filtering results. 
+
+  [[6]] Context, navigation, browsing and searching
+
+    * Java servlet application sessions. 4 scopes of variables in servlet
+    applications; their access in servlets, JSP, and also from JSTL and custom 
+    taglibs.
+
+    * Various levels of scopes in Spring MVC. Application-wide, role-wide, session-wide, 
+    interaction-wide, request-wide contexts and their combinations. 
+    Switching locales in Web application.
+
+    * Navigation strategies. Tree-like navigation, linear navigation, 
+    navigation towards the "checkout". Drill-downs and bread crumbs.
+    
+    * Full-text search. Lucene search engine. Adjustments for flexive, 
+    non-English languages. Making application friendly for Google search 
+    engine and the related Web marketing. 
+
+    * {{{./info_facetted_browse.html}Facetted browse}}. Defining facets in an ontology, adding metadata for
+    displayable items, displaying, adding, removing facets in a context-specific
+    fashion. 
+
+  [[7]] Issues of scale
+
+    * Security of Web applications. Authentication of users against
+    a static list, database, LDAP directory. Secure data transmission, 
+    CHAP and similar protocols, when to use HTTPS instead of HTTP. 
+
+    * Performance. Pooling expensive resources like database connections. 
+    Configuration and business data access 
+    avoiding reflection. Load-testing an application. 
+
+    * Log4J - Performance, configurability, localization, coverage and audit trail. 
+
+    * High availability. Reducing downtime by runtime configuration changes. 
+    Configuring MBeans in JBoss application server. Clusters and JNDI. 
+
+  [[8]] Usability of Web applications
+
+    * Concepts of information design. Fonts, colors, layouts, shapes, 
+    textures, balance, order vs. chaos. 
+
+    * Being responsive to the audience. Various types of Web applications. 
+    Navigation approaches. Gathering feedback and inspecting logs. 
+
+    * Resident and transient applications. Changing layout through themes or skins. 
+    Improving response time with AJAX. 
+
+    * Wireless clients and protocols. WML markup language. Profiles CLDC, MIDP.
+    Java ME midlets as mobile Java applications and HTTP clients.  
+
+    * Ensuring Privacy in Web applications. 
+
+  [[9]] Content management systems
+   
+    * Text, pictures, vector graphics, mathematical formulas. 
+    Wiki editing vs. WYSIWYG editing. 
+
+    * Taxonomy vs. folksonomy. Tags, their relationships, tag clouds. 
+    Jung and similar ways to display graphs. 
+
+    * Syndication and RSS. 
+
+    * Doing CMS with components in Java/Ruby (server-side)
+    and JavaScript (client-side); integration of this in a wider
+    application. 
+
+    * Classification and clustering of content. 
+    Data mining (Naive Bayes classifiers, SVM classifiers). Weka interfaces.
+    Content filtering and spam.  
+
+  [[10]] Interoperability and human colaboration in the Web
+
+    * Interoperability technologies. J2EE applications.  
+    Web services and SOAP protocol. Other communication via XML. 
+    Interoperability through ontologies. 
+
+    * Service-oriented paradigms in the Web. Basic functionality and API 
+    for weblogs, wiki, Google search, Google maps, del.icio.us, Flickr, 
+    digg.com, 37signals.com. 
+
+
+
+* Skills
+~~~
+
+  These skills are assumed for the case, when certain minimalistic documentation 
+  is available. For example, Java coding assumes that Javadoc is available; 
+  markup languages XHTML, SVG, XML, XPath, XSLT etc. assume that W3C language
+  specification is available. Similarly with other coding skills.   
+  Therefore each skill becomes a compromise between two  
+  extremes. The requirement:
+  <"knows the specifications and language API by heart"> is unnecessary hard. 
+  Another extreme:
+  <"can figure out something given unlimited time and full Internet access">
+  is usually too easy and one does not need to take a course to be able to do that. 
+  A <skill> for the purpose of this course is something like this: 
+  <"can figure out a certain range of 
+  tasks within a limited time and given a limited/standard documentation">.
+  For the purposes of preparing for the multiple-choice test you may
+  assume that the most basic documentation will be available. 
+
+  [[1]] Basic process skills building and testing Web applications. 
+  Set up an environment for Java-based Web application and a Ruby/Rails application.
+  Use Ant and Maven build scripts. Use version control system.   
+  
+  [[2]] Use Eclipse
+  IDE or similar (including TODO lists, refactorings, integration with source control (e.g. Subclipse), 
+  with JUnit testing, with Maven); formatting Java code, 
+
+  [[3]] Can do JUnit testing, knows how to set up Junit 4.0 testcases
+  (@Before, @BeforeClass, @After, @AfterClass, @Test, @Parameters, @Ignore), 
+  can run JUnit tasks in Ant, Maven and Eclipse IDE. 
+  Can record selenium tests through Selenium IDE 
+  and run them from local machine and also configure them through selenium core. 
+  Can configure and run Cactus tests and simple performance tests. 
+
+  [[4]] Can code RDBMS data access through JDBC and Spring, configure various data sources, including
+  mock data sources for testing. Can implement O2R mappings of various class diagrams
+  into Hibernate or Ruby/ActiveRecord. 
+
+  [[5]] Coding in markup languages, template languages, JSP/JSTL/EL, XSLT. Development of
+  simple Velocity macros and JSP custom taglibs.
+
+  [[6]] Coding with JavaScript and DOM. 
+
+  [[7]] Can run JVM console applications and can set up their environment (properties, etc.).
+  Can configure and run Java Web applications; editing all sections of a <<<web.xml>>>
+  file and correct layout of WAR deployables. 
+  
+  [[8]] Can set up the Spring application contexts for various command-line and   
+  Spring MVC Web applications. 
+
+  [[9]] Can code RDF files in N3 notation. Can understand and develop 
+  simple ontologies in OWL with Protege. Can code RDF data access through Jena. 
+  Can write SPARQL queries against RDF data. Can use the rule-based and ontology-based
+  model entailments. 
+
+  [[10]] Can use existing Web applications and resources from a local machine. Can run
+  simple robots, screen scrapers (e.g. JavaScript driven ones like in Simile project), 
+  do Web markup data cleanup, validation (Tidy), preprocessing. Can use various techniques
+  (regular expressions, parsing, XSLT transforms) to convert data between formats.
+
+  [[11]] Can integrate Spring MVC with Web Services (including remote ones 
+  like Google.com and Amazon.com) and 
+  also integrate with stateless session EJBs, messaging EJBs.  
+  Can integrate to Java applications using both XML-based approaches (SOAP) and
+  serialization-based approaches (e.g. RMI, EJB). 
+  
+  [[12]] Can use simple AJAX paradigms, 
+  code browser-independent JavaScript stuff with CSS, JavaScript and XML. 
+  can apply existing frameworks for full text search (Lucene) in Web applications.
+
+  [[13]] Can implement simple Java midlet applications, can use
+  mobile devices as HTTP clients. 
+
+  [[14]] Can develop simple MVC applications with Ruby/Rails. Can code ActiveRecord, 
+  data migrations, offline Web-related scripts. 
+
+  [[15]] More Software Engineering practices of the Web development.
+  Branches in Subversion, using some task-tracking tool, doing code reviews, proper testing. 
+  Basic skills in <requirement management>, 
+  <project management>, <configuration management>
+  <issue management>. 
+
+
+
+

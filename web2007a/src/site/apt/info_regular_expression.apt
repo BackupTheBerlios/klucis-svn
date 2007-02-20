@@ -1,0 +1,45 @@
+3-Tier Architecture
+~~~
+
+   Three-tier is a client-server architecture pattern, which maintains separation
+   between these three independent modules: 
+   
+   [[1]] <<Presentation tier>> or user interface (UI). 
+
+   [[2]] <<Application tier>> or "logic"/"business" layer. 
+    it is some domain model 
+
+   [[3]] <<Data tier>> or access to some datasource, e.g. 
+   a database, a file system, an RDF repository, LDAP server, etc. 
+
+   Communication between these layers is supposed to be linear, i.e. 
+   presentation tier is never involved with data access directly. 
+   Each user request from presentation tier is interpreted in the application 
+   tier (input data validation, user authorization, understanding
+   the nature of the request, possibly its part in the flow ), and then 
+
+   There are also generalizations called multitier architectures.
+   In a typical Web application done with Spring architecture the 
+   separation between layers can be done as shown in the table. 
+   The "glue" between the layers is preferably some standard interface, 
+   so that the separating interfaces between the 
+   adjacent layers are clear without any extra design. 
+
+*------------------------------------------------*
+| <<Presentation Tier>>: Spring's MVC            |
+*------------------------------------------------*
+| Glue: Rendering of Templates and               |
+| Spring's Property Editors and Validators       |
+*------------------------------------------------*
+| <<Application Tier>>: Application specific     |
+| class implementations                          |
+*------------------------------------------------*
+| Glue: Hibernate O2R Mapping, RDF access, etc.  |
+*------------------------------------------------*
+| <<Data tier>>: RDBMS, LDAP or similar          |
+*------------------------------------------------*
+
+  Spring instrumentation typically interferes with all these layers. 
+  There are other examples of multitier architectures with 
+  less conventional lines separating the different layers. 
+  See e.g. {{{./info_sw_layer_cakes.html}SW Layer Cakes}}

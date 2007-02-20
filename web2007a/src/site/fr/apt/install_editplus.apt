@@ -1,0 +1,51 @@
+EditPlus redaktors
+~~~
+
+    [Aproksts:] 
+    <EditPlus> ir sprosts teksta redaktors - leidzeigs bet lobuoks nakai 
+    <Notepad>. Eistyn dereigs, kab lobuotu HTML'a failus.
+
+    [Šursyuteišonys adress:] 
+    {{http://www.editplus.com}}
+
+    [Nūsacejumi:] 
+    nav
+
+
+  * Darbynuot (<izpildīt/vykdyti/execute>) <<<%CD%/editplus/epp221_en.exe>>>
+  
+  * Apstyprinuot nūklusātū (<noklusēts/numatytasis/default>) instalacejis 
+  direktoreju - pīmāram zam <<<c:\Program Files>>>
+  
+  * Pīkrist, jo instalaceja vaicoj par eisynuojumu (<īsinājumikona/piktograma/shortcut icon>) 
+  iz Editplus.
+  
+* Programys puorbaudeišona i konfigurēšona
+~~~
+
+  * Atdareit (<atvērt/atverti/open>) (<<desktop>>) EditPlus'a ikonu
+
+  * Mīgt iz pūgom \[Evaluate\] i \[I Agree\]
+
+  * Atdareit komandu jūsteņā (<izvēlne/meniu juosta/menu bar>)
+  <<Tools>>-><<Preferences>> i izavieliet kategoriju <<Fonts>>. 
+  Īstateit "font size" (pīmāram 11pt)
+  i "language" (pīmāram "Baltic") kai lobuok pateik. Lobuok atstuot fonta tipu "Courier New", 
+  napuormeitu, tys rokstomuos mašinys (<rakstāmmašīna/typewriter>) fonts 
+  ir pīmāruots sprosta teksta redigēšonai.
+
+  []
+
+
+** <EditPlus> dialogs "Preferences"
+~~~
+[../install/editplus.png] EditPlus dialogs "Preferences"
+
+  * Izavieliet kategoreju "Files" i izjemt čeksi nu rūtenis 
+  (<izvēles rūtiņa/žymimasis langelis/checkbox>) 
+  "create backup file when saving". Itymā gadejumā <EditPlus> naizglobuos
+  (<saglabāt/įrašyti/save>) ogruokuos versejis 
+  failus ar papiļdynuojumu (<paplašinājums/prievardis/extension>) <<<*.bak>>>.
+
+
+

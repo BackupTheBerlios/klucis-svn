@@ -1,0 +1,78 @@
+Objektorientacejas īvods 
+~~~
+
+* Īvoda sapratīni (<jēdziens/concept>)
+~~~
+
+** Abstrakceja (<abstrakcija/abstraction>)
+~~~
+
+  Objektorientaceja programēšonā struodoj ar objektim, kas 
+  sevī globuoj i datus i metodus, kas apstruodoj tūs datus. 
+  Taidi objekti ir, pīmāram, cylvāki voi nūtikumi. 
+  "Cylvāku objekti" programā 
+  simbolizej atseviškūs cylvākus - pīmāram globuoj datus 
+  par jūs vuordim, personas kodim, cik kuram pīder naudys, i.t.t. 
+  Nūtikuma objektā, pīmāram, varātu globuotīs juo aproksts, 
+  suokuma laiks i beigu laiks. 
+
+
+
+* Kai atsaškir "IS-A" nu "HAS-A"
+
+princips: Ja klase A montoj (<mantot/paveldėti(?)/inherit>) nu klases B, 
+  tod vysys A instancis (<instance/objektas/instance>) ir arī klases B instances
+
+  * Liskovas princips: Ja klase A manto no klases B, tad programmās klases B instanču vietā visur var lietot A
+   instances. 
+
+  []
+
++---
+public interface Shape {
+    // uzzīmē geom.figūru
+    public void paint();
+    public void translate(int x, int y);
+    // izstiepj platumā
+    public void setWidth(int w);
+    // izstiepj augstumā
+    public void setHeight(int h);
+}
+
+public class Rectangle implements Shape {
+    public void paint() { ... }
+    public void translate(int x, int y) { ... }
+    public void setWidth(int w) { ... }
+    public void setHeight(int h) { ... }
+}
+
+public class Square extends Rectangle {
+    public void paint() { ... }
+    public void translate(int x, int y) { ... }
+    public void setWidth(int w) { ... }
+    public void setHeight(int h) { ... }
+}
++---
+
+ * Abstraktas klases: Noder tur, kur vēlamies taisīt <šablonu metodes>, t.i. 
+ neabstrakta metode sauc abstraktas metods (kuras pēc tam konkretizējas)
+
+ * Interfeisi: Tur kur jāpievieno objektam serviss, nav labi izveidot
+ atkarību vienai klasei (servisa lietotājam) no citas klases (paša servisa). 
+ Tādēļ labāk visus šādus servisus nepiesaistīt nekādai konkrētai implementācijai
+ (ja vien nepastāv kādi ierobežojumi uz to, kādai jābūt šai servisa klasei), 
+ bet gan piesaistīt interfeisu.
+
+
+
+* Kas ir komponents
+~~~
+
+ Komponents ir objekts, kurš tiek pārvaldīts 
+
+
+* Literatūra
+~~~
+
+ * Atsvaidzināt OO lietas no Java Certification grāmatas
+

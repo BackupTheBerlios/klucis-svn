@@ -1,0 +1,33 @@
+Homework 01: Producing clean XHTML documents
+~~~~
+
+    [Goal:]
+    Cut, clean and parse legacy HTML
+
+    [Description:]
+    Typical Web sites contain HTML, where useful
+    document is framed with navigation items and banners, 
+    which contain wrong or redundant HTML markup, 
+    or HTML, which cannot be processed as XML/XHTML as it is. 
+    Some preprocessing steps are usually necessary 
+    to make it usable for screen scraping.
+    
+* Introduction
+~~~
+
+  Use the provided code to download articles
+  from some Web portal, desirably such that allows robots, see 
+  <<<robots.txt>>> file in the virtual Web root. 
+  The list of documents to download
+  can be taken, e.g. from the RSS feed. 
+  The code downloads documents accordingly to some 
+  pattern, assigns names accordingly to some naming convention
+  and stores them in the specified local directory. 
+
+  The objective of this homework is to transform the downloaded files
+  to another directory with the same names, but as
+  cleaned HTML documents - without any navigation or banners, 
+  with correct and minimalistic XHTML markup. 
+  
+
+  

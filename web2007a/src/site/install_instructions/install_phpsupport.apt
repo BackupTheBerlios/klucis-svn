@@ -1,0 +1,187 @@
+${preprocessor.warning}
+PHP support for Apache
+~~~
+
+    [Description:]
+    PHP is a scripting language to develop Web applications. PHP software 
+    can be configured to run with various Web servers, including Apache. 
+
+    [Download at:]
+    {{http://www.php.net/downloads.php}} (select link “PHP 5.1.4 zip package”) 
+
+    [Preconditions:] 
+    Apache 2.2.2 should be installed (PHP also works with Apache versions 
+    1.x and 2.0.x, but the installation steps are different). 
+    MySQL should also be installed for the provided database access sample to work. 
+
+
+  * Unzip the PHP distribution <<<%CD%\php\php-5.1.4-Win32.zip>>> to some 
+  newly created directory, e.g. <<<c:\tools\php-5.1.4>>>
+
+  * Go to {{http://www.apachelounge.com/download/}} - download the file 
+  <<<php5apache2.dll-php5.1.x.zip>>> (also available at 
+  <<<%CD%\apache\php5apache2.dll-php5.1.x.zip>>> ). 
+  The following three steps are taken from the README file included in this ZIP. 
+
+  * Extract the file <<<php5apache2.dll>>> from the <<<php5apache2.dll-php5.1.x.zip>>>
+  and copy it to c:\tools\php-5.1.4 (overwrite the existing DLL file). 
+
+  * Extract the file httpd.exe.manifest to 
+  <<<c:\Program Files\Apache Software Foundation\Apache2.2\bin>>>
+
+  * Install the Microsoft’s Visual C++ Redistributable (available from 
+  {{http://www.microsoft.com/downloads/details.aspx?familyid=32BC1BEE-A3F9-4C13-9C99-220B62A191EE&displaylang=en}}, 
+  the installation also available on the CD-ROM - 
+  <<<%CD%\cpp_redistributable\vcredist_x86.exe>>>
+
+  * Make a backup copy of the Apache server configuration file 
+  (i.e. copy the file <<<c:\Program Files\Apache Software Foundation\Apache2.2\conf\httpd.conf>>> 
+  to <<<httpd.conf.bak>>>). 
+
+  * Edit the Apache config file - add the following lines to the end of the 
+  <<<httpd.conf>>> file (show in bold):
+
+  []
+
++---+
+httpd.conf
+================
+...
+...
+...
+<IfModule ssl_module>
+SSLRandomSeed startup builtin
+SSLRandomSeed connect builtin
+</IfModule>
+
+LoadModule php5_module "c:/tools/php-5.1.4/php5apache2.dll"
+AddType application/x-httpd-php .php
+
+# configure the path to php.ini
+PHPIniDir "C:/tools/php-5.1.4"
++---+
+
+  * Restart the Apache Web server - <<Start>> -> <<All Programs>> -> <<Apache HTTP Server 2.2.2>>
+  -> <<Restart>>. If it does not restart, you can see the error messages by doing the 
+  following DOS commands in the <<<c:\Program Files\Apache Software Foundation\Apache2.2\bin>>> directory:
+
+
+  []
+
++---+
+httpd -help
+...
+httpd -n Apache2.2 -k stop
+...
+httpd -n Apache2.2 -k start
+...
++---+
+
+
+  * Here "Apache2.2" denotes the name of the service created during Apache installation 
+  (see <<Start>> -> <<Control Panel>> -> <<Administrative Tools>> -> <<Services>>)
+
+
+  * If Apache server does not restart and there is no obvious mistake, 
+  e.g. wrong path to PHP directory, etc., then restore the configuration backup file 
+  (rename httpd.conf.bak back to httpd.conf) and seek help of more experienced people.
+
+
+  * Optional: Enable MySQL database access. Copy the file 
+  <<<c:\tools\php-5.1.4\php.ini-recommended>>> to <<<php.ini>>>. 
+  Edit <<<php.ini>>> - change the value of the variable "extension_dir" and uncomment 
+  one extension declaration line by removing the semicolon (shown in bold):
+
+  []
+
++---+
+php.ini
+=======
+...
+; Directory in which the loadable extensions (modules) reside.
+extension_dir = "./ext"
+...
+;extension=php_msql.dll
+extension=php_mysql.dll
+;extension=php_oci8.dll
+...
++---+
+
+
+  * Add <<<c:\tools\php-5.1.4>>> to the system PATH variable. 
+  Restart the computer for the changes to take effect.
+
+
+
+
+
+* Check the installation:
+~~~
+
+  * If after the above configuration steps Apache server could be started again, 
+  check the PHP installation. Create a file under some newly created directory 
+  under Apache webroot (for example under, 
+  <<<c:\Program Files\Apache Software Foundation\Apache2.2\htdocs\php-tests\ >>> , 
+  if we assume that "htdocs" is the webroot). 
+
+  []
+
++---+
+c:\Program Files\Apache Software Foundation\Apache2.htdocs\php-tests\sample.php
+===============================================================================
+<?php
+# Basic PHP test
+echo "<h1>Hello, world!</h1>";
+
+# MySQL database access test - print the select result
+$link = mysql_connect('localhost', 'root', 'root')
+   or die('Could not connect: ' . mysql_error());
+echo 'Connected successfully';
+mysql_select_db('testingonly') or die('Could not select database');
+$query = 'SELECT * FROM names';
+$result = mysql_query($query) or die('Query failed: '.mysql_error());
+# Print table name and column titles
+echo "<table border='1' cellspacing='0' cellpadding='4'>";
+echo "<tr><th colspan='".mysql_num_fields($result)."'>";
+echo "Tabula NAMES</th></tr>";
+for ($i = 0; $i < mysql_num_fields($result); $i++) {
+  echo "<th>".mysql_field_name($result, $i)."</th>";
+}
+# Print data
+while ($line = mysql_fetch_array($result, MYSQL_ASSOC)) {
+   echo "<tr>";
+   foreach ($line as $col_value) {
+       echo "<td>$col_value</td>";
+   }
+   echo "</tr>";
+}
+echo '</table>';
+mysql_free_result($result);
+mysql_close($link);
+?>
++--+
+
+  * When testing only basic PHP without MySQL database, leave only the first 
+  "echo" statement in this file. Otherwise initialize a MySQL table "names" 
+  in the database "testingonly" as described in the checking part of the 
+  MySQL installation instruction.
+
+  * Open the following URL address in a browser: 
+  {{http://localhost/php-tests\sample.php}} . It should display two messages and a table.
+
+  * There are many more things to enable or activate in PHP - see its manual 
+  {{http://www.php.net/manual/en/}} for details.
+
+
+* Bibliography
+~~~
+
+  * {{http://www.php.net/manual/en/install.windows.manual.php}} - 
+  notes on installing PHP on a Windows system. 
+
+  * {{http://www.apachelounge.com/download/}} - software and 
+  instructions from Steffen for Apache version 2.2.2 on Windows; 
+  also see <<<readme_first.txt>>> from the <<<php5apache2.dll-php5.1.x.zip>>> .
+
+  * {{http://www.php.net/manual/en/ref.mysql.php}} - 
+  on how to configure and use MySQL database access from PHP.

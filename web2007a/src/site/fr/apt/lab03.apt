@@ -1,0 +1,72 @@
+Kai sašyut čāmus?
+~~~
+
+  Vienkāršās vietnēs parasti izmanto fiksētu izvietojumu ar nedaudziem
+  ekrāna komponentiem. Piemēram, tipiskā izvietojumā ietilpst
+  izvēlne, navigācijas josla, lapas galvenā daļa
+  (dažreiz arī papildus linki, lapas augša un apakša, reklāmas laukumi, utml.).
+  Ja ekrāna komponentu ir nedaudz un to izvietojums ir zināms, to 
+  var izveidot ar dažādiem vienkāršiem paņēmieniem -
+  <Server Side Includes>, kuras pieejamas dažādās tehnologjijās
+  (sk. arī "countries" piemēru Spring-ā). Ievērojot datu modelī 
+  <em title="naming convention">vārdu konvencijas</em> ļauj šādu saliktu 
+  skatu attēlot ar vienkāršu MVC arhitektūru no dažiem šabloniem.</p>
+
+  Ja komponentu ir daudz un to izvietojums ir atkarīgs no pieprasījuma, 
+  lietotāja lomas un iestatījumiem, attēlojamo rezultātu skaita un tipa, tad
+  rodas vajadzība pieprasījuma apstrādes laikā izveidot hierarhiju ar 
+  Web-komponentiem, kur katrā komponentā atrodas maza daļiņa no kopīgā datu modeļa, 
+  un kas dinamiski attēlojas uz ekrāna.
+
+  Mēs pieņemam, ka ikviens Web-komponents ir kādas klases instance, kas 
+  var atbildēt uz lietotāja <em title="action">darbībām</em>, attēlot modeļa
+  datus. Komponents tiek attēlots ar noteiktu skata šablonu.
+
+
+* Uzdevuma apraksts
+~~~
+
+  Šī uzdevuma gaitā varēs izveidot kādai pietiekami dziļi strukturētai 
+  Web-lapai dinamisku kopsalikumu ar MVC palīdzību. Komponentu koku var veidot kontrolierī 
+  ar tiešiem izsaukumiem, kuri saliek kopā vajadzīgos šablonus. Šablonos
+  attēlojamie dati arī tiks statiski konfigurēti nevis iegūti no datubāzēm vai 
+  RDF modeļiem.
+
+  Šim uzdevumam var patvaļīgi izvēlēties kādu no tehnologjijām - vai nu Java, vai Ruby.
+  Ruby gadījumā šabloni ir *.rhtml faili, Javas gadījumā var izvēlēties 
+  vienalga kuru no izplatītajām šablonu valodām, kas spēj attēlot Javas objektus - 
+  Velocity, Freemarker vai JSP.
+
+
+* Testēšanas prasības
+~~~~
+
+  Izsaucot noteiktu URL adresi ir jāatveras pareizi izvietotiem un 
+  pareizi inicializētiem komponentiem. 
+  <<TODO:>> Kā testēt konfigurācijas nomainīšanu, piemēram, Javā?)
+
+  {Žurnalēšana} šī vingrinājuma ietvaros netiek prasīta.
+
+
+* Pieņēmumi
+~~~~
+
+  Šeit uzskaitām pieņēmumus, kuri būtiski vienkāršo uzdevuma izpildi
+  un atšķir to no reālas Web aplikācijas:
+
+ * Komponentu izvietojums var būt jebkura kokveida hierarhija, 
+   bet tā ir statiski konfigurēta un nemainās aplikācijas darbības gaitā.
+ * Aplikācijas atbilde nav atkarīga no lietotāja sesijas 
+   (nav drošības, lietotāju lomu, pielogošanās)
+ * Vietnei nav navigācijas un nav jārūpējas par stāvokļa saglabāšanu
+ * Visi aplikācijai vajadzīgie dati nāk no statiskiem konfigurācijas failiem
+   vai Ruby datu struktūrām
+
+* Readings
+~~~
+
+ * J2EE Pattern of Composite Views.
+ * Velocity #parse macro
+ * Freemarker #.. directive
+ * JSP fancy stuff.
+

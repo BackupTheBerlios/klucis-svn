@@ -1,0 +1,38 @@
+Expectations
+~~~
+
+    [Abstract:]
+    Expectations define the activities and skills of instructors
+    teaching "Web technologies". This document is intended 
+    for internal use only, e.g. for a program director to 
+    choose appropriate candidates for the position of instructor
+    and teaching assistant for the given course. 
+
+"Tīmekļa programmēšanas" asistenta amata darbu apraksts
+
+* Assistant's Job Description
+~~~ 
+
+   Šis apraksts ir apspriežams ar asistentu pirms darbu uzsākšanas
+"Tīmekļa programmēšana" ir kurss, kurš iekļauts LU Datorzinātņu maģistratūras programmā kā 4 kredītpunktu B daļas priekšmets.
+DARBĪBAS
+No NNNN.gada 1.augusta līdz 2006.g. 31.janvārim asistentam jāuzņemas atbildība par šādām lietām: 
+(1) Veidot vai apkopot "Tīmekļa programmēšanas" nodarbību konspektus par atsevišķām tēmām kā PowerPoint prezentācijas un demo piemērus šīm lekcijām. Arī konvertēt tās publicēšanai mājaslapā. 
+(2) Piedalīties "TP" praktisko darbu aprakstu izstrādē; izveidot to galīgo rakstisko noformējumu, tos izpildīt/uzprogrammēt, veidot šiem darbiem manuālus vai automatizētus testus, ar kuru palīdzību tos labot. Daļu no testiem darīt zināmu studentiem. Izlases kārtībā studentu praktiskos darbus ieskaitīt arī klātienē konsultāciju laikā, bet vairumu no tiem - elektroniski.
+(3) Piedalīties "TP" semestra vidus kontroldarba un gala eksāmena darbu labošanā. 
+(4) Regulāri publiskot nodarbību konspektus, praktisko darbu aprakstus, studentu iegūtās atzīmes. Atbildēt uz studentu e-pastiem; ja nepieciešams, veikt korekcijas praktisko darbu aprakstos un citos TP kursa materiālos. 
+(5) Piedalīties iknedēļas apspriedēs par "TP" un "W&SW" kursiem; to parastais laiks - piektdienās no 18:00 līdz 21:00. Pēc savstarpējas vienošanās var paarcelt uz citu laiku tajā pašā nedēļā.
+KVALIFIKĀCIJA
+Augšminēto darbību veikšanai nepieciešamas sekojošas iemaņas, kuras asistentam savlaicīgi jāapgūst  
+(1) Veidot MS PowerPoint prezentācijas, kā arī publicēt materiālus Webaa ar HTML un radniecīgu tehnoloģiju palīdzību. 
+(2) Spēt patstāvīgi iegūt zināšanas par kursā ietilpstošajām Web programmēšanas tēmām. Prast šīs zināšanas pierakstīt un izklāstīt studentiem piemērotā veidā.
+(3) Pārzināt UML klašu diagrammas un komunikācijas diagrammas (t.i. objektmodelēšana ar Poseidon rīku). Prast programmēt Javā un lietot Eclipse un Maven2 vidi.
+(4) Prast administrēt MySQL datubāzi un veidot SQL pieprasījumus. 
+Prast lietot JDBC bibliotēkas iespējas, lai no Javas lietotu SQL. 
+Prast strādāt ar Hibernate un izmantot to Javas un MySQL datubāzes integrēšanai.
+(5) Pārzināt Javas Web konteinera iespējas uz Tomcat vai JBoss servera. Prast veidot servletus kā arī JSP lapas, t.sk. izmantojot dažādas direktīvas (<%@ ... %> utml. sintaksi) un JSTL tagu bibliotēku.
+(6) Pārzināt MVC koncepciju Web aplikāciju veidošanā. Prast veidot Spring MVC un prast tajos darbināt vienkāršus piemērus.
+(7) Pārzināt XML sintaksi un XSLT transformāciju iespējas, prast veidot šādas transformācijas. Pārzināt SVG, MathML, u.c. marķēšanas valodas kas balstās uz XML 
+(8) Pārzināt WML un mobilās tehnoloģijas; prast programmēt mobilo telefonu kā Web aplikācijas klientu.
+(9) Prast izvietot EJB aplikācijas uz JBoss servera un integrēt tās ar Javas Web slāni. Prast veidot un lietot vienkāršas uz Ruby/Rails balstītas aplikācijas, kā arī izmantot Semantic Web risinājumus (t.sk. bibliotēku Jena un Redland karkasu). 
+(10) Visām minētajām tehnoloģijām prast uzinstalēt programmēšanas vidi un sniegt paskaidrojumus studentiem, kad tie saskaras ar tehnoloģiska rakstura problēmām. Prast veidot automatiskos testus ar JUnit un tam radniecīgajām tehnoloģijām.

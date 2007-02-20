@@ -1,0 +1,69 @@
+Facetted browse
+~~~
+
+  Facetted browse allows to search and browse data entities (such 
+  as documents, merchandise, people)
+  by filtering them according to various criteria simultaneously. 
+  E.g. filtering could happen both by author and by the 
+  creation date in a repository of documents, 
+  by price and by brand name in a repository of sellable items, etc. 
+  One particular case of facetted browse has long been present
+  in DB application interfaces by allowing to filter on several 
+  columns simultaneously. 
+
+  In many types of Web applications (e.g. e-commerce) there could
+  be different sets of facets for different kinds of resources
+  (e.g. each type of merchandise has different parameters - books, 
+  digital cameras, washing machines, etc.). 
+  If the facetted browse is based on database columns alone, it
+  could become inflexible or unmanageable. 
+  The solution for these difficulties could be to use the metadata 
+  obtained or derived according to the approaches of the Semantic Web. 
+  
+  Besides the facetted browse, there are 3 fairly universal 
+  strategies of information browsing, navigation and search:
+
+  * <full text search>, e.g. {{http://www.google.com}}
+
+  * <hierarchical browse>, e.g. {{http://dmoz.org}}
+
+  * <tagging>, e.g. {{http://del.icio.us}}, 
+  {{http://www.flickr.com}}
+
+  
+  In the case of facetted browse each of the 3 abovementioned
+  filters and also other metadata facets  
+  becomes just another facet. 
+  User can choose several facets simultaneously by building the 
+  search expression as a logical conjunction of all the 
+  filters; in some cases also a disjunction or some other expression. 
+  I.e. the facetted browse becomes a generalization of the 
+  3 abovementioned methods. 
+
+  []
+
+* Demos
+~~~~
+
+    [MIT demo:]
+    {{http://simile.mit.edu/exhibit/examples/publications/publications.html}}
+    Should be viewed by Firefox (there is a JavaScript error in IE).
+    It has some deficiencies - cannot be extended to many categories, 
+    cannot be bookmarked (i.e. the values of the filters are not included
+    in the URL address because of the client-side scripting). 
+
+    [Amazon.com digital cameras:]
+    A classical representative of a facetted browse:
+    {{{http://www.amazon.co.uk/Digital-Cameras-Accessories-Photography-Bundles/b/ref=amb_link_18158765_1/202-0196827-8303053?ie=UTF8&node=560836}http://www.amazon.co.uk/...}}
+
+    [EBay demo:]
+    {{http://tinyurl.com/km5qe}}. 
+    Here it shows what happens, if the user has added too many filters (in this example 
+    they are keywords: "sony", "digital", "camera", "fish"). 
+    It is possible that several combinations of 3 or less of these
+    keywords give some results, but all 4 combined give nothing. 
+    This usecase allows to discard any of the filters. 
+
+    [Two more applications:]
+    See also {{http://www.swed.org.uk/swed/index.html}}
+    {{http://ralter.ilrt.bris.ac.uk/IugoPortal/}} - further examples of facetted browse.

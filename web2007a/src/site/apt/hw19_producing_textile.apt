@@ -1,0 +1,19 @@
+Homework 19: Producing Textile from XML 
+~~~~
+
+    [Goal:]
+    Use XSTL to produce Textile (wiki-like) markup from the given XML. 
+
+    [Description:]
+    Add some extra functions to an XSLT transform publishing
+    Formatted Objects (FO) and Adobe PDF via Apache FOP tool. 
+    In particular, convert multiple choice tests to a printable format.
+    
+    
+* Introduction
+~~~
+  
+  
+
+
+  

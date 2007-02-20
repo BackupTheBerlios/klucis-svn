@@ -1,0 +1,64 @@
+Skaldņu navigācija, <Facetted browse>
+~~~
+
+  Skaldņu navigācija (<facetted browse>) ir 
+  datu vienību pārlūkošanas un meklēšanas paņēmiens, kas 
+  ļauj atlasīt vienības (piemēram, dokumentus, preču sortimentu, 
+  cilvēkus, utml.) pēc vairākiem kritērijiem vienlaikus. 
+  Datubāzu aplikāciju interfeisos jau tradicionāli lieto 
+  filtrus pēc vairākām kolonnām vienlaikus - kas ir skaldņu navigācijas
+  izpausme.
+
+  Savukārt Weba aplikācijās skaldņu navigācija, 
+  kura balstās uz semantiskā Weba metadatiem (nevis datubāzes kolonnām) 
+  ir samērā jauna joma. Tā vispārina 3 izplatītus informācijas
+  pārlūkošanas, navigācijas un meklēšanas paņēmienus:
+
+  * pilna teksta meklēšanu (<full text search>),
+  piemēram, {{http://www.google.com}}
+
+  * hierarhisku meklēšanu un pārlūkošanu (<hierarchical browse>), 
+  piemēram, {{http://dmoz.org}}
+
+  * uz tagiem balstītu meklēšanu (<tagging>), 
+  piemēram, {{http://del.icio.us}}
+  vai {{http://www.flickr.com}}
+
+  Skaldņu navigācijas gadījumā gan ikviena no 3 augšminētajām 
+  metodēm, gan arī citas metadatu pazīmes (teiksim, dokumenta
+  autors vai publicēšanas datums, preces cena, utml.) 
+  kļūst par atsevišķām meklēšanas skaldnēm. Lietotājs var
+  izvēlēties vairākas skaldnes vienlaicīgi - būvējot 
+  meklēšanas izteiksmi kā logjisku konjunkciju no vairākiem 
+  filtriem, vai atsevišķos gadījumos arī disjunkciju vai kādu sarežgjītāku 
+  logjisku izteiksmi. Šādā gadījumā skaldņu navigācija ir vispārinājums
+  dažādiem citiem meklēšanas paņēmieniem.
+
+  []
+
+* Piemēri
+~~~~
+
+    [MIT piemērs:]
+    {{http://simile.mit.edu/exhibit/examples/publications/publications.html}}
+    Tas ir skatāms ar Firefox, jo uz IE redzams vienīgi tukšs ekrāns
+    (plus JavaScript kļūdas paziņojums).
+    Tam ir daži trūkumi - to nevar paplašināt lielam kategoriju skaitam, 
+    nevar veidot grāmatzīmes (t.i. filtru vērtības nav ierakstītas URL adresē), 
+    nav linku uz pašiem dokumentiem. 
+
+    [Amazon.com fotoaparāti:]
+    {{{http://www.amazon.co.uk/Digital-Cameras-Accessories-Photography-Bundles/b/ref=amb_link_18158765_1/202-0196827-8303053?ie=UTF8&node=560836}http://www.amazon.co.uk/...}}
+
+    [EBay piemērs:]
+    {{http://tinyurl.com/km5qe}}. 
+    t.i. kas notiek, ja kaads ir ierakstījis pārāk daudz meklēšanas filtru 
+    (šajā gadījumā 4 atslēgvārdi "sony", "digital", "camera", "fish"). 
+    Var gadīties, ka dažādas kombinācijas no 3 vai mazāk atslēgvārdiem
+    dod rezultātus, bet visi 4 atslēgvārdi kopā - nedod. Šajā gadījumā
+    lietotājam piedāvā "pakāpties atpakaļ", t.i. izmest kādu no atslēgvārdiem.
+
+    [Vēl 2 aplikācijas:]
+    Sk. arī {{http://www.swed.org.uk/swed/index.html}}
+    {{http://ralter.ilrt.bris.ac.uk/IugoPortal/}}
+    vēl daži Facetted Browse piemēri, kas gatavoti Anglijā.

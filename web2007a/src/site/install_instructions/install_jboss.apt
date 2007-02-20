@@ -1,0 +1,44 @@
+${preprocessor.warning}
+JBoss Application Server
+~~~
+
+    [Description:]
+    JBoss is one of the most popular Java Application Servers. 
+
+    [Download at:]
+    {{http://labs.jboss.com/portal/jbossas/download}} (select 4.0.4 or the 
+    newest production version; pick link "Download", select ZIP installation 
+    package, e.g. jboss-4.0.4.GA.zip and pick some mirror). 
+
+    [Preconditions:] 
+    JDK 5.0 should be installed and JAVA_HOME environment variable set. 
+    Local ports 8080 and 1099 should be available 
+    (or JBoss has to be configured to use different ports).
+
+  * Unzip the <<<jboss-4.0.4.GA.zip>>> under <<<c:\tools>>>
+
+  * Create a Desktop shortcut to the <<<c:\tools\jboss-4.0.4.GA\bin\run.bat>>>
+
+  * To run the JBoss, execute the BAT file; to stop the JBoss server, 
+  close the JBoss console window and wait until the program exits.
+
+
+* Check the Installation
+~~~
+
+  * Build one of {{{./install_javalibs.html}Spring}} Demo applications, e.g. by running
+  the Ant script under <<<c:\tools\spring-framework-2.0-rc1\samples\countries>>>:
+
+  []
+
++---+
+ant all
++---+
+
+  * The Ant command should create a file <<<dist/countries.war>>>. Copy the 
+  WAR file to the JBoss deployment directory, e.g. to 
+  <<<c:/tools/jboss-4.0.4.GA/server/default/deploy>>> . 
+
+  * Run the JBoss server and open this URL in some Web browser: 
+  {{http://localhost:8080/countries}}. An HTML page displaying menus
+  and navigation should come up.

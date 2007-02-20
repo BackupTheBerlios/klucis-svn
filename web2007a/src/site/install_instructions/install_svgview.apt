@@ -1,0 +1,58 @@
+${preprocessor.warning}
+Adobe SVG Plugin
+~~~
+
+    [Description:]
+    This plugin allows you to view SVG vector graphic pictures 
+    (see {{http://www.w3.org/Graphics/SVG/}}) with MS Internet Explorer. 
+
+    [Download at:] 
+    {{http://www.adobe.com/svg/viewer/install/main.html}}
+
+    [Preconditions:] 
+    Microsoft Internet Explorer 6.x
+
+
+  * Open the <<<%CD%\svg_viewer-3.03\SVGView.exe>>> file
+
+  * Restart the Internet Explorer. 
+
+
+* Check the installation
+~~~
+
+  * Create the following file in c:\temp directory: 
+
+  []
+
++---+
+karogs.svg
+===========
+<?xml version="1.0" standalone="no"?>
+<svg width="6cm" height="3cm" viewBox="0 0 200 100"
+  xmlns="http://www.w3.org/2000/svg">
+<desc>Kubas karogs</desc>
+<rect x="0" y="0" width="200" height="100"
+    fill="none" stroke="black" stroke-width="1"/>
+<g id="svitra"><rect x="0" y="0" width="200" height="20" 
+    fill="#0000ff" /></g>
+<use xlink:href="#svitra" transform="translate(0,40)"/>
+<use xlink:href="#svitra" transform="translate(0,80)"/>
+<polygon fill="red" stroke="red" stroke-width="1" 
+    points="0,0 87,50 0,100"/>
+<g transform="translate(29 50)">
+<g id="stars"><polygon fill="white" stroke="none" stroke-width="0" 
+    points="0,-15 5,0 -5,0 " /></g>
+<use xlink:href="#stars" transform="rotate(72)"/>
+<use xlink:href="#stars" transform="rotate(144)"/>
+<use xlink:href="#stars" transform="rotate(216)"/>
+<use xlink:href="#stars" transform="rotate(288)"/>
+</g>
+</svg>
++---+
+
+  * Open the file with Internet Explorer and check the menu options 
+  for the right mouse button (see figure).
+
+ 
+[install/svgview_cubanflag.png] An SVG image in a browser with Adobe plugin

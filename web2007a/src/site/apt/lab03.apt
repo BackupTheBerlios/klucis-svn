@@ -1,0 +1,181 @@
+Lab Exercise 03. Quiz Composing: Dynamic Layout and Component State
+~~~
+
+    [Course:]
+    "Web technologies", Spring 2007. 
+
+    [Due:]
+    Monday, April 2nd, 2007
+
+    [Purpose:]
+    The purpose of this exercise is to 
+    implement stateful, interacting components which can be created in the runtime; 
+    including optimal lifecycles, application logic (doing tests), form processing, 
+    property editors, validation and facetted browse. 
+    This exercise will evolve the Quiz App from {{{./lab02.html}Lab 02}} 
+    to include quiz composition mode, where instructors and teachers
+    can filter, browse and tag test items. The Web interface will allow
+    easy pagination and sorting of the results along 
+    with bookmarking their searches.
+    
+
+* Background
+~~~
+
+  Simple Web sites typically use <static layout> with a predefined number of screen
+  components (menu, navigation bar, main/content part of the page, 
+  sometimes a header and a footer, banners, etc.). 
+  Such layout is well supported by 
+  <Server Side Includes>, Spring's master layout and a few other easy 
+  techniques. 
+
+  When there are many screen components and their visibility, layout and state 
+  may depend on the request, user's role, various settings, the type of 
+  the results to display or their number, it becomes easier to allow
+  <dynamic layout>, which represents a data structure of displayable
+  screen components (ModelAndView instances in the case of Spring), 
+  which recursively paints itself on the Web page. This approach 
+  uses the traditional GoF design pattern called "Composite". 
+  See also {{{b_composite_views}[1]}}.
+
+  Since dynamic layout introduces potentially unlimited number of components, 
+  some efficiency issues need to be resolved. The new issues are
+  <scopes>, <lifecycle management> and <events> for the dynamic screen 
+  components. Let us illustrate these issues:
+
+    
+  * <<Scopes.>> For a multi-user application there could be some components, which 
+  are shared by a large number of users. For example, a database data source
+  or a screen component displaying the number of users currently logged
+  into some portal - such resources may be defined <on application level> and
+  shared by everyone. Some other components (e.g. current user's settings)
+  exist for the whole time, when the user is logged in - they are said
+  to be defined and to make sense <on session level>. 
+  Some other components need to be created anew for each user request. 
+  This is roughly parallel with <scopes> as defined by a JSP specification
+  (they have application, session, request and page scope -
+  see {{{b_scopes}[2]}}). 
+  
+  Spring offers a more general scoping mechanism for
+  its Web components - see {{{b_spring_scopes}[3]}}. (Spring 2.0 also allows 
+  custom scopes; e.g. components being re-created in response to certain events. 
+  For example, it could make sense to create a scope, which is somewhere in-between
+  request and session - when user browses through the same result set, 
+  the custom sort order for the results is preserved, but, when there is another
+  interaction within the same user session, then some display parameters 
+  get their default values again - this could be called "interaction scope"
+  whatever is meant by interaction.)
+  Using scopes properly can optimize the performance, since it allows to 
+  reuse certain heavyweight objects and to avoid unnecessary initializations
+  on components, which we are sure to need again soon. 
+
+  * <<Lifecycle Management.>> There could be various visible or invisible components 
+  which may need be created in various parts of the application. 
+  In order for them to have consistent names, access to 
+  the same global configuration parameters, ability to communicate, 
+  there is a need for a separate component manager object. 
+
+  * <<Events>> If there is a static layout of few components and their behavior 
+  is simple and uniform (e.g. the only events of interest
+  are incoming HTTP requests), then there can be a fixed evaluation
+  order of the subcomponents or even each one of them can be evaluated
+  separately from the others. 
+  On the other hand, an indefinite number of components, which can 
+  interact in various ways depending on their runtime state may need
+  some event listening approach, which can also be implemented through the manager.
+
+  In this lab exercise you will implement a dynamic layout of 
+  some filters, which allow browsing test items by some (fixed) number
+  of search facets (owner, creation date, tag, their precise topic). 
+  There is also a two-screen browsing of itemsets and their items
+  and past assignments and their items, which allow composing new
+  assignments/quizzes. 
+
+
+* Preparing for the Exercise
+~~~  
+
+
+* Design Problem 
+~~~
+
+  Queries and Facetted Browse. 
+
+  * Caching versus roundtrips to data source - the tradeoff in data access. 
+  Eager/Lazy approaches. Comparing Hibernate and Jena/ARQ. 
+
+  * Low level data access - JDBC, Jena/ARQ, etc. 
+
+  * O2R frameworks: Hibernate and ActiveRecord comparisons 
+  regarding database access (Java and Ruby respectively). 
+
+  * Reading data from RDF model; its entailment. Direct Jena calls versus
+  SPARQL. 
+
+  * Collators and ordering data in SQL and SPARQL. Two or three aproaches to 
+  German collators. 
+
+  * B-closures in RDF. How to control the right amount of data interchange
+  in SPARQL queries. 
+
+
+
+
+* Resources
+~~~
+
+** Provided Code
+~~~~
+
+
+* Mechanics
+~~~
+
+
+* Expectations
+~~~~
+
+** Deliverables 
+~~~~
+
+
+** Prerequisite knowledge
+~~~~
+  
+
+** What is learned during this exercise
+~~~~
+  
+
+** Guidelines for Evaluation
+~~~~
+
+
+
+
+
+
+
+
+* Bibliography
+~~~
+
+  [[1]] {b_composite_views} {{http://java.sun.com/blueprints/corej2eepatterns/Patterns/CompositeView.html}} - 
+  J2EE Pattern "Composite View"; this chapter of a 2002 textbook mostly deals with statically composed views. 
+
+  [[2]] {b_scopes} {{http://java.sun.com/j2ee/tutorial/1_3-fcs/doc/Servlets5.html}} - The Classical JSP Scopes 
+
+  [[3]] {b_spring_scopes} {{http://static.springframework.org/spring/docs/2.0.x/reference/beans.html#beans-factory-scopes}} 
+  - Spring bean scopes
+
+  [[4]] {{http://en.wikipedia.org/wiki/Permalink}} (vai arî permalinku 
+  uz ðo rakstu - {{http://en.wikipedia.org/w/index.php?title=Permalink&oldid=75994548}})
+
+  [[5]] {{http://tinyurl.com/km5qe}} - adaptîvas filtrçðanas piemçrs no EBay.com
+
+  [[6]] {{http://tinyurl.com/qwbzx}} - daudzdimensiju filtrçðanas piemçrs no Amazon.co.uk
+
+
+
+* Errata
+~~~~

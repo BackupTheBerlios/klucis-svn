@@ -1,0 +1,179 @@
+JUnit Testcases and Inheritance
+~~~
+
+  
+* Problem Description
+~~~
+   
+   The simplest situation with testing and inheritance arises, when 
+   one class <<<B>>> inherits or overrides a method <<<g()>>> from 
+   another class <<<A>>>, and must
+   check the same contract as the parent. 
+   Notice that the contract of <<<B.g()>>> must be same as or stronger
+   than the contract of <<<A.g()>>>. Otherwise instances of <<<B>>> 
+   cannot substitute instances of its parent class in all the situations
+   where the contract of <<<A.g()>>> is concerned - this would 
+   be a violation of the {{{./info_liskov_principle}Liskov principle}}. 
+
+
+   Here is one suggestion how to test the contract of <<<A.m()>>> in 
+   two places without repeating testing code:
+
++---
+public class A { 
+  ...
+  // some contract for A.m()
+  public int m() {...}
+  ...
+}
+
+public class B extends A {
+  ...
+  // B.m() may have a stronger (=more specific) contract
+  public int m() {...}
+  ...
+}
+
+public class TestA {
+  A instance; 
+
+  @Before
+  public void setUp() {
+    instance = new A();
+  }
+
+  @Test
+  public void testingM() {
+     // test the contract of A.m()...
+  }
+  ...
+}
+
+public class TestB extends TestA {
+
+  @Before
+  public void setUp() {
+    instance = new B();
+  }
+  @Test
+  public void testingM() {
+     super.testingM(); // test contract of A.m()
+     // test the remaining contract of B.m()...
+  }
+  ...
+}
++---
+
+
+
+
+  There could also be a more complicated inheritance 
+  hierarchy involving concrete classes, abstract classes and interfaces. 
+  This gives rise to <multiple inheritance>, where some concrete
+  class inherits methods from its parent class and, possibly, also from 
+  one or more interfaces. 
+  If both the superclass and the interfaces have contracts
+  they should have testcases, which are organized and inherited
+  in such a manner that the same contract is written as one testcase 
+  (for an abstract class or an interface), 
+  but it may be executed for all classes, where it is relevant. 
+  This issue is known as <abstract testcases>. For example, consider
+  the following situation:
+
++---
+public class SampleA {
+  // Contract: must return 0
+  public int e() {
+    return 0;
+  }
+	
+  // Contract: Must return 1 or 2
+  public int f() {
+    return 1;
+  }
+	
+  // Contract: Must return a number divisible by 4 
+  public int g() {
+    return 4;
+  }
+}
+
+public interface ISampleB {	
+  // Contract: Must return a number divisible by 6
+  public int g();
+}
+
+public class SampleB implements ISampleB {
+  public int g() {
+    return 18;
+  }
+}
+
+public class SampleC extends SampleA implements ISampleB {
+	
+  // Contract: Must return 0 (same as its superclass)
+  public int e() {
+    return 0;
+  }
+	
+  // Contract: Must return 2 (behaves differently from its superclass)
+  public int f() {
+    return 2;
+  }
+	
+  // Contract: Must return something divisible by 12, 
+  // i.e. divisible both by 4 AND by 6 to satisfy SampleA.g() and
+  // ISampleB.g()
+  public int g() {
+    return 12;
+  }
+}
++---
+
+  There are several ways to arrange testing with abstract testcases - 
+  you may prefer inheritance or delegation for the testcase classes
+  (i.e. <<<TestB>>> may be a concrete subclass of a concrete
+  class <<<TestA>>>, or <<<TestA>>> may be an abstract class,
+  or <<<TestB>>> may contain an attribute of type <<<TestA>>>). 
+  The choice may depend on the way you prefer to organize your test suites
+  and fixtures. 
+
+ 
+* Questions
+~~~
+  [[1]]
+  Implement testcases for the classes <<<SampleA>>>, <<<SampleB>>>
+  <<<SampleC>>> and for the interface <<<ISampleB>>>. 
+  Name these testcases <<<SampleATest>>>, <<<SampleBTest>>>,
+  <<<SampleCTest>>>, and <<<AbstractISampleBTest>>> accordingly.
+  (Notice that a test for the contract of an interface or an abstract
+  class cannot be a concrete class, because it cannot be instantiated; 
+  on the other hand it cannot be an interface itself, because
+  checking a contract requires some method code - therefore 
+  using abstract classes for testcases is suggested.)
+  Make sure that <<<SampleCTest>>> does not explicitly 
+  check divisibility by 12, but instead executes the relevant testcase
+  from <<<SampleATest>>> (to check divisibility by 4) and 
+  also from <<<AbstractISampleBTest>>> (to check divisibility by 6). 
+
+  If possible, suggest other ways of testing, which do not involve
+  abstract testcases.
+
+  [[2]] 
+  Mention a real situation, where an interface method needs a contract.
+  One can use examples from the Java SDK API (the interfaces in Java
+  standard libraries). 
+
+  [[3]] 
+  Assume that class <<<B>>> inherits (but does not override) some method <<<m()>>> from 
+  its parent class <<<A>>>. Assume that there is a JUnit test for method <<<A.m()>>> 
+  already. Does it make sense to write a JUnit test the method <<<B.m()>>> as well? 
+  Does the answer change, if both <<<A>>> and <<<B>>> are classes of immutable objects? 
+
+
+
+* Bibliography
+~~~
+
+  <<[AbstractTestCases]>> {{http://c2.com/cgi/wiki?AbstractTestCases}} - some remarks regarding
+  writing abstract test cases with JUnit; see also the JUnit FAQ. 

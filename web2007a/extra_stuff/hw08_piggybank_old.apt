@@ -1,0 +1,9 @@
+Individual Homework 08: Screen-scraping RDF Content
+~~~~
+
+    [Description:]
+    Using Simile project's capabilities, scrape the information 
+    of one of the big portals: reklama.lv, dzivoklis.lv
+    or nams24.lv and convert it into the provided RDF format. 
+    Write SPARQL queries against that data.
+    

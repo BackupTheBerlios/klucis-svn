@@ -1,0 +1,17 @@
+Objektu dzeivis rytums
+~~~
+
+  * BeanFactory lietas. Ko var instanciēt ar fabrikām. 
+  Savu komponentu fabriku veidošana no RDF datiem.
+  
+  * Dažādi scopes/dzīvescikli Web aplikācijās. 
+  
+  * Intermediate scope - kaut kas pa vidu starp request un session
+
+  * Aspekti - ko objekts dara, kad izveidojies un ko tad, kad
+  notiek citas lietas. 
+  
+  * Notikumu klausīšanās (komponentu savstarpēja savienošana)
+
+  * 
+

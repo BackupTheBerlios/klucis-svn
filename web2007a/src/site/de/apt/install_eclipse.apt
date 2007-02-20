@@ -1,0 +1,175 @@
+Integrētā programmēšanas vide Eclipse 
+~~~
+
+    [Apraksts:]
+    Eclipse ir populāra integrētā programmēšanas vide. 
+    Tās iebūvētā konfigurācija ļauj ērti redigjēt, testēt, atkļūdot 
+    un pildīt Javas programmas. Eclipsei ir pieejami arī daudzi bezmaksas
+    spraudņi. 
+
+
+    [Lejupielāde:] 
+    {{http://www.eclipse.org}}
+
+    [Priekšnosacījumi:]
+    JDK 5.0 jābūt instalētam
+
+* Eclipse
+~~~
+
+  * Atarhivēt <<<%CD%\eclipse\eclipse-SDK-3.1.2-win32.zip>>> zem <<<c:\tools>>>
+
+  * Nospiediet un turiet labo peles pogu uz faila 
+  <<<c:\tools\eclipse\eclipse.exe>>>, izvēlieties 
+  <<Create Shortcut>>. Velciet ar peli radušos īsinājumikonu <<<eclipse.exe>>> 
+  uz darbvirsmu.
+
+  * Ar dubultklikšķi atveriet Eclipse ikonu uz darbvirsmas. 
+  Vajadzētu atvērties Eclipse aplikācijai.  
+
+  * Ja tā piedāvā izveidot darba direktoriju (workspace), izvēlieties 
+  kādu vērtību, kas tuva saknes direktorijai (piemēram, <<<c:\myworkspace>>>), 
+  iezīmējiet iespēju "Use this as the default and do not ask again", 
+  un spiediet \[OK\]. Dažiem projektiem jūs veidosiet direktoriju izvietojumu
+  ar rokām vai ar rīku {{{./install_maven.html}Maven}}, tādēļ darba direktorijas
+  vietu vajag iegaumēt. 
+
+  * Aizveriet "Welcome" skatu. 
+  Eclipse aplikācija ir gatava jaunu projektu veidošanai.
+
+** Kā pārbaudīt instalāciju
+~~~
+
+  * Izveidojiet sekojošu direktoriju struktūru (piemēram, zem <<<c:\temp>>>):
+
+  []
+
++---+
++HelloProject
+  +src
+    +mypackage
+      Hello.java
+  +bin
++---+
+
+  * Šeit direktoriju vārdiem priekšā rakstīts "+", un absolūtais ceļš uz failu 
+  <<<Hello.java>>> ir <<<c:\myworkspace\HelloProject\src\mypackage\Hello.java>>>. 
+  Faila <<<Hello.java>>> izejas teksts var būt šāds (klase pakotnē "mypackage"):
+
+  []
+
++---+
+Hello.java
+==========
+package mypackage;
+
+public class Hello {
+    public static void main(String[] args) {
+        System.out.println("Hello");
+    }
+}
++---+
+
+  * Paņemt no Eclipse izvēlnes <<File>>-><<New>>-><<Project>>. 
+  Izvēlēties "Java Project", nospiest "Next". 
+
+  * Izvēlēties "Create project from existing source" un spiest \[Browse\]. 
+  Izvēlēties direktoriju <<<c:\temp\HelloProject>>>. 
+
+  * Pārkopēt projekta saknes direktorijas vārdu "HelloProject" arī teksta
+  lodziņā "Project Name field" (sk. attēlu)
+
+  []
+
+[install/eclipse_new_project.png] Gabals no "New Java Project" dialoga
+
+  * Spiest \[Finish\]. Vajadzētu būt radušamies jaunam Eclipse projektam 
+  (sk. attēlu):
+
+  []
+ 
+[install/eclipse_simple.png] Vienkāršs projekts Eclipsē
+
+  * <<Problēma:>> Ja nevar redzēt "Package Explorer" skatu 
+  kreisās puses rāmī, paņemt no izvēlnes <<Window>>-><<Open Perspective>>-><<Java (default)>> 
+  un <<Window>>-><<Show View>>-><<Package Explorer>>
+
+  * <<Problēma:>> Ja "mypackage" nav attēlota ar pakotnes (maza kvadrātiņa) ikonu, 
+  izvēlēties "HelloProject" ar labo peles klikšķi
+  Package Explorer skatā, izvēlēties "Properties", izvēlēties 
+  "Java Build Path" dialogā un atvērt "Source" apakšdialogu. 
+  Pārliecinieties, ka  "HelloProject/src" ir vienīgā izejas tekstu direktorija (source folder)
+  un "HelloProject/bin" ir noklusētā izejas direktorija (output directory).
+
+  * Eclipse pārkompilē Javas failus automātiski 
+  (izvēlnes opcija Project->Build Automatically pēc noklusēšanas ir ieķeksēta). 
+  Tas nozīmē, ka tiek radīts fails 
+  <<<c:\mypackage\HelloProject\bin\mypackage\Hello.class>>> , 
+  un tas tiks pārkompilēts ikreiz, kad <<<Hello.java>>> izejas teksta 
+  fails tiek izmainīts. 
+
+  * Palaist projektu, izvēlnē paņemot: 
+  <<Run>>-><<Run As>>-><<Java Application>>  - paziņojumam "Hello" 
+  jāparādās konsoles logā labajā apakšējā pusē.
+
+
+
+* Eclipses spraudņu instalācija
+~~~
+
+  * Atarhivēt <<<%CD%\eclipse\tk.eclipse.plugin.htmleditor_2.0.0.zip>>> un 
+  <<<%CD%\eclipse\xmlbuddy_2[1].0.72.zip>>> tā ka rodas divas jaunas
+  direktorijas zem <<<c:\tools\eclipse\plugins>>>, proti,  
+  <<<com.objfac.xmleditor_2.0.72>>> un <<<tk.eclipse.plugin.htmleditor_2.0.0>>>
+
+** Instalācijas pārbaude
+~~~
+
+  * Šo spraudņu darbība ir novērojama, ja Eclipsē rada vai labo 
+  HTML vai XML failus; teksts tiks izkrāsots (un XML failu gadījumā 
+  var parādīties validācijas kļūdu paziņojumi. 
+
+  * Ja iegūstat traucējošus XML kļūdu paziņojumus (sarkanus pasvītrojumus
+  vai zilas jautājumzīmes XML failos, šos paziņojumus var nodzēst
+  ar <<XML>>-><<Clear Validate>>.
+
+
+* Eclipses konfigurācija, lai strādātu ar Maven
+~~~
+
+  * Izveidot Maven JAR arhetipa projektu (sk. Maven instalāciju); 
+  palaist komandu "mvn eclipse:eclipse" un izveidot Eclipse projektu 
+  direktorijā "your_jarfilename".
+
+  * Tajā droši vien nav kompilācijas kļūdu, bet projekta nosaukums 
+  joprojām varētu būt iezīmēts ar sarkanu krustiņu. Šajā gadījumā 
+  izpildīt sekojošas darbības: 
+
+    * Ar labo peles klikšķi uz projekta vārda izvēlēties "Properties". Izvēlēties
+    "Java Build Path" dialoga kreisajā pusē un atvērt 
+    "Libraries". Iespējams, būs redzama šāds classpath ieraksts:
+    <<<M2_REPO/junit/junit/3.8.1/junit-3.8.1.jar>>>
+
+    * Kļūdas cēlonis ir nedefinēts mainīgais <<<M2_REPO>>>, 
+    kurš norāda uz Mavena repozitorija sakni. Lai to definētu, klikšķināt 
+    "Add Variable", nākamajā dialogā - "Configure Variables", 
+    un pēc tam - "New". 
+
+    * Dialogā "New Variable Entry" ierakstīt sekojošas vērtības un 
+    pārbaudīt, ka  <<<junit/junit/3.8.1/junit-3.8.1.jar>>> atrodas
+    zem izvēlētās direktorijas.
+
+    []
+
++---+
+Name: M2_REPO
+Path: d:\Documents and Settings\student\.m2\repository
++---+
+
+
+  * Šie soļi dod labas izredzes, ka visi rīki (Maven, Eclipse, 
+  Subversion) darbosies saskaņoti. Iepriekšējais solis 
+  ir jāpilda tikai vienreiz pēc Eclipses instalācijas. Pēc tam <<<M2_REPO>>> 
+  vienmēr norādīs uz Mavena repozitoriju un izveidos pareizas norādes
+  uz tajā esošajiem JAR failiem pēc kārtējās komandas "mvn eclipse:eclipse", 
+  kas jāpilda ikreiz, kad Mavena <<<pom.xml>>> fails tiek mainīts.

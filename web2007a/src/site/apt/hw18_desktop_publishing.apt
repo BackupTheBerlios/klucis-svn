@@ -1,0 +1,19 @@
+Homework 18: Desktop Publishing with FOP
+~~~~
+
+    [Goal:]
+    Use XSTL to produce paged medium from the given XML content. 
+
+    [Description:]
+    Add some extra functions to an XSLT transform publishing
+    Formatted Objects (FO) and Adobe PDF via Apache FOP tool. 
+    In particular, convert multiple choice tests to a printable format.
+    
+    
+* Introduction
+~~~
+  
+  
+
+
+  

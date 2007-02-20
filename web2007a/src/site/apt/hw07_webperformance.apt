@@ -1,0 +1,12 @@
+Homework 07: Compare Web Application Performance
+~~~~
+
+    [Description:]
+    Create a simple Spring-based Web application, which can be 
+    deployed to the WRHapi Web server (the one, which uses Java NIO 
+    package for its custom request processing instead of Servlet API). 
+    Web application can do something quite simple, e.g. display 
+    a database table with contacts (person's name, address, phone), 
+    allowing insert/edit/remove commands. 
+    Compare the performance of WRHapi with application deployed to 
+    Tomcat Servlet container by doing a simple load test. 

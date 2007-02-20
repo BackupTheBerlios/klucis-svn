@@ -1,0 +1,14 @@
+Komponenti un testi
+~~~
+
+  Dotas dažas Javas klases, kuras apraksta gjeometriskas figūras un burtus.
+  Ir arī dažas abstraktas klases un interfeisi. Uzdevumā jāuzprogrammē
+  šīs Javas klases atbilstoši vārdiski dotam kontraktam un jāizveido 
+  minimālistisks JUnit 4 testu komplekts.
+
+  Pamazām var arī atkomentēt Spring konfigurācijas failā arvien 
+  jaunus objektu aprakstus un pieredzēt kā bildīte pildās ar
+  dažādiem elementiem atbilstoši logjikai.
+
+  (Bildīšu idejas tiek ņemtas no Aptitude testa - jāvar izveidot visas, 
+  kas tur vispār ir un vēl šis tas cits.)

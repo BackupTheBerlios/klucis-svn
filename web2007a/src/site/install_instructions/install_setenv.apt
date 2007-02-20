@@ -1,0 +1,66 @@
+${preprocessor.warning}
+Environment Variables
+~~~
+
+    [Description:]
+    Each computer may have a slightly different configuration, e.g. 
+    the directories chosen for various installations, software product versions, 
+    etc. To enable the software components to find each other and colaborate, 
+    operating systems like Windows and UNIX introduce environment variables.
+
+
+* How to Add a new Environment Variable under Windows
+~~~
+
+  * Right-click the icon "My Computer" and select "Properties" 
+  from the menu (or press WinKey + Pause). The following window appears:
+ 
+  []
+ 
+[install/setenv_system_properties.png] "System Properties" dialogue for the Windows XP
+
+  * Select the tab "Advanced" and press the button "Environment Variables". 
+  The following window appears:
+
+  []
+
+ 
+[install/setenv_variables.png] Subdialogue to edit environment variables for Windows XP
+
+  * Under "System variables" press button \[New\]
+
+  * Fill in the name and the value of the variable. 
+
+
+
+* How to Update an Existing Environment Variable under Windows
+~~~
+
+  * Right-click the icon "My Computer" and select "Properties" from the menu. 
+
+  * Select the tab "Advanced" and press the button "Environment Variables".
+
+  * Select an existing variable (e.g. Path) and change its value.
+  Notice that on Windows platform path-like variables may have several 
+  entries separated with semicolons (;). It is also important to avoid any 
+  unnecessary spaces, unless they are in the directory names. 
+  To avoid possible troubles with BAT scripts, we suggest using the 
+  <<<c:\tools>>> directory for various installations rather than 
+  the more common <<<c:\Program Files>>>. 
+
+  * Other instructions use this process repeatedly to introduce variables 
+  like JAVA_HOME, ANT_HOME and also to update the Path variable. 
+
+  * Since Java is platform-independent language, it has a 
+  platform-independent notion of environment variables. These are 
+  called "system properties" in Java - they include both the environment 
+  variables of the given operating system, and also some Java-specific 
+  key-value pairs, which describe the Java environment in general and 
+  also the values specified by the user. More information about 
+  Java System Properties see 
+  {{http://java.sun.com/docs/books/tutorial/essential/attributes/properties.html}}
+
+
+  * In some environments you could have CLASSPATH environment 
+  variable defined. Such variable may interfere with some 
+  Java applications; remove this variable, if you can. 

@@ -1,0 +1,36 @@
+Introduction
+
+* Regarding the  "Web technologies - 2007" course documentation
+
+  This site provides information regarding the contents of 
+  the master's program course "Web Technologies" in the University of Latvia. 
+  It does not yet contain full set of course documents and assignments, but 
+  we will gradually fill in the gaps.
+
+  To generate this documentation on your local machine:
+
+  * Download and unzip {{http://www.webkursi.lv/web2007a/site/downloads/web2007a.zip}}
+
+  * Install and configure {{{./install_maven.html}Maven 2.0}}
+
+  * In the root directory, where there is file <<<pom.xml>>>, run the <<<mvn>>> command to 
+  generate the HTML site and (optionally) <<<ant>>> command to back up 
+  your work:
+
+  []
+
++-----+
+mvn -N clean site
+ant zip
++-----+
+ 
+  * Open the file <<<%ROOT%/target/site/index.html>>>
+
+  * Find the source ZIP in the subdirectory <<<target/site/downloads/web2007a.zip>>>
+  
+
+* More books and presentations
+~~~~
+
+  These can be found on students.mii.lu.lv FTP server - see the folder 
+  "pasn/WebTechnologies". 

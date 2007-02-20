@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faqs id="General FAQ">
+  <part id="General">
+  <title>Vispārīgi jautājumi</title>
+    <faq id="when">
+      <question>Kursa norises laiks</question>
+      <answer>
+        Kursu "Web'a tehnologjijas" piedāvā 2007.gada februārī un martā.
+	Tas beidzas ātrāk, lai dotu iespēju magjistra darba rakstīšanai 
+	tiem, kuri gatavojas beigt skolu 2007.gada pavasarī. 
+	Kursa lekciju nodarbības visticamāk notiks divreiz nedēļā; 
+	grafiks tiks izziņots. 
+      </answer>
+    </faq>
+    <faq id="where">
+      <question>Kursa norises vieta</question>
+      <answer>
+        Lekcijas visticamāk notiek LU MII auditorijā (Raiņa bulvārī 29). 
+	Praktiskos darbus, individuālos mājasdarbus un izvēļu testus
+	var pildīt jebkur un iesniegt elektroniski. 
+      </answer>
+    </faq>
+    <faq id="lab_sessions">
+      <question>Praktiskās nodarbības</question>
+      <answer>
+        Neobligātas praktiskās nodarbības droši vien būs pieejamas Accenture's
+	datorklasē, Brīvības ielā 214, reizi nedēļā no 18:15 līdz 21:00. 
+	Tā ir izdevība ātrāk izpildīt programmēšanas vingrinājumus,
+	saņemt un dalīties ar praktiskām zināšanām ar pasniedzēju un citiem studentiem.
+	Praktisko nodarbību apmeklēšana neko nemaksā un neiespaido 
+	kursa prasības vai vērtējumu. Tomēr tie, kuri pierakstīsies
+	uz šīm nodarbībām būs atbildīgi par apmeklējumu; neierašanās 
+	gadījumā pasniedzēju vajadzēs brīdināt PIRMS pašas nodarbības. 
+	Sīkāka informācija par praktiskajām nodarbībām tiks izplatīta īsi 
+	pirms kursa sākuma. 
+      </answer>
+    </faq>
+    <faq id="audience">
+      <question>Mērķa auditorija</question>
+      <answer>	
+        Visi datorzinātņu magjistratūras studenti ir aicināti piedalīties; 
+	"Web'a tehnologjijas" galvenokārt domāts 2. gada studentiem. 
+	Arī 1.kurss var piedalīties bez ierobežojumiem.
+	Tiem, kuri nav 
+	<a href="http://www.lu.lv/">Latvijas Universitātes</a> datorzinātņu 
+	magjistratūras studenti, būtu jāsazinās ar pasniedzēju un magjistratūras
+	sekretariātu, lai uzzinātu par iespējām to apmeklēt. 
+      </answer>
+    </faq>
+    <faq id="instructor">
+      <question>Pasniedzējs</question>
+      <answer>
+        LU pagaidu štata darbinieks: Kalvis Apsītis (PhD).<br />
+	E-pasts: konts <code>kalvis.apsitis</code> domēnā <code>gmail.com</code><br />
+	Skype-ID: "kalvis.apsitis"<br />
+	Telefons: +371 2911 2997 
+      </answer>
+    </faq>
+  </part>
+
+  <part id="Activities">	
+  <title>Mācību pasākumi</title>
+    <faq id="requirements">
+      <question>Kādas ir prasības?</question>
+      <answer>
+        Lai saņemtu pozitīvu atzīmi par kursu, ir sekmīgi jāiesūta
+	vismaz 1 individuālais mājasdarbs un jāizpilda vismaz 3
+	praktiskie darbi, ko var darīt komandā.
+	Ir piedāvāts arī izvēļu tests, izdevība iesniegt vēl divus brīvprātīgus
+	mājasdarbus.
+      </answer>
+    </faq>
+    <faq id="grade">
+      <question>Kā aprēķina atzīmi par kursu?</question>
+      <answer>
+        Praktiskie darbi var dot 60 punktus, izvēļu tests - 16 punktus,
+	individuālie mājasdarbi - ne vairāk kā 24 punktus. 
+	Atzīmes izlikšanas brīdī visus nopelnītos punktus saskaita un summu 
+	apzīmē ar N (N=0,...,100).
+	Atzīme par kursu ir lielākais veselais skaitlis M ar īpašību, ka 10*M &lt;= N. 
+        NEVAR izvairīties no obligātajām kursa prasībām, savācot punktus par
+	neobligātajām - sk. <a href="#requirements">prasības</a>.
+	Lai saņemtu pozitīvu atzīmi (vismaz "4"), ir nepieciešami arī vismaz 40 punkti. 
+	Var gadīties, ka jāiesniedz vairāk par minimumu, ja komanda
+	zaudējusi daļu punktu, iesniedzot praktiskos darbus ar novēlošanos. 
+      </answer>
+    </faq>
+    <faq id="installations">
+      <question>Kāds dators ir nepieciešams?</question>
+      <answer>
+        Šim kursam ieteicams mēreni labs personāldators, piemēram, 80G disks, 
+	1G RAM, 3GHz procesors. Der arī mazāki parametri, bet tas var kļūt 
+	pārāk lēns, ja vienlaicīgi darbina Eclipse, JBoss, MySQL, pāris
+	pārlūkprogrammas un vēl citu programmatūru. 
+	Kursa materiāls ir uzrakstīts, pieņemot, ka lietotājs strādā ar
+	Windows XP mašīnu, bet to var viegli adaptēt arī Linux videi. 
+	Programmatūra šajā kursā ir galvenokārt bezmaksas vai izplatāmprogrammatūra
+	(<em>shareware</em>), kas uzskaitīta 
+        <a href="install_intro.html">instalāciju instrukcijās</a>. 
+	To labāk instalēt pakāpeniski, kad rodas vajadzība, nevis visu uzreiz.
+      </answer>
+    </faq>
+    <faq id="lab_exercises_defn">
+      <question>Kas ir praktiskie darbi?</question>
+      <answer>
+        Ir 3 savstarpēji saistīti <a href="labs.html">praktskie darbi</a>.
+	Tie domāti 2-3 cilvēku komandām un tiem ir iesniegšanas termiņi. 
+	Katrs no šiem darbiem apraksta prasības ieskaitīšanai un risinājuma 
+	noformēšanai un iesūtīšanai.  
+      </answer>
+    </faq>
+    <faq id="lab_exercises_grading">
+      <question>Kā nosaka praktisko darbu atzīmes?</question>
+      <answer>
+        Praktiskajiem darbiem ir JUnit un Selenium testi. 
+	Iespējami arī daži papildu testi, kas apraksta dažas šo darbu aprakstos minētas
+	prasības, bet kas tiek padarīti pieejami pēdējā brīdī. 
+	Visi testi iespaido atzīmi, bet obligāta ir vienīgi 
+	savlaicīgi publiskoto testu sekmīga izpilde - t.i. studentiem 
+	ir viegli pašiem pārliecināties vai darbs tiks vai netiks ieskaitīts. 
+        Vērtējuma aprēķins var atšķirties dažādiem darbiem, sk. piemēram, 
+	<a href="./lab01.html#Guidelines">1.Praktiskais darbs: Vērtēšanas kārtība</a>. 
+      </answer>
+    </faq>
+    <faq id="lab_exercises_late">
+      <question>Kā vērtēti vēlu iesniegti praktiskie darbi?</question>
+	  <answer>
+	Par darbiem, kas iesūtīti pēc iesniegšanas termiņa, atzīmi 
+	aprēķina reizinot ar gjeometriskas progresijas kvocientu 
+        r = 0.9 par katru novēloto dienu. Piemēram,  
+	ja darbs iesniegts ar n dienu nokavēšanos, to vērtē tāpat kā savlaicīgi 
+	iesniegtos, bet atzīmi reizina ar (0.9)<sup>n</sup>. 
+	Ja rezultāts ir daļskaitlis, tad punktu skaitu noapaļo ar 
+	precizināti līdz 0.01 pirms pieskaitīšanas koprezultātam.
+	Iesūtot risinājumu ar nepareizu direktoriju struktūru, tādu, 
+	kas nekompilējas vai neapmierina visus testus, šo praktisko 
+	darbu var iesūtīt atkārtoti, bet atzīmi arī šajā gadījumā reizina
+	ar to pašu kvocientu r. Maksimālais vērtējums par vienu praktisko darbu ir 
+	20 punkti.
+	</answer>
+    </faq>
+    <faq id="final_discussion">
+      <question>Nobeiguma diskusija</question>
+      <answer>
+        Kad komanda iesūtījusi savus praktiskos darbus, notiek apspriešanās starp projekta
+	komandu un pasniedzēju. Tam atvēlēti atsevišķi konsultāciju laiki 
+	un katra komanda var izvēlēties laika intervālu. 
+	Visiem komandas locekļiem jāsaprot visas iesniegtā risinājuma sastāvdaļas 
+	un tās profesionāli jāvar izskaidrot pasniedzējam. 
+	Studenti, kuri nevar izskaidrot kodu vai neierodas uz
+	nobeiguma apspriešanu var saņemt papildus jautājumus, pirms 
+	var saņemt atzīmi par kursu. 
+      </answer>
+    </faq>
+    <faq id="individual_hw">
+      <question>Kas ir individuālie mājasdarbi?</question>
+      <answer>
+        Tie ir nelieli programmēšanas vingrinājumi par dažādām tēmām. 
+	Tiem nav noteikta iesniegšanas termiņa. 
+      </answer>
+    </faq>
+    <faq id="individual_hw_procedure">
+      <question>Kuri individuālie mājasdarbi ir jāpilda?</question>
+      <answer>
+      Pašlaik ir saraksts ar vairākiem individuāliem mājasdarbiem. 
+      Ikviens students kursa sākumā izlozē 3 skaitļus no pasniedzēja
+      piedāvātas "cepures". No šiem skaitļiem students var izvēlēties 
+      vienu, kas kļūst par viņa/viņas obigātajiem mājasdarbiem, pārējos
+      skaitļus var neņemt vērā. Šī procedūra dod zināmu brīvību 
+      izvēlēties mājasdarbus atbilstoši savām interesēm. 
+      No otras puses, pasniedzējs ir pasargāts no situācijas, kad 
+      visi strādā pie vienas un tās pašas lietas.
+      </answer>
+    </faq>
+    <faq id="individual_hw_grading">
+      <question>Kā individuālos mājasdarbus vērtē?</question>
+      <answer>
+      Katrs individuālam mājasdarbam, kurš atbilst uzdevuma prasībām, 
+      dod 8 punktus. Brīvprātīgi iesniedzot vēl divus darbus var dabūt līdz pat 24 punktiem. 
+      Brīvprātīgos mājasdarbus var izvēlēties
+      no saraksta patstāvīgi, tiem nav jābūt numuriem no "ceputres". 
+      </answer>
+    </faq>
+    <faq id="test_defn">
+      <question>Kas ir izvēļu tests?</question>
+      <answer>
+        Izvēļu testā ir jautājumi par teoriju un prasmēm, kas uzskaitīti 
+        <a href="topics.html">tēmu sarakstā</a>. 
+	Atbildēt uz jautājumu nozīmē atrast pareizās M atbildes no N piedāvātajiem 
+	atbilžu variantiem (N=2...5). Pareizo atbilžu skaits M &lt; N
+	ir zināms jau iepriekš, parasti M=1. 
+      </answer>
+    </faq>
+    <faq id="test_procedure">
+      <question>Kāda ir izvēļu testa kārtošanas procedūra?</question>
+      <answer>
+        Izvēļu testu var kārtot no jebkura datora Internetā. 
+	Tests pieejams iepriekš noteiktos laika intervālos,
+	teiksim, vienu dienu nedēļā - 24 stundas no vietas.
+	Studentiem, kuri vēlas kārtot testu jāregjistrējas sistēmā
+	un jāpasaka konta vārds pasniedzējam. 
+	Parasti testā ir 80 jautājumi un tam vajadzīgas 120 minūtes. 
+	Noteikta standartdokumentācija (piemēram, javadoc lapas
+	un svarīgāko standartu specifikācijas) ir pielinkotas
+	un tās testa laikā var izmantot. 
+	Ja studenti vēlas testa laikā lietot citu derīgu dokumentāciju, 
+	to var iepriekš saskaņot ar pasniedzēju un padarīt visiem redzamu. 
+        Pilna teksta meklētāju (Google, u.c.) kā arī programmēšanas
+	rīku lietošana testa laikā nav atļauta. 
+	Pirms testa kārtošanas studentiem pieejami jautājumu paraugi, 
+	lai izvairītos no pārsteigumiem saistībā ar jautājumu raksturu.
+      </answer>
+    </faq>
+    <faq id="test_grading">
+      <question>Testu labošana</question>
+      <answer>
+        <em>Neapstrādāts rezultāts</em> S rāda, cik jautājumi ir atbildēti pareizi. 
+        Tests ir nokārtots, ja S>=70, t.i. vismaz 72 jautājumi no 80 ir atbildēti 
+	pareizi. Nopelnītais punktu skaits ir S-64. 	
+	Piemēram, ja kārtojot testu trīs reizes, pareizo atbilžu skaits ir 
+	attiecīgi 55, 65 un 75, tad tests ir nokārtots ar trešo mēgjinājumu 
+	un dod 75-64 = 11 punktus no 16.
+	Kārtojot testu vairākas reizes, iegūto rezultātu var arī tālāk uzlabot.
+      </answer>
+    </faq>
+    <faq id="other_technologies">
+      <question>Vai var lietot citas tehnologjijas, kas nav Java/Spring?</question>
+      <answer>
+	Pazīstami vairāki Web'a programmēšanas karkasi - PHP/CakePHP, Python/ZOPE, ASP.NET, 
+	kuriem nereti raksturīgs lielāks izstrādes ātrums  nekā Java/Spring. 
+	Tomēr pastāv uzskats, ka objektorientētu Web'a programmēšanu var iemācīties
+	arī uz valodas Java bāzes. Aicinām apgūt šo valodu pa tad, ja tā nav
+	vajadzīga nekam citam. Vienīgā iespējamā alternatīva Javai ir Ruby/Rails - sk.
+	<a href="#extra_credit">paaugstināts vērtējums</a>. 
+      </answer>
+    </faq>
+    <faq id="extra_credit">
+      <question>Vai iespējams saņemt paaugstinātu vērtējumu?</question>
+      <answer>
+        Ja jums patīk programmēt un testēt Ruby/Rails vidē, jūsu komanda var iesniegt
+	alternatīvu risinājumu tiem pašiem 3 praktiskajiem darbiem Ruby/Rails tehnologjijā.
+	Jums jāveido pašiem savi komponentu testi un jāizmanto jau dotie Selenium testi. 
+	Tas nozīmē, ka izveidotajai Web'a aplikācijai ir tā pati uzveība, toties 
+	tā izmanto cita veida servera puses tehnologjiju. 
+	Kodēšana ar Rails var būt mazliet ātrāka, bet šajā gadījumā jāveic
+	lielāks projektēšanas un testu izstrādes darbs. Komponentu testi nedrīkst
+	atpalikt no tā, kas tiek darīts Javā. Iesniedzot Ruby/Rails risinājumu 
+	praktiskajam darbam termiņā, var iegūt 16 punktus par vienu vingrinājumu. 
+        Kvocientu r=0.9 joprojām piereizina par katru nokavēto dienu vai 
+	kļūdaina darba atkārtotu nosūtīšanu.
+      </answer>
+    </faq>
+  </part>
+
+  <part id="Communication">	
+  <title>Saziņa</title>
+    <faq id="teambuilding">
+      <question>Kā veidojas komandas?</question>
+      <answer>
+        Studenti izveido un paziņo savas 2 vai 3 cilvēku komandas pasniedzējam.
+	Tas jāizdara PIRMS pirmā praktiskā darba iesniegšanas termiņa. 
+	Viena cilvēka komandas arī ir atļautas, bet darba apjoms 
+	saglabājas tas pats. 
+	Katra komanda izziņo arī vienu cilvēķu, kurš iesūtīs praktisko 
+	darbu risinājumus komandas vārdā. 
+      </answer>
+    </faq>
+    <faq id="colaboration">
+      <question>Kāda sadarbošanās ir atļauta?</question>
+      <answer>
+        Kad studenti neraksta kursa programmas un nekārto testu, nav ierobežojumu 
+	savstarpējai palīdzībai. Studenti var apspriest visus vingrinājumus, 
+	zīmēt attēlus, apspriest algoritmus un to pseidokodu, apmainīties 
+	ar uzziņas informāciju un kopīgi analizēt testa jautājumus. 
+      </answer>
+    </faq>
+    <faq id="dishonesty">
+      <question>Kas ir akadēmisks negodīgums?</question>
+      <answer>
+         Programmatūras izstrādes laikā ir atļauts izmantot uzziņas informāciju 
+	 Internetā un citur kā arī uzdot citiem vispārīgus jautājumus, bet
+	 nedrīkst izmantot artifaktus, ko izgatavojuši citi šī uzdevuma risināšanai 
+	 (komandu uzdevumu gadījumā tas attiecas uz citu komandu risinājumiem). 
+	 Citiem vārdiem, tajā brīdī, kad Jūs veidojat paši savu risinājumu, 
+	 nedrīkst izmantot cita cilvēka gatavu risinājumu šai pašai problēmai.
+	 Izvēļu testa kārtošanas laikā drīkst izmantot vienīgi uzskaitītos uzziņas
+	 materiālus un dokumentāciju. 
+       </answer>
+     </faq>
+     <faq id="confidentiality">
+       <question>Vai kursā saņemtie vērtējumi ir konfidenciāli?</question>
+       <answer>
+         Pasniedzējs cenšas aizsargāt studentu personas datus; t.sk. 
+	 saņemtie punkti vai gala vērtējums attiecas tikai uz pašu studentu.
+	 Darbu ieskaitīšana un vērtēšanas kritēriji bieži ir tādi, ka 
+	 vienas komandas locekļi var uzzināt viens otra vērtējumu. 
+	 Studentus aicinām respektēt vienam otra personas datus.
+       </answer>
+     </faq>
+     <faq id="copyright">
+       <question>Vai kursa materiāli ir aizsargāti ar autortiesībām?</question>
+       <answer>
+         Darbu apraksti un citi lasāmi dokumenti šajā kursā ir domāti LU WebCT sistēmai, 
+	 tādēļ var būt spēkā WebCT ierobežojumi. 
+	 No otras puses, visi programmatūras paraugi ir pieejami bez ierobežojumiem 
+	 (<em>public domain</em>) un tos var izmantot visur. 
+	 Tas pats attiecas arī uz studentu iesūtītajiem darbiem, ja vien studenti 
+	 paši nepieprasa, lai viņu programmatūra netiktu izmantota ārpus šī kursa. 
+	 Aicinām kursa dalībniekus atbilstoši atsaukties uz origjināla autoriem, 
+	 t.sk. saglabājot koda izcelsmes identifikāciju komentāros.
+       </answer>
+     </faq>
+  </part>
+</faqs>

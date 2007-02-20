@@ -1,0 +1,70 @@
+The Environment
+~~~
+
+* Setting up the Environment
+
+  The same instructions apply to lab01 through lab05. 
+  For simplicity, it will be written "lab01" everywhere, 
+  but it could mean any other lab exercise number as well. 
+  Download the respective lab exercise and unzip it. 
+  The list of downloadable exercises is available in the
+  <a href="labs.html">list of lab exercises</a>.
+
+* Initialize Maven Repository
+
+  Lab exercises and Maven's build environment have dependencies, 
+  which for the most part are downloaded over the Internet
+  as you start building the project. 
+
+  Download the distribution of 
+
+  After that "mvn eclipse:eclipse" will prepare the Eclipse project 
+  from this Maven's project. "mvn clean package" will compile, 
+  unit-test and package the project (as a JAR).
+
+
+
+
+* Packaging and Submitting
+
+  [[1]] The submitted file shall be called <<<lab01.zip>>>
+  and sent to the instructor's Gmail account.  
+
+  [[2]] The file can be created by running "ant submit" in the "lab01" subdirectory; 
+  this will create a package you can submit to the instructor
+  (either by a file-upload or by e-mail - the details will be communicated 
+  in the class).
+
+
+  [[2]] After unzipping it in some parent directory there is the 
+  following structure:
+
+  []
+
++-----+
++lab01
+  pom.xml
+  +src
+    +main
+      +java
+        +lv
+          +lumii
+            +web2007a
+              +lab01
+                <<Java source code>>
+      +resources
+        context.xml
+        data.n3
+    +test
+      +java
+        <<JUnit test code>>
+      +resources
+        <<Test configurations>>
++-----+
+
+  [[3]] The submitted ZIP should NOT contain "target"
+  subdirectory or any JAR files (all dependencies with version numbers
+  are documented in <<<pom.xml>>>. You probably won't need
+  to change the <<<pom.xml>>> file supplied for the exercise.
+
+

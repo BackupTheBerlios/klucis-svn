@@ -1,0 +1,33 @@
+Homework 15: Glossary with Velocity
+~~~~
+
+    [Goal:]
+    Develop a Velocity macro, which generates fragments of
+    DHTML markup, which display glossary term definitions
+    in response to user's mouse over events. 
+    This example shows how to write and distribute Velocity 
+    macros in Spring's applications. 
+
+    [Description:]
+    Repetitive and verbose HTML/CSS/JavaScript constructs are sometimes the
+    easiest way to achieve client-side dynamic behavior. 
+    To make creation of such effects easy for the template
+    writer, a development of a specialized Velocity macro is suggested. 
+
+    
+* Introduction
+~~~
+  
+  A DHTML sample page displaying some glossary items is provided. 
+  Develop a helper object, which is retrieving UTF-8 encoded 
+  glossary definitions from the database and use it to 
+  generate the DHTML code fragment. 
+  Then replace reference to this object by a macro so that it
+  is easy to call just by the glossary key:
+
++---+
+... some text #glossary('some_key') more text ...
++---+
+
+
+  

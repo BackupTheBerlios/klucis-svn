@@ -1,0 +1,11 @@
+Homework 13: Document Classifier
+~~~~
+
+  Implement Bayes or SVM classifier to recognize articles
+  about certain topics. 
+  You may use portal's preexisting content categories 
+  to train the classifier, and then verify, if it 
+  classifies correctly any new items. 
+
+
+

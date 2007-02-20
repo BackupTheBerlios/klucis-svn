@@ -1,0 +1,10 @@
+Individual Homework 11: SW Application with Inference Engine 
+~~~~
+
+    [Description:]
+    Add some axioms to the appartment ontology by using Protege, 
+    e.g. define some new categories of apartments through their
+    properties. 
+    Make a Semantic Web application, which uses the Pellet reasoner 
+    and classifies appartment data accordingly to your ontology. 
+

@@ -1,0 +1,8 @@
+MVC paraudzeņš ar <Spring> i <Rails>
+~~~
+
+  Šajā vingrinājumā piedāvāts pārveidot nelielu 
+  datubāzu aplikāciju, kurā realizēti biežāk izmantotie
+  Web aplikāciju aspekti: ekrāna dalījums laukumos (navigācijas josla
+  rezultāti, uml.), lietotāju autorizācija, žurnalēšana/logošana, 
+  internacionalizācija, RDF/RSS datu publicēšana. 

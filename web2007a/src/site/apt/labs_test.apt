@@ -1,0 +1,165 @@
+Multiple-choice Test: Sample questions
+~~~
+
+  These are question samples for the multiple choice exam
+  on Web technologies. 
+
+* HTML Test questions
+~~~
+
+  [[1]] Which of the above can be a correct
+  HTML (or XHTML) document written accordingly to W3C specifications:
+
+    [[A]] 
+
++---+
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+...
+</html>
++---+
+
+    [[B]]
+    ...
+
+
+* Spring test questions:
+~~~
+
+  [[1]] Consider the following code in the controller:
+
+
++---+
+public class StandardController implements Controller {
+    public ModelAndView handleRequest(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+        Map<String,Object> model = new HashMap<String,Object>();
+	model.put("message","Hello");
+        return new ModelAndView("view", "model", model);
+    }
+}
++---+
+
+  How the message can be output in a Velocity template <<<view.vm>>>? 
+
+    [[A]] 
+
++---+
+<h1>$model.get($message)</h1>
++---+
+
+    [[B]]
+
++---+
+<h1>$model.message</h1>
++---+
+
+    [[C]]
+
++---+
+<h1>$message</h1>
++---+
+
+    [[D]]
+
++---+
+<h1>$model.$message</h1>
++---+
+
+    [[E]]
+
++---+
+<h1>${model.message}</h1>
++---+
+
+
+
+  [[2]] Consider the following code in the controller:
+
+
++---+
+public class StandardController implements Controller {
+    public ModelAndView handleRequest(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+        Map<String,Object> model = new HashMap<String,Object>();
+	model.put("message","Hello");
+        return new ModelAndView("view", model);
+    }
+}
++---+
+
+  How the message can be output in a Velocity template <<<view.vm>>>? 
+
+    [[A]] 
+
++---+
+<h1>$model.get($message)</h1>
++---+
+
+    [[B]]
+
++---+
+<h1>$model.message</h1>
++---+
+
+    [[C]]
+
++---+
+<h1>$message</h1>
++---+
+
+    [[D]]
+
++---+
+<h1>$model.$message</h1>
++---+
+
+    [[E]]
+
++---+
+<h1>${model.message}</h1>
++---+
+
+
+
+
+~~ (2)	Velocity macros can access private properties, which have public get methods
+~~ (3)	AbstractController can have “protected” handle methods; but MultiAction controller can have only “public” methods. 
+~~ (4)	LimitedVelocityViewResolver is a possible approach to handle multiple templating languages
+~~ (5)	One can configure and use views in various files. 
+~~ (6)	MultiAction controllers can be configured to respond either to HTTP request parameters or to different URLs. 
+
+~~ (7) If under web/WEB-INF there are JSP or Velocity templates and Spring accesses them, 
+~~ then writing relative links to images under web/images is not obvious (virtual 
+~~ directory structure differs from the physical directory structure in the source tree). 
+
+~~ rdf:Bag is usable, when resources may repeat. Otherwise it is quite useless thing - 
+~~ would be better to use lists or repeat certain things. A test question on 
+~~ usage, e.g. describe 5 situations and ask, where rdf:Bag is appropriate and
+~~ where a list or a repeated property would do as well. 
+
+~~ fonts described as "humanistic serif fonts" are used to create an easy to read (in printable form)
+~~ balanced and harmonious text, suitable for classical/traditionalist settings. 
+~~ (here is a sample "Lorem ipsum...." ). 
+~~ Which font family best fits the description given above (Courier, Lucida Sans, Gothic, ....). 
+
+~~ Assume a client browser makes an HTTP GET request, and server sends a stream of 
+~~ octets, which can be interpreted as a stream of UTF-8 unicode chars, which 
+~~ constitute a valid XHTML document. The Content-type header coming back from 
+~~ the server is "text/xml;charset=utf-8". No stylesheets are specified anywhere
+~~ in that XHTML document. What should a standards-compliant
+~~ browser display? (a) an XML document in browser's default rendering, e.g. a
+~~ collapsible tree, (b) an HTML-rendered document, (c) it is implementation specific, 
+~~ (d) it should be displayed as HTML, if the URL address ends with .htm or .html. 
+~~ otherwise it is implementation specific.
+
+~~ Screen scraping technologies; mark all the correct responses. 
+~~ http://www.manageability.org/blog/stuff/screen-scraping-tools-written-in-java/view
+~~ regular expressions vs. XPath (when to use which)
+~~ TagSoup+XPath vs. Simile Piggybank
+~~ Perl CPAN vs. Java Regex. 
+
+~~ XPath expression //div[3]/div[2]/b is given. Also there is a tree - 
+~~ find how it evaluates. 

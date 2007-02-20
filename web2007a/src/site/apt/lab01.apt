@@ -1,0 +1,319 @@
+Lab Exercise 01. Vector Images: Configurations, Objects and Templates
+~~~
+
+    [Course:]
+    "Web technologies", Spring 2007. 
+
+    [Due:]
+    Monday, March 5th, 2007
+
+    [Purpose:]
+    The purpose of this exercise is to introduce 
+    Spring MVC application with a simple component architecture, Velocity templates
+    and RDF data access. It transforms data from an
+    RDF datasource into SVG or raster images via Velocity templates.
+    This application could serve as a command-line or a Web application 
+    programmatically generating vector images from simple configuration data and
+    HTTP requests. 
+
+    [Download:]
+    Use Anonymous checkout from BerliOS SVN (a Subversion client should be
+    installed prior to this): {{https://developer.berlios.de/svn/?group_id=7959}}.
+    See {{http://subversion.tigris.org/}}; it is sufficient to use Subclipse 
+    (an SVN plugin for Eclipse IDE). 
+
+
+
+
+
+* Background
+~~~~
+
+  Vector and raster images each have their advantages; for comparison
+  see  {{{./info_vector_raster_graphics}Vector vs. Raster graphics}}.
+  The software of this lab exercise will generate a range of simple images  
+  from their descriptions with RDF. 
+  ({{{http://www.w3.org/TR/rdf-primer/}RDF}} is a general, 
+  non-presentational way to describe objects and their relationships. 
+  The data model of an RDF is a directed graph with labeled nodes and edges
+  (these labels are URLs). The RDF can be written either as XML (this is 
+  used in all the W3C specification documents) or in the so called N3 notation, 
+  which is easier to create by hand compared to the XML syntax for RDF, 
+  which is explained in most RDF documents. 
+  
+  The processing chain by the software is the following:
+
+  [[1]] Read RDF data e.g. with Jena library, 
+  
+  [[2]] Initialize components. Component properties
+  may depend on the defaults remembered at the application-wide context,
+  some more specific contexts (e.g. user role, user specific settings, 
+  session settings, etc.), current model of image descriptions 
+  (all this information is recorded in <<<description.n3>>>). 
+  For the Web application the property values may depend also on the 
+  HTTP request parameters and actions (e.g. rotate, scale, hide, translate, etc.) 
+  performed on these components.
+
+  [[3]] Transform the components to SVG vector graphics via Velocity templates
+
+  [[4]] Optionally, filter the SVG to rasterize the graphics to PNG, 
+  which has better browser support. 
+
+  The Web application also contains a separate HTML page, which provides 
+  links to all the preconfigured images and allows setting their properties
+  and performing actions from Web forms. 
+
+
+
+
+* Preparing for the Exercise
+~~~
+
+  Get familiar with running simple Java command-line applications from Eclipse, 
+  get a SVN snapshot from the BerliOS project KLUCIS and run it from Eclipse. 
+  Run JUnit tests and verify that all of them work properly. 
+  Download Spring framework, build and deploy on Tomcat and/or JBoss some of 
+  the Spring samle applications (e.g. "countries"). Make sure that you understand
+  Spring's configuration file <<<countries-servlet.xml>>> and the 
+  <<<web.xml>>> configured for Spring's DispatcherServlet.
+
+  Install Adobe SVG Viewer 3.x plugin for Internet Explorer. Verify that
+  you can view some SVG files (SVG samples are included with Batik distribution). 
+  Read some RDF specifications and familiarize yourselves with N3 syntax for RDF. 
+
+
+* Design Problem 
+~~~
+
+  [[1]] Propose and implement "abstract"
+  JUnit tests for the contract of <<<AbstractComponentFactory.localGetComponent(...)>>>, 
+  so that these tests are run for all subtypes of 
+  <<<ComponentFactory>>>, but they need not be repeated in all the respective
+  test classes. I.e. implement an approach to test contract of abstract method
+  and to define these tests in one location only (the principle is 
+  "Don't repeat yourself" or "DRY").
+  In particular you must check that after <<<localGetComponent()>>> returns
+  the "id" property for the component is properly initialized.
+  Read more about {{{./info_abstract_tests.html}Abstract test cases}}. 
+
+
+  [[2]] Propose and implement JUnit tests to check that warnings are logged
+  in case when there is a repeated property in <<<KlucisDAO.getCascadedProperty()>>>. 
+  Right now the JUnit tests are not sensitive against the messages being logged, even
+  though the contract of a class includes its behavior regarding the logger. 
+  Your tests should check that the log warning text matches certain <regular expression>. 
+  A regular expression is a way to describe strings satisfying some pattern
+  (see e.g. <<<java.util.regex.Pattern>>>). 
+  In particular, check that if the same property is repeated for the same resource,
+  then the following warning message is logged:
+
++---
+"Non-unique property '[^']+' for resource '[^']+'"
++---
+
+  where we do NOT care about the name of the property or the resource. 
+  (Even though the testcase may know the property and the resource, 
+  asserting them in the log message could make the testcase  brittle. In fact, 
+  the property may be output either as a full URL, or a QName - 
+  e.g. "KLUCIS:hasColor", "klucis:hasColor" and 
+  "http://www.webkursi.lv/schema/20061008/klucis#hasColor" - 
+  may all be valid ways to write the property. Similarly the resource
+  may be a URL or a QName, or a blank node. 
+
+  [[3]] Implement a separate controller, which for all requests matching certain URL pattern
+  (the pattern is <<</PngImage/*>>>) outputs the PNG image obtained from the SVG
+  through rasterization/transcoding. You will probably need Apache Batik library to do this. 
+  Classes <<<SaveAsJPEG>>> and <<<SaveAsPNG>>> show sample code to do offline transformations 
+  for SVG, but your approach (e.g. filter) should do this server-side. Each transcoding/rasterization
+  to PNG typically takes about 1-2 seconds to complete. Do not worry about the performance
+  yet.
+
+  [[4]] You will notice that the factory code in the package <<<lv.webkursi.klucis.component.geom2d>>>
+  is very predictable. Propose a method to generate this code from annotations
+  (e.g. <<<RectangleFactory>>> code should be generated from annotations for <<<Rectangle>>> 
+  properties). You may use either Java 1.5 annotations or XDoclet approach or anything else
+  to do that. Add one extra precompilation step to the Ant buildfile, which would perform
+  the code generation before everything is compiled and before the JAR is archived.  
+
+  [[5]] Currently there is a possibility to do recursive render of Velocity views
+  (i.e. call merge of one Velocity view inside another). The approach works both 
+  for command-line and for Web application. There is one drawback though - 
+  ModelAndViews cannot be self-referential. This means that we have to add all 
+  the properties to the Velocity view's model explicitly. If there are many 
+  properties, it would be easier, if one could add just the reference to the underlying 
+  component (e.g. for the key "_component"), and all the properties could 
+  be just extracted by "getXxx()" methods. 
+
+  [[6]] Implement a few more components to enable drawing the flags (similar to 
+  the ones <<<17a.gif>>>, ... <<<17e.gif>>>). These images should be displayed in 
+  response to the following URLs - 
+  http://localhost:8080/klucisDemo/01/main/bilde_17a etc. 
+
+  [[7]] Currently, if several versions of the same shape is being output, 
+  it is repeated. Implement an optimized version, which would output each component
+  once and use SVG refid mechanism, if necessary. 
+
+
+
+* Resources
+~~~
+
+  Do not worry, if there are too many frameworks and libraries used
+  by this project. Most of the libraries are used in a simple and
+  straightforward way, and the usage samples are provided. 
+
+
+** What to Install
+~~~~
+  
+  J2SDK, Ant (or optionally Maven), Eclipse (possibly with Subclipse, Velocity
+  and XMLBuddy plugins), 
+  Editplus/Scite plain text editors, Firefox or Adobe SVG plugin for 
+  MS Internet Explorer. See {{{./install_intro.html}Installation instructions}}. 
+
+** Spring
+~~~
+
+  Spring framework is used to set up a Web application, which uses
+  Spring's pre-built MVC (Model-View-Controller) solution along
+  with Spring's other Dependency Injection mechanisms. 
+  A step-by-step tutorial is available - see {{{#Spring_Ris}[Spring_Ris]}}.
+  It is recommended that you configure Spring starting with some
+  minimal configuration and then gradually add more things to it 
+  as they become necessary
+  rather than start from some huge application, which contains
+  all kinds of things, which do not make immediate sense. 
+
+
+** CVSDude
+~~~
+
+  To collaborate more effectively, your team might want to set
+  up version control system for your team. One possibility 
+  is {{{http://cvsdude.com/}CVSDude}} - it has limited space, so 
+  it is better NOT to check in JAR files, but only your own code. 
+
+** Provided Code
+~~~~
+
+  A prototype Spring MVC application is already in place - 
+  it has fully configured <<<web.xml>>> and Spring's 
+  configuration files for each of the two dispatcher servlets. 
+  It already contains most of the code for the less obvious Java libraries
+  doing the Velocity configuration,
+  RDF data access, and SVG rasterization.
+
+* Mechanics
+~~~
+
+  There are 2 Spring configuration files. One Spring config file is for 
+  the command-line version of the program  
+  <<<trunk/klucis_core/src/main/resources/context.xml>>>. 
+  Another is for the Web version of the program - 
+  <<<trunk/klucis_demo/src/main/webapp/WEB-INF/klucis0-servlet.xml>>>.   
+  Both files contain configurations of the beans participating in the mini framework. 
+
+  Before submitting your project, please run "ant submit" to 
+  create the file <<<lab01.zip>>>, which you can submit to the 
+  instructor's e-mail.
+
+
+* Expectations
+~~~~
+
+  
+
+** Deliverables 
+~~~~
+
+  * Your application (including all source code and tests), 
+  which passes all the provided JUnit and
+  Selenium tests. 
+
+  * Description of your aproach for Factory class generation
+  and recursive, possibly self-referential views. 
+  Place it in a PowerPoint file <<<presentation.ppt>>> 
+  and place it under <<<trunk/docs>>>. 
+
+
+** Prerequisite knowledge
+~~~~
+  
+  Familiarity with SVG vector graphics, Spring configurations
+  and RDF in N3 notation. 
+
+** What is learned during this exercise
+~~~~
+  
+  How to set up Java/Eclipse/Maven/Subversion environment, 
+  how to develop simple Spring MVC applications, how to use
+  Velocity templates to create simple markup (HTML and SVG), how 
+  to access RDF data from Java code and how to 
+  generate bitmap images on the fly. 
+
+** {Guidelines} for Evaluation
+~~~~
+  
+  * 20 grade points total - 2 for each of the design/implementation problems
+  (i.e. 14 for all 7 design/implementation problems). 
+  Your team can also get up to 6 grade points for the write-up of the 
+  presentation <<<presentation.apt>>>.
+  
+
+
+* Bibliography
+~~~~
+
+  <<[{W3C_SVG_03}]>> World Wide Web Consortium. 
+  <Scalable Vector Graphics (SVG) 1.1 Specification>. 
+  W3C, Ed. Jon Ferraiolo et al., 2003-01-14. 
+  {{http://www.w3.org/TR/SVG11/}}.
+   
+  <<[{Eis_SVG_02}]>> Eisenberg, J.David. 
+  <SVG Essentials>. 
+  O'Reilly, 2002. 
+
+  <<[{Ris_Spring_03}]>> Risberg, Thomas. 
+  <Developing a Spring Framework MVC application step-by-step>.
+  2003-06-30. 
+  {{http://www.springframework.org/docs/MVC-step-by-step/Spring-MVC-step-by-step.html}}.
+
+  <<[{Ber_N3_05}]>> Berners-Lee, Tim. 
+  <Primer: Getting into RDF & Semantic Web using N3>.
+  W3C, 2005-08-16. 
+  {{http://www.w3.org/2000/10/swap/Primer.html}}.
+
+  <<[{Velocity}]>> The Apache Software Foundation. 
+  <Velocity User Guide>. 
+  Jakarta.Apache.Org, 2005. 
+  {{http://jakarta.apache.org/velocity/docs/user-guide.html}}.
+
+  <<[{Jena}]>> Hewlett-Packard Development Company, LP. 
+  <Semantic Web Framework Jena>.
+  Jena.Sourceforge.Net, 2006-06-15. 
+  {{http://jena.sourceforge.net/documentation.html}}.
+
+  <<[{Batik}]>> The Apache Software Foundation. 
+  <Batik SVG Toolkit>. 
+  Xmlgraphics.Apache.Org, 2005. 
+  {{http://xmlgraphics.apache.org/batik/}}.
+
+  <<[{APT}]>> Shafie, Hussein et al. 
+  <APT User Guide>.
+  Www.Pixware.Fr, 2005-06-13. 
+  {{http://www.xmlmind.com/_aptconvert/docs/userguidetoc.html}}.
+  
+
+
+
+
+* Errata
+~~~~
+  
+  <Notice that JUnit and Selenium tests and other principal conditions, which 
+  define the criteria for successful submission of the exercise will 
+  freeze 1 week prior to the deadline.
+  Additional information could be added here 
+  regardless of the deadlines in response to students' enquiries.>
+
+  

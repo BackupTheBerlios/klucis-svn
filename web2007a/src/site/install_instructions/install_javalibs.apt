@@ -1,0 +1,38 @@
+${preprocessor.warning}
+Additional Java Libraries
+~~~
+
+* JUnit
+~~~
+
+  * Unzip %CD%\junit\junit4.0.zip to c:\tools. 
+
+  * Add a bookmark to <<<file:///c:/tools/junit4.0/javadoc/index.html>>>
+
+  * You can do a similar thing with HttpUnit under 
+  <<<%CD%\junit>>>, and add a bookmark to {{file:///c:/tools/httpunit-1.6.2/doc/api/index.html}}
+
+
+* Hibernate
+~~~
+
+  * Unzip <<<%CD%\hibernate\hibernate-3.1.3.zip>>> to <<<c:\tools>>>
+
+  * Bookmark these URLs:
+  {{file:///c:/tools/hibernate-3.1/doc/reference/en/html/index.html}} and 
+  {{file:///c:/tools/hibernate-3.1/doc/api/index.html}}
+
+* Spring Framework
+~~~
+
+  * Unzip <<<%CD%\springframework\spring-framework-1.2.7-with-dependencies.zip>>> to <<<c:\tools>>>
+
+  * Add bookmarks to {{file:///c:/tools/spring-framework-1.2.7/docs/MVC-step-by-step/Spring-MVC-step-by-step.html}} 
+  and {{file:///c:/tools/spring-framework-1.2.7/docs/api/index.html}}
+
+* XDoclet
+~~~
+
+  * Unzip <<<%CD%\xdoclet\xdoclet-bin-1.2.3.zip>>> to <<<c:\tools>>>
+
+  * Bookmark the URL: {{file:///c:/tools/xdoclet-1.2.3/docs/index.html}}

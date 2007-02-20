@@ -1,0 +1,17 @@
+Lecture notes
+~~~
+
+  Here we touch briefly upon the theory topics in order, which 
+  goes from more simple things to the more difficult ones and
+  provides enough knowledge to work on the lab exercises. 
+  The topics are by no means covered in full; this conspect 
+  mostly introduces certain conspects and provides links to
+  the literature elsewhere. 
+
+  During the lectures we will sometimes use these conspects, 
+  also the blackboard, all kinds of other people's presentations, 
+  demos, discussions, etc. 
+
+  * {{{./lecture01.html}<<<Lecture 01: OO Principles and the Web>>>}}
+
+  * {{{./lecture02.html}<<<Lecture 02: Templates, JUnit and Selenium>>>}}

@@ -1,0 +1,28 @@
+Sākumlapa
+
+* Par "Tīmekļa(=Web'a) tehnologijas - 2007" kursa dokumentāciju
+
+  Šajā vietnē var gūt priekšstatu par magjistratūras kursa saturu. 
+  Vēl pilna informācija nav ievietota, bet pakāpeniski tās daudzums
+  pieaugs.
+
+  Ja ir nepieciešams gjenerēt šo dokumentāciju uz lokālās mašīnas:
+
+  * Lejupielādējiet un atpakojiet failu {{http://www.webkursi.lv/web2007a/site/downloads/web2007a.zip}}
+
+  * Instalējiet un konfigurējiet {{{./install_maven.html}Maven 2.0}}
+
+  * Saknes direktorijā, kur ir fails $ROOT/pom.xml, izpildiet komandu:
+
+  []
+
++-----+
+mvn -N clean site
+ant zip
++-----+
+ 
+  * Atveriet failu <<<$ROOT/target/site/index.html>>> 
+  
+  * ZIP fails ar projekta izejas tekstu arhīvu ir atrodams apakšdirektorijā
+  <<<target/site/downloads>>>
+  

@@ -1,0 +1,11 @@
+<?xml version = "1.0" encoding="UTF-8"?>
+<project name="web2007a" basedir="." default="zip">
+  <property name="target.dir" value="target"/>
+  <target name="zip" description="Publish the 'timekla tehnologijas' sources as a ZIP">
+    <mkdir dir="${target.dir}/site/downloads"/>
+    <zip destfile="${target.dir}/site/downloads/${ant.project.name}.zip">
+      <fileset dir="." excludes="${target.dir}/**"/>
+	</zip>
+  </target>
+</project>
+

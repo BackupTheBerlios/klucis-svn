@@ -1,0 +1,68 @@
+Lab Exercise 02. Quiz App: MVC Pattern and Data Access
+~~~
+
+    [Course:]
+    "Web technologies", Spring 2007. 
+
+    [Due:]
+    Monday, March 19th, 2007
+
+    [Purpose:]
+    The purpose of this exercise is to learn more about 
+    data models - relational databases (queries by SQL), XML (XPath/XQuery/XSLT),
+    RDF (SPARQL), optimized data access to optimize between fetch size and number 
+    of roundtrips, to ensure proper back-end of the Web app, also SELECT vs. DESCRIBE
+    queries for SPARQL. 
+    This Web application includes user sessions, logging and error handling, 
+    uniform layout and navigation, internationalization for an educational testing application.
+
+* Background
+~~~~
+
+
+* Preparing for the Exercise
+~~~  
+
+
+* Design Problem 
+~~~
+
+
+
+
+
+* Resources
+~~~
+
+** Provided Code
+~~~~
+
+
+* Mechanics
+~~~
+
+
+* Expectations
+~~~~
+
+** Deliverables 
+~~~~
+
+
+** Prerequisite knowledge
+~~~~
+  
+
+** What is learned during this exercise
+~~~~
+  
+
+** Guidelines for evaluation
+~~~~
+
+
+* Bibliography
+~~~~
+
+* Errata
+~~~~

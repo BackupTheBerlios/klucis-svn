@@ -1,0 +1,15 @@
+Individual Homework 09: Integrate your Web application with EJB
+~~~~
+
+    [Description:]
+    An application of simple session EJBs ensures some distributed
+    transactions. 
+
+
+
+
+* Bibliography 
+~~~
+
+  * {{http://www-128.ibm.com/developerworks/java/library/j-isolation/index.html}}
+    

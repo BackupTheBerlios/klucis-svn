@@ -1,0 +1,64 @@
+Liskov Principle of the OO Design
+~~~
+
+  Barbara Liskov is a professor at MIT; in late 90-ties she formulated
+  a principle, which expresses one of the essential requirements for
+  a well-designed class inheritance:
+
+    [Principle:]
+    If some class <<<B>>> inherits from another class <<<A>>>, then 
+    the instances of class <<<B>>> can be used in the runtime 
+    in all the same places and contexts, 
+    where instances of class <<<A>>> can be used. I.e. the behavior of
+    class <<<B>>> may extend behavior of class <<<A>>>, but it must 
+    match <<<A>>> whenever there is an overlap in the functionality. 
+
+  A programming language with good OO support (e.g. Java) ensures
+  that class <<<B>>> is compatible with class <<<A>>> during compilation time - 
+  i.e. it is always possible to assign: <<<A instance = new B();>>> etc. 
+  On the other hand, it is technically possible to design 
+  classes <<<A>>> and <<<B>>> in such a way that instances of <<<B>>> cannot
+  substitute instances of <<<A>>> - the Liskov principle says that it
+  is a violation of OO design. 
+
+  There are even some misguided "textbook examples" of OO design, which 
+  violate this principle. Consider for example: 
+
++---
+public class Rectangle {
+  public float width;
+  public float height;
+  public float getWidth() { return width; }
+  public float getHeight() { return height; }
+  public void setWidth(float w) { width = w; }
+  public void setHeight(float h) { height = h; }
+  public float getArray() { return width*height; }
+}
+
+// same as Rectangle, but ensures that width==height
+public class Square extends Rectangle {
+  public void setWidth(float w) { width = height = w; }
+  public void setHeight(float h) { width = height = h; }
+}
++---
+
+  Assume that <<<r>>> is an instance of a Rectangle. Calling
+  <<<r.setWidth(r.getWidth*2.0)>>> would increase the array 
+  of the rectangle two times. On the other hand, if <<<r>>> is
+  an instance of a square, then the same operation would
+  increase the array of the rectangle four times. 
+  If clients of class <<<Rectangle>>> are allowed to 
+  change the width and height of it and are affected by the
+  calculated <<<getArray()>>>, then this is very likely 
+  a violation of Liskov principle. 
+
+  Some runtime behavior, which is not essential to the contracts of 
+  the classes may differ for a parent class and a child class. 
+  For example, <<<r.getClass().getName()>>> would return either
+  <<<"Rectangle">>> or <<<"Square">>>, but this is OK as long as
+  the contract of the rectangle does not require that it always returns
+  <<<"Rectangle">>>. This is not considered a violation of Liskov principle. 
+
+  Notice that <<<Square>>> is still a subcategory of <<<Rectangle>>> 
+  in the sense that any square is a rectangle. The problem in OO design arises
+  when we add methods with their behaviors. 

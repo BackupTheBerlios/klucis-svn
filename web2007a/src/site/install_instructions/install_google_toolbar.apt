@@ -1,0 +1,25 @@
+${preprocessor.warning}
+Google Toolbar
+~~~
+
+    [Description:]
+    There are many ways to perform Google searches. For the purposes of 
+    this course, it could be useful that searches can be done from any MSIE window.
+
+  * Open <<<%CD%\google_toolbar\GoogleToolbarInstaller.exe>>> and follow the instructions
+
+  * Restart the Internet Explorer 
+
+* Check the installation
+~~~
+
+  * Type in the toolbar's window the following search parameters:
+
+  ---
+  xerces maven2 site:.ibiblio.org 
+  ---
+
+  This would allow to find the POM file for Xerces JAR, which is usable as a dependency for Maven2. 
+
+  * Check that among the links found is http://www.ibiblio.org/maven2/xerces/ 
+  with its subdirectories. 

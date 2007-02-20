@@ -1,0 +1,41 @@
+${preprocessor.warning}
+EditPlus
+~~~
+
+    [Description:] 
+    This is a plain text editor - similar to, but much more advanced than Notepad. 
+    Well suited to edit HTML and similar files.
+
+    [Download at:] 
+    {{http://www.editplus.com}}
+
+    [Prerequisites] 
+    none.
+
+
+  * Open the
+  file %CD%/editplus/epp221_en.exe
+  
+  * Agree to the default installation directory (under c:\Program Files). 
+  
+  * Agree, if the installation asks about adding shortcuts to Edit Plus.
+  Check the installation and configure EditPlus:
+
+  * Open EditPlus icon on the desktop.
+
+  * Press button \[Evaluate\] and then button \[I Agree\]. 
+
+  * Open menu Tools->Preferences and select category Fonts. Pick "font size" 
+  and "language" to suit your needs. Leave the font family "Courier New", 
+  since it is fixed-width font and is best suited for the plain text editing.
+
+  []
+
+[install/editplus.png] EditPlus dialogue "Preferences"
+
+  * Select category "Files" and remove the checkmark in the checkbox 
+  "create backup file when saving". In this case EditPlus will not create 
+  *.bak files when you edit something.
+
+
+

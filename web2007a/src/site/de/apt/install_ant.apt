@@ -1,0 +1,112 @@
+Ant
+~~~
+    [Apraksts:]
+    <Ant> ļauj rakstīt projektu būvēšanas scenārijus, īpašā XML sintaksē
+    pierakstot visas zema līmeņa darbības (kopēt, kompilēt, arhivēt, utml.). 
+    To var lietot kopā ar XDoclet, lai gjenerētu 
+    izvietojuma deskriptorus un citus failus EJB, servletu utml. aplikācijām. 
+
+    [Lejupielāde:]
+    {{http://ant.apache.org}}
+
+    [Priekšnoteikumi:] 
+    JDK 5.0 jābūt instalētam
+
+  * Atvērt Total Commander un vienā no logiem aiziet uz failu  
+  <<<%CD%\ant\apache-ant-1.7.0RC1-bin.zip>>>
+
+  * Atvērt ZIP failu ar dubultklikšķi; tas attēlos saarhivēto direktoriju 
+  <<<apache-ant-1.7.0RC1>>>
+
+  * Iezīmēt šo direktoriju <<<apache-ant-1.7.0RC1>>> un spiest pogu <<F5>> 
+  lai to kopētu (faktiski, atarhivētu) zem direktorijas <<<c:\tools>>>. 
+
+  * Izveidot jaunu sistēmas mainīgo <<<ANT_HOME>>> un piešķirt tam 
+  vērtību <<<c:\tools\apache-ant-1.7.0>>>
+
+  * Redigjēt arī sistēmas mainīgo <<<Path>>>, tam pievienojot <<<%ANT_HOME%\bin>>> direktoriju. 
+
+  []
+  
+* Pārbaudīt instalāciju:
+~~~ 
+
+  * Atvērt patvaļīgā direktorijā DOS lodziņu, ierakstīt komandu "ant -version" 
+  un pārbaudīt atbildi.
+
+  []
+
++---+
+c:\temp>ant -version
+Apache Ant version 1.6.5 compiled on June 2 2005
++---+
+
+    [Piezīme:] 
+    Ja neesat agrāk <Ant> lietojuši, to var izmēgjināt, sabūvējot vienkāršu 
+    Javas projektu. Piemēram, izveidojiet direktoriju 
+    <<<c:\temp\src>>> un iekopējiet failu  <<<Hello.java>>> šajā direktorijā 
+    (fails <<<Hello.java>>> ir jebkāda izpildāma Javas klase). Izveidojiet 
+    sekojošu failu ar EditPlus un noglabājiet to kā  <<<build.xml>>> direktorijā <<<c:\temp>>>
+
+    []
+
++---+
+build.xml
+<project name="testproject" default="usage" basedir=".">
+
+    <target name="usage" description="Paliigs, kaa lietot Ant scenaarijus">
+        <echo>Komanda 'build -projecthelp' paraada buuveejamo meerkju sarakstu.</echo>
+    </target>
+
+    <target name="clean" description="Izdzeesh kompileeshanas rezultaatus">
+        <delete dir="build" failonerror = "false"/>
+    </target>
+
+    <target name="init" depends="clean" description="Atjauno direktoriju kompileeshanai">
+        <mkdir dir="build"/>
+    </target>
+
+    <target name="compile" depends="init"
+            description="Kompilee izejas tekstus">
+        <echo level="info">Kompileeshana...</echo>
+        <javac srcdir="src"
+            destdir="build"
+            debug="true" 
+            source="1.5"
+            target="1.5"/>
+    </target>
+
+    <target name="run">
+        <java classname="Hello" 
+            fork="true"
+            classpath="build">
+        </java>
+    </target>
+</project>
++---+
+
+  Šo scenāriju var palaist ar sekojošām komandām:
+
++---+
+c:\temp>ant
+...
+c:\temp>ant -projecthelp
+...
+c:\temp>ant compile
+...
+c:\temp>ant run
+...
++---+
+
+  Šīs komandas attēlo
+  
+  [[1]] ziņojumu, kā lietot Ant, 
+  
+  [[2]] visu scenārijā ietilpstošo mērķu sarakstu, 
+  
+  [[3]] paziņojumu par sekmīgu kompilāciju failam <<<c:\temp\src\Hello.java>>>, 
+  
+  [[4]] Javas programmas izpildi.
+
+
+

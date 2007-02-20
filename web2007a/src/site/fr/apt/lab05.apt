@@ -1,0 +1,26 @@
+Aizprasejumi da datu bazu i RDF modeļu
+~~~
+
+* Aplūkotie jautājumi
+~~~
+  Atmiņas/ātrdarbības optimizācija - dažādi veidi, kā veidot pieprasījumus 
+  vai kešot rezultātus. Eager/Lazy pieejas. Hibernate un Jena salīdzinājums. 
+
+  * Zema līmeņa kodēšana ar JDBC utml.
+
+  * O2R karkasi: Hibernate un ActiveRecord salīdzinājums pieprasījumu veikšanā
+
+  * Datu nolasīšana no RDF modeļa
+
+  * Kolatori un datu kārtošana
+
+
+* Literatūra
+~~~
+
+  * {{http://en.wikipedia.org/wiki/Permalink}} (vai arī permalinku 
+  uz šo rakstu - {{http://en.wikipedia.org/w/index.php?title=Permalink&oldid=75994548}})
+
+  * {{http://tinyurl.com/km5qe}} - adaptīvas filtrēšanas piemērs no EBay.com
+
+  * {{http://tinyurl.com/qwbzx}} - daudzdimensiju filtrēšanas piemērs no Amazon.co.uk

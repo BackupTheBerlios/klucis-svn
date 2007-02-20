@@ -1,0 +1,54 @@
+Expectations
+~~~
+
+    [Description:]
+    Expectations define the activities and required skills of a 
+    teaching assistant, if any, for the course "Web technologies". 
+    Can be discussed with a candidate (typically, a graduate student in masters or
+    doctoral program) before the start of the course as a Job Description.
+    
+    "Web programming" is an optional course for 
+    Computer Science masters students at the University of Latvia.
+    It is worth 4 credits, i.e. 64 single lectures (45 minutes each)
+    per a 16-week semester. 
+
+* Activities 
+~~~
+
+  A teaching assistant (TA) is employed from 1st of September to the 31st of January (fall semester)
+  or from 1st of February till 30th of June (spring semester). The activities are as follows:
+
+  [[1]] Make course materials in several formats (APT markup, HTML, MS PowerPoint, MS Word, etc.) 
+  
+  [[2]] Make and maintain uptodate descriptions for lab exercises and individual homeworks; 
+  make their reference implementations. Develop automated tests to grade them. 
+
+  [[3]] Grade the submitted lab exercises and homeworks. 
+
+  [[4]] Arrange office hours for the students. 
+ 
+  [[5]] Provide regular feedback to the students, send them their grades. 
+  Answer students' e-mail enquiries and/or set up another forms of communication
+  (mailinglist, chat). 
+
+  [[6]] Meet regularly with the course instructor as agreed individually. 
+
+* Required Skills
+~~~
+
+  These skills are required from a TA:  
+   
+  [[1]] Write documents in various markup languages (HTML, wiki formats); 
+  use MS Word and MS PowerPoint. 
+
+  [[2]] Gather information independently about the course topics; 
+  know how to write and to tell about these topics in Latvian (possibly also English).
+
+  [[3]] Use the languages, tools and platforms taught in this course. 
+  In particular, objectmodeling with UML, Java/Eclipse programming, MySQL, Hibernate, 
+  application servers like Tomcat and JBoss, Spring MVC, Ruby/Rails framework, 
+  XML markup and technologies, Semantic Web techniques. 
+
+  [[4]] Set up the environment to program for the course, 
+  fix the difficulties faced by the students. 
+  Make automated test suites using JUnit, Selenium and related technologies. 

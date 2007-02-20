@@ -1,0 +1,34 @@
+Apache Web Serveris
+~~~
+
+    [Apraksts:]
+    Apache ir populārākais Web serveris. Ļauj instalēt dažādus papildmoduļus 
+    Web programmēšanai, ieskaitot Tomcat (Java support), PHP, 
+    Ruby on Rails, utt. 
+
+
+    [Lejupielāde:] 
+    {{http://apache.linux.edu.lv/httpd/binaries/}} (izvēlēties linku Win32 un 
+    lejupielādēt failu <<<apache_2.2.2-win32-x86-no_ssl.msi>>> ) 
+
+    [Priekšnoteikumi:] Jābūt brīvam 80-tajam portam.
+
+
+  * Atvērt failu <<<%CD%\apache\apache_2.2.2-win32-x86-no_ssl.msi>>>
+
+  * Piekrist Licenzes Līgumam, spiest pogu \[Next\]
+  
+  * Pieņemt noklusēto servera konfigurāciju (domēns, admina e-pasts
+  nav būtiski, ja Apache lieto uz lokālās mašīnas nevis attālināti), 
+  izvēlēties portu 80 (tā ir noklusētā vērtība), spiest \[Next\]
+  
+  * Izvēlēties "Typical" (noklusēto), spiest \[Next\]
+  
+  * Atstāt noklusēto instalācijas direktoriju
+  (<<<c:\Program Files\Apache Software Foundation\Apache2.2\ >>>), 
+  spiest pogas \[Next\],  \[Install\] un \[Finish\].
+
+* Pārbaudīt instalāciju
+
+  * Pārlūkprogrammā ievadīt sekojošu adresi: {{http://localhost}} . 
+  Jāparādās paziņojumam "It works!".

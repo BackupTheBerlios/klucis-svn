@@ -1,0 +1,24 @@
+Homework 15: Glossary with Velocity
+~~~~
+
+    [Goal:]
+    Develop a JSP custom taglib, which generates fragments of
+    DHTML markup, which display glossary term definitions
+    in response to user's mouse over events. 
+    This example shows how to write custom taglibs.  
+
+    [Description:]
+    Repetitive and verbose HTML/CSS/JavaScript constructs are sometimes the
+    easiest way to achieve client-side dynamic behavior. 
+    In servlet/JSP environment these can be made easier with 
+    custom taglibs in JSP. 
+
+    
+* Introduction
+~~~
+  
+  A DHTML sample page displaying some glossary items is provided. 
+  ...
+
+
+  

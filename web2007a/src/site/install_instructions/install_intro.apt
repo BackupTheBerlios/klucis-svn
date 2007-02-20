@@ -1,0 +1,62 @@
+${preprocessor.warning}
+Installation Instructions - Introduction
+~~~
+
+  These Installations can be executed:
+  
+  * by an administrator on some university computer, which later serves as an image 
+  for other computers
+  
+  * by the students, if they want to install the training course environment 
+  on their home computers. 
+
+  These instructions would typically use the installation CD, 
+  which is referred in the following instructions by variable %CD%, 
+  when showing where to find any particular installation file. 
+  Notice that all the installation files can also be obtained free of charge 
+  through the Internet (use Google to find the products mentioned 
+  in these instructions). The instructions assume that a computer 
+  prior to these installations is running Windows XP operating system, 
+  and does not have any components installed previously - the instructions 
+  do not pay much attention to uninstalling earlier versions of the 
+  software and other special cases of resolving conflicts with the previous 
+  configuration on that computer. It is sufficient (but not necessary) 
+  to have an empty Accenture standard image installed on the 
+  computer before trying these instructions. 
+
+* List of instructions
+  
+
+  * {{{./install_editplus.html}Editplus}}      
+
+  * {{{./install_totcmd.html}TotCmd}}      
+
+  * {{{./install_j2sdk.html}J2SDK}}      
+
+  * {{{./install_ant.html}Ant}}
+
+  * {{{./install_maven.html}Maven}}
+
+  * {{{./install_eclipse.html}Eclipse}}
+
+  * {{{./install_setenv.html}Env.Variables}}
+
+  * {{{./install_google_toolbar.html}Google Toolbar}}
+
+  * {{{./install_javalibs.html}Java Libraries}}
+
+  * {{{./install_subversion.html}Subversion}}
+
+  * {{{./install_svgview.html}SVG Plugin}}
+
+  * {{{./install_mysql.html}MySQL}}
+
+  * {{{./install_jboss.html}JBoss}}
+
+  * {{{./install_wtk.html}Wireless Toolkit}}
+
+  * {{{./install_apache.html}Apache}}
+
+  * {{{./install_phpsupport.html}PHP Support}}
+
+

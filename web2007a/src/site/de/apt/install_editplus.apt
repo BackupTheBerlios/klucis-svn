@@ -1,0 +1,43 @@
+EditPlus teksta redaktors
+~~~
+
+    [Apraksts:] 
+    Vienkāršs teksta redaktors - pēc pamatfunkcijas līdzīgs, bet daudz 
+    tālāk progresējis Notepad radinieks. Piemērots, lai redigjētu HTML 
+    un līdzīgus failus.
+
+    [Lejupielāde:] 
+    {{http://www.editplus.com}}
+
+    [Priekšnoteikumi:] 
+    nav
+
+
+  * Atvērt failu  <<<%CD%/editplus/epp221_en.exe>>>
+  
+  * Apstiprināt noklusēto instalācijas direktoriju - parasti zem <<<c:\Program Files>>>
+  
+  * Piekrist, ja instalācija jautā par īsinājumiem/linkiem uz Editplus.
+
+  
+  Instalācijas pārbaude un EditPlus konfigurēšana:
+
+  * Atveriet uz darbvirsmas (<<desktop>>) EditPlus ikonu
+
+  * Nospiediet pogas \[Evaluate\] un \[I Agree\]
+
+  * Atveriet izvēlnē <<Tools>>-><<Preferences>> un izvēlieties kategoriju <<Fonts>>. 
+  Izvēlieties "font size" 
+  un "language" atbilstoši savām vajadzībām. Atstājiet fontu saimi "Courier New", 
+  jo šis rakstāmmašīnas fonts ir vispiemērotākais vienkārša teksta redigjēšanai
+
+  []
+
+[install/editplus.png] EditPlus dialogs "Preferences"
+
+  * Izvēlieties kategoriju "Files" un izvāciet ķeksi rūtiņā 
+  "create backup file when saving". Šajā gadījumā EditPlus neveidos iepriekšējās versijas 
+  (*.bak failus), pēc katras redigeešanas
+
+
+

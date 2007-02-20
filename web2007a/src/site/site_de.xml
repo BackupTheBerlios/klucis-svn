@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Web tehnologijas,2007a">
+  <bannerLeft>
+    <name>T&#x012b;mek&#x013c;a tehnolo&#x0123;ijas - 2007a</name>
+    <src>../images/pix.gif</src>
+    <href>#</href>
+  </bannerLeft>
+<!--
+  <bannerRight>
+    <src>images/helpicon.gif</src>
+  </bannerRight>
+-->
+  <body>
+    <links>
+      <item name="EN" href="../index.html" />
+      <item name="LTG" href="../fr/index.html" />
+      <item name="LV" href="./index.html" />
+      <item name="Webkursi" href="http://www.webkursi.lv/" />
+      <item name="Mtest.lv" href="http://www.mtest.lv/" />
+    </links>
+
+    <menu name="S&#x0101;kums" href="index.html">
+      <item name="FAQ" href="faq.html"/>
+      <item name="Uzdevumi" href="labs.html">
+        <item name="1.&#x0160;abloni" href="lab01.html"/>
+        <item name="2.MVC" href="lab02.html"/>
+		<item name="3.Kompoz&#x012b;ti" href="lab03.html"/>
+        <item name="4.Dz&#x012b;vescikli" href="lab04.html"/>
+		<item name="5.Piepras&#x012b;jumi" href="lab05.html"/>
+		<item name="6.Saturp&#x0101;rvaldiiba" href="lab06.html"/>
+      </item>
+      <item name="Konspekti" href="lectures.html">
+        <item name="1.Objekti" href="lecture01.html"/>      
+        <item name="2.Test&#x0113;&#x0161;ana" href="lecture02.html"/>      
+      </item>
+      <item name="Instrukcijas" href="install_intro.html">
+        <item name="Editplus" href="install_editplus.html"/>      
+<!--        <item name="TotCmd" href="install_totcmd.html"/>      
+        <item name="J2SDK" href="install_j2sdk.html"/>      -->
+        <item name="Ant" href="install_ant.html"/>
+<!--        <item name="Maven" href="install_maven.html"/> -->
+        <item name="Eclipse" href="install_eclipse.html"/>
+<!--        <item name="Env.Variables" href="install_setenv.html"/>
+        <item name="Google Toolbar" href="install_google_toolbar.html"/>
+        <item name="Java Libraries" href="install_javalibs.html"/>
+		<item name="Subversion" href="install_subversion.html"/>
+		<item name="SVG Plugin" href="install_svgview.html"/>
+		<item name="MySQL" href="install_mysql.html"/>
+		<item name="JBoss" href="install_jboss.html"/>
+		<item name="Wireless Toolkit" href="install_wtk.html"/> -->
+		<item name="Apache" href="install_apache.html"/>
+<!--		<item name="PHP Support" href="install_phpsupport.html"/> -->
+	  </item>
+	  <item name="Papildt&#x0113;mas">
+        <item name="Skald&#x0146;u p&#x0101;rl&#x016B;ko&#x0161;ana" href="info_facetted_browse.html"/>      
+	  </item>
+    </menu>
+  </body>
+</project>

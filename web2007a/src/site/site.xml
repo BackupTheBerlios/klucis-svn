@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Web tehnologijas,2007a">
+  <bannerLeft>
+    <name>Web technologies 2007</name>
+    <src>images/pix.gif</src>
+    <href>#</href>
+  </bannerLeft>
+  <body>
+    <links>
+	  <!--
+      <item name="EN" href="./index.html" />
+      <item name="LTG" href="fr/index.html" />
+      <item name="LV" href="de/index.html" />
+	  -->
+      <item name="Webkursi" href="http://www.webkursi.lv/" />
+      <item name="Mtest.lv" href="http://www.mtest.lv/" />
+    </links>
+    <menu name="Introduction" href="index.html">
+      <item name="FAQ" href="faq.html"/>
+      <item name="Topics" href="topics.html"/>
+      <item name="Problems" href="labs.html">
+        <item name="1.Vector Images" href="lab01.html"/>
+        <item name="2.Quiz Browsing" href="lab02.html"/>
+		<item name="3.Quiz Forms" href="lab03.html"/>
+		<item name="MC Test" href="labs_test.html"/>
+      </item>
+      <item name="Lecture Notes" href="lectures.html">
+        <item name="1.Objects" href="lecture01.html"/>      
+        <item name="2.Testing" href="lecture02.html"/>      
+      </item>
+	  <item name="Indiv.Homeworks">
+        <item name="HW01" href="hw01_tidy.html"/>      
+        <item name="HW02" href="hw02_concordance.html"/>      
+        <item name="HW03" href="hw03_xslt.html"/>      
+        <item name="HW04" href="hw04_markup.html"/>      
+        <item name="HW07" href="hw07_webperformance.html"/>      
+        <item name="HW13" href="hw13_classifier.html"/>      
+        <item name="HW14" href="hw14_crawl_wikipedia.html"/>      
+        <item name="HW15" href="hw15_glossary_vm.html"/>      
+        <item name="HW16" href="hw16_glossary_jsp.html"/>      
+        <item name="HW17" href="hw17_spring_rdf.html"/>      
+        <item name="HW18" href="hw18_desktop_publishing.html"/>      
+        <item name="HW19" href="hw19_producing_textile.html"/>      
+        <item name="HW20" href="hw20_antlr.html"/>      
+	  </item>
+      <item name="Instructions" href="install_intro.html">
+        <item name="Editplus" href="install_editplus.html"/>      
+        <item name="TotCmd" href="install_totcmd.html"/>      
+        <item name="J2SDK" href="install_j2sdk.html"/>      
+        <item name="Ant" href="install_ant.html"/>
+        <item name="Maven" href="install_maven.html"/>
+        <item name="Eclipse" href="install_eclipse.html"/>
+        <item name="Env.Variables" href="install_setenv.html"/>
+        <item name="Google Toolbar" href="install_google_toolbar.html"/>
+        <item name="Java Libraries" href="install_javalibs.html"/>
+		<item name="Subversion" href="install_subversion.html"/>
+		<item name="SVG Plugin" href="install_svgview.html"/>
+		<item name="MySQL" href="install_mysql.html"/>
+		<item name="JBoss" href="install_jboss.html"/>
+		<item name="Wireless Toolkit" href="install_wtk.html"/>
+		<item name="Apache" href="install_apache.html"/>
+		<item name="PHP Support" href="install_phpsupport.html"/>
+      </item>
+    </menu>
+  </body>
+</project>

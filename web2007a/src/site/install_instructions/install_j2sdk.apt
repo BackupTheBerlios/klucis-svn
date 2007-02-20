@@ -1,0 +1,142 @@
+${preprocessor.warning}
+JDK environment
+~~~
+    [Description:] 
+    Sun Microsystems provides the most typical Java tools, 
+    the standard compiler "javac", the Java Virtual Machine, 
+    the standard Java API documentation and much more.
+
+    [Download at:] {{http://java.sun.com/j2se/1.5.0/download.jsp}} - 
+    pick " JDK 5.0 Update 7", Windows Offline installation 
+    (do NOT pick JRE, as it is not for developers) and 
+    "J2SE 5.0 Documentation". Pick newer versions, if they are available. 
+
+    [Preconditions:] none
+
+
+* JDK 5.0
+~~~
+
+  * Open file <<<%CD%/java/jdk-1_5_0_07-windows-i586-p.exe>>>
+  * Agree to the default directory and other default options. 
+  * Create a new System variable JAVA_HOME, which points to the 
+  directory where JDK is installed - in our case it is 
+  <<<c:\Program Files\Java\jdk1.5.0_07>>> 
+  (see section Environment Variables on how to create such variables).  
+
+  * Edit the System variable Path by replacing its previous value, 
+  which looks like this
+
+---
+some_directory1;some_directory2;...
+---
+  
+  with the following one
+
+---
+%JAVA_HOME%\bin;some_directory1;some_directory2;...
+---
+
+  The order of the directories written to Path is usually irrelevant 
+  (so it would be possible to add stuff to the very end of the variable), 
+  but it is recommended to add the entry %JAVA_HOME%\bin to its very beginning, 
+  since then the possible errors or other Java versions later in the Path 
+  variable do not affect running of JDK 1.5. 
+  (see se section Environment Variables on how to edit System variables such as Path).  
+
+** Check the installation:
+~~~
+
+  * Close any Total Commander or DOS windows, if they are open. 
+  Start a new Total Commander application.
+
+  * Open a new DOS window in any one of the directories currently 
+  selected by the Total Commander by selecting a menu item <<Commands>>-><<Run DOS>>
+
+  * In the DOS window type "java -version" and check the response:
+
++---+
+c:\temp>java -version
+java version "1.5.0_07"
+Java(TM) 2 Runtime Environment, Standard Edition ...
++---+
+
+    [Note:] 
+    If you are entirely new to Java, you may want to test the JDK environment 
+    in a more substantial way - by compiling and running a simple Java program. 
+    For example, create the following file with EditPlus and save it as 
+    <<<Hello.java>>> in the directory <<<c:\temp>>>
+
+    []
+
++---+
+Hello.java
+==========
+public class Hello {
+    public static void main(String[] args) {
+        System.out.println("Hello, world!");
+    }
+}
++---+
+
+
+  Open DOS window in the directory c:\temp (remember that it is easily 
+  doable from Total Commander), and execute the following commands in the DOS: 
+
+
++---+
+c:\temp>javac Hello.java
+
+c:\temp>java Hello
+Hello, world!
+
+c:\temp>
++---+
+
+
+  The program Hello.java, which prints the message "Hello, world!" is probably 
+  the simplest Java program, but it violates some of the Object-Orientation 
+  principles - it performs business action without creating reusable objects.
+
+
+
+* Java 5.0 documentation
+~~~ 
+
+  * Unzip the file <<<%CD%\java\jdk-1_5_0-doc.zip>>> (namely the directory <<<docs>>>
+  contained in the ZIP file) to the <<<%JAVA_HOME%>>> directory. This should create 
+  a subdirectory <<<c:\Program Files\Java\jdk1.5.0_07\docs>>> with many HTML files. 
+
+  * Open the index.html file found at the top level in the docs directory. 
+  Select the link "API & Language" and then under that title the link 
+  "Java 2 Platform API Specification". 
+
+  * A browser window with 3 frames appears. Add this page it to your 
+  Internet Explorer favorites (or Firefox Bookmarks). 
+
+
+** Check the installation:
+~~~ 
+
+  * In the upper-left frame find the package "java.lang" and click it. 
+  Then in the bottom-left frame find the class "String" or "Object". 
+  Click that link. A documentation page for the given class should 
+  appear in the right side frame. 
+
+* JDK 1.4
+~~~ 
+
+  * Run the file <<<%CD%\java\j2sdk-1_4_2_11-windows-i586-p.exe>>>
+
+  * Pick <<<C:\Program Files\Java\j2sdk1.4.2_11>>> as the installation folder 
+  (instead of the suggested <<<C:\j2sdk1.4.2_11>>>). 
+
+  * Uncheck the Browser Plugin options, press \[Install\], wait until 
+  JDK and JRE is installed and press \[Finish\]. 
+  If prompted, agree to restart the computer. 
+
+  * Do NOT redefine JAVA_HOME variable.
+
+  * JDK 1.4 is needed, if you wish to do Java MIDlet development 
+  with Java (see section Sun Java Wireless Toolkit).
+

@@ -1,0 +1,20 @@
+Homework 04: Rich text processing
+~~~~
+
+
+  Write a Ruby script, which can convert a batch of 
+  files containing Textile+LaTeX+LilyPond
+  markup into a Web-friendly format, e.g. XHTML+MathML+PNG.
+  You can assume that Ritex library is installed 
+  for Ruby, and the environment contains Lilypond software.   
+  The operation on the given dataset will be verified
+  from a Windows machine command line. E.g.
+
++---+
+rtconvert
+
+
+
+  You can suggest your own markup conventions, e.g. 
+  enclose LaTeX in <<<\<math\>>>> and <<<\</math\>>>>, 
+  and Lilypond markup in <<<\<music\>>>> and <<<\</music\>>>>.

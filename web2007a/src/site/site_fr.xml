@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Puorstaipteikla tehnologejis, 2007">
+  <bannerLeft>
+    <name>Puorstaipteikla tehnologejis 2007</name>
+    <src>../images/pix.gif</src>
+    <href>#</href>
+  </bannerLeft>
+  <body>
+    <links>
+      <item name="EN" href="../index.html" />
+      <item name="LTG" href="./index.html" />
+      <item name="LV" href="../de/index.html" />
+      <item name="Webkursi" href="http://www.webkursi.lv/" />
+      <item name="Mtest.lv" href="http://www.mtest.lv/" />
+    </links>
+    <menu name="&#x012a;vods" href="index.html">
+      <item name="FAQ" href="faq.html"/>
+      <item name="Aizdavumi" href="labs.html">
+        <item name="1.&#x0160;abloni" href="lab01.html"/>
+        <item name="2.MVC" href="lab02.html"/>
+		<item name="3.Komponenti" href="lab03.html"/>
+        <item name="4.Dzeivis cykls" href="lab04.html"/>
+		<item name="5.Aizprasejumi" href="lab05.html"/>
+		<item name="6.CMS" href="lab06.html"/>
+      </item>
+      <item name="P&#x012b;zeimis" href="lectures.html">
+        <item name="1.Objekti" href="lecture01.html"/>      
+<!--        <item name="2.Test&#x0113;&#x0161;ona" href="lecture02.html"/>       -->
+      </item>
+      <item name="Instalacejis" href="install_intro.html">
+        <item name="1.Editplus" href="install_editplus.html"/>      
+        <item name="2.TotCmd" href="install_totcmd.html"/>      
+      </item>
+    </menu>
+  </body>
+</project>
