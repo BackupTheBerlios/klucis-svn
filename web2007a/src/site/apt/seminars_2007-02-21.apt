@@ -1,0 +1,89 @@
+Seminārs 2007-02-21
+~~~~
+
+    [Vieta un laiks:]
+    Brīvības 214 (VEF admin. ēka), Accentures mācību klase 3.stāvā. 
+    Ierodoties var pieteikties pie sarga, saņemt apmeklētāja kartiņu
+    un doties uz 3.stāvu (mācību klase ir kreisajā gaiteņa galā). 
+
+    Semināru laikā LU magistratūras studenti vajadzības
+    gadījumā varēs saņemt ieskaiti 
+    priekšmetā "Datorzinātņu papildnodaļas" (2cr) - šajā 
+    gadījumā ir spēkā LU tradicionālā prasība sagatavot
+    90 minūšu prezentāciju, padziļināti izklāstot kādu 
+    no seminārā skartajām vai līdzīgām tēmām 2 pasniedzējiem
+    (visticamāk pie K.Podnieka jāpiesaka uzstāšanās LU MII ēkā). 
+
+    [Semināra dienaskārtība:]
+      Piedāvājam aplūkot šādus jautājumus:
+
+      [[1]] Jautājumi par 1.pr.d. Javas programmēšanas
+      vides uzlikšana.
+
+      [[2]] (Ja paliks laiks.)  Redzamības apgabali 
+      Web programmēšanā - JSP un Spring; mainīgo novērtēšana
+      dažādos kontekstos. 
+
+      [[3]] EasyMock testēšanas bibliotēka; žurnalēšanas/logošanās
+      ziņojumu testēšana
+
+      [[4]] SVG's refid mehānisms.
+
+      [[5]] AOB (Any Other Business).
+
+      []
+
+* Redzamības apgabali
+~~~~
+
+  Daudzās programmēšanas valodās mainīgajiem irr redzamības apgabali (<scopes>), 
+  kur katra mainīgā vērtību var noteiktt aplūkojott hierrarhiju ar 
+  iespējamiem redzamības apgabaliem. 
+  Līdzīgi arī Web programmēšanā mēdz mainīgos (īpaši tos, kas 
+  atspoguļo programmu iestatījumus, 
+  piekļuves tiesības, GUI stilu, navigācijas elementus, utml.) 
+  noteikt "kaskādes" veidā - sākot ar visšaurāko kontekstu/apgabalu un, 
+  ja nekas tajā nav definēts, pārejot uz vispārīgākiem kontekstiem. 
+
+  JSP specifikācija paredz sekojošus mainīgo redzamības apgabalus:
+
+  * page (lapas apgabals - JSP dokumenta ietvaros)
+
+  * request (HTTP pieprasījums - pieprasījuma ietvaros; mainīgais
+  saglabājas, ja viena JSP lapa vai servlets nosūta <forward> uz citu). 
+
+  * session (vienas lietotāja sesijas ietvaros - līdz pielogošanās/atlogošanās
+  brīdim vai pārlūkprogrammas loga aizvēršanai)
+
+  * application (visas aplikācijas ietvaros - globālie mainīgie). 
+
+  []
+
+  Savukārt Spring aplikācijās (sākot ar Spring 2.0) katram mainīgajam var definēt
+  <scope>, kas ir "singleton", "prototype" (tie bija jau no Spring 1.0), kā arī 
+  "request" un "session"; kā arī lietotāja noteiktus redzamības apgabalus. 
+  1.praktiskajā darbā <ComponentManager> var būt lietderīgi definēt
+  kā "request"-līmenī noteiktu mainīgo, jo komponentiem atbilstošie objekti var 
+  mainīties dažādu inicializācijas soļu vai action-u iespaidā. 
+
+  Gadījumos, kad lielākā redzamības apgabalā definētam bean-am ir atsauce
+  uz šaurākā redzamības apgabalā definētu bean-u kā atribūtu (Spring
+  konfigurācijas failā pierakstāmu kā \<property\> elements), 
+  var būt nepieciešami 
+  starpniekobjekti (proxy), lai atribūtu vērtības atjaunotos ikreiz, kad rodas
+  jauns pieprasījums vai sesija. 
+
+* Bibliogrāfija
+~~~~
+
+  * {{http://www.springframework.org/docs/reference/beans.html#beans-factory-scopes}}
+
+
+
+
+    
+  
+  
+
+
+  

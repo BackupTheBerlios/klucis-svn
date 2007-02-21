@@ -28,6 +28,10 @@
         <item name="1.Objects" href="lecture01.html"/>      
         <item name="2.Testing" href="lecture02.html"/>      
       </item>
+      <item name="Seminaari" href="seminars.html">
+        <item name="1.seminars" href="seminars_2007-02-21.html"/>      
+      </item>
+
 	  <item name="Indiv.Homeworks">
         <item name="HW01" href="hw01_tidy.html"/>      
         <item name="HW02" href="hw02_concordance.html"/>      
