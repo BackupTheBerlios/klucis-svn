@@ -12,7 +12,7 @@
 	<dependencies>
 	</dependencies>
 	<build>
-		<finalName>web2007a</finalName>		
+		<finalName>web2007a</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -27,16 +27,18 @@
 				<artifactId>maven-site-plugin</artifactId>
 				<version>2.0-beta-5</version>
 				<configuration>
-					<locales>en,de,fr</locales>					
-					<!--          <templateDirectory>/c:/kalvis/web2007a/src/site/</templateDirectory> -->					
+					<locales>en,de,fr</locales>
+					
+					<!--          <templateDirectory>/c:/kalvis/web2007a/src/site/</templateDirectory> -->
+					
 					<!--          <templateFile>maven-site.vm</templateFile>   -->
 					<inputEncoding>UTF-8</inputEncoding>
 					<outputEncoding>UTF-8</outputEncoding>
 				</configuration>
-			</plugin>			
+			</plugin>
 			<plugin>
 				<artifactId>maven-antrun-plugin</artifactId>
-				<executions>					
+				<executions>
 					<execution>
 						<phase>pre-site</phase>
 						<configuration>
@@ -61,21 +63,28 @@
 										dir="src/site/install_instructions_temp"/>
 								</copy>
 								<delete
-									dir="src/site/install_instructions_temp"/>								
-								<zip
-									destfile="src/site/downloads/${ant.project.name}.zip">
-									<fileset dir="." excludes="${target.dir}/**"/>
-								</zip>								
+									dir="src/site/install_instructions_temp"/>
 							</tasks>
 						</configuration>
 						<goals>
 							<goal>run</goal>
 						</goals>
+					</execution>
+					<execution>
+						<phase>post-site</phase>
+						<configuration>
+							<tasks>
+								<zip
+									destfile="target/site/downloads/web2007a.zip">
+									<fileset dir="." excludes="${target.dir}/**"/>
+								</zip>
+							</tasks>
+						</configuration>
 					</execution>					
 				</executions>
-			</plugin>			
+			</plugin>
 		</plugins>
-	</build>	
+	</build>
 	<modules>
 	</modules>
 </project>
