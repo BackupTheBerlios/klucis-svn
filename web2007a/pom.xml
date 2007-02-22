@@ -40,6 +40,7 @@
 				<artifactId>maven-antrun-plugin</artifactId>
 				<executions>
 					<execution>
+						<id>pre-site</id>
 						<phase>pre-site</phase>
 						<configuration>
 							<tasks>
@@ -64,6 +65,9 @@
 								</copy>
 								<delete
 									dir="src/site/install_instructions_temp"/>
+								<ant antfile="../sem01_demo/build.xml"
+									dir="../sem01_demo" target="zip"/>
+								
 							</tasks>
 						</configuration>
 						<goals>
@@ -71,7 +75,8 @@
 						</goals>
 					</execution>
 					<execution>
-						<phase>post-site</phase>
+						<id>site</id>
+						<phase>site</phase>
 						<configuration>
 							<tasks>
 								<zip
@@ -80,6 +85,9 @@
 								</zip>
 							</tasks>
 						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
 					</execution>					
 				</executions>
 			</plugin>

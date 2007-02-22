@@ -1,11 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="web2007a" basedir="." default="zip">
-	<property name="target.dir" value="target"/>
-	<target name="zip"
-		description="Publish the 'timekla tehnologijas' sources as a ZIP">
-		<mkdir dir="${target.dir}/site/downloads"/>
-		<zip destfile="${target.dir}/site/downloads/${ant.project.name}.zip">
-			<fileset dir="." excludes="${target.dir}/**"/>
-		</zip>
+<project name="web2007a" basedir="." default="publish">
+	<property name="ftp.server" value="gulbis.latnet.lv"/>
+	<property name="ftp.user" value="apsitis"/>
+		
+	<target name="publish">
+		<input message="Please enter password for ${ftp.user}@${ftp.server}:"
+			addproperty="ftp.password"/>
+		<ftp action="del" server="${ftp.server}" userid="${ftp.user}"
+			password="${ftp.password}">
+			<fileset>
+				<include name="/public_html/web2007a/**"/>
+			</fileset>
+		</ftp>
+		<ftp action="rmdir" server="${ftp.server}" userid="${ftp.user}"
+			password="${ftp.password}" remotedir="/public_html/web2007a">
+			<fileset>
+				<include name="site/**"/>
+			</fileset>
+		</ftp>
+		<ftp action="mkdir" server="${ftp.server}" userid="${ftp.user}"
+			password="${ftp.password}" remotedir="/public_html/web2007a/site"/>
+		<ftp server="${ftp.server}" remotedir="/public_html/web2007a/site"
+			userid="${ftp.user}" password="${ftp.password}">
+			<fileset dir="target/site"/>
+		</ftp>
 	</target>
 </project>
