@@ -1,0 +1,34 @@
+Homework 11: Custom Scopes in Spring
+~~~~
+
+    [Description:]
+    Assume that you want to create a Web application 
+    in Spring MVC, which allows to browse either
+    users or test modules (where data for these
+    two tables comes either from a database, 
+    from RDF or from an XML - your free choice). 
+    Assume that the offset and limit is provided
+    as query parameters for  
+    for each request (scope="request"), 
+    favorite background color for the table of 
+    results is set for the user session, i.e.
+    it persists until the user closes the browser
+    screen or explicitly changes the settings (scope="session"), 
+    but the alphabetical ordering is "ascending" or
+    "descending" depending on a custom 
+    "interaction scope", i.e. it does not change
+    when user browses only users or only modules, 
+    but is reset, whenever user switches.
+    
+    Implement this by remembering these parameters
+    in Spring configured beans having appropriate
+    scope. 
+    
+    
+* Bibliography
+~~~~~
+    
+  * {{http://www.springframework.org/docs/reference/beans.html#beans-factory-scopes}}
+  
+  
+    

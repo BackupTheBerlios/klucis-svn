@@ -1,0 +1,12 @@
+Homework 10: Custom isolation levels
+~~~~
+
+    [Description:]
+    Implement a Spring application having a transactional 
+    behavior describable by custom isolation levels, i.e. 
+    make a runnable example out of this article:
+    {{http://www-128.ibm.com/developerworks/java/library/j-isolation/index.html}}    
+    In parallel, implement also 
+    EJB 3.0 stateless session bean application with 
+    similar behavior.
+    

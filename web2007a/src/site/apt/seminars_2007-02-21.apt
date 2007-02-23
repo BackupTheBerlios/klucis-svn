@@ -2,36 +2,143 @@ Seminārs 2007-02-21
 ~~~~
 
     [Vieta un laiks:]
-    Brīvības 214 (VEF admin. ēka), Accentures mācību klase 3.stāvā. 
-    Ierodoties var pieteikties pie sarga, saņemt apmeklētāja kartiņu
-    un doties uz 3.stāvu (mācību klase ir kreisajā gaiteņa galā). 
-
-    Semināru laikā LU magistratūras studenti vajadzības
-    gadījumā varēs saņemt ieskaiti 
-    priekšmetā "Datorzinātņu papildnodaļas" (2cr) - šajā 
-    gadījumā ir spēkā LU tradicionālā prasība sagatavot
-    90 minūšu prezentāciju, padziļināti izklāstot kādu 
-    no seminārā skartajām vai līdzīgām tēmām 2 pasniedzējiem
-    (visticamāk pie K.Podnieka jāpiesaka uzstāšanās LU MII ēkā). 
+    Brīvības 214 Accentures mācību klase.
+    (VEF admin. ēka; ieeja pa sētas durvīm; 
+    var uzkāpt 3.stāvā un zvanīt Kalvim: 29112997.)
+    
+    [Demonstrācijas piemērs:]
+    {{{./downloads/sem01_demo.zip}Demo lejupielāde}}
 
     [Semināra dienaskārtība:]
-      Piedāvājam aplūkot šādus jautājumus:
+    Piedāvājam aplūkot šādus jautājumus:
 
       [[1]] Jautājumi par 1.pr.d. Javas programmēšanas
-      vides uzlikšana.
+      vides uzlikšana, KLUCIS aplikācija pilnā 
+      programmēšanas vidē (Eclipse/Subclipse, 
+      Ant, JBoss, SVG skatīšanās, Selenium testi). 
 
-      [[2]] (Ja paliks laiks.)  Redzamības apgabali 
-      Web programmēšanā - JSP un Spring; mainīgo novērtēšana
-      dažādos kontekstos. 
+      [[2]] SVG's refid mehānisms.
+      
+      [[3]] Anotāciju apstrāde ar Java 1.5 un Java 1.6 līdzekļiem. 
 
-      [[3]] EasyMock testēšanas bibliotēka; žurnalēšanas/logošanās
-      ziņojumu testēšana
-
-      [[4]] SVG's refid mehānisms.
-
-      [[5]] AOB (Any Other Business).
+      [[4]] AOB (Any Other Business).
 
       []
+      
+* Demonstrācijas piemēru darbināšana 
+~~~~
+
+  Šī darbību secība domāta galvenokārt tiem, kuri atbilstošo semināru 
+  neapmeklēja, bet vēlas iepazīties ar tajā aplūkoto praktisko materiālu.
+  
+  * Pārliecināties, ka uz datora ir instalēti un konfigurēti 
+  sekojoši rīki: JDK 1.6 (un uzstādīts vides mainīgais <<<JAVA_HOME>>>), 
+  Eclipse, Ant 1.7 (un mainīgais <<<ANT_HOME>>>), Maven 2.0.2
+  (un mainīgais <<<M2_HOME>>>), JBoss (vai Tomcat, vai kāds cits 
+  Javas aplikāciju serveris, kurš atbalsta servletus), 
+  Internet Explorer + Adobe SVG Viewer (vai kāda cita pārlūkprogramma, 
+  kurā var skatīties SVG vektorgrafiku). 
+  Atbilstošās instalāciju instrukcijas sk. {{{./install_intro.httml}Instalāciju 
+  instrukcijas}}. 
+    
+  * Instalēt Subclipse (Subversion spraudnis priekš Eclipse:s) - 
+  sk. instrukciju: {{http://subclipse.tigris.org/install.html}}. 
+  
+  * Izčekot KLUCIS projektu no BERLIOS - var, piemēram, izmantot
+  sekojošu anonīmās piekļuves adresi: 
+  <<<http://svn.berlios.de/svnroot/repos/klucis/trunk>>>. 
+  (To var darīt ar Subclipse palīdzību - jāatver SVN perspektīva: 
+  <<Window>> - <<Open Perspective>> - <<Other>> - <<SVN Repository Exploring>>
+  un izveidojot jaunu konekciju uz norādīto HTTP adresi, pēc tam 
+  ar labo klikšķi veikt <<Checkout>> darbību un izveidot jaunu 
+  projektu savā darba apgabalā (<workspace>), piemēram, <<<klucisTrunk>>>. 
+  Var atgriezties Javas perspektīvā: <<Open Perspective>> - <<Java (default)>>.
+  
+  * Palaist Ant skriptu direktorijā <<<klucisTrunk/klucis_core>>>, ievadot
+  komandu "ant clean jar" (to var darīt arī no Eclipses - ar labo peles
+  klikšķi izvēloties <<<klucisTrunk/klucis_core/build.xml>>> failam - 
+  <<Run As...>> - <<Ant Build>>. 
+  
+  * Palaist Ant skriptu direktorijā <<<klucisTrunk/klucis_demo>>>, ievadot
+  komandu "ant clean war" (to var darīt arī no Eclipses - ar labo peles
+  klikšķi izvēloties <<<klucisTrunk/klucis_demo/build.xml>>> failam - 
+  <<Run As...>> - <<Ant Build>>. 
+  Pēc tam izveidoto WAR failu ievietot savā JBoss apakšdirektorijā 
+  <<<%JBOSS_HOME%/server/default/deploy>>>. 
+  
+  * (Cita iespēja ir pielabot failu <<<klucisTrunk/klucis_demo/build.properties>>>
+  tā, lai tas norāda uz Jūsu JBoss instalāciju un darbināt "klucis_demo" 
+  Ant skriptam komandas  "ant clean jboss-deploy". 
+  Aplikāciju serveriem, kuri nav JBoss, izmantot konkrētajam 
+  serverim piemērotu izvietošanas procesu.
+  
+  * Pēc tam, kad KLUCIS ir izvietots (<deployed>) uz aplikāciju servera, 
+  var sākt pildīt 7 uzdevumus, ko var atrast {{{./lab01.html}1.pr.d. aprakstā}}. 
+  Var arī darbināt Selenium testus, atverot šo adresi: 
+  {{http://localhost:8080/klucisDemo/tests}}. 
+  
+  []
+  
+  Lai palaistu šīsdienas demonstrāciju piemērus,  
+  lejupielādēt demonstrāciju arhīvu (sk. linku lapas augšā), 
+  atarhivēt to, piemēram, savā Eclipse:s <<<workspace>>> direktorijā.
+  Pēc tam var veikt šādas darbības:
+  
+  * Direktorijā "sem01_demo" palaist Maven komandu 
+  "mvn eclipse:eclipse", lai izveidotu Eclipses projektu
+  ar vajadzīgajām bibliotēkām. (Lai darbinātu Maven komandas, 
+  reizēm vajadzīgs Interneta pieslēgums; ja pieslēguma 
+  nav, tad Eclipses projektu var izveidot arī manuāli.)
+  Izveidot Eclipses projektu sem01_demo direktorijā. 
+  Ar labo klikšķi aplūkot projekta "Properties", pēc tam
+  "Java Build Path"/"Libraries". Atrast "M2_REPO" mainīgo
+  failu ceļos uz JAR failiem (piemēram, <<<junit-4.1.jar>>>). 
+  To var definēt spiežot pogu "Add Variable" un 
+  pievienojot "M2_REPO", piemēram, vērtību 
+  <<<D:/Documents and Settings/user_name/.m2/repository>>>
+  (t.i. vietu, kur uz Jūsu mašīnas Maven:s ir izveidojis
+  savu <<<.m2/repository>>>. 
+   
+  * Atvērt ar pārlūkprogrammu, kura spēj rādīt vektorgrafiku, 
+  sekojošus failus: <<<sem01_demo/src/main/resources/houses1.svg>>>
+  un <<<houses2.svg>>>. Salīdzināt, kā abos failos tiek zīmētas
+  3 mājiņas. Kā redzams, <<<houses1.svg>>> izmanto "id-href" mehānismu, 
+  lai atkalizmantotu tos pašus SVG grafikas elementus (mājiņas, 
+  cilvēciņus) un iezīmētu tos dažādās vietās un dažādās krāsās. 
+  Tas ir līdzīgi uzdevumam #7 no 1.pr.d., kur jāpanāk, lai 
+  KLUCIS zīmētu līdzīgās figūras ar "use" elementu, bet 
+  neatkārtojot bez nepieciešamības līdzīgo figūru definīcijas. 
+  Tas darāms, lai samazinātu SVG failu izmēru un taupītu 
+  trafiku. 
+  
+  * Atvērt Eclipse:ē failu <<<sem01_demo/src/test/java/.../KlaseTest.java>>>
+  un darbināt to kā JUnit testu - labais klikšķis, <<Run As>> - <<JUnit Test>>. 
+  Ievērot zaļo termometru. Izmest vienai anotācijai "expect=RuntimeException.class" 
+  parametru un ievērot, ka tests vairs neiet - kļūst sarkans. 
+  Pievērst uzmanību dažādajām Java 1.5 stila anotācijām, ko 
+  izmanto JUnit 4.1. 
+  
+  * Atvērt failu <<<sem01_demo/src/main/java/...LearnProcessor.java>>> 
+  un darbināt kā Javas aplikāciju - labais klikšķis, <<Run As>> - <<Java Application>>. 
+  Ievērot, ka programmai vajadzīgs komandrindas parametrs. 
+  Pievienot šo parametru - Eclipses menu: <<Run>> - <<Run...>> - <<LearnProcessor>> - <<Arguments>>. 
+  Ierakstīt argumentu: <<<lv.webkursi.web2007a.sem01.learn.CourseExample>>>
+  starp programmas (nevis JVM!) parametriem. 
+  Ievērot HTML failu, kurš tiek drukāts ar anotāciju rezultātiem. 
+  Aplūkot arī Javas failus <<<Learn.java>>> un <<<CourseExample.java>>>, 
+  lai redzētu, kā var definēt un lietot savas anotācijas. 
+  Līdzīga pieeja var tikt izmantota, lai generētu 1.pr.d. fabrikas, piemēram 
+  KLUČA klases <<<RectangleFactory.java>>> utml. izejas tekstus no 
+  <<<Rectangle.java>>> anotācijām. 
+  
+  * Darbināt zem <<<sem01_demo>>> scenārijus <<<javac1.bat>>> un 
+  <<<javac2.bat>>>, lai redzētu, kādā veidā "javac" spēj darboties 
+  kā <anotāciju apstrādes rīks> (Annotation Processing Tool). 
+ 
+  
+  
+  
+  
 
 * Redzamības apgabali
 ~~~~
@@ -76,8 +183,14 @@ Seminārs 2007-02-21
 * Bibliogrāfija
 ~~~~
 
-  * {{http://www.springframework.org/docs/reference/beans.html#beans-factory-scopes}}
+  * {{http://www.w3.org/TR/SVG/struct.html#UseElement}}
+  
+  * {{http://java.sun.com/j2se/1.5.0/docs/guide/language/annotations.html}} - 
+  kā izmantot anotācijas kopā ar Javas reflexion-API. 
 
+  * {{http://java.sun.com/j2se/1.5.0/docs/guide/apt/GettingStarted.html}} - 
+  šis ir raksts par jau novecojušo Java 1.5 anotāciju apstrādes rīku "apt". 
+  
 
 
 

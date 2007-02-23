@@ -12,18 +12,18 @@ Homework 15: Glossary with Velocity
     Repetitive and verbose HTML/CSS/JavaScript constructs are sometimes the
     easiest way to achieve client-side dynamic behavior. 
     To make creation of such effects easy for the template
-    writer, a development of a specialized Velocity macro is suggested. 
-
-    
-* Introduction
-~~~
-  
-  A DHTML sample page displaying some glossary items is provided. 
-  Develop a helper object, which is retrieving UTF-8 encoded 
-  glossary definitions from the database and use it to 
-  generate the DHTML code fragment. 
-  Then replace reference to this object by a macro so that it
-  is easy to call just by the glossary key:
+    writer, a development of a specialized Velocity macro is suggested.
+    Assume that you have to generate mouse-hover 
+    glossary definitions like these: 
+    {{http://www.milonskarate.lv/exams.php?page=main&item_id=9&action=details&validated=8&params=}}. 
+    Propose an easy way to markup such glossary definitions
+    and suggest a Velocity macro, which can do this. 
+    (The glossary definitions need NOT to be dynamic. 
+    I.e. they can be generated at the time, when Velocity 
+    templates are evaluated by some preprocessor script). 
+    The macros should be easy and should use 
+    glossary definitions defined elsewhere (e.g. in some
+    Properties file). 
 
 +---+
 ... some text #glossary('some_key') more text ...

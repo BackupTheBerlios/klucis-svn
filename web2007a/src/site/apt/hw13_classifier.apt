@@ -1,11 +1,13 @@
-Homework 13: Document Classifier
+Homework 13: Custom Classifier with Weka
 ~~~~
 
   Implement Bayes or SVM classifier to recognize articles
-  about certain topics. 
+  about a certain topic. 
   You may use portal's preexisting content categories 
   to train the classifier, and then verify, if it 
-  classifies correctly any new items. 
+  classifies correctly any new items.
+  You can see the {{http://www.cs.waikato.ac.nz/~remco/weka_bn/}}
+  and use the "weka" software. 
 
 
 

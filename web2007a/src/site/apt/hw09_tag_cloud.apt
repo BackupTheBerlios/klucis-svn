@@ -1,0 +1,27 @@
+Homework 09: Tag cloud
+~~~~
+
+  Use the RSS data with tags from del.icio.us or from 
+  the previous homework and write a SPARQL query 
+  for it to produce a "Tag cloud" in KLUCIS - 
+  a rectangle filled with tag names in various 
+  fonts. 
+  
+  Font size is proportional to a rounded logarithm of 
+  the frequency of that tag. E.g. tags, which are 
+  used 1 time could use font size 8pt, 2-3 times - 10 pt, 
+  4-7 times - 12 pt, 8-15 times - 14 pt, 16-31 times - 16 pt, etc. 
+  The calculation of the font size could be either 
+  added to the Velocity Context by some custom KLUCIS
+  component (e.g. you can introduce a class, which 
+  inherits from a rectangle called "TagCloud"), 
+  or is calculated inside a Velocity template by 
+  some advanced "math" object. 
+  
+  One challenge is that SPARQL does not provide
+  aggregate methods, i.e. way to count how many 
+  times some tag has been produced. This should 
+  be counted by some iterator in your Java code, 
+  which you can add to the KLUCIS standard distribution. 
+  
+    

@@ -7,13 +7,23 @@ Homework 18: Desktop Publishing with FOP
     [Description:]
     Add some extra functions to an XSLT transform publishing
     Formatted Objects (FO) and Adobe PDF via Apache FOP tool. 
-    In particular, convert multiple choice tests to a printable format.
+    Take an input format being an XHTML file (potentially 
+    containing some non-ASCII characters, e.g. Latvian or
+    Russian letters) and produce *.fo and *.pdf output
+    by using FOP. 
     
-    
-* Introduction
-~~~
+* Example 
+~~~~
+  
+  To see how XSLT transform can produce FO, consider 
+  this example - {{{./hw/rainis.xml}rainis.xml}}, 
+  {{{./hw/rainis.jpg}rainis.jpg}}, 
+  {{{./hw/rainis_style.xsl}rainis_style.xsl}} and
+  the output {{{./hw/rainis.pdf}rainis.pdf}}. 
+  
+  Make it run and generalize it to work on 
+  a subset of XHTML and for various fonts. 
+  Your output should enable PDF linking and bookmarks. 
   
   
-
-
   

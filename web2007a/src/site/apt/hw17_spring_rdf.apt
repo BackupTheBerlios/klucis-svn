@@ -3,17 +3,290 @@ Homework 17: Spring Configuration with RDF
 
     [Goal:]
     Get acquainted with Spring and Spring MVC configuration 
-    from an unusual data source. 
+    and how the Spring's application context opereate 
+    (it is the place, which 
+    manages preconfigured beans and their relationships
+    and lifecicles)
 
     [Description:]
     Implement a custom subclass of Spring's AbstractBeanDefinitionReader
     which initializes bean definitions from a given RDF file.
     
     
-* Introduction
-~~~
-  
-  
+* Current situation with Spring config files
+    
+    Spring application contexts can be obtained
+    in several ways - they can be initialized 
+    in the runtime and also can be obtained from 
+    the properties file or an XML config file. 
+    Traditional Spring configuration file in 
+    XML looks like this:
+    
++----+
+<beans>
+	
+	<bean id="velocityConfig"
+		class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+		<property name="resourceLoaderPath">
+			<value>/WEB-INF/templates/velocity/</value>
+		</property>
+		<property name="velocityProperties">
+			<props>
+				<prop key="input.encoding">UTF-8</prop>
+				<prop key="output.encoding">UTF-8</prop>
+				
+				<prop key="marsMacro.resource.loader.class">
+					org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader</prop>
+				<prop key="resource.loader">file,marsMacro</prop>
+				<prop key="velocimacro.library">
+					com/hp/hpl/mars/portal/mvc/util/marsmacro.vm</prop>
+				
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
+		<property name="viewClass">
+			<value>
+				org.springframework.web.servlet.view.velocity.VelocityView</value>
+		</property>
+		<property name="suffix">
+			<value>.vm</value>
+		</property>
+		<property name="exposeSpringMacroHelpers">
+			<value>true</value>
+		</property>
+		<property name="toolboxConfigLocation" value="/WEB-INF/toolbox.xml"/>
+		<property name="contentType">
+			<value>text/html;charset=UTF-8</value>
+		</property>
+	</bean>
+	 
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.CookieLocaleResolver"/>
+	
+	<bean id="localeChangeInterceptor"
+		class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"/>
+	
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="messages"/>
+	</bean>
 
+	<bean id="urlMapping"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/home.htm">homeController</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="homeController" class="com.hp.hpl.mars.portal.temp.HomeController">
+		<property name="greeting">
+			<value>Welcome to Training Application!/Sveicināti!</value>
+		</property>
+	</bean>
+	
+</beans>
++---+
+   
+
+* The desired result   
+~~~~~~
+
+    Consider replacing it with another file in RDF. 
+    This is not the only possible format of RDF, but
+    rather a suggestion:
+    
+    
++---+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix spring: <http://www.hpl.hp.com/schema/20061027/spring#> .
+@prefix : <http://example.com/portal#> .
+		
+
+:velocityConfig
+  a spring:BeanDefinition ; 
+  spring:hasBeanName "velocityConfig" ;
+  spring:hasClass "org.springframework.web.servlet.view.velocity.VelocityConfigurer" ;
+  
+  spring:hasPropertyValues [
+    a rdf:Bag ;
+    rdf:_1 [
+      spring:hasName "resourceLoaderPath" ;
+      spring:hasValue "/WEB-INF/templates/velocity/"
+    ]		
+	;
+    rdf:_2 [
+      spring:hasName "velocityProperties" ;
+      spring:hasValue  [ 
+				a rdf:Bag ;
+				a spring:Props ;
+        rdf:_1 [
+     	   spring:hasKey "input.encoding" ;
+           spring:hasValue "UTF-8" 
+        ] ;
+        rdf:_2 [
+     	   spring:hasKey "output.encoding" ;
+           spring:hasValue "UTF-8" 
+        ] ;
+        rdf:_3 [
+     	   spring:hasKey "marsMacro.resource.loader.class" ;
+           spring:hasValue "org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader" 
+        ] ;
+        rdf:_4 [
+     	   spring:hasKey "resource.loader" ;
+           spring:hasValue "file,marsMacro" 
+        ] ;
+        rdf:_5 [
+     	   spring:hasKey "velocimacro.library" ;
+           spring:hasValue "com/hp/hpl/mars/portal/mvc/util/marsmacro.vm" 
+        ]  ]
+    ]		
+		
+  ] .	
+
+:viewResolver
+  a spring:BeanDefinition ; 
+  spring:hasBeanName "viewResolver" ;
+  spring:hasClass "org.springframework.web.servlet.view.velocity.VelocityViewResolver" ;
+  
+  spring:hasPropertyValues [
+    a rdf:Bag ;
+    rdf:_1 [
+      spring:hasName "viewClass" ;
+      spring:hasValue "
+				org.springframework.web.servlet.view.velocity.VelocityView"
+    ]		
+	;
+    rdf:_2 [
+      spring:hasName "suffix" ;
+      spring:hasValue ".vm"
+    ]		
+	;
+    rdf:_3 [
+      spring:hasName "exposeSpringMacroHelpers" ;
+      spring:hasValue "true"
+    ]		
+	;
+    rdf:_4 [
+      spring:hasName "toolboxConfigLocation" ;
+      spring:hasValue "/WEB-INF/toolbox.xml"
+    ]		
+	;
+    rdf:_5 [
+      spring:hasName "contentType" ;
+      spring:hasValue "text/html;charset=UTF-8"
+    ]		
+		
+  ] .	
+
+:localeResolver
+  a spring:BeanDefinition ; 
+  spring:hasBeanName "localeResolver" ;
+  spring:hasClass "org.springframework.web.servlet.i18n.CookieLocaleResolver" ;
+  
+  spring:hasPropertyValues [
+    a rdf:Bag 	
+  ] .	
+
+:localeChangeInterceptor
+  a spring:BeanDefinition ; 
+  spring:hasBeanName "localeChangeInterceptor" ;
+  spring:hasClass "org.springframework.web.servlet.i18n.LocaleChangeInterceptor" ;
+  
+  spring:hasPropertyValues [
+    a rdf:Bag 	
+  ] .	
+
+:messageSource
+  a spring:BeanDefinition ; 
+  spring:hasBeanName "messageSource" ;
+  spring:hasClass "org.springframework.context.support.ResourceBundleMessageSource" ;
+  
+  spring:hasPropertyValues [
+    a rdf:Bag ;
+    rdf:_1 [
+      spring:hasName "basename" ;
+      spring:hasValue "messages"
+    ]		
+		
+  ] .	
+
+:urlMapping
+  a spring:BeanDefinition ; 
+  spring:hasBeanName "urlMapping" ;
+  spring:hasClass "org.springframework.web.servlet.handler.SimpleUrlHandlerMapping" ;
+  
+  spring:hasPropertyValues [
+    a rdf:Bag ;
+    rdf:_1 [
+      spring:hasName "mappings" ;
+      spring:hasValue  [ 
+				a rdf:Bag ;
+				a spring:Props ;
+        rdf:_1 [
+     	   spring:hasKey "/home.htm" ;
+           spring:hasValue "homeController" 
+        ]  ]
+    ]		
+		
+  ] .	
+
+:homeController
+  a spring:BeanDefinition ; 
+  spring:hasBeanName "homeController" ;
+  spring:hasClass "com.hp.hpl.mars.portal.temp.HomeController" ;
+  
+  spring:hasPropertyValues [
+    a rdf:Bag ;
+    rdf:_1 [
+      spring:hasName "greeting" ;
+      spring:hasValue "Welcome to an RDF-configured Application!"
+    ]		
+		
+  ] .	
++---+
+
+
+* How Spring can be configured to support this
+~~~~~~~
+
+  The only major change has to be, when configuring 
+  Spring's DispatcherServlet: 
+  
++----+ 
+<servlet>
+	<servlet-name>rdfconfig</servlet-name>
+	<servlet-class>
+		org.springframework.web.servlet.DispatcherServlet</servlet-class>
+<!--
+	<init-param>
+		<param-name>contextClass</param-name>
+		<param-value>
+			org.springframework.web.context.support.XmlWebApplicationContext</param-value>
+	</init-param>
+	<init-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/rdfconfig.xml</param-value>
+	</init-param>
+-->			
+	<init-param>
+		<param-name>contextClass</param-name>
+		<param-value>
+			your.package.name.RdfWebApplicationContext</param-value>
+	</init-param>
+	<init-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/rdfconfig.n3</param-value>
+	</init-param>
+	<load-on-startup>1</load-on-startup>
+</servlet>
++---+
+  
 
   

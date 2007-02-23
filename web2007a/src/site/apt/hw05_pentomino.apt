@@ -1,0 +1,13 @@
+Homework 05: Pentomino Clusters
+~~~~
+
+  Extend KLUCIS software to allow the display 
+  of Pentomino configurations - i.e. pictures, 
+  where a square grid contains some of the 12 
+  Pentomino figures (see {{http://en.wikipedia.org/wiki/Pentomino}})
+  or their mirror images. A Pentomino configuration
+  is allowed to contain each figure no more than once.
+  
+  Try to make the RDF markup as minimalistic as possible
+  (e.g. indicating the size of the whole image in squares and 
+  the position and orientation of each Pentomino piece). 

@@ -1,0 +1,18 @@
+Homework 12: Appartment Sales images
+~~~~
+
+    [Description:]
+    Using Simile project's capabilities, scrape the information 
+    of one of the big portals: reklama.lv, dzivoklis.lv
+    or nams24.lv and convert it into some RDF format. 
+    Write SPARQL queries against that data to produce 
+    some input data for KLUCIS (e.g. each district within
+    Riga is represented by some "HorizontalRow" containing
+    rectangles of various sizes depending on how many rooms
+    each appartment has.). 
+    
+    This could make simple diagrams with 
+    graphical representation of
+    how much space is available for sale in Iļguciems, 
+    Zolitūde, etc.
+    

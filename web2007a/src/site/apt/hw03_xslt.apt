@@ -1,19 +1,27 @@
-Homework 03: XSLT Transform for DHTML
+Homework 03: Maven Site navigation
 ~~~~
 
     [Goal:]
-    Use XSLT to produce a JavaScript datastructure 
-    necessary for the collapsible tree view. 
+    Configure Maven and Velocity to produce 
+    nicer site output for Maven. 
 
     [Description:]
-    Given a file in "Outline XML" format describing hierarchical 
-    menus, make a XSLT transform, which turns it into a JavaScript
-    data structure, which can be used to display that menu 
-    as a collapsible tree. 
-    Include this transform into the given subview of a simple 
-    Web application, which displays a database driven hierarchical 
-    menu, which is common for the Web application. 
-    All the sample DHTML results are given, 
-    so the task is only to produce the transform itself. 
+    See e.g. our course 
+    homepage to find a Maven-generated documentation:
+    {{http://www.webkursi.lv/web2007a/site/}}. 
+    It has one drawback - the left-side navigation 
+    bar is all expanded (it is difficult to fit in 
+    a large set of documents). 
+    Some people have managed to produce Maven output, 
+    where the navigation tree collapses - see e.g. 
+    the left-side navigation for this site:
+    {{http://maven.apache.org/guides/getting-started/maven-in-five-minutes.html}}. 
     
-
+    The next challenge is to produce a JavaScript enabled 
+    navigation bar, which can be expanded and collapsed 
+    without the round-trips to the server (e.g. by clicking
+    little "+" and "-" symbols next to the links).     
+	Most likely your solution would include some 
+	editing of the webkursi-provided POM file 
+	plus providing a Velocity template, which 
+	can display the links and include the necessary Javascript. 

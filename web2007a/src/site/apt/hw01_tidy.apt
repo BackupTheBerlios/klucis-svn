@@ -2,7 +2,7 @@ Homework 01: Producing clean XHTML documents
 ~~~~
 
     [Goal:]
-    Cut, clean and parse legacy HTML
+    Cut, clean and parse legacy HTML. 
 
     [Description:]
     Typical Web sites contain HTML, where useful
@@ -11,23 +11,37 @@ Homework 01: Producing clean XHTML documents
     or HTML, which cannot be processed as XML/XHTML as it is. 
     Some preprocessing steps are usually necessary 
     to make it usable for screen scraping.
+
     
-* Introduction
-~~~
 
-  Use the provided code to download articles
-  from some Web portal, desirably such that allows robots, see 
-  <<<robots.txt>>> file in the virtual Web root. 
-  The list of documents to download
-  can be taken, e.g. from the RSS feed. 
-  The code downloads documents accordingly to some 
-  pattern, assigns names accordingly to some naming convention
-  and stores them in the specified local directory. 
-
+  Consider a list of URL addresses, e.g. those found
+  in this RSS file: {{http://del.icio.us/rss/kalvis/saprge}}
+  (under the XML element <<<rdf/channel/items>>>) - 
+  it should work for similar del.icio.us-produced
+  RSS data as well. 
   The objective of this homework is to transform the downloaded files
-  to another directory with the same names, but as
-  cleaned HTML documents - without any navigation or banners, 
-  with correct and minimalistic XHTML markup. 
+  to another directory with the names obtained from 
+  URL address hashCodes (i.e. the input is one RSS file
+  and the output is a set of some 20 files written to 
+  disk with "random"  names obtained e.g. 
+  by a <<<URL.hashCode()>>> method.) 
+  All the output is cleaned HTML documents - 
+  without any navigation or banners, 
+  with correct and minimalistic XHTML markup.
+    
+  Your software is expected to work for pages taken from 
+  a few large Internet portals in Latvian, e.g. Delfi, Apollo and Tvnet.
+  Your banner-cleanup code should be sufficiently 
+  flexible, so that it can be configured to 
+  process other portals as well (with some custom coding). 
+  It is good to respect 
+  <<<robots.txt>>> files, see e.g. 
+  {{http://www.diena.lv/robots.txt}}
+  and to download at a human speed (e.g. 1 HTTP 
+  request per minute rather than tens of requests
+  per second). I.e. proceed with care and don't get blacklisted
+  by the Web server. 
+  
   
 
   

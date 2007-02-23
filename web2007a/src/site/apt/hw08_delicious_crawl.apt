@@ -1,0 +1,23 @@
+Homework 08: Del.icio.us Crawler
+~~~~
+
+  If you try to download RSS files from 
+  del.icio.us directly (see e.g. {{http://del.icio.us/rss/kalvis}})
+  you will notice that they do not contain all the links
+  annotated by that user, but only the most recent ones. 
+  This is a crucial property of RSS syndication, which 
+  ensures that RSS servers serve only the "ticker tape" with 
+  the most recent links and do not get overloaded
+  (RSS clients are assumed to use caching). 
+  
+  Nevertheless, sometimes we want to get access to 
+  ALL the links and the tags annotated by some user. 
+  Write a software, which carefully (i.e. very slowly
+  and with fake "User-Agent" headers, since
+  there is a file {{http://del.icio.us/robots.txt}}
+  forbidding most robots) crawls over all the links 
+  annotated by some user and concatenates the 
+  RSS feed, which has all the links, but otherwise
+  its structure is identical to the RSS feed produced
+  for the most recent links only. 
+  

@@ -2,11 +2,27 @@ Homework 02: Text Concordance
 ~~~~
 
   Given a directory of clean XHTML documents (e.g. 
-  the sample output data from {{{./hw01_tidy.html}Homework 01}}), 
+  files, which are similar to those, which are output 
+  by the {{{./hw01_tidy.html}Homework 01}}), 
   build a concordance for them - i.e. 
-  a database application, which is displayed as 
-  a page consisting of 3 sections, showing the alphabet letters
-  in the above screen section, all word forms in the left frame and 
-  all environments for the given word in the right frame. 
+  a set of files, which are named after each word
+  form seen in those files, where each file is 
+  a list of links to the places, where this word
+  occurs. E.g., if there is word "šņukurs", which 
+  appears in 3 places in 20 input files, 
+  you should produce a file called e.g. 
+  <<<%c5%a1%c5%86ukurs.html>>>, which contains
+  an HTML file with body having a simple UL element 
+  with 3 links, which link to the files, where 
+  "šņukurs" (or some upper-case variant like
+  "ŠŅUKURS" or "Šņukurs") appears. 
+  
+  Have some JavaScript, which would enable to 
+  jump to the exact location of "šņukurs" 
+  (the input files may be long!). Since it
+  is XHTML, consider using standards like
+  XLink or XPointer. You can use frames
+  or attach your JavaScript to each of the 
+  input files to enable these "clever" links.  
   
   

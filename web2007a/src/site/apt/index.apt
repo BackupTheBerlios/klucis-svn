@@ -21,7 +21,6 @@ Introduction
 
 +-----+
 mvn -N clean site
-ant zip
 +-----+
  
   * Open the file <<<%ROOT%/target/site/index.html>>>
