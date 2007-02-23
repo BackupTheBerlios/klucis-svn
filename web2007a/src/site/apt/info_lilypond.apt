@@ -1,0 +1,70 @@
+LilyPond
+~~~~
+
+* Klaviermūzikas paraugs
+~~~~
+
+[./info/berlioz_waltz.png] Berlioza valša tēma
+
+  {{{./info/berlioz_waltz.ly}berlioz_waltz.ly}}, var saglabāt ar labo peles klikšķi 
+  un "Save Target As...". Faila paplašinājumam ir jābūt "ly" (nevis "txt"). 
+  Fails ir vienkāršs teksts un, ja ir vēlēšanās, H.Berlioza mūziku var papildināt ar
+  Notepad teksta redaktoru :) Valša tēma ir no "Fantastiskās simfonijas" - sk. 
+  {{{http://en.wikipedia.org/wiki/Symphonie_Fantastique}Symphonie Fantastique}}
+
+  Lai pārveidotu LilyPond formāta mūziku par drukājamu PDF dokumentu, 
+  uz Windows mašīnas jāinstalē LilyPond programmatūra un ar dubultklikšķi 
+  jāklikšķina failam <<<berlioz_waltz.ly>>>. 
+  Lai izveidotu PNG attēlu ar notīm, ko var likt Web lapā, 
+  var atvērt DOS lodziņu (<<Start>> -> <<Run>> -> <<<cmd>>>)
+  un rakstīt šādas divas komandas:
+
++----
+set PATH=C:\Program Files\LilyPond\usr\bin;%PATH%
+lilypond --png berlioz_waltz.ly
++----
+
+  Pirmā komanda norāda uz to direktoriju, kur instalēts <<<lilypond.exe>>> 
+  (ja uz Jūsu mašīnas LilyPond ir citur, direktoriju var pamainīt). 
+  Otrā komanda norāda, ka jāveido PNG formāta attēls 
+
+
+* Gregoriāniskas dziesmas paraugs
+~~~~
+
+  * Nošu avots ir {{http://www.op.org/domcentral/life/salve.htm}}
+  <Salve Regina>. 
+
+  * {{{./info/gregorian.ly}gregorian.ly}} - lejupielādēt dziesmu LilyPond salikumā.
+
+  * {{{./info/gregorian.pdf}gregorian.pdf}} - LilyPond gjenerēts drukājams 
+  PDF šai dziesmai, iegūstams ar dubultklikšķi no <<<gregorian.ly>>>.
+
+  * LilyPond atzīst, ka horizontālais nošu un teksta izvietojums Gregoriāniskām 
+  dziesmām vēl ir tālu no ideāla.
+
+
+* Citi piemēri
+~~~~
+
+  Šo to var atrast LilyPond dokumentācijā. Piemēram, 
+  {{{http://lilypond.org/doc/v2.8/Documentation/user/lilypond/Fret-diagrams.html#Fret-diagrams}
+  Gitāras akordu diagrammas}}; notīm var pievienot liriku, burtu akordus, 
+  salikt vertikālā sistēmā vairāku instrumentu partijas, utml.
+
+
+* Bibliogrāfija
+~~~~
+
+  * {{{http://lilypond.org/web/install/}Instalācija}}, 
+
+  * {{{http://lilypond.org/doc/v2.8/Documentation/user/lilypond/index.html}Dokumentācija
+  nošu salikšanai}}, 
+  
+  * {{{http://www.lilypond.org/doc/v2.3/Documentation/user/out-www/lilypond-internals/index.html#Top}
+  Programmatūras dokumentācija}} (var kontrolēt dažus citus nošu salikšanas aspektus), 
+
+  * {{{http://www.mutopiaproject.org/}Mutopia}} - bezmaksas nošu bibliotēka 
+  salikta ar LilyPond
+
+

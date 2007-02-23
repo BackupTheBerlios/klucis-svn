@@ -3,18 +3,108 @@ Homework 04: Rich text processing
 
 
   Write a Ruby script, which can convert a batch of 
-  files containing Textile+LaTeX+LilyPond
+  files containing Textile and LaTeX (optionally also LilyPond)
   markup into a Web-friendly format, e.g. XHTML+MathML+PNG.
   You can assume that Ritex library is installed 
-  for Ruby, and the environment contains Lilypond software.   
+  for Ruby, and Lilypond software is installed. 
   The operation on the given dataset will be verified
   from a Windows machine command line. E.g.
 
 +---+
-rtconvert
+rtconvert input-directory output-directory
 +---+
 
-
-  You can suggest your own markup conventions, e.g. 
+  We suggest to  
   enclose LaTeX in <<<\<math\>>>> and <<<\</math\>>>>, 
-  and Lilypond markup in <<<\<music\>>>> and <<<\</music\>>>>.
+  and Lilypond markup in <<<\<music\>>>> and <<<\</music\>>>>
+  to enable easier discovery of these things in-between
+  normal Textile markup, so that they may receive their 
+  respective processing. 
+
+* Examples and Demos for input formats
+~~~~
+
+  Here is an example of LaTeX markup:
+  
++----
+Solution is given by this formula:
+<math>x_{1,2}=\frac{-b \pm \sqrt{b^2-4ac}}{2a}</math>
+so it follows ...
++----
+
+[./hw/sq_equation_formula.png] The same equation. 
+
+  LaTeX can be tried out in any of the Sandbox areas of
+  the Wikipedia (LaTeX markup is enclosed between 
+  tags \<math\> and \</math\>). In this homework 
+  you will use Ritex to process these snippets of LaTeX and
+  produce islands of MathML. 
+  
+  See the document {{{./info_lilypond.html}About LilyPond}} regarding
+  LilyPond software and its music notation.
+
+
+* Examples and Demos for the produced result
+~~~~
+
+  After <<<rtconvert>>> command (rich text conversion)
+  the produced HTML+MathML files (plus some PNG images, if 
+  you are also converting LilyPond) should be viewable
+  by regular browser with MathML plugin support.
+  HTML file examples, which also contain MathML markup can be 
+  found in the page of the MathPlayer plugin 
+  (see {{http://www.dessci.com/en/products/mathplayer/}}). 
+  
+* Characteristics of the Application
+~~~~
+
+  [Code:] 
+  A Ruby script (one or more Ruby files), which contains 
+  <<<rtconvert>>> utility and a small <<<README.txt>>> file
+  explaining how it should be used (together with a few
+  sample files). 
+  
+  [Input:] 
+  A directory containing files having extensions *.txt
+  and containing Textile interspersed with snippets
+  of LaTeX (and possibly LilyPond). 
+  
+  [Output:]
+  Another directory (if it does not exist, it is created; 
+  if it exists, its previous content is erased), which 
+  contains the files with the same names as input directory, 
+  but with different extensions (*.html), so that they are 
+  immediately accessible by the MathML-enabled browser. 
+  In case of LilyPond, the output directory also contains 
+  PNG images, which are music scores created from the pieces
+  of the LilyPond found in the input documents. 
+
+  
+* Bibliography
+~~~~
+
+  * {{http://rubyforge.org/frs/?group_id=167}} - installations
+  of Ruby (e.g. take the most recent version, which at the
+  moment of writing this is <<<1.8.5-24>>>). 
+  
+  * {{http://en.wikipedia.org/wiki/Textile_(markup_language)}} - 
+  Textile markup language.
+  
+  * {{http://www.w3.org/Math/}} - MathML specifications and
+  software supporting it. 
+  
+  * {{http://rubyforge.org/projects/ritex}} - Ritex software
+  converting LaTeX formulae into MathML. 
+  
+  * {{http://www.artofproblemsolving.com/LaTeX/AoPS_L_GuideCommands.php}}, 
+  {{http://www.andy-roberts.net/misc/latex/latextutorial9.html}} - 
+  some tutorials of LaTeX. 
+  
+  * {{http://lv.wikipedia.org/wiki/Wikipedia:Smil%C5%A1u_kaste}} - 
+  Wikipedia sandbox, a good place where to learn LaTeX markup 
+  for mathematical formulae. 
+  
+  * {{http://lilypond.org/web/}} - LilyPond software
+  
+  * {{http://www.mutopiaproject.org/}} - lots of free sheet music
+  annotated with LilyPond. 

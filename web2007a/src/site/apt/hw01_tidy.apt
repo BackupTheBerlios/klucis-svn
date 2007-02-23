@@ -1,18 +1,42 @@
 Homework 01: Producing clean XHTML documents
 ~~~~
 
-    [Goal:]
-    Cut, clean and parse legacy HTML. 
+  [Goal:]
+  Cut, clean and parse legacy HTML. 
 
-    [Description:]
-    Typical Web sites contain HTML, where useful
-    document is framed with navigation items and banners, 
-    which contain wrong or redundant HTML markup, 
-    or HTML, which cannot be processed as XML/XHTML as it is. 
-    Some preprocessing steps are usually necessary 
-    to make it usable for screen scraping.
+  [Description:]
+  Typical Web sites contain HTML, where useful
+  document is framed with navigation items and banners, 
+  which contain wrong or redundant HTML markup, 
+  or HTML, which cannot be processed as XML/XHTML as it is. 
+  Some preprocessing steps are usually necessary 
+  to make it usable for screen scraping.
+  
+* Background
+~~~~
 
-    
+  Downloading (dirty) HTML from the Web needs 
+  some automated HTTP Clients (see Jakarta Commons
+  or HttpUnit project links below). After that
+  there are various ways to do the cleaning - 
+  
+  [[1]] Banners and navigation and unnecessary markup can be 
+  stripped by 
+  regular expressions (see <<<java.util.regex>>> package), 
+  
+  [[2]] After optional preprocessing by regular expression
+  replacements 
+  
+  []
+  
+  <<Important:>> As there are many libraries involved, 
+  avoid the temptation of writing a long procedural routine, 
+  which does the downloads and proceeds with the cleanup. 
+  Try to use modular/OO design.   
+
+
+* Design Problem
+~~~~    
 
   Consider a list of URL addresses, e.g. those found
   in this RSS file: {{http://del.icio.us/rss/kalvis/saprge}}
@@ -33,15 +57,54 @@ Homework 01: Producing clean XHTML documents
   a few large Internet portals in Latvian, e.g. Delfi, Apollo and Tvnet.
   Your banner-cleanup code should be sufficiently 
   flexible, so that it can be configured to 
-  process other portals as well (with some custom coding). 
-  It is good to respect 
-  <<<robots.txt>>> files, see e.g. 
+  process other portals as well. (A good OO design
+  and a Spring configuration should help you achieve this).
+   
+  It is good to respect <<<robots.txt>>> files, see e.g. 
   {{http://www.diena.lv/robots.txt}}
   and to download at a human speed (e.g. 1 HTTP 
   request per minute rather than tens of requests
   per second). I.e. proceed with care and don't get blacklisted
   by the Web server. 
   
-  
+* Characteristics of the Application
+~~~~
 
+  [Code:] 
+  A Spring-configurable, command-line Java application. 
+  
+  [Input:] 
+  URL address or a file path of an RSS file containing
+  links to visit; directory path, where to write results
+  
+  [Output:]
+  The previous content of the output directory is cleaned
+  and it is filled with cleaned XHTML files (stripped from 
+  banners and navigation) downloaded from the addresses
+  specified in the input RSS. 
+  from the URL addresses 
+
+* Bibliography
+~~~~~
+
+  * {{http://jakarta.apache.org/commons/httpclient/}} - 
+  HTTP Client (from <Jakarta Commons>) - an HTTP client
+  library, which can do automated HTTP requests. 
+
+  * {{http://httpunit.sourceforge.net/}} - HttpUnit, another library
+  capable of doing Java-programmable HTTP requests. 
+
+  * {{http://jena.sourceforge.net/}} - a possible software
+  to parse the RSS files (in case if the RSS is in RDF-compatible 
+  format). 
+  
+  * {{http://jtidy.sourceforge.net/}} - HTML Tidy in Java (JTidy) - 
+  software, which converts dirty HTML into a clean HTML or
+  to XHTML, if we ask to. 
+  
+  * {{http://xerces.apache.org/}} - Xerces: a family of XML parsers
+  by Apache. Could be useful, if you have not removed all the 
+  unnecessary banners/navigation with regular expression preprocessing, 
+  but want to post-process the result of the HTML Tidy to 
+  edit some XHTML. 
   

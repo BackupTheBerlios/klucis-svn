@@ -1,13 +1,128 @@
 Homework 05: Pentomino Clusters
 ~~~~
 
+  [Goal:]
+  Extend KLUCIS framework to allow drawing simple shapes on 
+  a square grid. 
+  
+  [Description:]
   Extend KLUCIS software to allow the display 
   of Pentomino configurations - i.e. pictures, 
   where a square grid contains some of the 12 
   Pentomino figures (see {{http://en.wikipedia.org/wiki/Pentomino}})
   or their mirror images. A Pentomino configuration
-  is allowed to contain each figure no more than once.
-  
+  is allowed to contain each figure no more than once.  
   Try to make the RDF markup as minimalistic as possible
   (e.g. indicating the size of the whole image in squares and 
   the position and orientation of each Pentomino piece). 
+
+* Design Problem
+~~~~~~~
+
+  You have to pick a notation, which allows to describe
+  the orientation of each pentomino piece (its rotation and
+  knowing whether it is a mirror image of its canonical 
+  image or not) and also its position relative to the other 
+  pentomino pieces (or relative to the coordinates of the 
+  square grid). Each pentomino piece can have a unique name
+  derived from the Latin letter, which is similar to it 
+  (see image). 
+  
+[./hw/pentomino_pieces.png] The 12 pieces of Pentomino
+  
+  One suggestion is to pick one "local coordinate origin" in each piece
+  of Pentomino (it is shown by small red circles in the above image), 
+  and to define where in your configuration each 
+  piece has been translated (e.g. 4 squares to the right and
+  6 squares to the bottom from the upper left corner of the 
+  grid) and also its rotation and possible mirror image properties.   
+  For example, consider the pentomino configuration show in the 
+  image below:
+
+[./hw/pentomino_solution6x10.png] How to fill a 6x10 rectangle with all 12 pieces
+  
+  Most likely each of your pentomino pieces will have
+  a (different) default color, but it will allow to 
+  be overriden by explicit "klucis:hasColor" property. 
+  So the colors can be omitted from the RDF configuration
+  most of the time. The suggested RDF configuration for this image
+  is here:
+  
++----
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix klucis: <http://www.webkursi.lv/schema/20061008/klucis#> .
+@prefix pentomino: <http://www.webkursi.lv/schema/20070223/pentomino#> .
+@prefix : <http://example.com/bildes#> .
+
+:solution6x10
+  a klucis:TopComponent ;
+  klucis:hasImageName "solution6x10" ;
+  klucis:hasContent [
+    a rdf:Seq ;
+    a pentomino:Configuration ;
+    rdf:_1 [
+      a pentomino:F ;
+      pentomino:gridX 6 ;
+      pentomino:gridY 3 ;
+      klucis:rotate 270 
+    ] ;
+    rdf:_2 [
+      a pentomino:I ;
+      pentomino:gridX 0 ;
+      pentomino:gridY 0 
+    ] ;
+    rdf:_3 [
+      a pentomino:L ;
+      pentomino:gridX 5 ;
+      pentomino:gridY 1 ;
+      # apply mirror image
+      pentomino:flip "true" ;
+      pentomino:rotate 90 
+    ] ;
+    ...
+  ] .  
++----
+
+
+  In this case we assume that translation 
+  to (gridX,gridY) is performed first, 
+  mirror image (if "flip = true") is performed second
+  and rotation - the last. 
+  (For a more comprehensive vocabulary of transformations, 
+  a definite sequence would be needed. Notice that we can 
+  define properties like "pentomino:flip", when we need it 
+  and supply them with custom semantics. 
+  Afterwards we can care about alligning it 
+  with mirror image operations defined for other purposes, 
+  if KLUCIS ever needs them.)
+  
+* Characteristics of the Application
+~~~~
+
+  [Code:] 
+  A separate Java code package to be used together with 
+  the usual KLUCIS distribution (see {{{./lab01.html}Lab 01}}, 
+  also a <<<description.n3>>> file or just a fragment of 
+  N3 notation to be copy-pasted into an existing <<<description.n3>>>. 
+  A simple <<<README.txt>>> file explaining how to set
+  up KLUCIS to use your software.
+  Unless you have good arguments to the contrary, 
+  is recommended to make this package as a separate JAR
+  (e.g. <<<klucis_pentomino.jar>>>), which can be deployed
+  to all the Web applications, which might need it. 
+  This JAR may contain both Java class files and Velocity 
+  templates needed to display the pentomino pieces.
+  
+  [Input:] 
+  The incoming HTTP request containing the name of 
+  one of the Pentomino images you have configured. 
+  E.g. {{http://localhost:8080/klucisDemo/klucis/main/pentomino_bilde01}}. 
+  
+  [Output:]
+  The HTTP response containing the SVG (vector graphics) 
+  markup of that image. The image should display the pentomino 
+  configuration in such a way that both the individual pentomino 
+  pieces and also the square grid is clearly visible. 
+  
+  
+  

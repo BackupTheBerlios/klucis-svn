@@ -1,7 +1,37 @@
-Homework 19: Producing Textile from XML 
+Homework 19: Producing Textile from XML/HTML data
 ~~~~
 
     [Goal:]
-    Use XSTL to produce Textile (wiki-like) markup from 
-    some subset of XHTML. 
+    Given files
+    in a custom XML markup, write software, which extracts
+    pieces of XHTML contained therein, transforms them into 
+    a Textile format and saves into database tables. 
+	        
+    [Description:]
+    You will process large files containing multiple-choice tests
+    (test data will be provided). 
+    Each file consists of test material split into "modules" 
+    (collections of related test questions), and each 
+    test question having an introductory "cue" followed
+    by answer variants (e.g. exactly one of them is correct).     
+    Test questions and answer variants contain a subset of
+    XHTML markup (this enables easy conversion of this 
+    custom XML format into various printable and displayable
+    document variants with/without the correct answers). 
+    
+    Your task is to analyze this XML and to store these
+    test questions into a simple relational database
+    (one table for modules, another - for test questions/items, 
+    yet another - for answer variants). When processing 
+    snippets of XHTML, you will have to convert them 
+    into a wiki-like format called "Textile". 
+    
+
+* Notes
+~~~    
+    
+    XSLT 1.0 transformations are normally used to transform XML 
+    into another XML format or HTML. It is quite possible to 
+    use XSLT to produce text documents, e.g. in Wiki format. 
+    
 

@@ -1,0 +1,81 @@
+Homework 03: Maven Site navigation
+~~~~
+
+    [Goal:]
+    Configure Maven and Velocity to produce 
+    nicer site output for Maven. 
+
+    [Description:]
+    See e.g. our course 
+    homepage to find a Maven-generated documentation:
+    {{http://www.webkursi.lv/web2007a/site/}}. 
+    It has one drawback - the left-side navigation 
+    bar is all expanded (it is difficult to fit in 
+    a large set of documents). 
+    Some people have managed to produce Maven output, 
+    where the navigation tree collapses - see e.g. 
+    the left-side navigation for this site:
+    {{http://maven.apache.org/guides/getting-started/maven-in-five-minutes.html}}.     
+    The next challenge is to produce a JavaScript enabled 
+    navigation bar, which can be expanded and collapsed 
+    without the round-trips to the server (e.g. by clicking
+    little "+" and "-" symbols next to the links).     
+	Most likely your solution would include some 
+	editing of the webkursi-provided POM file 
+	plus providing a Velocity template, which 
+	can display the links and include the necessary Javascript. 
+
+
+* Design Problem
+~~~~~~~
+
+  The layout of the Maven-documented site is provided
+  by the file <<<$project_root_dir/src/site/site.xml>>>. 
+  It is written in a special XML syntax showing the
+  navigation items, which the documentation will contain. 
+  
+  Your task is to use the data structures produced by 
+  the Maven software during the "mvn site" phase and
+  to populate the right Velocity templates to produce
+  a JavaScript-enabled collapsible tree. 
+  
+  Before you start with the JavaScript collapsible tree
+  it is recommended that you understand how to produce
+  collapsible trees in the way, which is visible 
+  {{{http://maven.apache.org/guides/getting-started/maven-in-five-minutes.html}here}}. 
+
+
+* Characteristics of the Application
+~~~~
+
+  [Code:] 
+  A sample documented Maven application with its <<<pom.xml>>> 
+  file and some custom Velocity templates to generate the 
+  desired navigation bar. A short <<<README.txt>>> instruction
+  how to use your custom templates. 
+  
+  [Input:] 
+  A Maven-documented project, which can be enhanced with your POM file
+  and Velocity templates (e.g. see 
+  {{{http://www.webkursi.lv/web2007a/site/downloads/web2007a.zip}here}}). 
+  
+  [Output:]
+  After the DOS command (e.g. <<<mvn clean site>>>) or 
+  similar, a "target/site" subdirectory
+  is produced, containing documentation with the desired navigation. 
+
+
+* Bibliography
+~~~~
+
+  * {{http://examples.oreilly.com/jvdhtmlckbk/}} - examples
+  of "JavaScript and DHTML Cookbook". Chapter 10 contains
+  working examples on how to get a collapsible tree of 
+  navigation items. The book is also available on our server. 
+  
+  * {{http://maven.apache.org/guides/mini/guide-apt-format.html}} - 
+  a short guide to APT (almost plain text) format, the most popular
+  method of writing Maven-documented sites. 
+  
+  * V. Massol, J. van Zyl. Better Builds with Maven (2006).
+  A good book about Maven2. 

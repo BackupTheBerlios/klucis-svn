@@ -7,8 +7,9 @@ Homework 20: Use Antlr parser generator
     [Description:]
     Process a subset of LaTeX expressions of mathematical formulae
     in order to create their MathML representation. 
-    For example, convert <<<\frac{2}{3}>>> (fraction 2/3) into 
-    a MathML notation. 
+    For example, convert <<<\frac\{2\}\{3\}>>> (fraction 2/3) into 
+    a MathML notation. See {{{./hw04_markup.html}HW4}} for more
+    information about MathML. 
      
    
 

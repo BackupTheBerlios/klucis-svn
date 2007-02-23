@@ -1,28 +1,119 @@
 Homework 02: Text Concordance 
 ~~~~
 
-  Given a directory of clean XHTML documents (e.g. 
-  files, which are similar to those, which are output 
-  by the {{{./hw01_tidy.html}Homework 01}}), 
-  build a concordance for them - i.e. 
-  a set of files, which are named after each word
-  form seen in those files, where each file is 
-  a list of links to the places, where this word
-  occurs. E.g., if there is word "šņukurs", which 
-  appears in 3 places in 20 input files, 
-  you should produce a file called e.g. 
-  <<<%c5%a1%c5%86ukurs.html>>>, which contains
-  an HTML file with body having a simple UL element 
-  with 3 links, which link to the files, where 
-  "šņukurs" (or some upper-case variant like
-  "ŠŅUKURS" or "Šņukurs") appears. 
+    [Goal:]
+    Given a large collection of text documents, linguistic
+    analysis is greatly facilitated by having a <concordance>
+    for these documents, i.e. a lookup mechanism, 
+    which finds the occurrences of these words in the
+    texts (see {{http://en.wikipedia.org/wiki/Concordance_%28publishing%29}}). 
+    You will produce a simple concordance for this exercise. 
+    
+    [Description:]
+    Given a directory of clean XHTML documents (e.g. 
+    files, which are similar to those, which are output 
+    by the {{{./hw01_tidy.html}Homework 01}}), 
+    build a concordance for them - i.e. 
+    a set of files, which are named after each wordform 
+    seen in those files, where each file is 
+    a list of links to the places, where this word
+    occurs. E.g., if there is word "šņukurs", which 
+    appears in 3 places in 20 input files, 
+    you should produce a file called e.g. 
+    <<<%c5%a1%c5%86ukurs.html>>>, which contains
+    an HTML file with body having a simple UL element 
+    with 3 links, which link to the files, where 
+    "šņukurs" (or some upper-case variant like
+    "ŠŅUKURS" or "Šņukurs") appears. 
+    For the reasons of complexity, we cannot 
+    analyze the flexion forms ("šņukura", "šņukuram", etc.), 
+    so these are considered to be separate words. 
+
+* Design Problem
+~~~~~~~
+
+  The desired user interface for the concordance
+  bears some similarity to Javadoc API documentation - 
+  it could consist of 3 frames: 1st frame allows to 
+  select some letter ("A", "Ā", "B", "C", "Č", etc.), 
+  the 2nd frame lists all the words starting with that
+  letter (e.g. "abats", "abata", "abažūrs", "abējāds", etc.), 
+  and, finally, the 3rd large frame lists all the contexts in 
+  all the provided documents, where the selected word appears. 
+  Each of these contexts is supplied with a link, which 
+  allows jumping to the place, where that context appears 
+  and selects it. 
+
+  Consider having some JavaScript, which enables the browser to 
+  navigate to the exact location of that context 
+  (the input files may be long!) and to highlight it. 
+  Since the documents are all XHTML, consider using 
+  either position numbers or standards like
+  XLink, XPath or XPointer. Your links can have the following 
+  syntax: <<<./file10.html?context=expression>>>, where
+  <<<file10.html>>> is the XHTML document, where particular 
+  context appears, but <<<expression>>> is the locator
+  allowing the Javascript to find (and to scroll/highlight) 
+  the desired context. The original XHTML documents
+  could have no JavaScript at all, but you can provide
+  JavaScript by your frameset.
+
+
+* Characteristics of the Application
+~~~~
+
+  [Code:] 
+  A Spring-configurable, command-line Java application
+  (or, optionally, a database/Web application having
+  the same interface). 
   
-  Have some JavaScript, which would enable to 
-  jump to the exact location of "šņukurs" 
-  (the input files may be long!). Since it
-  is XHTML, consider using standards like
-  XLink or XPointer. You can use frames
-  or attach your JavaScript to each of the 
-  input files to enable these "clever" links.  
+  [Input:] 
+  Directory path containing files, which we index.
+  
+  [Output:]
+  These files should be produced, if you are doing
+  a command-line application:
+  
+  [[1]] External frameset, which draws 3 frames and 
+  sets up the necessary JavaScript;
+  
+  [[2]] The alphabet-letter selecting frame, allowing
+  to select starting letter; 
+  
+  [[3]] For each alphabet letter a separate file, 
+  e.g. <<<a_index.html>>> containing links to 
+  all the files corresponding to the words, which 
+  are found in the documents and start with "a"
+  (such index-files will populate the 2nd frame)
+  
+  [[4]] The files corresponding to the individual
+  words, which populate the 3rd frame. Each such file 
+  contains links to the original documents having
+  occurences of this word. Each link will open 
+  a new window containing some original document
+  with the context highlighted. 
+  
+  []
+  
+  In case of a Web/database application you do not
+  produce the files for indices and separate
+  words, but rather populate them with database queries. 
+  
+
+
+* Bibliography
+~~~~~~~
+
+  * {{http://java.sun.com/javase/6/docs/api/}} - JavaDoc example; 
+  a possible UI suggestion for the concordance. 
+  {{http://aldona.mii.lt/pms/terminai/term/z2odynas.html}} - 
+  a similar UI solution in a Lithuanian dictionary of IT terms.
+  
+  * {{http://www.webreference.com/js/column12/trmethods.html}} - 
+  <<<createTextRange>>> - one of the methods, which  
+  deal with text selections in JavaScript (it needs start
+  and end position numbers). 
+  Custom JavaScript can select any of the DOM elements, e.g. 
+  the text paragraph (the \<p\> element) containing the selected text.
   
   

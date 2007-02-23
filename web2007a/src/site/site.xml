@@ -35,7 +35,7 @@
 		<item name="Indiv.Homeworks">
 			<item name="HW01" href="hw01_tidy.html"/>
 			<item name="HW02" href="hw02_concordance.html"/>
-			<item name="HW03" href="hw03_xslt.html"/>
+			<item name="HW03" href="hw03_maven_site.html"/>
 			<item name="HW04" href="hw04_markup.html"/>
 			<item name="HW05" href="hw05_pentomino.html"/>
 			<item name="HW06" href="hw06_wsdl.html"/>
