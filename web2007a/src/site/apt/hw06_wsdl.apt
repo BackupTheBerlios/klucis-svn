@@ -1,7 +1,13 @@
-Homework 06: Web Service
+Homework 06: SVG Images as Web Service
 ~~~~
 
-  Implement KLUCIS as a stateful Web Service, 
+  [Goal:]
+  Implement a simple Web Service, which offers one more
+  interface to the KLUCIS vector graphics generation 
+  components.
+  
+  [Description:]
+  Implement access to KLUCIS as a stateful Web Service, 
   which accepts RDF markup (either in the 
   XML notation or N3 notation) and returns SVG results. 
   Design an appropriate WSDL file, which allows 
@@ -9,5 +15,15 @@ Homework 06: Web Service
   an old initialization, if it exists) and 
   then receive image names as strings, and return their corresponding
   SVG markup (or a special "broken image" icon, 
-  if such name does not exist in the provided RDF). 
+  if such name does not exist in the provided RDF).
+  
+
+
+
+
+* Bibliography
+~~~~
+
+  * {{http://ws.apache.org/axis2/1_1_1/quickstartguide.html#ready}} - instruction on
+  how to set up Apache Axis 2. 
   
