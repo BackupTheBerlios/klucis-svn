@@ -2,23 +2,52 @@ Homework 06: SVG Images as Web Service
 ~~~~
 
   [Goal:]
-  Implement a simple Web Service, which offers one more
+  Implement a simple Web Service, which offers an
   interface to the KLUCIS vector graphics generation 
   components.
   
   [Description:]
   Implement access to KLUCIS as a stateful Web Service, 
   which accepts RDF markup (either in the 
-  XML notation or N3 notation) and returns SVG results. 
+  XML notation or N3 notation) and returns SVG, when 
+  an image is requested by its name. 
+
+
+* Design Problem
+~~~~~~~
+
   Design an appropriate WSDL file, which allows 
   the service to be initialized by an RDF (overwriting
   an old initialization, if it exists) and 
-  then receive image names as strings, and return their corresponding
+  then receives image names as strings, and return their corresponding
   SVG markup (or a special "broken image" icon, 
   if such name does not exist in the provided RDF).
   
+  See Apache Axis2 samples to learn how to implement
+  Web Services, including SOAP with attachments and 
+  stateful services. 
+  
+ 
 
+* Characteristics of the Application
+~~~~
 
+  [Code:] 
+  A directory layout, which contains both the service
+  and the client of the Web service along with all the 
+  necessary infrastructure files (e.g. WSDL). 
+  It should be deployable as an <<<*.aar>>> Web Service
+  archive (similar to the Apache Axis2 samples).  
+  
+  [Input:] 
+  A <<<load(File)>>> request, which uploads something similar to 
+  a <<<description.n3>>> file. A <<<getImage(String)>>> request, 
+  which asks for an image by its name. 
+  
+  [Output:]
+  A "load()" request returns boolean, which tells, if the initialization 
+  was successful. A "getImage()" request returns String 
+  containing the SVG of the requested image. 
 
 
 * Bibliography

@@ -1,17 +1,48 @@
 Homework 07: Compare Web Application Server Performance
 ~~~~
 
+    [Goal:]
+    Gain experience working with non-servlet HTTP server implementations
+    in Java. Compare WRHapi/Jetty implementation with a more traditional 
+    Tomcat. 
+
     [Description:]
     Create a simple Spring-based Web application, which can be 
-    deployed to the WRHapi Web server (the one, which uses Java NIO 
-    package for its custom request processing instead of Servlet API
-    with its extensive use of a more slow "java.io").     
-    Web application can do something quite simple, e.g. display 
-    an editable table with contacts (person's name, address, phone), 
-    allowing insert/edit/remove commands.
-    See {{https://developer.berlios.de/svn/?group_id=7958}} to 
-    download "WRHapi" server or ask Kalvis, who has
-    a version of the source code. (WRHapi can also 
-    run on top of Jetty web server.)
+    run with WRHapi Web server software. 
     Compare the performance of WRHapi with application deployed to 
     Tomcat Servlet container by doing a simple load test. 
+    
+    [Download:]
+    {{{./downloads/wrhapi_demo.zip}wrhapi_demo.zip}} - a simple
+    Spring configurable application on top of JUnit, which 
+    displays the current time on the server machine and some message. 
+
+* Background 
+~~~~
+    
+    WRHapi uses quite efficient Java NIO package for its custom request 
+    processing; it is not based on Servlet API.
+    The WRHapi is currently a project on BerliOS, it also 
+    is used by one Jena subproject (displaying temporal changes of an 
+    RDF graph). 
+    
+* Design Problem
+~~~~
+    
+    Consider doing a simple Web application, which 
+    displays portions of a simple text file - the file
+    contains table with contacts (person's name, address, phone); 
+    it displays list of the persons and allows to view each person in detail. 
+    See {{https://developer.berlios.de/svn/?group_id=7958}} to 
+    download "WRHapi" server or ask Kalvis, who has
+    a version of the source code. 
+
+    For a load test, ask for a full list of contacts and then request in a random 
+    order e.g. 1000 contacts (possibly with repetitions). Measure
+    the time spent by WRHapi and Tomcat and compare the results. 
+    Load tests can be implemented with Selenium, JMeter or any other
+    load testing framework of your choice (it should support many (multithreaded) 
+    HTTP requests. 
+
+    
+    

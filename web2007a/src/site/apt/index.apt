@@ -32,4 +32,5 @@ mvn -N clean site
 ~~~~
 
   These can be found on students.mii.lu.lv FTP server - see the folder 
-  "pasn/WebTechnologies". 
+  "WebTechnologies". Older books and documents regarding Web programming course 
+  can be found under the folder "JavaAndXML". 

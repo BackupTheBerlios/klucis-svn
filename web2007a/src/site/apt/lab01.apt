@@ -38,8 +38,8 @@ Lab Exercise 01. Vector Images: Configurations, Objects and Templates
   The data model of an RDF is a directed graph with labeled nodes and edges
   (these labels are URLs). The RDF can be written either as XML (this is 
   used in all the W3C specification documents) or in the so called N3 notation, 
-  which is easier to create by hand compared to the XML syntax for RDF, 
-  which is explained in most RDF documents. 
+  which is easier to create by hand, especially when compared to the XML syntax for RDF, 
+  which is the only format explained in most RDF specifications.
   
   The processing chain by the software is the following:
 
@@ -70,7 +70,7 @@ Lab Exercise 01. Vector Images: Configurations, Objects and Templates
 ~~~
 
   Get familiar with running simple Java command-line applications from Eclipse, 
-  get a SVN snapshot from the BerliOS project KLUCIS and run it from Eclipse. 
+  get an SVN snapshot from the BerliOS project KLUCIS and run it from Eclipse.
   Run JUnit tests and verify that all of them work properly. 
   Download Spring framework, build and deploy on Tomcat and/or JBoss some of 
   the Spring samle applications (e.g. "countries"). Make sure that you understand
@@ -79,22 +79,24 @@ Lab Exercise 01. Vector Images: Configurations, Objects and Templates
 
   Install Adobe SVG Viewer 3.x plugin for Internet Explorer. Verify that
   you can view some SVG files (SVG samples are included with Batik distribution). 
-  Read some RDF specifications and familiarize yourselves with N3 syntax for RDF. 
+  Read some RDF specifications and familiarize yourselves with N3 syntax for RDF.
+  More detailed instructions how to run the KLUCIS project are
+  given in the {{{./seminars_2007-02-21.html}Seminar 01}}.
 
 
-* Design Problem 
+* Design Problem
 ~~~
 
   [[1]] Propose and implement "abstract"
-  JUnit tests for the contract of <<<AbstractComponentFactory.localGetComponent(...)>>>, 
-  so that these tests are run for all subtypes of 
+  JUnit tests for the contract of <<<AbstractComponentFactory.localGetComponent(...)>>>,
+  so that these tests are run for all subtypes of
   <<<ComponentFactory>>>, but they need not be repeated in all the respective
   test classes. I.e. implement an approach to test contract of abstract method
-  and to define these tests in one location only (the principle is 
+  and to define these tests in one location only (the principle is
   "Don't repeat yourself" or "DRY").
   In particular you must check that after <<<localGetComponent()>>> returns
   the "id" property for the component is properly initialized.
-  Read more about {{{./info_abstract_tests.html}Abstract test cases}}. 
+  Read more about {{{./info_abstract_tests.html}Abstract test cases}}.
 
 
   [[2]] Propose and implement JUnit tests to check that warnings are logged
@@ -113,45 +115,84 @@ Lab Exercise 01. Vector Images: Configurations, Objects and Templates
 
   where we do NOT care about the name of the property or the resource. 
   (Even though the testcase may know the property and the resource, 
-  asserting them in the log message could make the testcase  brittle. In fact, 
-  the property may be output either as a full URL, or a QName - 
+  asserting them in the log message could make the testcase brittle. In fact,
+  the property may be output either as a full URL, or a QName -
   e.g. "KLUCIS:hasColor", "klucis:hasColor" and 
   "http://www.webkursi.lv/schema/20061008/klucis#hasColor" - 
   may all be valid ways to write the property. Similarly the resource
   may be a URL or a QName, or a blank node. 
 
   [[3]] Implement a separate controller, which for all requests matching certain URL pattern
-  (the pattern is <<</PngImage/*>>>) outputs the PNG image obtained from the SVG
-  through rasterization/transcoding. You will probably need Apache Batik library to do this. 
+  outputs the PNG image obtained from the SVG through rasterization/transcoding. 
+  For example, the pattern could be <<</klucis/main/PngImage/*>>>, 
+  so that, for example "bilde_15" can be requested as 
+  {{http://localhost:8080/klucisDemo/klucis/main/PngImage/bilde_15a}}. 
+  You will probably need Apache Batik library to do this.
   Classes <<<SaveAsJPEG>>> and <<<SaveAsPNG>>> show sample code to do offline transformations 
   for SVG, but your approach (e.g. filter) should do this server-side. Each transcoding/rasterization
-  to PNG typically takes about 1-2 seconds to complete. Do not worry about the performance
-  yet.
+  to PNG typically takes about 1-2 seconds to complete. Do not worry about the performance.
+  The PNG filter could be configured similarly to the XSLTFilter:
+  
++----
+<filter-mapping>
+  <filter-name>PngFilter</filter-name>
+  <url-pattern>/klucis/main/PngImage/*</url-pattern>
+</filter-mapping>
++----
 
   [[4]] You will notice that the factory code in the package <<<lv.webkursi.klucis.component.geom2d>>>
   is very predictable. Propose a method to generate this code from annotations
   (e.g. <<<RectangleFactory>>> code should be generated from annotations for <<<Rectangle>>> 
   properties). You may use either Java 1.5 annotations or XDoclet approach or anything else
-  to do that. Add one extra precompilation step to the Ant buildfile, which would perform
+  to do that. You can add one extra precompilation step to the Ant buildfile, which would perform
   the code generation before everything is compiled and before the JAR is archived.  
 
   [[5]] Currently there is a possibility to do recursive render of Velocity views
   (i.e. call merge of one Velocity view inside another). The approach works both 
   for command-line and for Web application. There is one drawback though - 
-  ModelAndViews cannot be self-referential. This means that we have to add all 
-  the properties to the Velocity view's model explicitly. If there are many 
-  properties, it would be easier, if one could add just the reference to the underlying 
+  sometimes components have many properties, and all these are added
+  individually. For example in <<<Rectangle.lifecycleEvent()>>> there
+  are many quite predictable lines:
+  
++----
+addObject("_offsetX", offsetX);
+addObject("_offsetY", offsetY);
+addObject("_showRectangle", showRectangle);
+addObject("_width", getCoreWidth());
+addObject("_height", getCoreHeight());
+if (!label.equals("")) {
+	addObject("_label", label);
+}
+addObject("_content", content);
+addObject("_rotate", -rotate);
++----
+
+  This enables the Velocity template to refer to all these variables as
+  <<<${_width}>>> etc.   
+  The alternative, which you should implement, is to 
+  add just the reference to the underlying 
   component (e.g. for the key "_component"), and all the properties could 
-  be just extracted by "getXxx()" methods. 
+  be just extracted by "${_component.getXxx()}" methods. So, in 
+  <<<Rectangle.lifecycleEvent()>>> we would write just one <<<addObject()>>>
+  command, e.g.:
+  
++----
+addObject("_component", this);
++----
+
+  And in the Velocity template we could write something like
+  <<<${_component.getWidth()}>>> instead
+  of <<<${_width}>>>.
 
   [[6]] Implement a few more components to enable drawing the flags (similar to 
   the ones <<<17a.gif>>>, ... <<<17e.gif>>>). These images should be displayed in 
   response to the following URLs - 
-  http://localhost:8080/klucisDemo/01/main/bilde_17a etc. 
+  {{http://localhost:8080/klucisDemo/01/main/bilde_17a}} etc. 
 
   [[7]] Currently, if several versions of the same shape is being output, 
   it is repeated. Implement an optimized version, which would output each component
   once and use SVG refid mechanism, if necessary. 
+  (Compare house1.svg and house2.svg from {{{./downloads/sem01_demo.zip}Seminar 01 Demo}}).   
 
 
 
@@ -208,9 +249,9 @@ Lab Exercise 01. Vector Images: Configurations, Objects and Templates
 
   There are 2 Spring configuration files. One Spring config file is for 
   the command-line version of the program  
-  <<<trunk/klucis_core/src/main/resources/context.xml>>>. 
+  <<<trunk/bat/context.xml>>>. 
   Another is for the Web version of the program - 
-  <<<trunk/klucis_demo/src/main/webapp/WEB-INF/klucis0-servlet.xml>>>.   
+  <<<trunk/klucis_demo/src/main/webapp/WEB-INF/klucis-servlet.xml>>>.   
   Both files contain configurations of the beans participating in the mini framework. 
 
   Before submitting your project, please run "ant submit" to 

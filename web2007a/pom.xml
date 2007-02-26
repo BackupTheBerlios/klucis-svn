@@ -67,7 +67,8 @@
 									dir="src/site/install_instructions_temp"/>
 								<ant antfile="../sem01_demo/build.xml"
 									dir="../sem01_demo" target="zip"/>
-								
+								<ant antfile="../wrhapi_demo/build.xml"
+									dir="../wrhapi_demo" target="zip"/>								
 							</tasks>
 						</configuration>
 						<goals>
@@ -79,9 +80,13 @@
 						<phase>site</phase>
 						<configuration>
 							<tasks>
-								<zip
-									destfile="target/site/downloads/web2007a.zip">
-									<fileset dir="." excludes="${target.dir}/**"/>
+								<mkdir dir="target/temp"/>
+								<copy todir="target/temp/web2007a">
+									<fileset dir="." includes="**/*"
+										excludes="target/**,bin/**,.*,.*/**"/>
+								</copy>
+								<zip destfile="target/site/downloads/web2007a.zip">
+									<fileset dir="target/temp"/>
 								</zip>
 							</tasks>
 						</configuration>

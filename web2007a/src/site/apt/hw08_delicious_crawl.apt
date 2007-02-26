@@ -1,17 +1,33 @@
 Homework 08: Del.icio.us Crawler
 ~~~~
 
-  If you try to download RSS files from 
-  del.icio.us directly (see e.g. {{http://del.icio.us/rss/kalvis}})
-  you will notice that they do not contain all the links
+    [Goal:]
+    Get experience writing automated or half-automated
+    agents to assemble RSS files. 
+
+    [Description:]
+    Given a "del.icio.us" user name (e.g. "kalvis"), 
+    assemble an RSS file, which has the same structure
+    as the RSS file returned by that service
+    (e.g. {{http://del.icio.us/rss/kalvis}}), but contains
+    all the links by that user.  
+
+* Background
+~~~~ 
+
+  Normally RSS served by bookmark services like
+  {{http://del.icio.us}} do not contain all the links
   annotated by that user, but only the most recent ones. 
   This is a crucial property of RSS syndication, which 
-  ensures that RSS servers serve only the "ticker tape" with 
-  the most recent links and do not get overloaded
-  (RSS clients are assumed to use caching). 
-  
+  ensures that RSS servers serve only as the "sliding
+  window" providing a glimpse to  
+  the most recent links annotated by that user.  
   Nevertheless, sometimes we want to get access to 
   ALL the links and the tags annotated by some user. 
+  
+* Design Problem
+~~~~
+  
   Write a software, which carefully (i.e. very slowly
   and with fake "User-Agent" headers, since
   there is a file {{http://del.icio.us/robots.txt}}
@@ -21,3 +37,54 @@ Homework 08: Del.icio.us Crawler
   its structure is identical to the RSS feed produced
   for the most recent links only. 
   
+  If you wish to obey the restrictions from the 
+  <<<robots.txt>>> and do not want to risk any 
+  blocking action on behalf of the owners of the
+  del.icio.us server, consider using a half-automated
+  client (e.g. by running a plugin on top of Firefox, which 
+  asks you to configure the screen-scraper script and
+  press a few buttons) 
+  rather than using a fully automated Java client, which 
+  is not a browser. 
+  
+  Third option would be to investigate the del.icio.us 
+  programmable interfaces, if any, and to use them in assembling
+  the RSS file. At this point it is not clear, whether
+  such an option exists (i.e. if such interfaces can be
+  more helpful than direct screen scraping). 
+  
+* Characteristics of the Application
+~~~~
+
+  [Code:] 
+  Either a stand-alone Java command-line application or
+  a Solvent-compatible screen-scraping script.  
+  
+  [Input:] 
+  A del.icio.us username, for which we gather the RSS. 
+  It is highly recommended that you make your own del.icio.us
+  account rather than using anyone else's account. 
+  
+  [Output:]
+  The RSS, containing all the user's links and
+  their respective tags. This is written as a file 
+  by the command-line Java application or 
+  filled into the Firefox's PiggyBank by Solvent. 
+  (In both cases the RDF information should be the same, 
+  only the method of output differs.). 
+  
+
+ 
+* Bibliography
+~~~~~
+
+  * {{http://jakarta.apache.org/commons/httpclient/}} - 
+  HTTP Client (from <Jakarta Commons>) - an HTTP client
+  library, which can do automated HTTP requests. 
+
+  * {{http://httpunit.sourceforge.net/}} - HttpUnit, another library
+  capable of doing Java-programmable HTTP requests. 
+
+  * {{http://simile.mit.edu/wiki/Solvent}} - Solvent tool from 
+  Simile; half-automatic 
+  screen-scraping HTML pages from a Firefox browser. 
