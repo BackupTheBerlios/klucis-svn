@@ -1,0 +1,179 @@
+Seminārs 2007-02-28: JUnit un EasyMock
+~~~~
+
+    [Vieta un laiks:]
+    Brīvības 214 Accentures mācību klase.
+    (VEF admin. ēka; ieeja pa sētas durvīm; 
+    var uzkāpt 3.stāvā un zvanīt Kalvim: 29112997.)
+    
+    [Demonstrācijas piemērs:]
+    {{{./downloads/sem02_demo.zip}Demo lejupielāde}} 
+~~    (Demo šobrīd tiek izstrādāts.)
+
+    [Semināra dienaskārtība:]
+      [[1]] LU studentu jautājumi par 1.pr.d. un individuālie 
+      mājasdarbi.
+
+      [[2]] JUnit 4.1 jaunās iespējas (@BeforeClass, @Suite, 
+      @RunWith(Parameterized.class), @Parameters, utml.)
+      
+      [[3]] EasyMock, tā lietošana dotās klases atribūtu 
+      lietošanas scenāriju pārbaudei (dinamiskie Mock objekti). 
+      T.sk. žurnalēšanas (logging) uzvedības testēšana.
+      
+      [[4]] Spring-mock bibliotēka un tās lietošana servletu un 
+      Spring kontrolieru uzvedības testēšanai. 
+      
+      [[5]] Vienkārši piemēri ar XML apstrādi 
+      valodā Java (XML validācija/parsēšana ar 
+      Xerces DOM parseri; XPath izmantošana) 
+
+      [[6]] Projektu veidošana ar Maven; transitīvās
+      atkarības projektu būvēšanas/izpildes procesā. 
+      Brīvprātīgi vingrinājumi.
+
+      []
+      
+* Demonstrācijas piemēru darbināšana 
+~~~~
+
+  * Instalēt {{{./install_maven.html}Maven 2}} un uzstādīt M2_HOME
+  sistēmas mainīgo. 
+  
+  * Savākt un atarhivēt demonstrāciju. Izveidot Eclipse projektu 
+  šīs demonstrācijas saknes direktorijā. 
+  
+  * Palaist demonstrācijas saknes direktorijā 
+  DOS komandu "mvn eclipse:eclipse", atsvaidzināt 
+  Eclipse projektu (šī Maven komanda izveidos jaunus
+  <<<.classpath>>> un <<<.project>>> failus kā arī 
+  pirmajā darbināšanas reizē savāks Maven failus no
+  repozitorija (šajā brīdī jābūt pieslēgtam Internetam). 
+  {{{./install_eclipse.html}Konfigurēt Eclipse}} 
+  darbam ar Maven (t.i. uzstādīt M2_REPO
+  mainīgo JARu pievienošanas dialogā). 
+  
+  * Aplūkot visu koda piemēros iekļauto nepabeigto 
+  darbu sarakstu (TODO list): izvēlēties no Eclipses
+  menu: <<Window>> -> <<Show View>> -> <<Tasks>>. 
+  
+  * exercise1 - pabeigt dažas testu metodes  
+  klasē <<<TemplateTest>>> apakšdirektorijā
+  <<<sem02_demo/src/test/java/exercise1>>>; 
+  visi paskaidrojumi doti kā TODO komentāri pirms 
+  katras testa metodes.  
+  
+  * exercise2 - izveidot klasi <<<AllTests>>>
+  zem <<<sem02_demo/src/test/java/exercise2>>>), 
+  kura rada testu virkni (suite), kurā pildās 
+  visi citi testi - <<<TestEngineer>>>, <<<TestMoney>>>, 
+  <<<TestSalesman>>>. Klasei vienīgi jāpievieno 
+  anotācijas (sk. lekcijas piezīmes). 
+  
+  * exercise2 (par XML) - darbināt <<<XPathTest>>> un 
+  iepazīties ar Javas kodu, kurš ļauj XML dokumentā meklēt
+  <<<XPath>>> gabalus. Var aizstāt <<<setUp()>>> metodi 
+  ar citu, kura XML failu nolasa pēc relatīvā faila 
+  ceļa (sākot no Eclipse projekta saknes 
+  direktorijas), t.i. lietot <<<FileReade>>> nevis
+  <<<StringReader>>> XML faila ievadei.
+  
+  * exercise2 (par XML, DOM un @BeforeClass anotāciju) - 
+  iepazīties ar parametrizētu testu <<<ParserWrapperTest>>>. Darbināt to. 
+  
+    * Kādēļ parādās kļūdas teksti "java.lang.AssertionError: expected 9
+    but was 9"? Izlabot šo kļūdu. 
+ 
+    * Vai būtu iespējams iztikt bez <<<getTargetNode()>>> metodes, t.i. 
+    atbilstošās DOM izteiksmes ierakstīt masīvā <<<data()>>>
+    tieši (nevis izsaukt ar numuriem)? 
+
+    * Salīdzināt šo testu ar analogjisku testu <<<ParserWrapperTestNoParameters>>>, 
+    kurš neizmanto JUnit parametrizāciju. Kurš no testiem iznāk garāks? 
+    
+    * Aizstāt metodei <<<ParserWrapperTest.onlyOnce()>>> anotāciju 
+    @BeforeClass ar anotāciju @Before
+    un aizvākt modifikatoru "static". Vai testu klase darbojas, vai 
+    arī vajadzīgas vēl citas izmaiņas? 
+    Kāda ir atšķirība un kurš testēšanas paveids varētu būt ātrāks?
+    
+    []
+  
+  * exercise3 - iepazīties ar testu klasi <<<TestPricingMachineWithStaticMockObject>>>, 
+  kura izmanto statisku imitācijas objektu, kura vienīgā metode allaž 
+  atgriež vērtību 10F. 
+  Izpildīt TODO instrukcijas klasē <<<TestPricingMachineWithEasyMock>>>, 
+  lai statiska imitācijas objekta vietā izmantotu dinamisko, kuru 
+  veidojusi EasyMock bibliotēka. Lai pārliecinātos, ka EasyMock strādā, 
+  var pamēgināt izmainīt mockObject-a atgriežamo vērtību (piemēram <<<andReturn(10.0F)>>> 
+  aizstāt ar citu skaitli, un pārliecināties, ka tests vairs neiet
+  (t.i. prece nocenota nevis no 15.0F uz 13.5F, bet par citu lielumu. 
+
+  
+  * exercise4 - izmantojot Spring Mock bibliotēku, uzrakstīt
+  JUnit testu Servleta klasei. T.i. izpildīt TODO instrukcijas, 
+  kas rakstītas klasē <<<exercise4.AddToShopcartServletTest>>>. 
+  
+  * exercise4 - ja vēlaties darbināt izveidoto servletu, kurš pievieno 
+  kaut ko lietotāja 
+  
+  
++----
+mvn archetype:create \
+    -DgroupId=lv.webkursi.sem02.exercise4 \
+    -DartifactId=sem02_exercise4 \
+    -DpackageName=lv.webkursi.sem02.exercise4.web \
+    -DarchetypeArtifactId=maven-archetype-webapp
++----
+
+  vai vienā rindiņā:
+  
++----
+mvn archetype:create -DgroupId=lv.webkursi.sem02.exercise4 -DartifactId=sem02_exercise4 -DpackageName=lv.webkursi.sem02.exercise4.web -DarchetypeArtifactId=maven-archetype-webapp
++----
+  
+  Paredigējiet failu <<<sem02_exercise4/**/index.jsp>>> un 
+  izveidojiet tam blakus failu <<<showCart.jsp>>>. 
+  sem02_demo saknes direktorijā izpildiet Maven komandu 
+  "mvn clean install" (lai tā strādātu, visiem JUnit testiem ir jāiet
+  vai arī jātiek ignorētiem). 
+  
+  Savam Web projektam pievienojiet dependency, kas ir sem02_demo 
+  un zem "sem02_exercise4" palaidiet DOS komandu "mvn clean package". 
+  Tas izveidos WAR failu, ko var izvietot (deploy) uz Web servera. 
+  
+  * exercise5 - izmantojot EasyMock (kas ir Spring Mock alternatīva), 
+  uzrakstīt JUnit testu Spring kontroliera klasei. T.i. 
+  izpildīt TODO instrukcijas, kas rakstītas klasē <<<exercise5.AddToShopcartServletTest>>>
+  
+  * [Pagaidām izlaist vingrinājumus 6 un 7 (tie ir par EJB)]
+  
+  * exercise8 - Darbināt klasi <<<TestGoogleSearchWithHttpUnit>>>. 
+  Iepazīties ar veidu kā HttpUnit automatizē HTTP pieprasījumus, 
+  HTML formu apstrādi un rezultātu pārbaudes. HttpUnit šajā gadījumā
+  ir Selenium alternatīva - t.i. pilnīgi javisks veids kā simulēt
+  HTTP klientus.
+
+
+
+* Bibliogrāfija
+~~~~
+
+  * Parametrized tests for JUnit, Junit 4.1 annotations
+  
+  * {{http://www.easymock.org/EasyMock2_2_Documentation.html}} - 
+  EasyMock 2.2 dokumentācija
+  
+  * {{http://maven.apache.org/guides/getting-started/index.html}}
+  Maven2 Getting Started. 
+  
+  * {{http://testng.org/doc/documentation-main.html}} - TestNG, 
+  an alternative to JUnit. 
+  
+  * {{http://www-128.ibm.com/developerworks/java/library/j-cq08296/}} 
+  - comparison between TestNG and JUnit 4.1. 
+  
+  * {{http://www.springframework.org/docs/api/index.html}} - 
+  Spring API Javadocs (including the package <<<org.springframework.mock.web>>>). 
+  
+  

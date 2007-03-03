@@ -163,3 +163,7 @@ public class StandardController implements Controller {
 
 ~~ XPath expression //div[3]/div[2]/b is given. Also there is a tree - 
 ~~ find how it evaluates. 
+
+~~ Map<String,Integer> shoppingCart = new HashMap();
+~~ int quantity = shoppingCart.get("item")
+~~ What happens, if "item" is not in the map? (quantity == 0 or exception?)

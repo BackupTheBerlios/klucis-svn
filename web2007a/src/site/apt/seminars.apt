@@ -20,13 +20,30 @@ Practice Sessions / Semināri
     Gunta Sauliete (Accenture), <<<gunta.sauliete>>> domēnā 
     <<<accenture.com>>>
 
+* Semināru tēmu saraksts
+~~~~~
 
+
+
+  
+*------------*------+
+| 2007-02-21 | {{{./seminars_2007-02-21.html}Java 1.5 Anotācijas}}
+*------------*------+
+| 2007-02-28 | {{{./seminars_2007-02-21.html}Komponentu testi un imitāciju (mock) objekti}}
+*------------*------+
+| 2007-03-07 | {{{./seminars_2007-03-07.html}ORM attēlojumi ar Hibernate, Toplink, to testēšana}}
+*------------*------+
+| 2007-03-14 | {{{./seminars_2007-03-14.html}Spring kontrolieri, formas, augšupielāde, <<<PropertyEditor>>>}}
+*------------*------+
+
+  
+  Turpmāko semināru tēmu saraksts tiek veidots un tiks izziņots.
 
 
 * Anotācija
 ~~~~
 
-  Seminārs iepazīstina ar dažādām Tīmekļa(Web) un Javas tehnoloģijām, 
+  Seminārs iepazīstina ar dažādām Tīmekļa (Web) un Javas tehnoloģijām, 
   ar kurām veidot un savstarpēji integrēt lietojumprogrammas, kurām ir 
   sarežģīti datu modeļi, kā tas ir raksturīgi korporatīvajām informācijas
   sistēmām (EIM) u.c. Liela uzmanība veltīta Semantiskajam Webam un  

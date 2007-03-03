@@ -77,5 +77,9 @@ Homework 03: Maven Site navigation
   a short guide to APT (almost plain text) format, the most popular
   method of writing Maven-documented sites. 
   
+  * {{http://www.xmlmind.com/_aptconvert/docs/userguidetoc.html}} - 
+  APT User Guide. 
+  
   * V. Massol, J. van Zyl. Better Builds with Maven (2006).
   A good book about Maven2. 
+  
