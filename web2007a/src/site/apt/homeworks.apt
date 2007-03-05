@@ -1,0 +1,31 @@
+Individual Homeworks
+~~~~
+
+
+* Generation of Random Numbers
+~~~
+
+  In some cases the 3 numbers are taken as paper slips from the hat. 
+  Otherwise we can toss a coin.
+  Students who are on a foreign assignment and 
+  cannot select numbers during the lecture
+  may use the following algorithm to come up with 3 random 
+  integers from the interval [1,20] (we can agree about
+  using this procedure over the e-mail). 
+
++----
+import java.util.*;
+public class HomeworkNumberGenerator {
+  public static void main(String[] args) {
+    Random random = new Random("your.email@somedomain.com".hashCode());
+    List<Integer> list = new ArrayList<Integer>();
+    while (list.size() < 3) {
+      int current = random.nextInt(20)+1; 
+      if (!list.contains(current)) {
+        list.add(current);
+      }
+    }
+  System.out.println("The possible homework numbers are " + list);
+  }
+}
++----

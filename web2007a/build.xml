@@ -2,21 +2,18 @@
 <project name="web2007a" basedir="." default="publish">
 	<property name="ftp.server" value="gulbis.latnet.lv"/>
 	<property name="ftp.user" value="apsitis"/>
-
 	
-  <target name="clean"
-		description="Deletes Subversion directories">
-	<defaultexcludes remove="**/.svn"/>
-    <defaultexcludes remove="**/.svn/**"/>
-    <delete includeemptydirs="true"> 
-	    <fileset dir=".">
-          <include name="**/.svn/**"/>
-        </fileset>
-    </delete>
-    <defaultexcludes default="true"/>
-  </target>
-
-		
+	<target name="clean" description="Deletes Subversion directories">
+		<defaultexcludes remove="**/.svn"/>
+		<defaultexcludes remove="**/.svn/**"/>
+		<delete includeemptydirs="true">
+			<fileset dir=".">
+				<include name="**/.svn/**"/>
+			</fileset>
+		</delete>
+		<defaultexcludes default="true"/>
+	</target>
+	
 	<target name="publish">
 		<input message="Please enter password for ${ftp.user}@${ftp.server}:"
 			addproperty="ftp.password"/>
@@ -40,5 +37,26 @@
 		</ftp>
 	</target>
 	
+	<target name="subprojects">
+      <antcall target="pack-subproject">
+       <param name="subdir" value="../sem01_demo"/>
+      </antcall>
+      <antcall target="pack-subproject">
+       <param name="subdir" value="../sem02_demo"/>
+      </antcall>
+      <antcall target="pack-subproject">
+       <param name="subdir" value="../wrhapi_demo"/>
+      </antcall>
+	</target>
+
+	<target name="pack-subproject">
+      <available file="${subdir}" type="dir"
+           property="subdir.present"/>
+      <antcall target="pack-subproject-conditional"/>
+	</target>
+
+	<target name="pack-subproject-conditional" if="subdir.present">
+      <ant antfile="${subdir}/build.xml" dir="${subdir}" target="zip"/>
+    </target>
 	
 </project>

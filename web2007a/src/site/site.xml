@@ -35,7 +35,7 @@
         <item name="4.seminar" href="seminars_2007-03-14.html"/>      
       </item>
 
-		<item name="Indiv.Homeworks">
+		<item name="Indiv.Homeworks" href="homeworks.html">
 			<item name="HW01" href="hw01_tidy.html"/>
 			<item name="HW02" href="hw02_concordance.html"/>
 			<item name="HW03" href="hw03_maven_site.html"/>
