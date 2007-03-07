@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+	
+	<bean id="component_prototype"
+		class="lv.webkursi.mtest.factorytest.SampleComponent" scope="prototype">
+		<property name="name1">
+			<value>a</value>
+		</property>
+		<property name="name2">
+			<value>b</value>
+		</property>
+	</bean>
+	
+	<bean id="component_singleton"
+		class="lv.webkursi.mtest.factorytest.SampleComponent" scope="singleton">
+		<property name="name1">
+			<value>a</value>
+		</property>
+		<property name="name2">
+			<value>b</value>
+		</property>
+	</bean>
+	
+	<bean id="rdfContext" class="lv.webkursi.mtest.core.data.FileModelFactory">
+		<property name="baseDir">
+			<value>src/test/resources</value>
+		</property>
+		<property name="fileName">
+			<value>rdfContext.n3</value>
+		</property>
+	</bean>
+	
+	<bean id="userService" class="lv.webkursi.mtest.core.data.UserService">
+		<property name="model" ref="model"/>
+	</bean>
+	
+	<bean id="model" class="lv.webkursi.mtest.core.data.DBModelFactory">
+	</bean>
+		
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName">
+			<value>com.mysql.jdbc.Driver</value>
+		</property>
+		<property name="url">
+			<value>jdbc:mysql://localhost/portaledu</value>
+		</property>
+		<property name="username">
+			<value>root</value>
+		</property>
+		<property name="password">
+			<value>root</value>
+		</property>
+	</bean>
+	
+	<!-- Database Property -->
+	<bean id="exampleHibernateProperties"
+		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="properties">
+			<props>
+				<prop key="hibernate.hbm2ddl.auto">create</prop>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="cache.provider_class">org.hibernate.cache.NoCacheProvider</prop>
+				<prop key="current_session_context_class">thread</prop>
+				
+				<!--
+				<prop key="hibernate.c3p0.minPoolSize">5</prop>
+				<prop key="hibernate.c3p0.maxPoolSize">20</prop>
+				<prop key="hibernate.c3p0.timeout">600</prop>
+				<prop key="hibernate.c3p0.max_statement">50</prop>
+				<prop key="hibernate.c3p0.testConnectionOnCheckout">false</prop>
+					-->
+			</props>
+		</property>
+	</bean>
+	
+	<!-- Hibernate SessionFactory -->
+	<bean id="exampleSessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref local="dataSource"/>
+		</property>
+		<property name="hibernateProperties">
+			<ref bean="exampleHibernateProperties"/>
+		</property>
+		<!--  OR mapping files. -->
+		<property name="mappingResources">
+			<list>
+				<value>QuestionType.hbm.xml</value>
+			</list>
+		</property>
+		
+	</bean>
+	
+	<bean id="questionTypeDao" class="lv.webkursi.mtest.dao.QuestionTypeDaoImpl">
+		
+	</bean>
+	
+</beans>

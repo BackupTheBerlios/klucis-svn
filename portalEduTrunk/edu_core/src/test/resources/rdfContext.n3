@@ -1,0 +1,18 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix mars: <http://www.hpl.hp.com/schema/mars#> .
+@prefix portal: <http://www.hpl.hp.com/schema/portal#> .
+
+portal:component_prototype
+    rdf:type mars:SampleComponent ;
+    mars:scope "prototype" ;
+    mars:name1 "a" ;
+    mars:name2 "b" .
+    
+portal:component_singleton
+    rdf:type mars:SampleComponent ;
+    mars:scope "singleton" ;
+    mars:name1 "a" ;
+    mars:name2 "b" .
+        

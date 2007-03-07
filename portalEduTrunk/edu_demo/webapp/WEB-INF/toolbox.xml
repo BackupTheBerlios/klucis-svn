@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<toolbox>
+<tool>
+  <key>import</key>
+  <scope>session</scope>
+  <class>org.apache.velocity.tools.view.tools.ImportTool</class>
+</tool>
+ <tool>
+   <key>date</key>
+   <scope>application</scope>
+   <class>org.apache.velocity.tools.generic.DateTool</class>
+ </tool>
+</toolbox>

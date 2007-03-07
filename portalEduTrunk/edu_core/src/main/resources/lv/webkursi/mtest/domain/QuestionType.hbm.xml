@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+      "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+	<class name="lv.webkursi.mtest.domain.QuestionType" table="QUESTION_TYPE"
+		dynamic-update="false" dynamic-insert="false">
+		
+		<id name="id" column="QUESTION_TYPE_ID" type="java.lang.Long"
+			unsaved-value="-1">
+			<generator class="native">
+			</generator>
+		</id>
+		
+		<property name="instruction" type="string" update="true" insert="true"
+			column="INSTRUCTION" length="255" not-null="true"/>
+		
+	</class>
+	
+	
+</hibernate-mapping>

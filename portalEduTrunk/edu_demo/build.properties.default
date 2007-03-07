@@ -1,0 +1,77 @@
+# #############################################################
+# WARNING!!! You might want to override these values
+# in your local build.properties file; these defaults do not work for everyone.
+jboss.home=c:/Program Files/jboss-4.0.5.GA
+tomcat.home=c:/Program Files/apache-tomcat-5.5.17
+jboss.deploy.dir=${jboss.home}/server/default/deploy
+# ##############################################################
+
+
+# Java sources, which are compiled and compilation results are put to the classpath 
+src.dir=src/main/java
+
+# Various resources (like log4j.properties), 
+# which should be copied directly to the classpath
+resources.dir=src/main/resources
+
+# Where all the build results are placed
+target.dir=target
+
+# Location for extra-copies of those dependencies
+# which have in pom.xml scope=provided, i.e. needed for compilation, 
+# but not redeployed on the Tomcat
+locallib.dir=src/locallib
+
+# Parent directory of the static web files and parent of WEB-INF
+web.dir=webapp
+war.lib.dir=${web.dir}/WEB-INF/lib
+war.classes.dir=${web.dir}/WEB-INF/classes
+
+# For JAR projects - the lib directory and the classes directory
+# jar.lib.dir=lib
+jar.lib.dir=${portal.core.dir}/../edu_demo/webapp/WEB-INF/lib
+jar.classes.dir=${target.dir}/classes
+jar.test.classes.dir=${target.dir}/test-classes
+
+# JAR files, which should not end up in the WAR-file, but are used for compilation only
+compile-lib.dir=compile-lib
+
+# The relative path from portalTest to portalCore
+portal.core.dir=../edu_core
+
+# distribution directory under each project, where the compiled artifact end up
+dist.dir=target
+
+# Copilation-destination directory is different for WAR and JAR projects
+war.build.dir=${web.dir}/WEB-INF/classes
+
+# Sharedlib directory (contains consistent set of JARs)
+sharedlib.dir = ../sharedlib
+
+# Reference to buildtools
+anttools.dir=${sharedlib.dir}/anttools
+
+# Slave build file
+${sharedlib.dir}/slave-build.xml
+
+javadoc.dir=docs/api
+
+reports.dir=${target.dir}/reports
+
+war.name=${ant.project.name}.war
+
+# A few Tomcat-related things
+# DEFINE tomcat.home in your build.properties, e.g. 
+# tomcat.home=c:/tools/apache-tomcat-5.5.17
+tomcat.manager.url=http://localhost:8080/manager/html
+tomcat.manager.username=tomcat
+tomcat.manager.password=tomcat
+
+# DEFINE jboss.home in your build.properties, e.g. 
+# jboss.home=c:/Program Files/jboss-4.0.4.GA
+
+# Manifest.mf constants
+mf.built.by=Some developers
+mf.implementation.vendor=HP Labs
+mf.implementation.vendor.id=com.hp.hpl.invent
+mf.extension.name=com.hp.hpl.mars.portal.core

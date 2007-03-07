@@ -1,0 +1,12 @@
+<div class="box_content">
+  <h1>Laipni lūdzam</h1>
+  <p>Mtest.lv ir tīmekļa vietne izvēļu testu viedošanai un kārtošanai.<br>
+  Ir pieejama Mtest.lv BETA versija! (testējam:)
+  </p>
+  <ul>
+    <li>Esi pirmais, kas novērtē iespējas vienkārši un ērti izveidot testu </li>
+    <li>Pārbaudi zināšanas par konkrētu tēmu, izvēloties<br>kādu no publiski pieejamiem gataviem testiem</li>
+  </ul>
+  <p>Ierosinājumiem un atsauksmēm: <code>somebody</code> (at) <code>someplace.com</code></p>
+  <h1><a href="/eduDemo/user_new.do">Reģistrēties</a></h1>  
+</div>

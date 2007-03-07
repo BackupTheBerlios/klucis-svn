@@ -1,0 +1,259 @@
+/*
+-----------------------------------------------
+Mtest.lv      style.css 
+Version       04.06.2006
+----------------------------------------------- */
+body, html, table {
+padding-top: 0px; 
+margin: 0px;
+width: 100%;
+background: #fff; 
+font-family: Verdana, Arial, sans-serif;
+font-size: 10pt;
+}
+
+table {
+border: 1px solid #66c2ff;
+}
+
+div.hr {
+  height: 15px;
+  background: #fff url(../../images/hr1.gif) no-repeat scroll center;
+}
+div.hr hr {
+  display: none;
+}
+
+h1, h2, h3 {
+font-family: Verdana, Arial, sans-serif;
+color: #000;
+margin: 5px;
+}
+
+a, a:visited {
+color: #090;
+text-decoration: none;
+font-weight: bold;
+}
+
+a:hover {
+color: #090;
+}
+
+a:visited {
+border: 0;
+}
+
+a img, a:visited img {
+border: 0;
+text-decoration: none;
+border-bottom: none;
+}
+
+ul {
+margin:.5em 0 1em;
+padding:0;
+}
+
+ul li {
+margin:0 0 0 7px;
+padding:0 0 5px 12px;
+line-height:1.5em;
+list-style:none;
+background:url("../../images/bullet_blue.gif") no-repeat 0 .5em;
+}
+
+/* Main layout
+----------------------------------------------- */
+.main {
+margin: 0 70px 0 70px;
+}
+
+#indent {
+margin: 70px 0 5px 70px;
+}
+
+#indent_small {
+margin: 5px 0 0 70px;
+}
+
+/* Navigation
+----------------------------------------------- */
+#navigation_ {
+background: url(../images/bg_nav.gif);
+height: 40px;
+margin: 0;
+padding:  0 70px 0 70px;
+color: #699;
+}
+
+#navigation_ a{
+color:#fff;
+}
+
+/* Header
+----------------------------------------------- */
+#top1 {
+background:url(../images/bg_green.gif) repeat-x;
+height: 5px;
+margin: 0 0 5px 0;
+padding: 0;
+}
+
+#beta {
+float: right;
+margin: 0;
+padding: 0;
+border: 0;
+clear: none;
+}
+
+#top2 {
+height: 150px;
+margin: 0;
+padding: 0;
+border: 0;
+width: 100%;
+overflow: visible;
+}
+
+/* Footer
+----------------------------------------------- */
+#footer {
+clear: both;
+color: #699;
+font-size: 10pt;
+text-align: center;
+}
+
+#footer img {
+vertical-align: middle;
+}
+
+/* Box 
+----------------------------------------------- */
+.box_content { 
+margin: 0 15px; 
+}
+
+.box_green { 
+background: url(../images/box_bg.gif) repeat; 
+width: 70%; 
+margin: 20px auto; 
+} 
+.box_green_t div { 
+background: url(../images/box_tl.gif) no-repeat top left; 
+}
+
+.box_green_t { 
+background: url(../images/box_tr.gif) no-repeat top right; 
+}
+
+.box_green_b div { 
+background: url(../images/box_bl.gif) no-repeat bottom left; 
+}
+
+.box_green_b { 
+background: url(../images/box_br.gif) no-repeat bottom right; 
+}
+
+.box_green_t div, .box_green_t, .box_green_b div, .box_green_b {
+height: 18px;
+}
+
+/* Error formatting
+----------------------------------------------- */
+pre {
+background-color: #eee;
+padding: 10px;
+font-size: 11px;
+}
+
+.fieldWithErrors {
+padding: 2px;
+background-color: #090;
+display: table;
+}
+
+#errorExplanation {
+width: 400px;
+border: 1px solid #090;
+padding: 7px;
+margin-bottom: 10px;
+}
+
+#errorExplanation h2 {
+text-align: left;
+font-weight: bold;
+padding: 5px 5px 5px 5px;
+font-size: 12px;
+margin: -7px;
+background-color: #090;
+color: #fff;
+}
+
+/* Forms 
+----------------------------------------------- */
+/*
+#smallForm {
+float: left;
+display: block;
+width: 150px;
+margin: 0;
+padding: 0;
+}
+
+#smallForm input {
+display: block;
+width: 150px;
+}
+*/
+
+/*
+#columnarForm fieldset {
+float: left;
+display: block;
+width: 18em;
+margin: 0 1em 1em 0;
+padding: 0 1em 1em 1em;
+background: #cf9;
+}
+
+#columnarForm fieldset.radio {
+width: 15em;
+margin: 1em 0 2em 0;
+}
+
+#columnarForm fieldset.radio input {
+clear: both;
+float: left;
+width: auto;
+}
+
+#columnarForm fieldset.radio label {
+font-weight: normal;
+}
+
+#columnarForm input {
+display: block;
+width: 15em;
+}
+
+#columnarForm textarea, select {
+display: block;
+width: 15em;
+font-family: Arial, sans-serif;
+font-size: 10pt;
+}
+
+#columnarForm label {
+display: block;
+padding-top: 0.5em;
+margin-bottom: 0.5em;
+font-weight: bold;
+}
+
+#columnarForm select {
+display: block;
+}
+*/
