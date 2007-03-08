@@ -42,7 +42,7 @@ public class DaoUtils {
 		configuration.setProperty(Environment.DIALECT, MySQLDialect.class
 				.getName());
 		configuration.setProperty(Environment.USER, "root");
-		configuration.setProperty(Environment.PASS, "root");
+		configuration.setProperty(Environment.PASS, "");
 		configuration.setProperty(Environment.HBM2DDL_AUTO, "update");
 
 		configuration.setProperty(Environment.SHOW_SQL, "true");

@@ -4,6 +4,9 @@ import java.util.List;
 
 import lv.webkursi.mtest.domain.Question;
 
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 public class QuestionDao extends HibernateDaoSupport implements IQuestionDao {
@@ -32,5 +35,17 @@ public class QuestionDao extends HibernateDaoSupport implements IQuestionDao {
 
 	public void deleteAll() {
 		getHibernateTemplate().deleteAll(getAll());
+	}
+	
+
+	public void commit() {
+		getHibernateTemplate().execute(new HibernateCallback() {
+			public Object doInHibernate(Session session)
+					throws HibernateException {
+				session.beginTransaction();
+				session.getTransaction().commit();
+				return null;
+			}
+		});
 	}
 }
