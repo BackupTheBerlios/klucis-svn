@@ -4,39 +4,42 @@ import java.util.List;
 
 import lv.webkursi.mtest.domain.QuestionType;
 
-import org.hibernate.Transaction;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
-public class QuestionTypeDao extends HibernateDaoSupport implements IQuestionTypeDao {
+public class QuestionTypeDao extends HibernateDaoSupport implements
+		IQuestionTypeDao {
 
 	/**
-	 * If "qt" is a new object, its id is null, then insert; 
-	 * otherwise update.
+	 * If "qt" is a new object, its id is null, then insert; otherwise update.
 	 */
 	public long saveOrUpdate(Object o) {
 		if (!(o instanceof QuestionType)) {
 			throw new IllegalArgumentException();
 		}
 		getHibernateTemplate().saveOrUpdate(o);
-		return ((QuestionType)o).getId();
+		return ((QuestionType) o).getId();
 	}
 
 	/**
-	 * Return a questionType by its id or return null, if such 
-	 * questionType does not exist.
+	 * Return a questionType by its id or return null, if such questionType does
+	 * not exist.
 	 */
 	public QuestionType get(long id) {
-		return (QuestionType) getHibernateTemplate().get(QuestionType.class, id);
+		return (QuestionType) getHibernateTemplate()
+				.get(QuestionType.class, id);
 
 	}
-	
+
 	/**
-	 * Get a list of all questionTypes. If table is empty, return
-	 * an empty list (but not null). 
+	 * Get a list of all questionTypes. If table is empty, return an empty list
+	 * (but not null).
 	 */
 	@SuppressWarnings("unchecked")
 	public List<QuestionType> getAll() {
-		return (List<QuestionType>)getHibernateTemplate().find(
+		return (List<QuestionType>) getHibernateTemplate().find(
 				"from QuestionType qt order by qt.instruction");
 	}
 
@@ -44,5 +47,19 @@ public class QuestionTypeDao extends HibernateDaoSupport implements IQuestionTyp
 		QuestionType qt = get(id);
 		getHibernateTemplate().delete(qt);
 	}
-	
+
+	public void commit() {
+		getHibernateTemplate().execute(new HibernateCallback() {
+			public Object doInHibernate(Session session)
+					throws HibernateException {
+				session.beginTransaction();
+				session.getTransaction().commit();
+				return null;
+			}
+		});
+	}
+
+	public void deleteAll() {
+		getHibernateTemplate().deleteAll(getAll());
+	}
 }

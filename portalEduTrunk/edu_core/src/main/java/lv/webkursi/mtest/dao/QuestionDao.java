@@ -29,4 +29,8 @@ public class QuestionDao extends HibernateDaoSupport implements IQuestionDao {
 		Question q = get(id);
 		getHibernateTemplate().delete(q);
 	}
+
+	public void deleteAll() {
+		getHibernateTemplate().deleteAll(getAll());
+	}
 }

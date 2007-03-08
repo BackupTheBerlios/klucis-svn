@@ -4,7 +4,8 @@ import java.util.List;
 
 public interface ICommonDao {
 	public long saveOrUpdate(Object q);
-	public List getAll();
 	public Object get(long id);
+	public List getAll();
 	public void delete(long id);
+	public void deleteAll();
 }

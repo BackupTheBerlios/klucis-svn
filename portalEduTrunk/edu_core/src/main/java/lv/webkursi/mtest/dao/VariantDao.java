@@ -29,4 +29,8 @@ public class VariantDao extends HibernateDaoSupport implements IQuestionDao {
 		Variant var = get(id);
 		getHibernateTemplate().delete(var);
 	}
+
+	public void deleteAll() {
+		getHibernateTemplate().deleteAll(getAll());
+	}	
 }

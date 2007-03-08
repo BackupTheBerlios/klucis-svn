@@ -62,4 +62,25 @@ public abstract class AbstractDaoTest {
 		assertEquals(getDynamicObjectB(),result.get(1));
 		assertEquals(getDynamicObjectC(),result.get(2));
 	}	
+	
+	@Test
+	public void deleteOne() {
+		long idA = commonDao.saveOrUpdate(getDynamicObjectA());
+		commonDao.saveOrUpdate(getDynamicObjectD());
+		commonDao.delete(idA);
+		List result = commonDao.getAll();
+		assertEquals(1,result.size());
+		assertEquals(getDynamicObjectD(),result.get(0));		
+	}	
+	
+	@Test
+	public void deleteAll() {
+		commonDao.saveOrUpdate(getDynamicObjectA());
+		commonDao.saveOrUpdate(getDynamicObjectD());
+		commonDao.saveOrUpdate(getDynamicObjectB());
+		commonDao.deleteAll();
+		List result = commonDao.getAll();
+		assertEquals(0,result.size());
+	}		
+		
 }
