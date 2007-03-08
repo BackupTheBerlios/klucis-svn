@@ -4,6 +4,7 @@ import java.util.List;
 
 import lv.webkursi.mtest.domain.QuestionType;
 
+import org.hibernate.Transaction;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 public class QuestionTypeDao extends HibernateDaoSupport implements IQuestionTypeDao {
@@ -16,7 +17,7 @@ public class QuestionTypeDao extends HibernateDaoSupport implements IQuestionTyp
 		if (!(o instanceof QuestionType)) {
 			throw new IllegalArgumentException();
 		}
-		getHibernateTemplate().saveOrUpdate(o);		
+		getHibernateTemplate().saveOrUpdate(o);
 		return ((QuestionType)o).getId();
 	}
 
@@ -37,6 +38,11 @@ public class QuestionTypeDao extends HibernateDaoSupport implements IQuestionTyp
 	public List<QuestionType> getAll() {
 		return (List<QuestionType>)getHibernateTemplate().find(
 				"from QuestionType qt order by qt.instruction");
+	}
+
+	public void delete(long id) {
+		QuestionType qt = get(id);
+		getHibernateTemplate().delete(qt);
 	}
 	
 }

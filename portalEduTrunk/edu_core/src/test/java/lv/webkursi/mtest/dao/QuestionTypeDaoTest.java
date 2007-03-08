@@ -28,6 +28,7 @@ public class QuestionTypeDaoTest {
 		public void setUp() {
 			super.setUp();
 			dao.setSessionFactory(DaoUtils.getHsqldbSessionFactory());
+//			dao.setSessionFactory(DaoUtils.getMysqlSessionFactory());
 		}
 
 		@Override
@@ -63,6 +64,7 @@ public class QuestionTypeDaoTest {
 		@Before
 		public void setUp() throws Exception {
 			dao.setHibernateTemplate(DaoUtils.getHsqldbTemplate());
+//			dao.setSessionFactory(DaoUtils.getMysqlSessionFactory());
 		}
 
 		@Test

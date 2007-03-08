@@ -25,13 +25,8 @@ public class QuestionDao extends HibernateDaoSupport implements IQuestionDao {
 		return (Question) getHibernateTemplate().get(Question.class, id);
 	}
 
-	/*
-	public void commit() {
-		getSession().getTransaction().commit();
+	public void delete(long id) {
+		Question q = get(id);
+		getHibernateTemplate().delete(q);
 	}
-
-	public void beginTransaction() {
-		getSession().beginTransaction();
-	}
-	*/
 }
