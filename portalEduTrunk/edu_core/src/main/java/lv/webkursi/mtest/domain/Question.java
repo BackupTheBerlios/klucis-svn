@@ -1,5 +1,6 @@
 package lv.webkursi.mtest.domain;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -7,7 +8,9 @@ import java.util.Set;
 public class Question extends ContentItem {
 	protected QuestionType questionType;
 	
-	protected Set<Variant> variants = new HashSet<Variant>();
+//	protected Set<Variant> variants = new HashSet<Variant>();
+	
+	protected List<Variant> variants = new ArrayList<Variant>();
 		
 	public Variant createVariant() {
 		Variant variant = new Variant();
@@ -32,6 +35,7 @@ public class Question extends ContentItem {
 		this.questionType = questionType;
 	}
 
+	/*
 	public Set<Variant> getVariants() {
 		return variants;
 	}
@@ -39,6 +43,7 @@ public class Question extends ContentItem {
 	public void setVariants(Set<Variant> variants) {
 		this.variants = variants;
 	}
+	*/
 	
 	public String toString() {
 		StringBuffer result = new StringBuffer();
@@ -52,5 +57,13 @@ public class Question extends ContentItem {
 		result.append(questionType);
 		result.append("\"}}");
 		return result.toString();		
+	}
+
+	public List<Variant> getVariants() {
+		return variants;
+	}
+
+	public void setVariants(List<Variant> variants) {
+		this.variants = variants;
 	}
 }

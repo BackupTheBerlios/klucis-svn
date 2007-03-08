@@ -11,7 +11,6 @@ import lv.webkursi.mtest.domain.Question;
 import lv.webkursi.mtest.domain.QuestionType;
 import lv.webkursi.mtest.domain.Variant;
 
-import org.hibernate.Session;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -96,8 +95,8 @@ public class QuestionDaoTest {
 		
 		@Before
 		public void setUp() throws Exception {
-//			dao.setSessionFactory(DaoUtils.getMysqlSessionFactory());
-			dao.setSessionFactory(DaoUtils.getHsqldbSessionFactory());
+			dao.setSessionFactory(DaoUtils.getMysqlSessionFactory());
+//			dao.setSessionFactory(DaoUtils.getHsqldbSessionFactory());
 			dao.getHibernateTemplate().saveOrUpdate(qt);
 		}
 		
@@ -114,13 +113,11 @@ public class QuestionDaoTest {
 			q.addVariant((Variant) vdtCdt.getDynamicObjectA());
 			q.addVariant((Variant) vdtCdt.getDynamicObjectB());
 			q.addVariant((Variant) vdtCdt.getDynamicObjectC());
-			q.addVariant((Variant) vdtCdt.getDynamicObjectD());
-			
-
-			long id = dao.saveOrUpdate(q);
+			q.addVariant((Variant) vdtCdt.getDynamicObjectD());			
+			long id = dao.saveOrUpdate(q);			
 			Question q1 = dao.get(id);
-			System.err.println("variants = " + q1.getVariants());
-			//assertNull(q1.getVariants());
+			assertEquals(4,q1.getVariants().size());
+			
 		}
 	}
 	
@@ -149,8 +146,8 @@ public class QuestionDaoTest {
 		@Before
 		public void setUp() throws Exception {
 //			cleanAll();
-			dao.setSessionFactory(DaoUtils.getMysqlSessionFactory());
-			dao.getHibernateTemplate().saveOrUpdate(qt);
+//			dao.setSessionFactory(DaoUtils.getMysqlSessionFactory());
+//			dao.getHibernateTemplate().saveOrUpdate(qt);
 		}
 		
 		@After
@@ -158,9 +155,6 @@ public class QuestionDaoTest {
 //			cleanAll();
 		}
 		
-		@Test
-		public void dummy() {			
-		}
 		
 		@Ignore
 		@Test

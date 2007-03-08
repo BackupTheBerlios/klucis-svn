@@ -19,47 +19,14 @@
 			<key column="CONTENT_ID"/>
 			<many-to-one name="questionType" column="QUESTION_TYPE_ID"
 				not-null="true" lazy="false"/>
-			<set name="variants" inverse="true" lazy="false">
+			<list name="variants" lazy="false" cascade="all">
 				<key column="QUESTION_ID" not-null="true"/>
+			    <list-index column="variant_number"/>
 				<one-to-many class="lv.webkursi.mtest.domain.Variant"/>
-			</set>
+			</list>
 		</joined-subclass>
 		<joined-subclass name="lv.webkursi.mtest.domain.Variant" table="VARIANT">
 			<key column="CONTENT_ID"/>
 		</joined-subclass>
-	</class>
-	<!--
-	<class name="lv.webkursi.mtest.domain.ContentItem" table="CONTENT">
-	<id name="id" column="CONTENT_ID" type="java.lang.Long" unsaved-value="-1">
-	<generator class="native"/>
-	</id>
-	<discriminator column="CONTENT_TYPE" type="string"/>
-	<property name="name" type="string" column="NAME" length="20"
-	not-null="true"/>
-	<property name="description" type="string" column="DESCRIPTION" length="255"
-	not-null="true"/>
-	
-	<subclass name="lv.webkursi.mtest.domain.Question"
-	discriminator-value="Q">
-	<set name="variants" inverse="true" table="VARIANT">
-	<key column="QUESTION_ID" not-null="true"/>
-	<one-to-many class="lv.webkursi.mtest.domain.Variant"/>
-	</set>
-	<join table="QUESTION">
-	<key column="CONTENT_ID"/>
-	<many-to-one name="questionType" column="QUESTION_TYPE_ID"
-	not-null="true" lazy="false"/>
-	
-	</join>
-	
-	</subclass>
-	
-	<subclass name="lv.webkursi.mtest.domain.Variant" discriminator-value="V">
-	<join table="VARIANT">
-	<key column="CONTENT_ID"/>
-	</join>
-	</subclass>
-	</class>
-	-->
-	
+	</class>	
 </hibernate-mapping>

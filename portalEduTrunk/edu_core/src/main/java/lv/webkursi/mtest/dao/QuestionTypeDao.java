@@ -48,6 +48,9 @@ public class QuestionTypeDao extends HibernateDaoSupport implements
 		getHibernateTemplate().delete(qt);
 	}
 
+	/**
+	 * Explicit commit to actually save the data
+	 */
 	public void commit() {
 		getHibernateTemplate().execute(new HibernateCallback() {
 			public Object doInHibernate(Session session)
