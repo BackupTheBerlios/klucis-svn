@@ -1,0 +1,210 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix mars: <http://www.hpl.hp.com/schema/mars#> .
+@prefix portal: <http://www.hpl.hp.com/schema/portal#> .
+
+    
+portal:Amos
+    rdf:type mars:User ;
+    mars:userName "Amos" ;
+    mars:password "Amos" .
+        
+portal:Ezekiel
+    rdf:type mars:User ;
+    mars:userName "Ezekiel" ;
+    mars:password "Ezekiel" .
+        
+portal:fixedPageset
+    rdf:type mars:PageSet ;
+    mars:name "/fixed.do" ;
+    mars:rootComponent portal:fixedRootComponent ;
+    mars:ruleList [
+        a rdf:Seq ;
+        rdf:_1 portal:rule1     
+    ] .
+        
+portal:rule1 
+    rdf:type mars:Rule ;
+    mars:condition [
+        rdf:type mars:IntegerRangeCondition ;
+        mars:conditionSource portal:incDecFacet1 ;
+        mars:conditionLowerBound 15 ;
+        mars:conditionUpperBound 18 
+    ] ;
+    mars:action [
+        rdf:type mars:AddFacetAction ;
+        mars:facet portal:incDecFacet2 ;
+        mars:compositeFacet portal:fixedCompositeFacet 
+    ] .    
+
+portal:loginPageset
+    rdf:type mars:PageSet ;
+    mars:name "/login.do" ;
+    mars:rootComponent portal:fixedRootComponent ;
+    mars:ruleList [
+        a rdf:Seq ;
+    ] .    
+         
+portal:fixedRootComponent
+    rdf:type mars:RootComponent ;
+    mars:viewName "temp/fixed_root" ;
+    mars:title "MARS PortalTest: Fixed Pageset" ;   
+    mars:hasComponents [
+        a rdf:Bag ;
+        rdf:_1 [        
+            mars:modelKey "top" ;
+            mars:component portal:fixedTopComponent 
+        ] ;
+        rdf:_2 [
+            mars:modelKey "fb" ;
+            mars:component portal:fixedCompositeFacet 
+        ] ;
+        rdf:_3 [ 
+            mars:modelKey "main" ;
+            mars:component portal:fixedResultPane
+        ]
+    ] .    
+    
+portal:fixedResultPane
+    rdf:type mars:ResultPane ;
+    mars:viewName "temp/fixed_resultpane" ;
+    mars:model [
+        a rdf:Bag ;
+        rdf:_1 [
+            mars:modelKey "message" ;
+            mars:value "Results" 
+        ] 
+    ] ;
+    mars:resultMapper portal:classNameMapper ;
+    mars:source portal:fixedCompositeFacet .
+
+portal:classNameMapper
+    rdf:type mars:TypeStringMapper ;
+    mars:typeStringMap [
+        a rdf:Bag ;
+        rdf:_1 [
+            mars:key "java.lang.Integer" ;
+            mars:value [
+                rdf:type mars:SimpleComponent ;
+                mars:viewName "resultpanes/integerView"
+            ]
+        ] ;
+        rdf:_2 [
+            mars:key "java.lang.String" ;
+            mars:value [
+                rdf:type mars:SimpleComponent ;
+                mars:viewName "resultpanes/textView"
+            ]
+        ] ;
+        rdf:_3 [
+            mars:key "lv.webkursi.mtest.core.components.facets.IncDecFacetState" ;
+            mars:value [
+                rdf:type mars:SimpleComponent ;
+                mars:viewName "resultpanes/incDecFacetView"            
+            ]
+        ] ;
+        rdf:_4 [
+            mars:key "lv.webkursi.mtest.core.components.facets.TextFacetState" ;
+            mars:value [
+                rdf:type mars:SimpleComponent ;
+                mars:viewName "resultpanes/textFacetView" 
+            ]
+        ] 
+    ] ;
+    mars:defaultValue [
+        rdf:type mars:SimpleComponent ;
+        mars:viewName "resultpanes/class_mapper"
+    ] .
+
+    
+portal:fixedTopComponent
+    rdf:type mars:TopComponent ;
+    mars:viewName "top_component" .
+
+portal:fixedCompositeFacet
+    rdf:type mars:CompositeFacet ;
+    mars:viewName "temp/fixed_composite_facet" ;
+    mars:facetAddList [
+        a rdf:Seq ;
+        mars:belongsTo portal:System ;
+        rdf:_1 [
+            mars:facet portal:textFacet1 ;
+            mars:state "A"
+        ] ;
+        rdf:_2 [
+            mars:facet portal:incDecFacet1 ;
+            mars:state 10
+        ]
+    ] ;
+    mars:facetAddList [
+        a rdf:Seq ;
+        mars:belongsTo portal:Amos ;
+        rdf:_1 [ 
+            mars:facet portal:messageFacet1 ;
+            mars:state "Welcome, Amos!"
+        ]    
+    ] ;
+    mars:facetAddList [
+        a rdf:Seq ;
+        mars:belongsTo portal:Ezekiel ;
+        rdf:_1 [
+            mars:facet portal:messageFacet2 ;
+            mars:state "Welcome, Ezekiel!"
+        ] ;
+        rdf:_2 [
+            mars:facet portal:incDecFacet3 ;
+            mars:state "17"
+        ]
+    ] ;
+    mars:model [
+        a rdf:Bag ;
+        rdf:_1 [
+            mars:modelKey "message" ;
+            mars:value "Active facets" 
+        ] 
+    ] ;
+    mars:facetCatalog portal:facetCatalog .
+
+portal:textFacet1 
+    rdf:type mars:TextFacet ;
+    mars:viewName "temp/facet_textbox" ;
+    mars:title "Alphabetic Filter" ;
+    mars:defaultState "" .
+
+portal:incDecFacet1 
+    rdf:type mars:IncDecFacet ;
+    mars:viewName "temp/facet_inc_dec" ;
+    mars:title "Upper Bound" ;
+    mars:defaultState 0 .
+    
+portal:incDecFacet2
+    rdf:type mars:IncDecFacet ;
+    mars:viewName "temp/facet_inc_dec" ;
+    mars:title "Lower Bound" ;
+    mars:defaultState 0 .
+
+portal:incDecFacet3 
+    rdf:type mars:IncDecFacet ;
+    mars:viewName "temp/facet_inc_dec" ;
+    mars:title "Upper Bound1" ;
+    mars:defaultState 0 .
+
+portal:messageFacet1
+    rdf:type mars:MessageFacet ;
+    mars:viewName "temp/facet_message" ;
+    mars:title "Welcome" ;
+    mars:defaultState "Welcome, Nobody!" .
+
+portal:messageFacet2
+    rdf:type mars:MessageFacet ;
+    mars:viewName "temp/facet_message" ;
+    mars:title "Welcome" ;
+    mars:defaultState "Welcome, Nobody!" .
+
+# This is unused
+portal:fixedLoginComponent
+    rdf:type mars:SimpleComponent ;
+    mars:viewName "temp/fixed_login" .
+
+    

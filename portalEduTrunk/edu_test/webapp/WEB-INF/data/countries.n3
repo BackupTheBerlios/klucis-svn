@@ -1,0 +1,197 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix wfb: <http://www.cia.gov/data/countries.rdf#> .
+@prefix wfbont: <http://www.cia.gov/data/ontology.owl#> .
+@prefix mars: <http://www.hpl.hp.com/schema/mars#> .
+
+
+
+wfb:China 
+     rdf:type mars:Country ;
+     mars:name "China" ;
+     mars:population 1313973713 ;
+     mars:populationRank 1 ;
+     mars:belongsTo "Asia" ;
+     mars:natlHoliday "2006-10-01"^^xsd:date .
+wfb:India 
+     rdf:type mars:Country ;
+     mars:name "India" ;
+     mars:population 1095351995 ;
+     mars:populationRank 2 ;
+     mars:belongsTo "Asia" ;
+     mars:natlHoliday "2006-01-26"^^xsd:date .
+wfb:United_States 
+     rdf:type mars:Country ;
+     mars:name "United States" ;
+     mars:population 298444215 ;
+     mars:populationRank 3 ;
+     mars:belongsTo "Americas" ;
+     mars:natlHoliday "2006-07-04"^^xsd:date .
+wfb:Indonesia  
+     rdf:type mars:Country ;
+     mars:population 245452739 ;
+     mars:name "Indonesia" ;
+     mars:belongsTo "Asia" ;
+     mars:populationRank 4 .
+wfb:Brazil  
+     rdf:type mars:Country ;
+     mars:population 188078227 ;
+     mars:name "Brazil" ;
+     mars:belongsTo "Americas" ;
+     mars:populationRank 5 .
+wfb:Pakistan  
+     rdf:type mars:Country ;
+     mars:population 165803560 ;
+     mars:name "Pakistan" ;
+     mars:belongsTo "Asia" ;
+     mars:populationRank 6 .
+wfb:Bangladesh  
+     rdf:type mars:Country ;
+     mars:population 147365352 ;
+     mars:name "Bangladesh" ;
+     mars:belongsTo "Asia" ;
+     mars:populationRank 7 .
+wfb:Russia  
+     rdf:type mars:Country ;
+     mars:population 142893540 ;
+     mars:name "Russia" ;
+     mars:belongsTo "Europe" ;
+     mars:belongsTo "Asia" ;
+     mars:populationRank 8 .
+wfb:Nigeria  
+     rdf:type mars:Country ;
+     mars:population 131859731 ;
+     mars:name "Nigeria" ;
+     mars:belongsTo "Africa" ;
+     mars:populationRank 9 .
+wfb:Japan  
+     rdf:type mars:Country ;
+     mars:population 127463611 ;
+     mars:name "Japan" ;
+     mars:belongsTo "Asia" ;
+     mars:populationRank 10 .
+wfb:Mexico  
+     rdf:type mars:Country ;
+     mars:population 107449525 ;
+     mars:name "Mexico" ;
+     mars:belongsTo "Americas" ;
+     mars:populationRank 11 .
+wfb:Philippines  
+     rdf:type mars:Country ;
+     mars:population 89468677 ;
+     mars:name "Philippines" ;
+     mars:belongsTo "Asia" ;
+     mars:populationRank 12 .
+wfb:Vietnam  
+     rdf:type mars:Country ;
+     mars:population 84402966 ;
+     mars:name "Vietnam" ;
+     mars:belongsTo "Asia" ;
+     mars:populationRank 13 .
+wfb:Germany  
+     rdf:type mars:Country ;
+     mars:population 82422299 ;
+     mars:name "Germany" ;
+     mars:belongsTo "Europe" ;
+     mars:populationRank 14 .
+wfb:Egypt  
+     rdf:type mars:Country ;
+     mars:population 78887007 ;
+     mars:name "Egypt" ;
+     mars:belongsTo "Africa" ;
+     mars:populationRank 15 .
+wfb:Ethiopia  
+     rdf:type mars:Country ;
+     mars:population 74777981 ;
+     mars:name "Ethiopia" ;
+     mars:belongsTo "Africa" ;
+     mars:populationRank 16 .
+wfb:Turkey  
+     rdf:type mars:Country ;
+     mars:population 70413958 ;
+     mars:name "Turkey" ;
+     mars:belongsTo "Asia" ;
+     mars:populationRank 17 .
+wfb:Iran  
+     rdf:type mars:Country ;
+     mars:population 68688433 ;
+     mars:name "Iran" ;
+     mars:belongsTo "Asia" ;
+     mars:populationRank 18 .
+wfb:Thailand  
+     rdf:type mars:Country ;
+     mars:population 64631595 ;
+     mars:name "Thailand" ;
+     mars:belongsTo "Asia" ;
+     mars:populationRank 19 .
+wfb:Congo_Democratic_Republic  
+     rdf:type mars:Country ;
+     mars:population 62660551 ;
+     mars:name "Democratic Republic of the Congo" ;
+     mars:belongsTo "Africa" ;
+     mars:populationRank 20 .
+wfb:France  
+     rdf:type mars:Country ;
+     mars:population 60876136 ;
+     mars:name "France" ;
+     mars:belongsTo "Europe" ;
+     mars:populationRank 21 .
+wfb:United_Kingdom  
+     rdf:type mars:Country ;
+     mars:population 60609153 ;
+     mars:name "United Kingdom" ;
+     mars:belongsTo "Europe" ;
+     mars:populationRank 22 .
+wfb:Italy  
+     rdf:type mars:Country ;
+     mars:population 58133509 ;
+     mars:name "Italy" ;
+     mars:belongsTo "Europe" ;
+     mars:populationRank 23 .
+wfb:Korea_South  
+     rdf:type mars:Country ;
+     mars:population 48846823 ;
+     mars:name "South Korea" ;
+     mars:belongsTo "Asia" ;
+     mars:populationRank 24 .
+wfb:Burma  
+     rdf:type mars:Country ;
+     mars:population 47382633 ;
+     mars:name "Burma" ;
+     mars:belongsTo "Asia" ;
+     mars:populationRank 25 .
+wfb:Ukraine  
+     rdf:type mars:Country ;
+     mars:population 46710816 ;
+     mars:name "Ukraine" ;
+     mars:belongsTo "Europe" ;
+     mars:populationRank 26 .
+wfb:South_Africa  
+     rdf:type mars:Country ;
+     mars:population 44187637 ;
+     mars:name "South Africa" ;
+     mars:belongsTo "Africa" ;
+     mars:populationRank 27 .
+wfb:Colombia  
+     rdf:type mars:Country ;
+     mars:population 43593035 ;
+     mars:name "Colombia" ;
+     mars:belongsTo "Americas" ;
+     mars:populationRank 28 .
+wfb:Sudan  
+     rdf:type mars:Country ;
+     mars:population 41236378 ;
+     mars:name "Sudan" ;
+     mars:belongsTo "Africa" ;
+     mars:populationRank 29 .
+wfb:Spain  
+     rdf:type mars:Country ;
+     mars:population 40397842 ;
+     mars:name "Spain" ;
+     mars:belongsTo "Europe" ;
+     mars:populationRank 30 .
+     
+
+
+    

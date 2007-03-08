@@ -1,0 +1,14 @@
+<form method="GET">
+<table class="facet" cellspacing="0">
+<tr class="facettitle"><th>${facet.title}</th></tr>
+<tr><td>
+Value: <code>${state}</code>
+</td></tr>
+<tr><td>
+<input style="background-color:#ffffff" type="text" name="$_linkHelper.getName()" value="${state}"/>
+<input type="hidden" name="_action" value="set"/>
+<input type="hidden" name="_ac" value="$_linkHelper.getName()"/>
+<input type="submit" value="Set"/>
+</td></tr>
+</table>
+</form>

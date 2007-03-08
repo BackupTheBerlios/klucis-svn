@@ -1,0 +1,9 @@
+<p>${message}</p>
+
+<ul>
+
+#foreach ( $result in $results )
+<li>$_renderContext.render($result)</li>
+#end
+
+</ul>

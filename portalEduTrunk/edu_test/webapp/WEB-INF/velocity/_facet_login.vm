@@ -1,0 +1,13 @@
+<table class="facet" cellspacing="0">
+<tr class="facettitle"><th>${facet.title}</th></tr>
+<tr><td>
+<a href="login.do?user=Amos">Login Amos</a><br />
+<a href="login.do?user=Ezekiel">Login Ezekiel</a><br />
+<a href="login.do">Logout</a><br />
+#if ($_currentUser)
+Welcome, ${_currentUser.userName}<br />
+#else
+Nobody is logged in<br />
+#end
+</td></tr>
+</table>

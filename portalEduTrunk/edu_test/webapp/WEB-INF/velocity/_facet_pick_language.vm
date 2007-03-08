@@ -1,0 +1,9 @@
+<table class="facet" cellspacing="0">
+<tr class="facettitle"><th>${facet.title}</th></tr>
+<tr><td>
+<a href="?lang=en">EN</a>&nbsp;
+<a href="?lang=de">DE</a>&nbsp;
+<a href="?lang=lv">LV</a>&nbsp;
+<a href="?lang=ru">RU</a></td>
+</tr>
+</table>

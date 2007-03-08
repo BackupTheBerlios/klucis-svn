@@ -1,0 +1,6 @@
+<table class="facet" cellspacing="0">
+<tr class="facettitle"><th>${facet.title}</th></tr>
+<tr><td>
+${state}
+</td></tr>
+</table>
