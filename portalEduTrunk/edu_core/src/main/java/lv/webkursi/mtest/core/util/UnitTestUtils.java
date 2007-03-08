@@ -1,7 +1,7 @@
 package lv.webkursi.mtest.core.util;
 
 public class UnitTestUtils {
-	private static final String PORTAL_TEST_ROOT = "../portalTest";
+	private static final String PORTAL_TEST_ROOT = "edu_test";
 	private static final String CONTEXT_FILE_PATH = "webapp/WEB-INF/portalTest-data.xml";
 	private static final String RDF_DATA_DIR = "webapp/WEB-INF/data";
 		

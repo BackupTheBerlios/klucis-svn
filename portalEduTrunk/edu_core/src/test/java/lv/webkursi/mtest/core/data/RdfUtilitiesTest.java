@@ -29,7 +29,6 @@ public class RdfUtilitiesTest {
 	@Test
 	public void testFindFacetAddList() {
 		Resource r = model.getResource(PORTAL.NS + "fixedCompositeFacet");
-		assertEquals("fb",r.getRequiredProperty(MARS.modelKey).getString());
 		Resource rAmos = model.getResource(PORTAL.NS + "Amos");
 		Seq stuff = RdfUtilities.findFacetAddList(r, rAmos);
 		assertEquals(1,stuff.size());

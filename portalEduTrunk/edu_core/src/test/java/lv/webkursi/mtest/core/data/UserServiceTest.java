@@ -3,16 +3,14 @@ package lv.webkursi.mtest.core.data;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
+import lv.webkursi.mtest.core.util.UnitTestUtils;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 import com.hp.hpl.jena.rdf.model.EmptyListException;
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
-
-import lv.webkursi.mtest.core.util.UnitTestUtils;
 
 public class UserServiceTest {
 
@@ -22,13 +20,11 @@ public class UserServiceTest {
 
 	@Before
 	public void setUp() {
-		FileSystemXmlApplicationContext ctx = new FileSystemXmlApplicationContext(
-				UnitTestUtils.getContextFilePath());
-
 		model = ModelFactory.createFileModelMaker(
 				UnitTestUtils.getRdfDataDir()).openModel(
 				"portalDescription.n3", false);
-		userService = (UserService) ctx.getBean("userService");
+		userService = new UserService();
+		userService.setModel(model);
 
 	}
 
