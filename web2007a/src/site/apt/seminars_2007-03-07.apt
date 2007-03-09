@@ -7,21 +7,72 @@ Seminārs 2007-03-07: ORM attēlojumi ar Hibernate, Toplink, to testēšana
     var uzkāpt 3.stāvā un zvanīt Kalvim: 29112997.)
     
     [Demonstrācijas piemērs:]
-    (Demo šobrīd tiek izstrādāts.)
+    Var lejupielādēt no SVG (tam nevajadzētu prasīt Jums paroli):
+    {{https://kalvis@svn.berlios.de/svnroot/repos/klucis/portalEduTrunk}}
 
     [Semināra dienaskārtība:]
-    TBD
+    Praktiska iepazīšanās ar Maven uzstādīšanu, Hibernate ORM attēlojumi 
+    dotai UML klašu diagrammai, jautājumi par 1. praktisko darbu. 
       
 * Demonstrācijas piemēru darbināšana 
 ~~~~
+   
+  * Lai savāktu demo piemēru, vajadzīgs SVN klients. 
+  Piemēram, var uzinstalēt Subclipse (Eclipse plugins priekš
+  SVN), atvērt "SVN Repository" perspektīvu un ievadīt šo URL 
+  adresi kā jaunu repozitorija atrašanās vietu kā arī izčekot no 
+  turienes projektu (labais peles klikšķis + "Checkout"). 
+  
+  * Javas projekta saknes direktorijā, teiksim, <<<c:/workspace/portalEduTrunk/edu_core>>>
+  izpildīt DOS komandu "mvn eclipse:eclipse". Tas izveidos Jūsu 
+  Eclipse projektam <<<.project>>> un <<<.classpath>>> failus. 
+  Iekams Jūsu lokālā repozitorija nesaturēs visus nepieciešamos 
+  JAR failus, Maven izdos brīdinājumus par trūkstošiem JAR failiem, 
+  no kuriem projekts ir atkarīgs. Tos var instalēt, izmantojot
+  Maven izdrukātās komandas vai arī, atkomentējot pa vienai 
+  rindai no BAT skripta: <<<portalEduTrunk/bat/maven_install.bat>>>. 
+  
+  * <<<.classpath>>> failu pārkopēt vecāka direktorijā 
+  (piemēram, <<<c:/workspace/portalEduTrunk>>>) un Eclipses
+  projektam pateikt "Refresh". Tas nepieciešams tādēļ, ka 
+  Jūsu Eclipse projekts satur vairākus Maven projektus 
+  t.sk. <<<edu_core>>>, bet Maven plugins izveido <<<.classpath>>>
+  tikai attiecīgajā apakšdirektorijā.
+  
+  * Definēt Eclipsei <<<M2_REPO>>> mainīgo - tam jānorāda uz Maven 
+  repozitoriju (teiksim, <<<c:/Documents and Settings/Username/.m2/repository>>>). 
+  Var pārliecināties, vai atsauces <<<$M2_REPO/junit/junit.jar>>> utml. norāda 
+  uz pastāvošiem failiem. 
+  
+  * Kad Jūsu Eclipse projekts vairs nesatur kompilācijas kļūdas, 
+  palaist JUnit testus. To var darīt gan no Maven ("mvn test" vai 
+  "mvn package"), gan arī no Eclipse - (<<Run>> -> <<Run...>> ->
+  <<JUnit>> -> [New Launch Configuration] -> All tests in project). 
+  
+  * Tālākie vingrinājumi ir - uzinstalēt un nokonfigurēt MySQL 
+  (konfigurējot serveri, neaizmirstiet norādīt UTF-8 atbalstu), 
+  izmēgjināt JUnit testus arī priekš MySQL (ne tikai priekš 
+  Hipersonic jeb HSQLDB datubāzes). Izveidot jaunus attēlojumus, 
+  piemēram, UML klasei Person. 
+  
+  
+  <<{{{./seminars/edu_domain.png}UML Diagramma}}>>
+  
+
 
 * Bibliogrāfija
 ~~~~
+
+  * {{http://www.hibernate.org/344.html}}
+
+  * {{http://today.java.net/pub/a/today/2005/10/11/testing-hibernate-mapping.html}} - 
+  Kā testēt Hibernate ORM attēlojumus. 
 
   * {{http://www.oracle.com/technology/products/ias/toplink/doc/10131/main/_tutorial/index.htm}}
   - TopLink mācību materiāls
 
   * {{http://www.springframework.org/docs/reference/validation.html}}
+  
 
   
     
