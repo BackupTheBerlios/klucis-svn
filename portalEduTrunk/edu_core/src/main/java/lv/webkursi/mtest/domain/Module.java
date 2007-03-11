@@ -1,7 +1,9 @@
 package lv.webkursi.mtest.domain;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Module extends ContentItem {
 	/**
@@ -11,7 +13,7 @@ public class Module extends ContentItem {
 
 	protected List<Question> questions = new ArrayList<Question>();
 	
-	protected List<Image> images = new ArrayList<Image>();
+	protected Set<Image> images = new HashSet<Image>();
 	
 	public Question createQuestion() {
 		Question question = new Question();
@@ -45,11 +47,11 @@ public class Module extends ContentItem {
 		this.title = title;
 	}
 
-	public List<Image> getImages() {
+	public Set<Image> getImages() {
 		return images;
 	}
 
-	public void setImages(List<Image> images) {
+	public void setImages(Set<Image> images) {
 		this.images = images;
 	}
 
@@ -60,5 +62,4 @@ public class Module extends ContentItem {
 	public void setQuestions(List<Question> questions) {
 		this.questions = questions;
 	}
-
 }

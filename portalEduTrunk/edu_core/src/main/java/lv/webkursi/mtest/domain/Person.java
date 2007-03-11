@@ -1,8 +1,13 @@
 package lv.webkursi.mtest.domain;
 
+import java.util.HashSet;
 import java.util.Set;
 
+import lv.webkursi.mtest.dao.CommonDao;
+
 public class Person {
+	protected Long id; 
+	
 	protected String login;
 	
 	protected String firstName;
@@ -13,34 +18,63 @@ public class Person {
 	
 	protected String password;
 
-	protected Set<Module> modules;
+	protected HashSet<Session> modules = new HashSet<Session>();
 	
-	protected Set<Session> sessions;
+	protected Set<Session> sessions = new HashSet<Session>();
 	
-	protected Set<Assessment> assessments;
+	protected Set<Assessment> assessments = new HashSet<Assessment>();
 	
-	public void addSession(Session s) {
-		sessions.add(s);
+	protected CommonDao dao;
+	
+	
+		
+	public CommonDao getDao() {
+		return dao;
 	}
-	
+
+	public void setDao(CommonDao dao) {
+		this.dao = dao;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public HashSet<Session> getModules() {
+		return modules;
+	}
+
+	public void setModules(HashSet<Session> modules) {
+		this.modules = modules;
+	}
+
 	public void removeSession(Session s) {
 		sessions.remove(s);
-	}
-	
-	public void addAssessment(Assessment a) {
-		assessments.add(a);
+		// TODO
+//		dao.delete(s);
 	}
 	
 	public void removeAssessment(Assessment a) {
 		assessments.remove(a);
+		// TODO
+//		dao.delete(a);
 	}
 	
-	public void addModule(Module m) {
-		modules.add(m);
-	}
-	
-	public void removeModule(Module m) {
+	public void removeModule(Module m) {		
 		modules.remove(m);
+		// TODO
+//		dao.delete(m);
+	}
+	
+	public Session createSession(Assessment a) {
+		Session session = new Session();
+		session.init(a);
+		sessions.add(session);
+		return session;
 	}
 
 	public Set<Assessment> getAssessments() {
@@ -81,14 +115,6 @@ public class Person {
 
 	public void setLogin(String login) {
 		this.login = login;
-	}
-
-	public Set<Module> getModules() {
-		return modules;
-	}
-
-	public void setModules(Set<Module> modules) {
-		this.modules = modules;
 	}
 
 	public String getPassword() {

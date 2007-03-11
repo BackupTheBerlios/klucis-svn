@@ -10,34 +10,34 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
-//@RunWith(Suite.class)
-//@Suite.SuiteClasses(value={VariantDaoTest.CommonDaoTest.class})
+@RunWith(Suite.class)
+@Suite.SuiteClasses(value={VariantDaoTest.CommonDaoTest.class})
 public class VariantDaoTest {
 	
 	
 	public static class CommonDaoTest extends AbstractDaoTest {
 		
-		private VariantDao variantDao = new VariantDao();
+		private static CommonDao dao = CommonDao.getInstance(Variant.class);
 		private QuestionType qt = (QuestionType) (new QuestionTypeDaoTest.CommonDaoTest().getDynamicObjectA());
 		private Question q = (Question) (new QuestionDaoTest.CommonDaoTest().getDynamicObjectA());
 		
 		@Before 
 		public void setUp() {
 			super.setUp();
-			hibernateTemplate.saveOrUpdate(qt);
+			dao.setSessionFactory(DaoUtils.getHsqldbSessionFactory());
+			dao.saveOrUpdate(qt);
 			q.setQuestionType(qt);
-			hibernateTemplate.saveOrUpdate(q);
-			variantDao.setHibernateTemplate(hibernateTemplate);
+			dao.saveOrUpdate(q);
 		}
 		
 		@After
 		public void tearDown() {
-//			super.tearDown();
+			dao.close();
 		}
 
 		@Override
-		public ICommonDao getDao(HibernateTemplate hibernateTemplate) {
-			return variantDao;
+		public ICommonDao getDao() {
+			return dao;
 		}
 
 		@Override
@@ -46,6 +46,7 @@ public class VariantDaoTest {
 			vA.setName("varA");
 			vA.setDescription("varA_desc");
 			q.addVariant(vA);
+			System.out.println("vA=" + vA);
 			return vA;
 		}
 
@@ -55,6 +56,7 @@ public class VariantDaoTest {
 			vB.setName("varB");
 			vB.setDescription("varB_desc");
 			q.addVariant(vB);
+			System.out.println("vB=" + vB);
 			return vB;
 		}
 
@@ -64,6 +66,7 @@ public class VariantDaoTest {
 			vC.setName("varC");
 			vC.setDescription("varC_desc");
 			q.addVariant(vC);			
+			System.out.println("vC=" + vC);
 			return vC;
 		}
 		
@@ -72,7 +75,8 @@ public class VariantDaoTest {
 			Variant vD = new Variant();
 			vD.setName("varD");
 			vD.setDescription("varD_desc");
-			q.addVariant(vD);			
+			q.addVariant(vD);
+			System.out.println("vD=" + vD);
 			return vD;
 		}
 		

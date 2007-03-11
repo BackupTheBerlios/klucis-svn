@@ -1,6 +1,8 @@
 package lv.webkursi.mtest.domain;
 
 public class Answer {
+	protected Long id;
+	
 	protected Question question;
 	
 	protected String value;
@@ -20,4 +22,14 @@ public class Answer {
 	public void setValue(String value) {
 		this.value = value;
 	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	
 }

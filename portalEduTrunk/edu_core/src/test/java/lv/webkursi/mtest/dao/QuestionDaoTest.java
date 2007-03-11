@@ -11,6 +11,7 @@ import lv.webkursi.mtest.domain.Question;
 import lv.webkursi.mtest.domain.QuestionType;
 import lv.webkursi.mtest.domain.Variant;
 
+import org.hibernate.LazyInitializationException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -18,35 +19,36 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
-import org.springframework.orm.hibernate3.HibernateTemplate;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses(value = { QuestionDaoTest.CommonDaoTest.class,
-		QuestionDaoTest.LocalTests.class, QuestionDaoTest.PersistenceTests.class })
+		QuestionDaoTest.LocalTests.class //, QuestionDaoTest.PersistenceTests.class 
+		})
 public class QuestionDaoTest {
 
-	private static QuestionDao dao = new QuestionDao();
+	//private static QuestionDao dao = new QuestionDao();
+	
+	private static CommonDao dao = CommonDao.getInstance(Question.class);
 
 	public static class CommonDaoTest extends AbstractDaoTest {
 
 		private QuestionType qt = (QuestionType) (new QuestionTypeDaoTest.CommonDaoTest()
 				.getDynamicObjectA());
 		
-		
 
 		@Before
 		public void setUp() {
-			super.setUp();
 			dao.setSessionFactory(DaoUtils.getHsqldbSessionFactory());
 			dao.getHibernateTemplate().saveOrUpdate(qt);
 		}
 
 		@After
 		public void tearDown() {
+			dao.close();
 		}
 
 		@Override
-		public ICommonDao getDao(HibernateTemplate hibernateTemplate) {
+		public ICommonDao getDao() {
 			return dao;
 		}
 
@@ -95,33 +97,38 @@ public class QuestionDaoTest {
 		
 		@Before
 		public void setUp() throws Exception {
-			dao.setSessionFactory(DaoUtils.getMysqlSessionFactory());
-//			dao.setSessionFactory(DaoUtils.getHsqldbSessionFactory());
+//			dao.setSessionFactory(DaoUtils.getMysqlSessionFactory());
+			dao.setSessionFactory(DaoUtils.getHsqldbSessionFactory());
 			dao.getHibernateTemplate().saveOrUpdate(qt);
 		}
 		
 		@After
 		public void tearDown() {
+			
 		}
 
-		@Test
-		public void storeWithVariants() {
+		@Test(expected=LazyInitializationException.class)
+		public void variantsGet() {
 			Question q = (Question) new QuestionDaoTest.CommonDaoTest()
 			 .getDynamicObjectA();
 			q.setQuestionType(qt);
 			VariantDaoTest.CommonDaoTest vdtCdt = new VariantDaoTest.CommonDaoTest();
-			q.addVariant((Variant) vdtCdt.getDynamicObjectA());
-			q.addVariant((Variant) vdtCdt.getDynamicObjectB());
-			q.addVariant((Variant) vdtCdt.getDynamicObjectC());
-			q.addVariant((Variant) vdtCdt.getDynamicObjectD());			
+			
+			Variant vA = (Variant) vdtCdt.getDynamicObjectA();
+			q.addVariant(vA);
+			dao.getHibernateTemplate().saveOrUpdate(vA);
+			
 			long id = dao.saveOrUpdate(q);			
-			Question q1 = dao.get(id);
-			assertEquals(4,q1.getVariants().size());
+			Question q1 = (Question) dao.get(id);
+			q1.getVariants().size();
+			
 			
 		}
+		
 	}
+
 	
-	
+	/*
 	
 	public static class PersistenceTests {
 		
@@ -178,5 +185,5 @@ public class QuestionDaoTest {
 			assertEquals(1,count);
 		}
 	}
-	
+	*/
 }

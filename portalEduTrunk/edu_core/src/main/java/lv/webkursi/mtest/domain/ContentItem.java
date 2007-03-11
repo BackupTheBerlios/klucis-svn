@@ -26,10 +26,6 @@ public abstract class ContentItem {
 	 */
 	protected String description;
 	
-	/**
-	 * Which module this belongs to
-	 */
-	protected Module module;
 
 	/**
 	 * Just compare the "name" attribute, since they are unique
@@ -61,9 +57,6 @@ public abstract class ContentItem {
 	}
 
 	public void setName(String name) {
-//		if (this.name != null) {
-//			throw new RuntimeException("The contentItem already has a name");
-//		}
 		this.name = name;
 	}
 
@@ -74,13 +67,4 @@ public abstract class ContentItem {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
-	public Module getModule() {
-		return module;
-	}
-
-	public void setModule(Module module) {
-		this.module = module;
-	}
-
 }

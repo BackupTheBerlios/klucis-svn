@@ -5,8 +5,6 @@ import static org.junit.Assert.assertNotSame;
 
 import java.util.List;
 
-import lv.webkursi.mtest.domain.Variant;
-
 import org.junit.Test;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
@@ -14,19 +12,9 @@ public abstract class AbstractDaoTest {
 	
 	protected HibernateTemplate hibernateTemplate;
 	
-	protected ICommonDao commonDao;
-	
-	public void setUp() {
-		hibernateTemplate = DaoUtils.getHsqldbTemplate();
-//		hibernateTemplate = DaoUtils.getMysqlTemplate();
-		commonDao = getDao(hibernateTemplate);
-	}
-	
-	
-	public void tearDown() {
-	}
-	
-	public abstract ICommonDao getDao(HibernateTemplate hibernateTemplate);
+	protected ICommonDao commonDao = getDao();
+		
+	public abstract ICommonDao getDao();
 	
 	public abstract Object getDynamicObjectA();
 	
@@ -35,6 +23,10 @@ public abstract class AbstractDaoTest {
 	public abstract Object getDynamicObjectC();
 	
 	public abstract Object getDynamicObjectD();
+	
+	public void setUp() {}
+	
+	public void tearDown() {}
 	
 	@Test
 	public void testSaveAndGet() {
@@ -58,6 +50,7 @@ public abstract class AbstractDaoTest {
 		commonDao.saveOrUpdate(getDynamicObjectB());
 		List result = commonDao.getAll();
 		assertEquals(3,result.size());
+		
 		assertEquals(getDynamicObjectA(),result.get(0));
 		assertEquals(getDynamicObjectB(),result.get(1));
 		assertEquals(getDynamicObjectC(),result.get(2));
@@ -73,6 +66,7 @@ public abstract class AbstractDaoTest {
 		assertEquals(getDynamicObjectD(),result.get(0));		
 	}	
 	
+	
 	@Test
 	public void deleteAll() {
 		commonDao.saveOrUpdate(getDynamicObjectA());
@@ -81,6 +75,7 @@ public abstract class AbstractDaoTest {
 		commonDao.deleteAll();
 		List result = commonDao.getAll();
 		assertEquals(0,result.size());
-	}		
+	}
+			
 		
 }

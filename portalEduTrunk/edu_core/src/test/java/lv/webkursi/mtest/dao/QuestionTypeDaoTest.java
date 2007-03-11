@@ -13,25 +13,28 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.springframework.orm.hibernate3.HibernateSystemException;
-import org.springframework.orm.hibernate3.HibernateTemplate;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses(value = { QuestionTypeDaoTest.CommonDaoTest.class,
-		QuestionTypeDaoTest.LocalTests.class })
+		QuestionTypeDaoTest.LocalTests.class 
+		})
 public class QuestionTypeDaoTest {
 
-	private static QuestionTypeDao dao = new QuestionTypeDao();
+	private static CommonDao dao = CommonDao.getInstance(QuestionType.class);
 
 	public static class CommonDaoTest extends AbstractDaoTest {
-
+				
 		@Before
 		public void setUp() {
 			super.setUp();
 			dao.setSessionFactory(DaoUtils.getHsqldbSessionFactory());
 		}
-
-		@Override
-		public ICommonDao getDao(HibernateTemplate hibernateTemplate) {
+		
+		public void tearDown() {
+			dao.close();
+		}
+				
+		public ICommonDao getDao() {
 			return dao;
 		}
 
@@ -70,14 +73,14 @@ public class QuestionTypeDaoTest {
 			QuestionType qt0 = new QuestionType("Instr0");
 			long id0 = dao.saveOrUpdate(qt0);
 
-			QuestionType qt1 = dao.get(id0);
+			QuestionType qt1 = (QuestionType)dao.get(id0);
 			qt1.setInstruction("Instr1");
 			long id1 = dao.saveOrUpdate(qt1);
 
 			List<QuestionType> list = dao.getAll();
 			assertEquals(1, list.size());
 			assertEquals(id0, id1);
-			QuestionType qt2 = dao.get(id1);
+			QuestionType qt2 = (QuestionType)dao.get(id1);
 			assertEquals("Instr1", qt2.getInstruction());
 		}
 
@@ -104,7 +107,7 @@ public class QuestionTypeDaoTest {
 			QuestionType questionType = new QuestionType();
 			questionType.setInstruction(s255);
 			long id = dao.saveOrUpdate(questionType);
-			QuestionType qt1 = dao.get(id);
+			QuestionType qt1 = (QuestionType)dao.get(id);
 			assertEquals(255, qt1.getInstruction().length());
 			try {
 				QuestionType qt2 = new QuestionType(s255 + ".");
@@ -122,7 +125,7 @@ public class QuestionTypeDaoTest {
 			QuestionType questionType = new QuestionType();
 			questionType.setInstruction(s240);
 			long id = dao.saveOrUpdate(questionType);
-			QuestionType qt1 = dao.get(id);
+			QuestionType qt1 = (QuestionType)dao.get(id);
 			assertEquals(s240, qt1.getInstruction());
 			assertEquals(240, qt1.getInstruction().length());
 		}

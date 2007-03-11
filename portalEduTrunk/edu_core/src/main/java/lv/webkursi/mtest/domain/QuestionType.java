@@ -9,7 +9,7 @@ package lv.webkursi.mtest.domain;
  * @author kap
  * 
  */
-public class QuestionType {
+public class QuestionType implements JsonSerializable {
 
 	protected Long id;
 
@@ -56,12 +56,25 @@ public class QuestionType {
 	public int hashCode() {
 		return instruction.hashCode();
 	}
+
+	public String[] getParamList() {
+		return new String[] { "id", "instruction" };
+	}
+
+	public Object[] getValueList() {
+		return new Object[] { id, instruction };
+	}	
 	
 	/**
 	 * String representation in the JSON notation; just for debug messages
 	 */
 	@Override
 	public String toString() {
+		return "{\"QuestionType\":{"
+		+ Utils.jsonParamList(getParamList(), getValueList()) + "}}";
+
+		
+		/*
 		StringBuffer result = new StringBuffer();
 		result.append("{\"QuestionType\":{");
 		result.append("\"instruction\":\"");
@@ -70,5 +83,6 @@ public class QuestionType {
 		result.append(id);
 		result.append("\"}}");
 		return result.toString();
+		*/
 	}
 }

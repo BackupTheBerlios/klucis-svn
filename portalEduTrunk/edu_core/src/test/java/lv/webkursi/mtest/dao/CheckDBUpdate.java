@@ -7,7 +7,7 @@ public class CheckDBUpdate {
 	 * @param args
 	 */
 	public static void main(String[] args) {		
-		QuestionTypeDao dao = new QuestionTypeDao();
+		CommonDao dao = CommonDao.getInstance(QuestionType.class);
 		dao.setSessionFactory(DaoUtils.getMysqlSessionFactory());
 		QuestionType qt = new QuestionType("Blah!");
 		dao.saveOrUpdate(qt);

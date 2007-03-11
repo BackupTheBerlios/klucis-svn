@@ -5,11 +5,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Assessment {
-	public Date startDate;
+	protected Long id;
 	
-	public Date endDate;
+	protected Date startDate;
 	
-	public Map<Module,Integer> weights = new HashMap<Module,Integer>();
+	protected Date endDate;
+	
+	protected Map<Module,Integer> weights = new HashMap<Module,Integer>();
 	
 	public void addModule(Module m, int weight) {
 		weights.put(m, weight);
@@ -44,5 +46,14 @@ public class Assessment {
 
 	public void setWeights(Map<Module, Integer> weights) {
 		this.weights = weights;
-	}	
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
 }
