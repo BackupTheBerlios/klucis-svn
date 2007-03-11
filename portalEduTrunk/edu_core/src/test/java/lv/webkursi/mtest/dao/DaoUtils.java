@@ -11,7 +11,28 @@ import org.springframework.orm.hibernate3.HibernateTemplate;
 
 public class DaoUtils {
 	
-	public static SessionFactory getHsqldbSessionFactory() {
+	
+//	private static String implementation = "Hsqldb";
+	private static String implementation = "Mysql";
+	
+	public static String getImplementation() {
+		return implementation;
+	}
+	
+	public static SessionFactory getSessionFactory() {
+		if (implementation.equals("Hsqldb")) {
+			return getHsqldbSessionFactory();
+		}
+		else {
+			return getMysqlSessionFactory();
+		}
+	}
+	
+	public static HibernateTemplate getTemplate() {
+		return new HibernateTemplate(getSessionFactory());
+	}
+	
+	private static SessionFactory getHsqldbSessionFactory() {
 		Configuration configuration = new Configuration();
 
 		configuration.setProperty(Environment.DRIVER, "org.hsqldb.jdbcDriver");
@@ -29,11 +50,8 @@ public class DaoUtils {
 		return sessionFactory;
 	}
 
-	public static HibernateTemplate getHsqldbTemplate() {
-		return new HibernateTemplate(getHsqldbSessionFactory());		
-	}
 	
-	public static SessionFactory getMysqlSessionFactory() {
+	private static SessionFactory getMysqlSessionFactory() {
 		Configuration configuration = new Configuration();
 
 		configuration.setProperty(Environment.DRIVER, "com.mysql.jdbc.Driver");
@@ -43,7 +61,7 @@ public class DaoUtils {
 				.getName());
 		configuration.setProperty(Environment.USER, "root");
 		configuration.setProperty(Environment.PASS, "root");
-		configuration.setProperty(Environment.HBM2DDL_AUTO, "create-drop");
+		configuration.setProperty(Environment.HBM2DDL_AUTO, "create");
 
 		configuration.setProperty(Environment.SHOW_SQL, "true");
 		configuration.addDirectory(new File("edu_core/src"));
@@ -52,7 +70,4 @@ public class DaoUtils {
 		return sessionFactory;
 	}
 
-	public static HibernateTemplate getMysqlTemplate() {
-		return new HibernateTemplate(getMysqlSessionFactory());
-	}
 }

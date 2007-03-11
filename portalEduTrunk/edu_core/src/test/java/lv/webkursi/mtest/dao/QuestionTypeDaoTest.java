@@ -27,7 +27,7 @@ public class QuestionTypeDaoTest {
 		@Before
 		public void setUp() {
 			super.setUp();
-			dao.setSessionFactory(DaoUtils.getHsqldbSessionFactory());
+			dao.setSessionFactory(DaoUtils.getSessionFactory());
 		}
 		
 		public void tearDown() {
@@ -65,7 +65,7 @@ public class QuestionTypeDaoTest {
 
 		@Before
 		public void setUp() throws Exception {
-			dao.setSessionFactory(DaoUtils.getHsqldbSessionFactory());
+			dao.setSessionFactory(DaoUtils.getSessionFactory());
 		}
 
 		@Test

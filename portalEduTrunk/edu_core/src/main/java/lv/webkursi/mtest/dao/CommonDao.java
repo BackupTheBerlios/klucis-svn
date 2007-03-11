@@ -25,11 +25,17 @@ public class CommonDao extends HibernateDaoSupport implements ICommonDao {
 
 	private static Map<Class, CommonDao> cache = new HashMap<Class, CommonDao>();
 
+	private static Map<String, String> lastIdQueries = new HashMap<String, String>();
+
 	static {
 		getAllQueries.put(QuestionType.class,
 				"from QuestionType qt order by qt.instruction");
 		getAllQueries.put(Question.class, "from Question q order by q.name");
 		getAllQueries.put(Variant.class, "from Variant v order by v.name");
+
+		// two dialects of SQL - find the last generated ID
+		lastIdQueries.put("Hsqldb", "CALL IDENTITY()");
+		lastIdQueries.put("Mysql", "SELECT LAST_INSERT_ID()");
 	}
 
 	public static CommonDao getInstance(Class clazz) {
@@ -40,16 +46,25 @@ public class CommonDao extends HibernateDaoSupport implements ICommonDao {
 		}
 		return cache.get(clazz);
 	}
-	
+
 	public void close() {
 		getSessionFactory().close();
 	}
 
 	public long saveOrUpdate(Object o) {
-		// getHibernateTemplate().saveOrUpdate(o);
-		// return ((QuestionType) o).getId();
-		return ((Long) getHibernateTemplate().execute(
-				new SaveOrUpdateCallback(o))).longValue();
+		getHibernateTemplate().saveOrUpdate(o);
+		if (o instanceof QuestionType) {
+			return ((QuestionType) o).getId();
+		} else if (o instanceof Question) {
+			return ((Question) o).getId();
+		} else if (o instanceof Variant) {
+			return ((Variant) o).getId();
+		} else {
+			throw new RuntimeException("Unsupported type: "
+					+ o.getClass().getName());
+		}
+		// return ((Long) getHibernateTemplate().execute(
+		// new SaveOrUpdateCallback(o))).longValue();
 	}
 
 	public Object get(long id) {
@@ -84,30 +99,57 @@ public class CommonDao extends HibernateDaoSupport implements ICommonDao {
 		});
 	}
 
-	public static class SaveOrUpdateCallback implements HibernateCallback {
-		Object o;
+	public Question getQuestionWithVariants(long id) {
+		//Question result = (Question) getHibernateTemplate().get(Question.class,
+		//		id);
+		// result.getVariants().iterator();
+		// result.setVariants(VariantDao.getInstance(this).getByQuestion(id));
+		// return result;
+		// Question result = get(id);
 
-		public SaveOrUpdateCallback(Object o) {
-			this.o = o;
+		return (Question) getHibernateTemplate().execute(
+				new CallbackQuestionWithVariants(id));
+	}
+
+	public static class CallbackQuestionWithVariants implements
+			HibernateCallback {
+
+		private long questionId;
+
+		public CallbackQuestionWithVariants(long questionId) {
+			this.questionId = questionId;
 		}
 
-		public Long doInHibernate(Session session) throws HibernateException,
+		public Object doInHibernate(Session session) throws HibernateException,
 				SQLException {
-			Long result = -1L;
 			session.beginTransaction();
-			session.saveOrUpdate(o);
-			Connection conn = session.connection();
-			Statement stmt = conn.createStatement();
-//			ResultSet rs = stmt.executeQuery("SELECT LAST_INSERT_ID()");
-			ResultSet rs = stmt.executeQuery("CALL IDENTITY()");
-			if (rs.next()) {
-				result = rs.getLong(1);
+			Question result = (Question) session
+					.get(Question.class, questionId);
+			System.err.println("AAA");
+			for (Iterator i = result.getVariants().iterator(); i.hasNext();) {
+				System.err.println("Instance of Variant!!!");
+				i.next();
 			}
-			rs.close();
-			stmt.close();
-			conn.close();
+			System.err.println("BBB");
+
 			session.getTransaction().commit();
 			return result;
 		}
+
 	}
+
+	/*
+	 * public static class SaveOrUpdateCallback implements HibernateCallback {
+	 * Object o;
+	 * 
+	 * public SaveOrUpdateCallback(Object o) { this.o = o; }
+	 * 
+	 * public Long doInHibernate(Session session) throws HibernateException,
+	 * SQLException { Long result = -1L; session.beginTransaction();
+	 * session.saveOrUpdate(o); Connection conn = session.connection();
+	 * Statement stmt = conn.createStatement(); ResultSet rs =
+	 * stmt.executeQuery(lastIdQueries.get(DaoUtils .getImplementation())); if
+	 * (rs.next()) { result = rs.getLong(1); } rs.close(); stmt.close();
+	 * conn.close(); session.getTransaction().commit(); return result; } }
+	 */
 }

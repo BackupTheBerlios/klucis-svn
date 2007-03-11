@@ -21,7 +21,7 @@
 				not-null="true" lazy="false"/>
 			
 			
-			<list name="variants" inverse="true" cascade="all">
+			<list name="variants" cascade="all">
 				<key column="QUESTION_ID" not-null="true"/>
 			    <list-index column="VARIANT_NUM"/>
 				<one-to-many class="lv.webkursi.mtest.domain.Variant"/>

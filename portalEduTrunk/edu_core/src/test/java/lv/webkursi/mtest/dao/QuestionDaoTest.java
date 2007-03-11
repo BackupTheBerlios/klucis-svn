@@ -38,7 +38,7 @@ public class QuestionDaoTest {
 
 		@Before
 		public void setUp() {
-			dao.setSessionFactory(DaoUtils.getHsqldbSessionFactory());
+			dao.setSessionFactory(DaoUtils.getSessionFactory());
 			dao.getHibernateTemplate().saveOrUpdate(qt);
 		}
 
@@ -97,13 +97,13 @@ public class QuestionDaoTest {
 		
 		@Before
 		public void setUp() throws Exception {
-//			dao.setSessionFactory(DaoUtils.getMysqlSessionFactory());
-			dao.setSessionFactory(DaoUtils.getHsqldbSessionFactory());
+			dao.setSessionFactory(DaoUtils.getSessionFactory());
 			dao.getHibernateTemplate().saveOrUpdate(qt);
 		}
 		
 		@After
 		public void tearDown() {
+			dao.close();
 			
 		}
 
@@ -116,15 +116,38 @@ public class QuestionDaoTest {
 			
 			Variant vA = (Variant) vdtCdt.getDynamicObjectA();
 			q.addVariant(vA);
-			dao.getHibernateTemplate().saveOrUpdate(vA);
-			
+			Variant vB = (Variant) vdtCdt.getDynamicObjectB();
+			q.addVariant(vB);
+
 			long id = dao.saveOrUpdate(q);			
+			
 			Question q1 = (Question) dao.get(id);
-			q1.getVariants().size();
+			assertEquals(1,q1.getVariants().size());
 			
 			
 		}
 		
+		
+		@Test
+		public void variantsGet1() {
+			Question q = (Question) new QuestionDaoTest.CommonDaoTest()
+			 .getDynamicObjectA();
+			q.setQuestionType(qt);
+			VariantDaoTest.CommonDaoTest vdtCdt = new VariantDaoTest.CommonDaoTest();
+			
+			Variant vA = (Variant) vdtCdt.getDynamicObjectA();
+			q.addVariant(vA);
+			Variant vB = (Variant) vdtCdt.getDynamicObjectB();
+			q.addVariant(vB);
+
+			long id = dao.saveOrUpdate(q);			
+			
+			Question q1 = (Question) dao.getQuestionWithVariants(id);
+			assertEquals(2,q1.getVariants().size());
+			
+			
+		}
+
 	}
 
 	

@@ -24,7 +24,7 @@ public class VariantDaoTest {
 		@Before 
 		public void setUp() {
 			super.setUp();
-			dao.setSessionFactory(DaoUtils.getHsqldbSessionFactory());
+			dao.setSessionFactory(DaoUtils.getSessionFactory());
 			dao.saveOrUpdate(qt);
 			q.setQuestionType(qt);
 			dao.saveOrUpdate(q);
