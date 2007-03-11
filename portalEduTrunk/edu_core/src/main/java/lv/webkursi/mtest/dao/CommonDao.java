@@ -100,15 +100,11 @@ public class CommonDao extends HibernateDaoSupport implements ICommonDao {
 	}
 
 	public Question getQuestionWithVariants(long id) {
-		//Question result = (Question) getHibernateTemplate().get(Question.class,
-		//		id);
-		// result.getVariants().iterator();
-		// result.setVariants(VariantDao.getInstance(this).getByQuestion(id));
-		// return result;
-		// Question result = get(id);
 
 		return (Question) getHibernateTemplate().execute(
 				new CallbackQuestionWithVariants(id));
+		
+		
 	}
 
 	public static class CallbackQuestionWithVariants implements
@@ -125,31 +121,12 @@ public class CommonDao extends HibernateDaoSupport implements ICommonDao {
 			session.beginTransaction();
 			Question result = (Question) session
 					.get(Question.class, questionId);
-			System.err.println("AAA");
 			for (Iterator i = result.getVariants().iterator(); i.hasNext();) {
-				System.err.println("Instance of Variant!!!");
 				i.next();
 			}
-			System.err.println("BBB");
-
 			session.getTransaction().commit();
 			return result;
 		}
 
 	}
-
-	/*
-	 * public static class SaveOrUpdateCallback implements HibernateCallback {
-	 * Object o;
-	 * 
-	 * public SaveOrUpdateCallback(Object o) { this.o = o; }
-	 * 
-	 * public Long doInHibernate(Session session) throws HibernateException,
-	 * SQLException { Long result = -1L; session.beginTransaction();
-	 * session.saveOrUpdate(o); Connection conn = session.connection();
-	 * Statement stmt = conn.createStatement(); ResultSet rs =
-	 * stmt.executeQuery(lastIdQueries.get(DaoUtils .getImplementation())); if
-	 * (rs.next()) { result = rs.getLong(1); } rs.close(); stmt.close();
-	 * conn.close(); session.getTransaction().commit(); return result; } }
-	 */
 }
