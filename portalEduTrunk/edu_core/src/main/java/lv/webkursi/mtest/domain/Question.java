@@ -15,12 +15,8 @@ public class Question extends ContentItem implements JsonSerializable {
 		return variant;
 	}
 
-	public void addVariant(Variant var) {
-		variants.add(var);
-	}
-
-	public void removeVariant(Variant var) {
-		variants.remove(var);
+	public boolean removeVariant(Variant var) {
+		return variants.remove(var);
 	}
 
 	public QuestionType getQuestionType() {

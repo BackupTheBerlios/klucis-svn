@@ -1,6 +1,7 @@
 package lv.webkursi.mtest.dao;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -26,8 +27,6 @@ import org.junit.runners.Suite;
 		})
 public class QuestionDaoTest {
 
-	//private static QuestionDao dao = new QuestionDao();
-	
 	private static CommonDao dao = CommonDao.getInstance(Question.class);
 
 	public static class CommonDaoTest extends AbstractDaoTest {
@@ -93,12 +92,15 @@ public class QuestionDaoTest {
 	public static class LocalTests {
 
 		private QuestionType qt = (QuestionType) (new QuestionTypeDaoTest.CommonDaoTest()
-				.getDynamicObjectA());
+				.getDynamicObjectA());		
+		private Question q = (Question) (new QuestionDaoTest.CommonDaoTest().getDynamicObjectA());
 		
 		@Before
 		public void setUp() throws Exception {
-			dao.setSessionFactory(DaoUtils.getSessionFactory());
-			dao.getHibernateTemplate().saveOrUpdate(qt);
+			dao.setSessionFactory(DaoUtils.getSessionFactory());			
+			dao.saveOrUpdate(qt);
+			q.setQuestionType(qt);
+			dao.saveOrUpdate(q);
 		}
 		
 		@After
@@ -108,105 +110,73 @@ public class QuestionDaoTest {
 		}
 
 		@Test(expected=LazyInitializationException.class)
-		public void variantsGet() {
-			Question q = (Question) new QuestionDaoTest.CommonDaoTest()
-			 .getDynamicObjectA();
-			q.setQuestionType(qt);
-			VariantDaoTest.CommonDaoTest vdtCdt = new VariantDaoTest.CommonDaoTest();
-			
-			Variant vA = (Variant) vdtCdt.getDynamicObjectA();
-			q.addVariant(vA);
-			Variant vB = (Variant) vdtCdt.getDynamicObjectB();
-			q.addVariant(vB);
+		public void lazyGetVariants() {
+			addDynamicObjectA(q);
+			addDynamicObjectB(q);
 
 			long id = dao.saveOrUpdate(q);			
-			
 			Question q1 = (Question) dao.get(id);
-			assertEquals(1,q1.getVariants().size());
-			
-			
+			q1.getVariants().size();
 		}
 		
 		
 		@Test
-		public void variantsGet1() {
-			Question q = (Question) new QuestionDaoTest.CommonDaoTest()
-			 .getDynamicObjectA();
-			q.setQuestionType(qt);
-			VariantDaoTest.CommonDaoTest vdtCdt = new VariantDaoTest.CommonDaoTest();
-			
-			Variant vA = (Variant) vdtCdt.getDynamicObjectA();
-			q.addVariant(vA);
-			Variant vB = (Variant) vdtCdt.getDynamicObjectB();
-			q.addVariant(vB);
-
-			long id = dao.saveOrUpdate(q);			
-			
+		public void explicitGetVariants() {
+			addDynamicObjectA(q);
+			addDynamicObjectB(q);
+			long id = dao.saveOrUpdate(q);						
 			Question q1 = (Question) dao.getQuestionWithVariants(id);
 			assertEquals(2,q1.getVariants().size());
-			
-			
-		}
-
-	}
-
-	
-	/*
-	
-	public static class PersistenceTests {
-		
-		public static void cleanAll() throws SQLException {
-			Connection conn = dao.getSessionFactory().openSession().connection();			
-			Statement stmt = conn.createStatement();
-			stmt.executeUpdate("DELETE FROM question");
-			stmt.executeUpdate("DELETE FROM question_type");
-			stmt.executeUpdate("DELETE FROM content");
-			stmt.close();
-			conn.close();			
-		}
-
-		private QuestionType qt = (QuestionType) (new QuestionTypeDaoTest.CommonDaoTest()
-				.getDynamicObjectA());
-		
-		@BeforeClass
-		public static void onlyOnce() throws SQLException {
-//			cleanAll();
-		}
-		
-		@Before
-		public void setUp() throws Exception {
-//			cleanAll();
-//			dao.setSessionFactory(DaoUtils.getMysqlSessionFactory());
-//			dao.getHibernateTemplate().saveOrUpdate(qt);
-		}
-		
-		@After
-		public void tearDown() throws SQLException {
-//			cleanAll();
 		}
 		
 		
-		@Ignore
 		@Test
-		public void storeWithVariants() throws SQLException {
-			Question q = (Question) new QuestionDaoTest.CommonDaoTest()
-			 .getDynamicObjectA();
-			q.setQuestionType(qt);
-			long id = dao.saveOrUpdate(q);
-			dao.commit();
+		public void deleteVariants() {
+			// add 4 variants
+			Variant vA = addDynamicObjectA(q);
+			addDynamicObjectB(q);
+			Variant vC = addDynamicObjectC(q);
+			addDynamicObjectD(q);			
+			dao.saveOrUpdate(q);
 			
-			Connection conn = dao.getSessionFactory().openSession().connection();
+			// remove 2 of them 
+			assertTrue(q.removeVariant(vA));
+			assertTrue(q.removeVariant(vC));
 			
-			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM question");
-			int count = 0; 
-			while (rs.next()) {
-				int newId = rs.getInt("content_id");
-				assertEquals(id,(long)newId);		
-				count++;
-			}
-			assertEquals(1,count);
+			// should have 2 elements in the original question
+			assertEquals(2,q.getVariants().size());
+			long id  = dao.saveOrUpdate(q);
+			
+			// retrieve that question from the DB 
+			Question q1 = (Question) dao.getQuestionWithVariants(id);
+			assertEquals(2,q1.getVariants().size());			
+			assertEquals("varB_desc",q1.getVariants().get(0).getDescription());
+			assertEquals("varD_desc",q1.getVariants().get(1).getDescription());
 		}
-	}
-	*/
+		
+		
+		public Variant addDynamicObjectA(Question q) {
+			Variant vA = q.createVariant();
+			vA.setDescription("varA_desc");
+			return vA;
+		}
+
+		public Variant addDynamicObjectB(Question q) {
+			Variant vB = q.createVariant();
+			vB.setDescription("varB_desc");
+			return vB;
+		}
+
+		public Variant addDynamicObjectC(Question q) {
+			Variant vC = q.createVariant();
+			vC.setDescription("varC_desc");
+			return vC;
+		}
+
+		public Variant addDynamicObjectD(Question q) {
+			Variant vD = q.createVariant();
+			vD.setDescription("varD_desc");
+			return vD;
+		}
+	}	
 }
