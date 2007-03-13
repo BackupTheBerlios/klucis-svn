@@ -8,9 +8,9 @@ public class Question extends ContentItem implements JsonSerializable {
 
 	protected List<Variant> variants = new ArrayList<Variant>();
 
-	public Variant createVariant() {
+	public Variant createVariant(String label) {
 		Variant variant = new Variant();
-		variant.setName("var_" + getName() + "_" + variants.size() + 1);
+		variant.setName(getName() + "." + label);
 		variants.add(variant);
 		return variant;
 	}

@@ -18,10 +18,14 @@ public class Module extends ContentItem {
 	public Question createQuestion() {
 		Question question = new Question();
 		// assign some unique name
-		question.setName("q_" + (questions.size() + 1));
+		question.setName(getName() + "_Q" + (questions.size() + 1));
 		
 		questions.add(question);
 		return question;
+	}
+	
+	public void addQuestion(Question q) {
+		q.setName(getName() + "_I"+(questions.size()) + 1);
 	}
 	
 	public Image createImage() {
@@ -29,14 +33,6 @@ public class Module extends ContentItem {
 		image.setName("img_" + (images.size() + 1));
 		images.add(image);
 		return image;
-	}
-	
-	public void removeImage(Image i) {
-		images.remove(i);
-	}
-	
-	public void removeQuestion(Question q) {
-		questions.remove(q);
 	}
 	
 	public String getTitle() {

@@ -2,12 +2,6 @@ package lv.webkursi.mtest.dao;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-
 import lv.webkursi.mtest.domain.Question;
 import lv.webkursi.mtest.domain.QuestionType;
 import lv.webkursi.mtest.domain.Variant;
@@ -15,8 +9,6 @@ import lv.webkursi.mtest.domain.Variant;
 import org.hibernate.LazyInitializationException;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -151,30 +143,32 @@ public class QuestionDaoTest {
 			Question q1 = (Question) dao.getQuestionWithVariants(id);
 			assertEquals(2,q1.getVariants().size());			
 			assertEquals("varB_desc",q1.getVariants().get(0).getDescription());
+			assertEquals("A.B",q1.getVariants().get(0).getName());
 			assertEquals("varD_desc",q1.getVariants().get(1).getDescription());
+			assertEquals("A.D",q1.getVariants().get(1).getName());
 		}
 		
 		
 		public Variant addDynamicObjectA(Question q) {
-			Variant vA = q.createVariant();
+			Variant vA = q.createVariant("A");
 			vA.setDescription("varA_desc");
 			return vA;
 		}
 
 		public Variant addDynamicObjectB(Question q) {
-			Variant vB = q.createVariant();
+			Variant vB = q.createVariant("B");
 			vB.setDescription("varB_desc");
 			return vB;
 		}
 
 		public Variant addDynamicObjectC(Question q) {
-			Variant vC = q.createVariant();
+			Variant vC = q.createVariant("C");
 			vC.setDescription("varC_desc");
 			return vC;
 		}
 
 		public Variant addDynamicObjectD(Question q) {
-			Variant vD = q.createVariant();
+			Variant vD = q.createVariant("D");
 			vD.setDescription("varD_desc");
 			return vD;
 		}
