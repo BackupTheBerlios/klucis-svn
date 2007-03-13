@@ -1,7 +1,10 @@
 package lv.webkursi.mtest.domain;
 
 /**
- * Answer variant within a Question
+ * Answer variant within a Question. 
+ * This has the assembly type relationship with a question. 
+ * (When deleting a Question, there is always a cascaded
+ * delete of its variants). 
  * 
  * @author kap
  * 

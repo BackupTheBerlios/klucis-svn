@@ -14,6 +14,19 @@
 		<property name="description" type="string" column="DESCRIPTION" length="255"
 			not-null="true"/>
 		
+		<joined-subclass name="lv.webkursi.mtest.domain.Module" table="MODULE">
+			<key column="CONTENT_ID"/>
+			
+			<property name="title" type="string" column="TITLE" length="255"
+			not-null="true"/>
+					
+			<list name="questions" cascade="all">
+				<key column="MODULE_ID"/>
+			    <list-index column="QUESTION_NUM"/>
+				<one-to-many class="lv.webkursi.mtest.domain.Question"/>
+			</list>
+		</joined-subclass>
+
 		<joined-subclass name="lv.webkursi.mtest.domain.Question"
 			table="QUESTION">
 			<key column="CONTENT_ID"/>
@@ -31,5 +44,7 @@
 		<joined-subclass name="lv.webkursi.mtest.domain.Variant" table="VARIANT">
 			<key column="CONTENT_ID"/>			
 		</joined-subclass>
+		
+		
 	</class>	
 </hibernate-mapping>

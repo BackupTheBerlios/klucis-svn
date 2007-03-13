@@ -1,14 +1,12 @@
 package lv.webkursi.mtest.dao;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import lv.webkursi.mtest.domain.Module;
 import lv.webkursi.mtest.domain.Question;
 import lv.webkursi.mtest.domain.QuestionType;
 import lv.webkursi.mtest.domain.Variant;
@@ -30,6 +28,7 @@ public class CommonDao extends HibernateDaoSupport implements ICommonDao {
 	static {
 		getAllQueries.put(QuestionType.class,
 				"from QuestionType qt order by qt.instruction");
+		getAllQueries.put(Module.class, "from Module m order by m.name");
 		getAllQueries.put(Question.class, "from Question q order by q.name");
 		getAllQueries.put(Variant.class, "from Variant v order by v.name");
 
@@ -55,6 +54,8 @@ public class CommonDao extends HibernateDaoSupport implements ICommonDao {
 		getHibernateTemplate().saveOrUpdate(o);
 		if (o instanceof QuestionType) {
 			return ((QuestionType) o).getId();
+		} else if (o instanceof Module) {
+			return ((Module) o).getId();
 		} else if (o instanceof Question) {
 			return ((Question) o).getId();
 		} else if (o instanceof Variant) {
@@ -103,8 +104,15 @@ public class CommonDao extends HibernateDaoSupport implements ICommonDao {
 
 		return (Question) getHibernateTemplate().execute(
 				new CallbackQuestionWithVariants(id));
-		
-		
+
+	}
+
+	public Module getModuleWithQuestions(long id) {
+		List list = getHibernateTemplate()
+				.find(
+						"from Module as module left join fetch module.questions where module.id=?",
+						id);
+		return (Module) list.get(0);
 	}
 
 	public static class CallbackQuestionWithVariants implements
@@ -129,4 +137,24 @@ public class CommonDao extends HibernateDaoSupport implements ICommonDao {
 		}
 
 	}
+
+	public static class CallbackModuleWithQuestions implements
+			HibernateCallback {
+
+		private long moduleId;
+
+		public CallbackModuleWithQuestions(long moduleId) {
+			this.moduleId = moduleId;
+		}
+
+		public Object doInHibernate(Session session) throws HibernateException,
+				SQLException {
+			session.beginTransaction();
+			// session.
+			session.getTransaction().commit();
+			return null;
+		}
+
+	}
+
 }

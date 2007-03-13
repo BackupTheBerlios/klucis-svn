@@ -3,6 +3,15 @@ package lv.webkursi.mtest.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * There can be non-attached (orphan) questions, but most of them 
+ * will be part of modules, and will be created via Module.createQuestion()
+ * One question can belong to one module only, but there
+ * is no association from Question to Module. 
+ * 
+ * @author kap
+ *
+ */
 public class Question extends ContentItem implements JsonSerializable {
 	protected QuestionType questionType;
 
@@ -10,7 +19,7 @@ public class Question extends ContentItem implements JsonSerializable {
 
 	public Variant createVariant(String label) {
 		Variant variant = new Variant();
-		variant.setName(getName() + "." + label);
+		variant.setName(getName() + "_" + label);
 		variants.add(variant);
 		return variant;
 	}

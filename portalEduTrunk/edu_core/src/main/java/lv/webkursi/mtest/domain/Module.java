@@ -24,9 +24,13 @@ public class Module extends ContentItem {
 		return question;
 	}
 	
-	public void addQuestion(Question q) {
-		q.setName(getName() + "_I"+(questions.size()) + 1);
+	public boolean removeQuestion(Question q) {
+		return questions.remove(q);
 	}
+	
+//	public void addQuestion(Question q) {
+//		q.setName(getName() + "_I"+(questions.size()) + 1);
+//	}
 	
 	public Image createImage() {
 		Image image = new Image();

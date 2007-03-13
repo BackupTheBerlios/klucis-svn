@@ -15,7 +15,7 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses(value = { QuestionDaoTest.CommonDaoTest.class,
-		QuestionDaoTest.LocalTests.class //, QuestionDaoTest.PersistenceTests.class 
+		QuestionDaoTest.LocalTests.class  
 		})
 public class QuestionDaoTest {
 
@@ -143,31 +143,31 @@ public class QuestionDaoTest {
 			Question q1 = (Question) dao.getQuestionWithVariants(id);
 			assertEquals(2,q1.getVariants().size());			
 			assertEquals("varB_desc",q1.getVariants().get(0).getDescription());
-			assertEquals("A.B",q1.getVariants().get(0).getName());
+			assertEquals("A_B",q1.getVariants().get(0).getName());
 			assertEquals("varD_desc",q1.getVariants().get(1).getDescription());
-			assertEquals("A.D",q1.getVariants().get(1).getName());
+			assertEquals("A_D",q1.getVariants().get(1).getName());
 		}
 		
 		
-		public Variant addDynamicObjectA(Question q) {
+		public static Variant addDynamicObjectA(Question q) {
 			Variant vA = q.createVariant("A");
 			vA.setDescription("varA_desc");
 			return vA;
 		}
 
-		public Variant addDynamicObjectB(Question q) {
+		public static Variant addDynamicObjectB(Question q) {
 			Variant vB = q.createVariant("B");
 			vB.setDescription("varB_desc");
 			return vB;
 		}
 
-		public Variant addDynamicObjectC(Question q) {
+		public static Variant addDynamicObjectC(Question q) {
 			Variant vC = q.createVariant("C");
 			vC.setDescription("varC_desc");
 			return vC;
 		}
 
-		public Variant addDynamicObjectD(Question q) {
+		public static Variant addDynamicObjectD(Question q) {
 			Variant vD = q.createVariant("D");
 			vD.setDescription("varD_desc");
 			return vD;
