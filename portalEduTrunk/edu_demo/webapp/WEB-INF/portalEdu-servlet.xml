@@ -47,13 +47,28 @@
 		</property>
 	</bean>
 	
-	<bean id="loginController"
-		class="lv.webkursi.mtest.core.mvc.LoginController">
+	<bean id="loginController" class="lv.webkursi.mtest.core.mvc.LoginController">
 		<property name="serviceFactory">
 			<ref bean="serviceFactory"/>
 		</property>
 	</bean>
+
+	<bean id="welcomeController"
+		class="lv.webkursi.mtest.mvc.FixedController">
+	</bean>
 	
+	<bean id="userSimpleController"
+		class="lv.webkursi.mtest.mvc.FixedSimpleFormController">
+		<property name="validator">
+			<bean class="lv.webkursi.mtest.core.data.UserValidator"/>
+		</property>
+		<property name="dao">
+			<bean class="lv.webkursi.mtest.dao.DummyDao"/>
+		</property>		
+	</bean>
+
+		
+	<!--
 	<bean id="welcomeController"
 		class="lv.webkursi.mtest.core.mvc.FixedController">
 		<property name="serviceFactory">
@@ -70,8 +85,8 @@
 			<bean class="lv.webkursi.mtest.core.data.UserValidator"/>
 		</property>
 	</bean>
+		-->
 	
-		
 	<bean id="componentManager"
 		class="lv.webkursi.mtest.core.components.factories.MVComponentManager"
 		scope="request">
@@ -123,8 +138,7 @@
 						class="lv.webkursi.mtest.core.mapping.TypeStringMapperFactory"/>
 				</entry>
 				<entry key="http://www.hpl.hp.com/schema/mars#Rule">
-					<bean
-						class="lv.webkursi.mtest.core.mvc.rule.RuleFactory">
+					<bean class="lv.webkursi.mtest.core.mvc.rule.RuleFactory">
 						<property name="serviceFactory" ref="serviceFactory"/>
 					</bean>
 				</entry>
@@ -144,43 +158,50 @@
 		<property name="mappings">
 			<props>
 				<prop key="/welcome.do">welcomeController</prop>
-<!--				<prop key="/user_new.do">userController</prop> -->
 				<prop key="/user_new.do">userSimpleController</prop>
 			</props>
 		</property>
 	</bean>
 	
-	<bean id="serviceFactory"
-		class="lv.webkursi.mtest.core.mvc.ServiceFactory">
+	<bean id="serviceFactory" class="lv.webkursi.mtest.core.mvc.ServiceFactory">
 	</bean>
-
+	
 	<bean id="userService" class="lv.webkursi.mtest.core.data.UserService">
 		<property name="model" ref="model"/>
 	</bean>
-
+	
 	<bean id="model" class="lv.webkursi.mtest.core.data.DBModelFactory">
 	</bean>
-
-	<bean id="userSettings"
-		class="lv.webkursi.mtest.core.scopes.UserSettings" scope="session">
+	
+	<bean id="userSettings" class="lv.webkursi.mtest.core.scopes.UserSettings"
+		scope="session">
 		<aop:scoped-proxy/>
 	</bean>
 	
 	<bean id="viewResolver"
-		class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
-		<property name="viewClass">
-			<value>
-				org.springframework.web.servlet.view.velocity.VelocityView</value>
-		</property>
-		<property name="suffix">
-			<value>.vm</value>
-		</property>
-		<property name="exposeSpringMacroHelpers">
-			<value>true</value>
-		</property>
-		<property name="toolboxConfigLocation" value="/WEB-INF/toolbox.xml"/>
-		<property name="contentType">
-			<value>text/html;charset=UTF-8</value>
-		</property>
+		class="org.springframework.web.servlet.view.ResourceBundleViewResolver">
+		<property name="basename" value="views-portaledu"/>
+		<property name="defaultParentView" value="modelView"/>
 	</bean>
+
+	
+	<!--
+	<bean id="viewResolver"
+	class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
+	<property name="viewClass">
+	<value>
+	org.springframework.web.servlet.view.velocity.VelocityView</value>
+	</property>
+	<property name="suffix">
+	<value>.vm</value>
+	</property>
+	<property name="exposeSpringMacroHelpers">
+	<value>true</value>
+	</property>
+	<property name="toolboxConfigLocation" value="/WEB-INF/toolbox.xml"/>
+	<property name="contentType">
+	<value>text/html;charset=UTF-8</value>
+	</property>
+	</bean>
+	-->
 </beans>
