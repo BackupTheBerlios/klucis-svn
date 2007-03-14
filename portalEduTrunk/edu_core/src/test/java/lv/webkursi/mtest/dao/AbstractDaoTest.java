@@ -5,6 +5,8 @@ import static org.junit.Assert.assertNotSame;
 
 import java.util.List;
 
+import lv.webkursi.mtest.lab02.dao.ICommonDao;
+
 import org.junit.Test;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 

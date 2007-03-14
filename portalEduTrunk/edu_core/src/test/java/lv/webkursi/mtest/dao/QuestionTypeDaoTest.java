@@ -5,7 +5,9 @@ import static org.junit.Assert.fail;
 
 import java.util.List;
 
-import lv.webkursi.mtest.domain.QuestionType;
+import lv.webkursi.mtest.lab02.dao.CommonDao;
+import lv.webkursi.mtest.lab02.dao.ICommonDao;
+import lv.webkursi.mtest.lab02.domain.QuestionType;
 
 import org.junit.Before;
 import org.junit.Ignore;

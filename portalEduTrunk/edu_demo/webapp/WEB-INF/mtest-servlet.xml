@@ -53,22 +53,22 @@
 		</property>
 	</bean>
 
-	<!--
 	<bean id="welcomeController"
-		class="lv.webkursi.mtest.mvc.FixedController">
+		class="lv.webkursi.mtest.lab02.mvc.FixedController">
 	</bean>
 	
 	<bean id="userSimpleController"
-		class="lv.webkursi.mtest.mvc.FixedSimpleFormController">
+		class="lv.webkursi.mtest.lab02.mvc.FixedSimpleFormController">
 		<property name="validator">
 			<bean class="lv.webkursi.mtest.core.data.UserValidator"/>
 		</property>
 		<property name="dao">
-			<bean class="lv.webkursi.mtest.dao.DummyDao"/>
+			<bean class="lv.webkursi.mtest.lab02.dao.DummyDao"/>
 		</property>		
 	</bean>
--->
+
 		
+	<!--
 	<bean id="welcomeController"
 		class="lv.webkursi.mtest.core.mvc.FixedController">
 		<property name="serviceFactory">
@@ -85,7 +85,7 @@
 			<bean class="lv.webkursi.mtest.core.data.UserValidator"/>
 		</property>
 	</bean>
-		
+		-->
 	
 	<bean id="componentManager"
 		class="lv.webkursi.mtest.core.components.factories.MVComponentManager"
@@ -178,14 +178,14 @@
 		<aop:scoped-proxy/>
 	</bean>
 	
-	<!--
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.ResourceBundleViewResolver">
 		<property name="basename" value="views-portaledu"/>
 		<property name="defaultParentView" value="modelView"/>
 	</bean>
- -->
+
 	
+	<!--
 	<bean id="viewResolver"
 	class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
 	<property name="viewClass">
@@ -203,5 +203,5 @@
 	<value>text/html;charset=UTF-8</value>
 	</property>
 	</bean>
-
+	-->
 </beans>

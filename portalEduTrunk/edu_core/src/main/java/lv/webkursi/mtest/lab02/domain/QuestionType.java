@@ -1,4 +1,4 @@
-package lv.webkursi.mtest.domain;
+package lv.webkursi.mtest.lab02.domain;
 
 /**
  * A classifier, which allows to store some small number of various

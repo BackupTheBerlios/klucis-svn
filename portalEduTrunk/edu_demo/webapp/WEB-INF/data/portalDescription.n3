@@ -7,7 +7,7 @@
 
 portal:fixedPageset
     rdf:type mars:PageSet ;
-    mars:name "/welcome.do" ;
+    mars:name "welcome.do" ;
     mars:rootComponent portal:fixedWelcomeComponent ;
     mars:ruleList [
         a rdf:Seq ;
@@ -16,7 +16,7 @@ portal:fixedPageset
 portal:fixedWelcomeComponent
     rdf:type mars:RootComponent ;
     mars:viewName "welcome" ;
-    mars:title "Mtest.lv - Lietotājs" ;   
+    mars:title "Mtest.lv - LietotÄ�js" ;   
     mars:hasComponents [
         a rdf:Bag ;
         rdf:_1 [        
@@ -61,7 +61,7 @@ portal:footer
 
 portal:fixedUserPageset
     rdf:type mars:PageSet ;
-    mars:name "/user_new.do" ;
+    mars:name "user_new.do" ;
     mars:rootComponent portal:fixedUserComponent ;
     mars:ruleList [
         a rdf:Seq ;
@@ -71,7 +71,7 @@ portal:fixedUserPageset
 portal:fixedUserComponent
     rdf:type mars:RootComponent ;
     mars:viewName "user/user" ;
-    mars:title "Jauns Lietotājs" ;   
+    mars:title "Jauns LietotÄ�js" ;   
     mars:hasComponents [
         a rdf:Bag ;
         rdf:_1 [        

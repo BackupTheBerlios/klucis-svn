@@ -1,9 +1,9 @@
-package lv.webkursi.mtest.domain;
+package lv.webkursi.mtest.lab02.domain;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import lv.webkursi.mtest.dao.CommonDao;
+import lv.webkursi.mtest.lab02.dao.CommonDao;
 
 public class Person {
 	protected Long id; 

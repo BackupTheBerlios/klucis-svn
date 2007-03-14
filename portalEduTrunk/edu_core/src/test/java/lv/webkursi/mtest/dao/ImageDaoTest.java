@@ -1,6 +1,8 @@
 package lv.webkursi.mtest.dao;
 
-import lv.webkursi.mtest.domain.Image;
+import lv.webkursi.mtest.lab02.dao.CommonDao;
+import lv.webkursi.mtest.lab02.dao.ICommonDao;
+import lv.webkursi.mtest.lab02.domain.Image;
 
 import org.junit.After;
 import org.junit.Before;

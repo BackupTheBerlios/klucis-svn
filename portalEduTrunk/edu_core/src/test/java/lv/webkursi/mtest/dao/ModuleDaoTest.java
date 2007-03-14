@@ -2,10 +2,12 @@ package lv.webkursi.mtest.dao;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import lv.webkursi.mtest.domain.Module;
-import lv.webkursi.mtest.domain.Question;
-import lv.webkursi.mtest.domain.QuestionType;
-import lv.webkursi.mtest.domain.Variant;
+import lv.webkursi.mtest.lab02.dao.CommonDao;
+import lv.webkursi.mtest.lab02.dao.ICommonDao;
+import lv.webkursi.mtest.lab02.domain.Module;
+import lv.webkursi.mtest.lab02.domain.Question;
+import lv.webkursi.mtest.lab02.domain.QuestionType;
+import lv.webkursi.mtest.lab02.domain.Variant;
 
 import org.hibernate.LazyInitializationException;
 import org.junit.After;

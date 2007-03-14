@@ -1,10 +1,10 @@
-package lv.webkursi.mtest.mvc;
+package lv.webkursi.mtest.lab02.mvc;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import lv.webkursi.mtest.core.data.UserForm;
-import lv.webkursi.mtest.dao.ICommonDao;
+import lv.webkursi.mtest.lab02.dao.ICommonDao;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

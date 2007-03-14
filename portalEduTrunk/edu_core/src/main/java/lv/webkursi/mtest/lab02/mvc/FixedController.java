@@ -1,4 +1,4 @@
-package lv.webkursi.mtest.mvc;
+package lv.webkursi.mtest.lab02.mvc;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

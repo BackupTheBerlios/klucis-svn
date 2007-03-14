@@ -29,6 +29,17 @@ public class FixedController implements Controller, ServiceFactoryAware {
 	private ServiceFactory serviceFactory;
 
 	private Log log = LogFactory.getLog(FixedController.class);
+	
+	protected String getPageSetName(HttpServletRequest request) {
+		String pageSetName = request.getPathInfo();
+		int slashPos = pageSetName.lastIndexOf("/");
+		if (slashPos >= 0 ) {
+			pageSetName = pageSetName.substring(slashPos+1);
+		}
+		log.debug("  imageName =  '" + pageSetName + "'");
+		return pageSetName;
+	}
+
 
 	public ModelAndView handleRequest(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
@@ -36,7 +47,9 @@ public class FixedController implements Controller, ServiceFactoryAware {
 		// Find the relevant pageset in the static RDF config file
 		Model portalDescription = (Model) serviceFactory
 				.getService(ServiceName.PortalDescription);
-		String pageSetName = request.getServletPath();
+		//String pageSetName = request.getServletPath();
+		String pageSetName = getPageSetName(request);
+		System.err.println("== pageSetName = " + pageSetName);
 		Resource pageSet = RdfUtilities.getPageSetByPath(portalDescription,
 				pageSetName);
 		log.info("REQUEST FOR PAGESET " + pageSet.getURI());

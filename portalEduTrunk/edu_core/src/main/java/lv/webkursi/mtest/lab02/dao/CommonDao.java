@@ -1,4 +1,4 @@
-package lv.webkursi.mtest.dao;
+package lv.webkursi.mtest.lab02.dao;
 
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -6,11 +6,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import lv.webkursi.mtest.domain.Image;
-import lv.webkursi.mtest.domain.Module;
-import lv.webkursi.mtest.domain.Question;
-import lv.webkursi.mtest.domain.QuestionType;
-import lv.webkursi.mtest.domain.Variant;
+import lv.webkursi.mtest.lab02.domain.Image;
+import lv.webkursi.mtest.lab02.domain.Module;
+import lv.webkursi.mtest.lab02.domain.Question;
+import lv.webkursi.mtest.lab02.domain.QuestionType;
+import lv.webkursi.mtest.lab02.domain.Variant;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;

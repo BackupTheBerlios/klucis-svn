@@ -1,4 +1,4 @@
-package lv.webkursi.mtest.domain;
+package lv.webkursi.mtest.lab02.domain;
 
 import java.util.ArrayList;
 import java.util.Date;
