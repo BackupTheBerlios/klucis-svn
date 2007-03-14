@@ -1,6 +1,6 @@
 package lv.webkursi.mtest.domain;
 
-import java.io.OutputStream;
+import java.io.InputStream;
 
 /**
  * Image (e.g. vector or raster graphics resource), which is refered by some
@@ -10,23 +10,13 @@ import java.io.OutputStream;
  */
 public class Image extends ContentItem {
 
-	protected String url;
+	protected InputStream inputStream;
 
-	protected OutputStream os;
-
-	public OutputStream getOs() {
-		return os;
+	public InputStream getInputStream() {
+		return inputStream;
 	}
 
-	public void setOs(OutputStream os) {
-		this.os = os;
-	}
-
-	public String getUrl() {
-		return url;
-	}
-
-	public void setUrl(String url) {
-		this.url = url;
+	public void setInputStream(InputStream inputStream) {
+		this.inputStream = inputStream;
 	}
 }

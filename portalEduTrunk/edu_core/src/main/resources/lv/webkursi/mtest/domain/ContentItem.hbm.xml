@@ -25,6 +25,14 @@
 			    <list-index column="QUESTION_NUM"/>
 				<one-to-many class="lv.webkursi.mtest.domain.Question"/>
 			</list>
+			<set name="images" cascade="all">
+				<key column="MODULE_ID"/>
+				<one-to-many class="lv.webkursi.mtest.domain.Image"/>
+			</set>
+		</joined-subclass>
+		
+		<joined-subclass name="lv.webkursi.mtest.domain.Image" table="IMAGE">
+			<key column="CONTENT_ID"/>
 		</joined-subclass>
 
 		<joined-subclass name="lv.webkursi.mtest.domain.Question"

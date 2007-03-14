@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import lv.webkursi.mtest.domain.Image;
 import lv.webkursi.mtest.domain.Module;
 import lv.webkursi.mtest.domain.Question;
 import lv.webkursi.mtest.domain.QuestionType;
@@ -31,6 +32,7 @@ public class CommonDao extends HibernateDaoSupport implements ICommonDao {
 		getAllQueries.put(Module.class, "from Module m order by m.name");
 		getAllQueries.put(Question.class, "from Question q order by q.name");
 		getAllQueries.put(Variant.class, "from Variant v order by v.name");
+		getAllQueries.put(Image.class, "from Image i order by i.name");
 
 		// two dialects of SQL - find the last generated ID
 		lastIdQueries.put("Hsqldb", "CALL IDENTITY()");
@@ -56,6 +58,8 @@ public class CommonDao extends HibernateDaoSupport implements ICommonDao {
 			return ((QuestionType) o).getId();
 		} else if (o instanceof Module) {
 			return ((Module) o).getId();
+		} else if (o instanceof Image) {
+			return ((Image) o).getId();
 		} else if (o instanceof Question) {
 			return ((Question) o).getId();
 		} else if (o instanceof Variant) {
