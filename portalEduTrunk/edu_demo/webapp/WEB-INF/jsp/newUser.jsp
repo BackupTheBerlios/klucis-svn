@@ -1,5 +1,5 @@
 <div class="box_content">
-<form action="/eduDemo/user_new.do" method="post">
+<form action="/eduDemo/mtest/user_new.do" method="post">
   
 <!--[form:user]-->
 <p><label for="userName">Lietotaja vards</label></br>
@@ -44,5 +44,5 @@
 <p>${success}</p>
 #end
 
-<a href="/eduDemo/welcome.do">Atpakalj</a>
+<a href="/eduDemo/mtest/welcome.do">Atpakalj</a>
 </div><!--box_content-->
