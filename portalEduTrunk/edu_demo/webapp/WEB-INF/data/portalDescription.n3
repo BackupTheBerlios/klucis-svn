@@ -1,57 +1,57 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix mars: <http://www.hpl.hp.com/schema/mars#> .
-@prefix portal: <http://www.hpl.hp.com/schema/portal#> .
+@prefix mtest: <http://www.webkursi.lv/schema/mtest#> .
+@prefix portal: <http://www.webkursi.lv/schema/portal#> .
 
 
 portal:fixedPageset
-    rdf:type mars:PageSet ;
-    mars:name "welcome.do" ;
-    mars:rootComponent portal:fixedWelcomeComponent ;
-    mars:ruleList [
+    rdf:type mtest:PageSet ;
+    mtest:name "welcome.do" ;
+    mtest:rootComponent portal:fixedWelcomeComponent ;
+    mtest:ruleList [
         a rdf:Seq ;
     ] .
              
 portal:fixedWelcomeComponent
-    rdf:type mars:RootComponent ;
-    mars:viewName "welcome" ;
-    mars:title "Mtest.lv - LietotÄ�js" ;   
-    mars:hasComponents [
+    rdf:type mtest:RootComponent ;
+    mtest:viewName "welcome" ;
+    mtest:title "Mtest.lv - Lietotaajs" ;   
+    mtest:hasComponents [
         a rdf:Bag ;
         rdf:_1 [        
-            mars:modelKey "navigation" ;
-            mars:component portal:navigation 
+            mtest:modelKey "navigation" ;
+            mtest:component portal:navigation 
         ] ;        
         rdf:_2 [        
-            mars:modelKey "logo" ;
-            mars:component portal:logo 
+            mtest:modelKey "logo" ;
+            mtest:component portal:logo 
         ] ;  
         rdf:_3 [        
-            mars:modelKey "welcome_content" ;
-            mars:component portal:welcome_content 
+            mtest:modelKey "welcome_content" ;
+            mtest:component portal:welcome_content 
         ] ;     
         rdf:_4 [        
-            mars:modelKey "footer" ;
-            mars:component portal:footer 
+            mtest:modelKey "footer" ;
+            mtest:component portal:footer 
         ]      
     ] .    
 
 portal:navigation
-    rdf:type mars:TopComponent ;
-    mars:viewName "navigation" .
+    rdf:type mtest:TopComponent ;
+    mtest:viewName "navigation" .
 
 portal:logo
-    rdf:type mars:TopComponent ;
-    mars:viewName "logo" .
+    rdf:type mtest:TopComponent ;
+    mtest:viewName "logo" .
 
 portal:welcome_content
-    rdf:type mars:TopComponent ;
-    mars:viewName "welcome_content" .
+    rdf:type mtest:TopComponent ;
+    mtest:viewName "welcome_content" .
 
 portal:footer
-    rdf:type mars:TopComponent ;
-    mars:viewName "footer" .
+    rdf:type mtest:TopComponent ;
+    mtest:viewName "footer" .
 
 
 
@@ -60,39 +60,39 @@ portal:footer
 
 
 portal:fixedUserPageset
-    rdf:type mars:PageSet ;
-    mars:name "user_new.do" ;
-    mars:rootComponent portal:fixedUserComponent ;
-    mars:ruleList [
+    rdf:type mtest:PageSet ;
+    mtest:name "user_new.do" ;
+    mtest:rootComponent portal:fixedUserComponent ;
+    mtest:ruleList [
         a rdf:Seq ;
     ] .
 
 
 portal:fixedUserComponent
-    rdf:type mars:RootComponent ;
-    mars:viewName "user/user" ;
-    mars:title "Jauns LietotÄ�js" ;   
-    mars:hasComponents [
+    rdf:type mtest:RootComponent ;
+    mtest:viewName "user/user" ;
+    mtest:title "Jauns Lietotaajs" ;   
+    mtest:hasComponents [
         a rdf:Bag ;
         rdf:_1 [        
-            mars:modelKey "navigation" ;
-            mars:component portal:navigation 
+            mtest:modelKey "navigation" ;
+            mtest:component portal:navigation 
         ] ;        
         rdf:_2 [        
-            mars:modelKey "logo" ;
-            mars:component portal:logo 
+            mtest:modelKey "logo" ;
+            mtest:component portal:logo 
         ] ;  
         rdf:_3 [        
-            mars:modelKey "new_content" ;
-            mars:component portal:new_content 
+            mtest:modelKey "new_content" ;
+            mtest:component portal:new_content 
         ] ;     
         rdf:_4 [        
-            mars:modelKey "footer" ;
-            mars:component portal:footer 
+            mtest:modelKey "footer" ;
+            mtest:component portal:footer 
         ]      
     ] .
       
 
 portal:new_content 
-    rdf:type mars:TopComponent ;
-    mars:viewName "user/user_new_content" .   
+    rdf:type mtest:TopComponent ;
+    mtest:viewName "user/user_new_content" .   

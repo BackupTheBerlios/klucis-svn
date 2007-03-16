@@ -6,8 +6,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import lv.webkursi.mtest.core.util.UnitTestUtils;
-import lv.webkursi.mtest.mvc.vocabulary.MARS;
-import lv.webkursi.mtest.mvc.vocabulary.PORTAL;
+import lv.webkursi.mtest.core.vocabulary.MTEST;
+import lv.webkursi.mtest.core.vocabulary.PORTAL;
 
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;

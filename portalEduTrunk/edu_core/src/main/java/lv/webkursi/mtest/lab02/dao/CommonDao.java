@@ -141,24 +141,4 @@ public class CommonDao extends HibernateDaoSupport implements ICommonDao {
 		}
 
 	}
-
-	public static class CallbackModuleWithQuestions implements
-			HibernateCallback {
-
-		private long moduleId;
-
-		public CallbackModuleWithQuestions(long moduleId) {
-			this.moduleId = moduleId;
-		}
-
-		public Object doInHibernate(Session session) throws HibernateException,
-				SQLException {
-			session.beginTransaction();
-			// session.
-			session.getTransaction().commit();
-			return null;
-		}
-
-	}
-
 }

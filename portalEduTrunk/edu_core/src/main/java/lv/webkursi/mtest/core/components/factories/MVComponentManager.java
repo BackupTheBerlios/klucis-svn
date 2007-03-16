@@ -9,7 +9,7 @@ import java.util.Map;
 import lv.webkursi.mtest.core.components.Component;
 import lv.webkursi.mtest.core.components.DoStuffListener;
 import lv.webkursi.mtest.core.mvc.ComponentStateManager;
-import lv.webkursi.mtest.mvc.vocabulary.PORTAL;
+import lv.webkursi.mtest.core.vocabulary.PORTAL;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

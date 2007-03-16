@@ -1,4 +1,4 @@
-package lv.webkursi.mtest.factorytest;
+package lv.webkursi.mtest.core.factoryperformancetest;
 
 public class SampleComponent {
 	private String name1;

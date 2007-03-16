@@ -1,5 +1,5 @@
 <div class="box_content">
-<form action="/eduDemo/user_new.do" method="post">
+<form action="/eduDemo/portalEdu/user_new.do" method="post">
   
 <!--[form:user]-->
 <p><label for="userName">Lietotāja vārds</label></br>
@@ -10,7 +10,6 @@
 
 <p><label for="name">Vārds</label></br>
 #springBind("command.name")
-##<input id="name" name="name" size="30" type="text" value="" />
 <input id="name" name="${status.expression}" size="30" type="text" value="$!{status.value}" />
 <font color="#FF0000">${status.errorMessage}</font>
 </p>
@@ -39,7 +38,7 @@
 <p>${success}</p>
 #end
 
-<a href="/eduDemo/welcome.do">Atpakaļ</a>
+<a href="/eduDemo/portalEdu/welcome.do">Atpakaļ</a>
 </div><!--box_content-->
 
 

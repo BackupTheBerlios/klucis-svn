@@ -10,17 +10,17 @@ import com.hp.hpl.jena.db.ModelRDB;
 import com.hp.hpl.jena.rdf.model.Model;
 
 public class DBModelFactory implements FactoryBean {
-	private static final String DB_URL = "jdbc:mysql://localhost/portaledu_rdf";
+	private String dbUrl = "jdbc:mysql://localhost/portaledu_rdf";
 
-	private static final String DB_USER = "root";
+	private String dbUser = "root";
 
-	private static final String DB_PASSWD = "root";
+	private String dbPasswd = "root";
 
-	private static final String DB_TYPE = "MySQL";
+	private String dbType = "MySQL";
 
-	private static final String DB_DRIVER = "com.mysql.jdbc.Driver";
+	private String dbDriver = "com.mysql.jdbc.Driver";
 
-	private static final String MODEL_NAME = "portaledu";
+	private String modelName = "portaledu";
 
 	private Log logger = LogFactory.getLog(DBModelFactory.class);
 
@@ -41,20 +41,70 @@ public class DBModelFactory implements FactoryBean {
 			return model;
 		}
 		try {
-			Class.forName(DB_DRIVER);
+			Class.forName(dbDriver);
 		} catch (ClassNotFoundException e) {
 			logger.error("", e);
 			e.printStackTrace();
 		}
 
-		conn = new DBConnection(DB_URL, DB_USER, DB_PASSWD, DB_TYPE);
+		conn = new DBConnection(dbUrl, dbUser, dbPasswd, dbType);
 		logger.info("Opened JDBC database connection");
-		if (!conn.containsModel(MODEL_NAME)) {
-			model = ModelRDB.createModel(conn, MODEL_NAME);
+		if (!conn.containsModel(modelName)) {
+			model = ModelRDB.createModel(conn, modelName);
 		} else {
-			model = ModelRDB.open(conn, MODEL_NAME);
+			model = ModelRDB.open(conn, modelName);
 		}
 
 		return model;
 	}
+
+	public String getDbDriver() {
+		return dbDriver;
+	}
+
+	public void setDbDriver(String dbDriver) {
+		this.dbDriver = dbDriver;
+	}
+
+	public String getDbPasswd() {
+		return dbPasswd;
+	}
+
+	public void setDbPasswd(String dbPasswd) {
+		this.dbPasswd = dbPasswd;
+	}
+
+	public String getDbType() {
+		return dbType;
+	}
+
+	public void setDbType(String dbType) {
+		this.dbType = dbType;
+	}
+
+	public String getDbUrl() {
+		return dbUrl;
+	}
+
+	public void setDbUrl(String dbUrl) {
+		this.dbUrl = dbUrl;
+	}
+
+	public String getDbUser() {
+		return dbUser;
+	}
+
+	public void setDbUser(String dbUser) {
+		this.dbUser = dbUser;
+	}
+
+	public String getModelName() {
+		return modelName;
+	}
+
+	public void setModelName(String modelName) {
+		this.modelName = modelName;
+	}
+	
+	
 }

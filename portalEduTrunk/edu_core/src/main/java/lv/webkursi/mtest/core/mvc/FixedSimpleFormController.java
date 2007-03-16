@@ -8,7 +8,7 @@ import lv.webkursi.mtest.core.components.factories.ComponentManager;
 import lv.webkursi.mtest.core.data.RdfUtilities;
 import lv.webkursi.mtest.core.data.UserForm;
 import lv.webkursi.mtest.core.data.UserService;
-import lv.webkursi.mtest.mvc.vocabulary.MARS;
+import lv.webkursi.mtest.core.vocabulary.MTEST;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -29,12 +29,25 @@ public class FixedSimpleFormController extends AbstractFormController implements
 	public FixedSimpleFormController() {
 		setCommandClass(UserForm.class);
 	}
+	
+	protected String getPageSetName(HttpServletRequest request) {
+		String pageSetName = request.getPathInfo();
+		int slashPos = pageSetName.lastIndexOf("/");
+		if (slashPos >= 0 ) {
+			pageSetName = pageSetName.substring(slashPos+1);
+		}
+		log.debug("  imageName =  '" + pageSetName + "'");
+		return pageSetName;
+	}
+
+
 
 	protected ModelAndView showForm(HttpServletRequest request,
 			HttpServletResponse response, BindException errors) {
 		Model portalDescription = (Model) serviceFactory
 				.getService(ServiceName.PortalDescription);
-		String pageSetName = request.getServletPath();
+		//String pageSetName = request.getServletPath();
+		String pageSetName = getPageSetName(request);
 		Resource pageSet = RdfUtilities.getPageSetByPath(portalDescription,
 				pageSetName);
 		log.info("REQUEST FOR PAGESET " + pageSet.getURI());
@@ -50,7 +63,7 @@ public class FixedSimpleFormController extends AbstractFormController implements
 		// Create the rootComponent and all the other standard components;
 		// (they are implicitly registered with the ComponentManager)
 		Resource rRootComponent = pageSet.getRequiredProperty(
-				MARS.rootComponent).getResource();
+				MTEST.rootComponent).getResource();
 		ModelAndViewComponent rootComponent = (ModelAndViewComponent) componentManager
 				.getComponent(rRootComponent, true);
 
@@ -77,7 +90,8 @@ public class FixedSimpleFormController extends AbstractFormController implements
 		// Find the relevant pageset in the static RDF config file
 		Model portalDescription = (Model) serviceFactory
 				.getService(ServiceName.PortalDescription);
-		String pageSetName = request.getServletPath();
+		//String pageSetName = request.getServletPath();
+		String pageSetName = getPageSetName(request);
 		Resource pageSet = RdfUtilities.getPageSetByPath(portalDescription,
 				pageSetName);
 		log.info("REQUEST FOR PAGESET " + pageSet.getURI());
@@ -93,7 +107,7 @@ public class FixedSimpleFormController extends AbstractFormController implements
 		// Create the rootComponent and all the other standard components;
 		// (they are implicitly registered with the ComponentManager)
 		Resource rRootComponent = pageSet.getRequiredProperty(
-				MARS.rootComponent).getResource();
+				MTEST.rootComponent).getResource();
 		ModelAndViewComponent rootComponent = (ModelAndViewComponent) componentManager
 				.getComponent(rRootComponent, true);
 
@@ -110,8 +124,13 @@ public class FixedSimpleFormController extends AbstractFormController implements
 		if (!errors.hasErrors()) {
 			UserService userService = (UserService) serviceFactory
 					.getService(ServiceName.UserService);
-			userService.addUser(userForm);
-			success = "User successfully registered";
+			try {
+				userService.addUser(userForm);
+				success = "User successfully registered";
+			}
+			catch (Exception e) {
+				success = e.getMessage();
+			}
 		}
 
 		componentManager.preRender();

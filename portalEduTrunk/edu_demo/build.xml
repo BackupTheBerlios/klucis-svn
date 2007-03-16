@@ -157,11 +157,19 @@
 		<copy todir="${war.classes.dir}">
 			<fileset dir="${jar.classes.dir}"/>
 		</copy>
+		<unzip src="${test.resources.dir}/selenium-core-0.8.2.zip"
+			dest="${web.dir}">
+		</unzip>
+		<move todir="${web.dir}/selenium-core">
+			<fileset dir="${web.dir}/selenium-core-0.8.2"/>
+		</move>
+		
 		<war destFile="${target.dir}/${ant.project.name}.war"
 			webxml="${web.dir}/WEB-INF/web.xml">
 			
 			<fileset dir="${web.dir}" excludes="WEB-INF/web.xml"/>
 		</war>
+		<delete dir="${web.dir}/selenium-core"/>
 	</target>
 	
 	<target name="jboss-deploy" depends="war"

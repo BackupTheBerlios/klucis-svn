@@ -1,9 +1,9 @@
-package lv.webkursi.mtest.factorytest;
+package lv.webkursi.mtest.core.factoryperformancetest;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import lv.webkursi.mtest.mvc.vocabulary.MARS;
+import lv.webkursi.mtest.core.vocabulary.MTEST;
 
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.Property;
@@ -23,9 +23,9 @@ public class SampleComponentFactory {
 
 	public SampleComponentFactory(Model rdfContext) {
 		this.rdfContext = rdfContext;
-		pName1 = rdfContext.getProperty(MARS.NS + "name1");
-		pName2 = rdfContext.getProperty(MARS.NS + "name2");
-		pScope = rdfContext.getProperty(MARS.NS + "scope");
+		pName1 = rdfContext.getProperty(MTEST.NS + "name1");
+		pName2 = rdfContext.getProperty(MTEST.NS + "name2");
+		pScope = rdfContext.getProperty(MTEST.NS + "scope");
 	}
 
 	public SampleComponent getComponent(Resource rComponent) {

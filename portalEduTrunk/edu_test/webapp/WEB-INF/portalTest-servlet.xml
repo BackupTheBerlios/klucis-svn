@@ -67,51 +67,51 @@
 		<aop:scoped-proxy/>
 		<property name="factoryCatalog">
 			<map>
-				<entry key="http://www.hpl.hp.com/schema/mars#RootComponent">
+				<entry key="http://www.webkursi.lv/schema/mtest#RootComponent">
 					<bean
 						class="lv.webkursi.mtest.core.components.factories.RootComponentFactory">
 						<property name="serviceFactory" ref="serviceFactory"/>
 					</bean>
 				</entry>
-				<entry key="http://www.hpl.hp.com/schema/mars#SimpleComponent">
+				<entry key="http://www.webkursi.lv/schema/mtest#SimpleComponent">
 					<bean
 						class="lv.webkursi.mtest.core.components.factories.SimpleComponentFactory"/>
 				</entry>
-				<entry key="http://www.hpl.hp.com/schema/mars#ResultPane">
+				<entry key="http://www.webkursi.lv/schema/mtest#ResultPane">
 					<bean
 						class="lv.webkursi.mtest.core.components.factories.ResultPaneFactory">
 						<property name="serviceFactory" ref="serviceFactory"/>
 					</bean>
 				</entry>
-				<entry key="http://www.hpl.hp.com/schema/mars#CompositeFacet">
+				<entry key="http://www.webkursi.lv/schema/mtest#CompositeFacet">
 					<bean
 						class="lv.webkursi.mtest.core.components.factories.CompositeFacetFactory">
 						<property name="serviceFactory" ref="serviceFactory"/>
 					</bean>
 				</entry>
-				<entry key="http://www.hpl.hp.com/schema/mars#TopComponent">
+				<entry key="http://www.webkursi.lv/schema/mtest#TopComponent">
 					<bean
 						class="lv.webkursi.mtest.core.components.factories.TopComponentFactory">
 						<property name="serviceFactory" ref="serviceFactory"/>
 					</bean>
 				</entry>
-				<entry key="http://www.hpl.hp.com/schema/mars#TextFacet">
+				<entry key="http://www.webkursi.lv/schema/mtest#TextFacet">
 					<bean
 						class="lv.webkursi.mtest.core.components.factories.TextFacetFactory"/>
 				</entry>
-				<entry key="http://www.hpl.hp.com/schema/mars#IncDecFacet">
+				<entry key="http://www.webkursi.lv/schema/mtest#IncDecFacet">
 					<bean
 						class="lv.webkursi.mtest.core.components.factories.IncDecFacetFactory"/>
 				</entry>
-				<entry key="http://www.hpl.hp.com/schema/mars#MessageFacet">
+				<entry key="http://www.webkursi.lv/schema/mtest#MessageFacet">
 					<bean
 						class="lv.webkursi.mtest.core.components.factories.TextFacetFactory"/>
 				</entry>
-				<entry key="http://www.hpl.hp.com/schema/mars#TypeStringMapper">
+				<entry key="http://www.webkursi.lv/schema/mtest#TypeStringMapper">
 					<bean
 						class="lv.webkursi.mtest.core.mapping.TypeStringMapperFactory"/>
 				</entry>
-				<entry key="http://www.hpl.hp.com/schema/mars#Rule">
+				<entry key="http://www.webkursi.lv/schema/mtest#Rule">
 					<bean
 						class="lv.webkursi.mtest.core.mvc.rule.RuleFactory">
 						<property name="serviceFactory" ref="serviceFactory"/>

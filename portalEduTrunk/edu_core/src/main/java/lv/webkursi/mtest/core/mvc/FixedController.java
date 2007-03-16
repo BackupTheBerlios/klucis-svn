@@ -11,7 +11,7 @@ import lv.webkursi.mtest.core.components.factories.ComponentManager;
 import lv.webkursi.mtest.core.data.RdfUtilities;
 import lv.webkursi.mtest.core.mvc.rule.Rule;
 import lv.webkursi.mtest.core.mvc.rule.RuleList;
-import lv.webkursi.mtest.mvc.vocabulary.MARS;
+import lv.webkursi.mtest.core.vocabulary.MTEST;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -36,7 +36,7 @@ public class FixedController implements Controller, ServiceFactoryAware {
 		if (slashPos >= 0 ) {
 			pageSetName = pageSetName.substring(slashPos+1);
 		}
-		log.debug("  imageName =  '" + pageSetName + "'");
+		log.debug("  pageSetName =  '" + pageSetName + "'");
 		return pageSetName;
 	}
 
@@ -65,7 +65,7 @@ public class FixedController implements Controller, ServiceFactoryAware {
 		// Create the rootComponent and all the other standard components;
 		// (they are implicitly registered with the ComponentManager)
 		Resource rRootComponent = pageSet.getRequiredProperty(
-				MARS.rootComponent).getResource();
+				MTEST.rootComponent).getResource();
 		ModelAndViewComponent rootComponent = (ModelAndViewComponent) componentManager
 				.getComponent(rRootComponent, true);
 
@@ -79,7 +79,7 @@ public class FixedController implements Controller, ServiceFactoryAware {
 		// Load the rules for the pageset and run them
 		// this is a temporary fixup to connect rules to the right components
 		// ///////////////////////////////////////////////////////////////////
-		Seq rRuleList = pageSet.getRequiredProperty(MARS.ruleList).getSeq();
+		Seq rRuleList = pageSet.getRequiredProperty(MTEST.ruleList).getSeq();
 		List<Rule> ruleList = new ArrayList<Rule>();
 		for (NodeIterator i = rRuleList.iterator(); i.hasNext();) {
 			Rule rule = (Rule) componentManager.getComponent((Resource) i

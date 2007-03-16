@@ -1,210 +1,210 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix mars: <http://www.hpl.hp.com/schema/mars#> .
-@prefix portal: <http://www.hpl.hp.com/schema/portal#> .
+@prefix mtest: <http://www.webkursi.lv/schema/mtest#> .
+@prefix portal: <http://www.webkursi.lv/schema/portal#> .
 
     
 portal:Amos
-    rdf:type mars:User ;
-    mars:userName "Amos" ;
-    mars:password "Amos" .
+    rdf:type mtest:User ;
+    mtest:userName "Amos" ;
+    mtest:password "Amos" .
         
 portal:Ezekiel
-    rdf:type mars:User ;
-    mars:userName "Ezekiel" ;
-    mars:password "Ezekiel" .
+    rdf:type mtest:User ;
+    mtest:userName "Ezekiel" ;
+    mtest:password "Ezekiel" .
         
 portal:fixedPageset
-    rdf:type mars:PageSet ;
-    mars:name "/fixed.do" ;
-    mars:rootComponent portal:fixedRootComponent ;
-    mars:ruleList [
+    rdf:type mtest:PageSet ;
+    mtest:name "/fixed.do" ;
+    mtest:rootComponent portal:fixedRootComponent ;
+    mtest:ruleList [
         a rdf:Seq ;
         rdf:_1 portal:rule1     
     ] .
         
 portal:rule1 
-    rdf:type mars:Rule ;
-    mars:condition [
-        rdf:type mars:IntegerRangeCondition ;
-        mars:conditionSource portal:incDecFacet1 ;
-        mars:conditionLowerBound 15 ;
-        mars:conditionUpperBound 18 
+    rdf:type mtest:Rule ;
+    mtest:condition [
+        rdf:type mtest:IntegerRangeCondition ;
+        mtest:conditionSource portal:incDecFacet1 ;
+        mtest:conditionLowerBound 15 ;
+        mtest:conditionUpperBound 18 
     ] ;
-    mars:action [
-        rdf:type mars:AddFacetAction ;
-        mars:facet portal:incDecFacet2 ;
-        mars:compositeFacet portal:fixedCompositeFacet 
+    mtest:action [
+        rdf:type mtest:AddFacetAction ;
+        mtest:facet portal:incDecFacet2 ;
+        mtest:compositeFacet portal:fixedCompositeFacet 
     ] .    
 
 portal:loginPageset
-    rdf:type mars:PageSet ;
-    mars:name "/login.do" ;
-    mars:rootComponent portal:fixedRootComponent ;
-    mars:ruleList [
+    rdf:type mtest:PageSet ;
+    mtest:name "/login.do" ;
+    mtest:rootComponent portal:fixedRootComponent ;
+    mtest:ruleList [
         a rdf:Seq ;
     ] .    
          
 portal:fixedRootComponent
-    rdf:type mars:RootComponent ;
-    mars:viewName "temp/fixed_root" ;
-    mars:title "MARS PortalTest: Fixed Pageset" ;   
-    mars:hasComponents [
+    rdf:type mtest:RootComponent ;
+    mtest:viewName "temp/fixed_root" ;
+    mtest:title "MARS PortalTest: Fixed Pageset" ;   
+    mtest:hasComponents [
         a rdf:Bag ;
         rdf:_1 [        
-            mars:modelKey "top" ;
-            mars:component portal:fixedTopComponent 
+            mtest:modelKey "top" ;
+            mtest:component portal:fixedTopComponent 
         ] ;
         rdf:_2 [
-            mars:modelKey "fb" ;
-            mars:component portal:fixedCompositeFacet 
+            mtest:modelKey "fb" ;
+            mtest:component portal:fixedCompositeFacet 
         ] ;
         rdf:_3 [ 
-            mars:modelKey "main" ;
-            mars:component portal:fixedResultPane
+            mtest:modelKey "main" ;
+            mtest:component portal:fixedResultPane
         ]
     ] .    
     
 portal:fixedResultPane
-    rdf:type mars:ResultPane ;
-    mars:viewName "temp/fixed_resultpane" ;
-    mars:model [
+    rdf:type mtest:ResultPane ;
+    mtest:viewName "temp/fixed_resultpane" ;
+    mtest:model [
         a rdf:Bag ;
         rdf:_1 [
-            mars:modelKey "message" ;
-            mars:value "Results" 
+            mtest:modelKey "message" ;
+            mtest:value "Results" 
         ] 
     ] ;
-    mars:resultMapper portal:classNameMapper ;
-    mars:source portal:fixedCompositeFacet .
+    mtest:resultMapper portal:classNameMapper ;
+    mtest:source portal:fixedCompositeFacet .
 
 portal:classNameMapper
-    rdf:type mars:TypeStringMapper ;
-    mars:typeStringMap [
+    rdf:type mtest:TypeStringMapper ;
+    mtest:typeStringMap [
         a rdf:Bag ;
         rdf:_1 [
-            mars:key "java.lang.Integer" ;
-            mars:value [
-                rdf:type mars:SimpleComponent ;
-                mars:viewName "resultpanes/integerView"
+            mtest:key "java.lang.Integer" ;
+            mtest:value [
+                rdf:type mtest:SimpleComponent ;
+                mtest:viewName "resultpanes/integerView"
             ]
         ] ;
         rdf:_2 [
-            mars:key "java.lang.String" ;
-            mars:value [
-                rdf:type mars:SimpleComponent ;
-                mars:viewName "resultpanes/textView"
+            mtest:key "java.lang.String" ;
+            mtest:value [
+                rdf:type mtest:SimpleComponent ;
+                mtest:viewName "resultpanes/textView"
             ]
         ] ;
         rdf:_3 [
-            mars:key "lv.webkursi.mtest.core.components.facets.IncDecFacetState" ;
-            mars:value [
-                rdf:type mars:SimpleComponent ;
-                mars:viewName "resultpanes/incDecFacetView"            
+            mtest:key "lv.webkursi.mtest.core.components.facets.IncDecFacetState" ;
+            mtest:value [
+                rdf:type mtest:SimpleComponent ;
+                mtest:viewName "resultpanes/incDecFacetView"            
             ]
         ] ;
         rdf:_4 [
-            mars:key "lv.webkursi.mtest.core.components.facets.TextFacetState" ;
-            mars:value [
-                rdf:type mars:SimpleComponent ;
-                mars:viewName "resultpanes/textFacetView" 
+            mtest:key "lv.webkursi.mtest.core.components.facets.TextFacetState" ;
+            mtest:value [
+                rdf:type mtest:SimpleComponent ;
+                mtest:viewName "resultpanes/textFacetView" 
             ]
         ] 
     ] ;
-    mars:defaultValue [
-        rdf:type mars:SimpleComponent ;
-        mars:viewName "resultpanes/class_mapper"
+    mtest:defaultValue [
+        rdf:type mtest:SimpleComponent ;
+        mtest:viewName "resultpanes/class_mapper"
     ] .
 
     
 portal:fixedTopComponent
-    rdf:type mars:TopComponent ;
-    mars:viewName "top_component" .
+    rdf:type mtest:TopComponent ;
+    mtest:viewName "top_component" .
 
 portal:fixedCompositeFacet
-    rdf:type mars:CompositeFacet ;
-    mars:viewName "temp/fixed_composite_facet" ;
-    mars:facetAddList [
+    rdf:type mtest:CompositeFacet ;
+    mtest:viewName "temp/fixed_composite_facet" ;
+    mtest:facetAddList [
         a rdf:Seq ;
-        mars:belongsTo portal:System ;
+        mtest:belongsTo portal:System ;
         rdf:_1 [
-            mars:facet portal:textFacet1 ;
-            mars:state "A"
+            mtest:facet portal:textFacet1 ;
+            mtest:state "A"
         ] ;
         rdf:_2 [
-            mars:facet portal:incDecFacet1 ;
-            mars:state 10
+            mtest:facet portal:incDecFacet1 ;
+            mtest:state 10
         ]
     ] ;
-    mars:facetAddList [
+    mtest:facetAddList [
         a rdf:Seq ;
-        mars:belongsTo portal:Amos ;
+        mtest:belongsTo portal:Amos ;
         rdf:_1 [ 
-            mars:facet portal:messageFacet1 ;
-            mars:state "Welcome, Amos!"
+            mtest:facet portal:messageFacet1 ;
+            mtest:state "Welcome, Amos!"
         ]    
     ] ;
-    mars:facetAddList [
+    mtest:facetAddList [
         a rdf:Seq ;
-        mars:belongsTo portal:Ezekiel ;
+        mtest:belongsTo portal:Ezekiel ;
         rdf:_1 [
-            mars:facet portal:messageFacet2 ;
-            mars:state "Welcome, Ezekiel!"
+            mtest:facet portal:messageFacet2 ;
+            mtest:state "Welcome, Ezekiel!"
         ] ;
         rdf:_2 [
-            mars:facet portal:incDecFacet3 ;
-            mars:state "17"
+            mtest:facet portal:incDecFacet3 ;
+            mtest:state "17"
         ]
     ] ;
-    mars:model [
+    mtest:model [
         a rdf:Bag ;
         rdf:_1 [
-            mars:modelKey "message" ;
-            mars:value "Active facets" 
+            mtest:modelKey "message" ;
+            mtest:value "Active facets" 
         ] 
     ] ;
-    mars:facetCatalog portal:facetCatalog .
+    mtest:facetCatalog portal:facetCatalog .
 
 portal:textFacet1 
-    rdf:type mars:TextFacet ;
-    mars:viewName "temp/facet_textbox" ;
-    mars:title "Alphabetic Filter" ;
-    mars:defaultState "" .
+    rdf:type mtest:TextFacet ;
+    mtest:viewName "temp/facet_textbox" ;
+    mtest:title "Alphabetic Filter" ;
+    mtest:defaultState "" .
 
 portal:incDecFacet1 
-    rdf:type mars:IncDecFacet ;
-    mars:viewName "temp/facet_inc_dec" ;
-    mars:title "Upper Bound" ;
-    mars:defaultState 0 .
+    rdf:type mtest:IncDecFacet ;
+    mtest:viewName "temp/facet_inc_dec" ;
+    mtest:title "Upper Bound" ;
+    mtest:defaultState 0 .
     
 portal:incDecFacet2
-    rdf:type mars:IncDecFacet ;
-    mars:viewName "temp/facet_inc_dec" ;
-    mars:title "Lower Bound" ;
-    mars:defaultState 0 .
+    rdf:type mtest:IncDecFacet ;
+    mtest:viewName "temp/facet_inc_dec" ;
+    mtest:title "Lower Bound" ;
+    mtest:defaultState 0 .
 
 portal:incDecFacet3 
-    rdf:type mars:IncDecFacet ;
-    mars:viewName "temp/facet_inc_dec" ;
-    mars:title "Upper Bound1" ;
-    mars:defaultState 0 .
+    rdf:type mtest:IncDecFacet ;
+    mtest:viewName "temp/facet_inc_dec" ;
+    mtest:title "Upper Bound1" ;
+    mtest:defaultState 0 .
 
 portal:messageFacet1
-    rdf:type mars:MessageFacet ;
-    mars:viewName "temp/facet_message" ;
-    mars:title "Welcome" ;
-    mars:defaultState "Welcome, Nobody!" .
+    rdf:type mtest:MessageFacet ;
+    mtest:viewName "temp/facet_message" ;
+    mtest:title "Welcome" ;
+    mtest:defaultState "Welcome, Nobody!" .
 
 portal:messageFacet2
-    rdf:type mars:MessageFacet ;
-    mars:viewName "temp/facet_message" ;
-    mars:title "Welcome" ;
-    mars:defaultState "Welcome, Nobody!" .
+    rdf:type mtest:MessageFacet ;
+    mtest:viewName "temp/facet_message" ;
+    mtest:title "Welcome" ;
+    mtest:defaultState "Welcome, Nobody!" .
 
 # This is unused
 portal:fixedLoginComponent
-    rdf:type mars:SimpleComponent ;
-    mars:viewName "temp/fixed_login" .
+    rdf:type mtest:SimpleComponent ;
+    mtest:viewName "temp/fixed_login" .
 
     

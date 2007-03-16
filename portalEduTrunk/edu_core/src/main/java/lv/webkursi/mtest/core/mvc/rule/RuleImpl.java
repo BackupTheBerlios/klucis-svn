@@ -16,9 +16,6 @@ public class RuleImpl implements Rule, Component {
     private ComponentStateManager stateManager;
     private String name;
     
-    /* (non-Javadoc)
-     * @see com.hp.hpl.mars.portal.core.mvc.rule.Rule#run()
-     */
     public void run() {
         if (predicate.isTrue()) {
             action.doAction();

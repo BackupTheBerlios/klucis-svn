@@ -4,7 +4,7 @@
           "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd"> 
 
 <hibernate-mapping>
-	<class name="lv.webkursi.mtest.domain.QuestionType" table="QUESTION_TYPE"
+	<class name="lv.webkursi.mtest.lab02.domain.QuestionType" table="QUESTION_TYPE"
 		dynamic-update="false" dynamic-insert="false">
 		
 		<id name="id" column="QUESTION_TYPE_ID" type="java.lang.Long"

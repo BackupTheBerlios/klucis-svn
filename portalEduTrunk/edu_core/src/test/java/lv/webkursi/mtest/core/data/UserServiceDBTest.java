@@ -4,22 +4,25 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
-import org.springframework.context.support.FileSystemXmlApplicationContext;
+
+import com.hp.hpl.jena.rdf.model.Model;
 
 public class UserServiceDBTest {
 	private UserService userService;
 	
+	private InitUtility initUtility;
+	
 	@Before
-	public void setUp() {
-		FileSystemXmlApplicationContext ctx = new FileSystemXmlApplicationContext(
-				"edu_core/src/test/resources/testcontext.xml");
-		userService = (UserService) ctx.getBean("userService");
-		InitUtility.initModel();
+	public void setUp() throws Exception {
+		DBModelFactory factory = new DBModelFactory();
+		userService = new UserService();
+		userService.setModel((Model) factory.getObject());
+		initUtility = new InitUtility();
+		initUtility.setFactory(new DBModelFactory());
+		initUtility.initModel();
 	}
 	
-	@Ignore
 	@Test
 	public void testAddDuplicateUser() {
 		UserForm form = new UserForm();
@@ -36,9 +39,8 @@ public class UserServiceDBTest {
 		}
 	}
 	
-	@Ignore
 	@Test
-	public void testAddAnotherUser() {
+	public void testAddAnotherUser() throws Exception {
 		UserForm form = new UserForm();
 		form.setEmail("x@x.x");
 		form.setUserName("x");
@@ -46,7 +48,7 @@ public class UserServiceDBTest {
 		form.setPassword("xxx");
 		form.setPassword2("xxx");
 		userService.addUser(form);
-		User some = userService.getUserByName(InitUtility.getModel(), "x");
+		User some = userService.getUserByName(initUtility.getModel(), "x");
 		assertEquals("xxx",some.getPassword());
 	}
 }

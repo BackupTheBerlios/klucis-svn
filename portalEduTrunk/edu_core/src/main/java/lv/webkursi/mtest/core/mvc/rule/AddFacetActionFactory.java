@@ -3,7 +3,7 @@ package lv.webkursi.mtest.core.mvc.rule;
 import lv.webkursi.mtest.core.components.CompositeFacet;
 import lv.webkursi.mtest.core.components.facets.FacetState;
 import lv.webkursi.mtest.core.components.factories.ComponentManager;
-import lv.webkursi.mtest.mvc.vocabulary.MARS;
+import lv.webkursi.mtest.core.vocabulary.MTEST;
 
 import com.hp.hpl.jena.rdf.model.Resource;
 
@@ -13,10 +13,10 @@ public class AddFacetActionFactory implements ActionFactory {
 	
 	public Action getAction(Resource rAction) {
 		AddFacetAction result = new AddFacetAction();
-		Resource rCompositeFacet = rAction.getRequiredProperty(MARS.compositeFacet).getResource();
+		Resource rCompositeFacet = rAction.getRequiredProperty(MTEST.compositeFacet).getResource();
 		CompositeFacet compositeFacet = (CompositeFacet)componentManager.getComponent(rCompositeFacet, true);
 		result.setCompositeFacet(compositeFacet);
-		Resource rFacet = rAction.getRequiredProperty(MARS.facet).getResource();
+		Resource rFacet = rAction.getRequiredProperty(MTEST.facet).getResource();
 		FacetState facet = (FacetState)componentManager.getComponent(rFacet, true);
 		result.setFacet(facet);
 		return result;

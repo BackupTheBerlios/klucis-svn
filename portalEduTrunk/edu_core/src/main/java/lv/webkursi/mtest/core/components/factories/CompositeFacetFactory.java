@@ -9,8 +9,8 @@ import lv.webkursi.mtest.core.components.facets.FacetState;
 import lv.webkursi.mtest.core.data.RdfUtilities;
 import lv.webkursi.mtest.core.mvc.ServiceName;
 import lv.webkursi.mtest.core.scopes.UserSettings;
-import lv.webkursi.mtest.mvc.vocabulary.MARS;
-import lv.webkursi.mtest.mvc.vocabulary.PORTAL;
+import lv.webkursi.mtest.core.vocabulary.MTEST;
+import lv.webkursi.mtest.core.vocabulary.PORTAL;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -36,7 +36,7 @@ public class CompositeFacetFactory extends CompositeComponentFactory {
 	 */
 	public Component getComponent(Resource rComponent) {
 		Map<String, Object> model = new HashMap<String, Object>();
-		String viewName = rComponent.getRequiredProperty(MARS.viewName)
+		String viewName = rComponent.getRequiredProperty(MTEST.viewName)
 				.getString();
 		CompositeFacet result = new CompositeFacet(viewName, model);
 		Seq systemComponentSeq = RdfUtilities.findFacetAddList(rComponent,
@@ -61,13 +61,13 @@ public class CompositeFacetFactory extends CompositeComponentFactory {
 		NodeIterator componentIterator = seq.iterator();
 		while (componentIterator.hasNext()) {
 			Resource componentDesc = (Resource) componentIterator.nextNode();
-			Resource rFacet = componentDesc.getRequiredProperty(MARS.facet)
+			Resource rFacet = componentDesc.getRequiredProperty(MTEST.facet)
 					.getResource();
 			log.info("rFacet = " + rFacet);
 			FacetState component = (FacetState) componentManager.getComponent(
 					rFacet, true);
 			component.setStateFromLiteral((Literal) componentDesc
-					.getRequiredProperty(MARS.state).getObject());
+					.getRequiredProperty(MTEST.state).getObject());
 			result.addFacet(component);
 		}
 	}

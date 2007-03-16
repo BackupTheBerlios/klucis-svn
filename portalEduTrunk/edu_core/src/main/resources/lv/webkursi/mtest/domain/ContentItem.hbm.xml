@@ -4,7 +4,7 @@
           "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd"> 
 
 <hibernate-mapping>
-	<class name="lv.webkursi.mtest.domain.ContentItem" table="CONTENT">
+	<class name="lv.webkursi.mtest.lab02.domain.ContentItem" table="CONTENT">
 		
 		<id name="id" column="CONTENT_ID" type="java.lang.Long" unsaved-value="-1">
 			<generator class="native"/>
@@ -14,7 +14,7 @@
 		<property name="description" type="string" column="DESCRIPTION" length="255"
 			not-null="true"/>
 		
-		<joined-subclass name="lv.webkursi.mtest.domain.Module" table="MODULE">
+		<joined-subclass name="lv.webkursi.mtest.lab02.domain.Module" table="MODULE">
 			<key column="CONTENT_ID"/>
 			
 			<property name="title" type="string" column="TITLE" length="255"
@@ -23,19 +23,19 @@
 			<list name="questions" cascade="all">
 				<key column="MODULE_ID"/>
 			    <list-index column="QUESTION_NUM"/>
-				<one-to-many class="lv.webkursi.mtest.domain.Question"/>
+				<one-to-many class="lv.webkursi.mtest.lab02.domain.Question"/>
 			</list>
 			<set name="images" cascade="all">
 				<key column="MODULE_ID"/>
-				<one-to-many class="lv.webkursi.mtest.domain.Image"/>
+				<one-to-many class="lv.webkursi.mtest.lab02.domain.Image"/>
 			</set>
 		</joined-subclass>
 		
-		<joined-subclass name="lv.webkursi.mtest.domain.Image" table="IMAGE">
+		<joined-subclass name="lv.webkursi.mtest.lab02.domain.Image" table="IMAGE">
 			<key column="CONTENT_ID"/>
 		</joined-subclass>
 
-		<joined-subclass name="lv.webkursi.mtest.domain.Question"
+		<joined-subclass name="lv.webkursi.mtest.lab02.domain.Question"
 			table="QUESTION">
 			<key column="CONTENT_ID"/>
 			<many-to-one name="questionType" column="QUESTION_TYPE_ID"
@@ -45,11 +45,11 @@
 			<list name="variants" cascade="all-delete-orphan">
 				<key column="QUESTION_ID" not-null="true"/>
 			    <list-index column="VARIANT_NUM"/>
-				<one-to-many class="lv.webkursi.mtest.domain.Variant"/>
+				<one-to-many class="lv.webkursi.mtest.lab02.domain.Variant"/>
 			</list>
 			
 		</joined-subclass>
-		<joined-subclass name="lv.webkursi.mtest.domain.Variant" table="VARIANT">
+		<joined-subclass name="lv.webkursi.mtest.lab02.domain.Variant" table="VARIANT">
 			<key column="CONTENT_ID"/>			
 		</joined-subclass>
 		

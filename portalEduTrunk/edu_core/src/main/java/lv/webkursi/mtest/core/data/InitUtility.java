@@ -1,52 +1,74 @@
 package lv.webkursi.mtest.core.data;
 
-import java.io.InputStream;
+import java.io.ByteArrayInputStream;
 
-import lv.webkursi.mtest.mvc.vocabulary.MARS;
-
-import org.springframework.context.support.FileSystemXmlApplicationContext;
+import lv.webkursi.mtest.core.vocabulary.MTEST;
 
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
-import com.hp.hpl.jena.util.FileManager;
 
 /**
- * This class erases the data model; make sure that it is called only once
+ * This class erases the data model in the relational database; replaces it with
+ * "seed model" containing just one administrator user.
  * 
  */
 public class InitUtility {
 
-	public static final String SEED_DATA = "edu_core/src/test/resources/seed_data.n3";
-
-	public static final String TEST_CONTEXT = "edu_core/src/test/resources/testcontext.xml";
-
-	public static Model getModel() {
-		FileSystemXmlApplicationContext ctx = new FileSystemXmlApplicationContext(
-				TEST_CONTEXT);
-		return (Model) ctx.getBean("model");		
-	}
+	public String seedModel = "@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> . "
+			+ "@prefix mtest: <http://www.webkursi.lv/schema/mtest#> . "
+			+ "mtest:admin a mtest:User ; "
+			+ "  mtest:email \"admin@admin.com\" ; "
+			+ "  mtest:name \"Admin\" ; "
+			+ "  mtest:userName \"admin\" ; "
+			+ "  mtest:password \"admin\" .";
 	
-	public static void initModel() {
+	protected DBModelFactory factory;
+
+	public Model getModel() throws Exception {
+		return (Model)factory.getObject();
+	}
+
+	public void initModel() throws Exception {
 		Model model = ModelFactory.createDefaultModel();
-		InputStream in = FileManager.get().open(SEED_DATA);
-		if (in == null) {
-			throw new IllegalArgumentException("File: " + SEED_DATA
-					+ " not found");
-		}
-		model.read(in, MARS.NS, "N3");
+		ByteArrayInputStream bis = new ByteArrayInputStream(seedModel
+				.getBytes());
+		model.read(bis, MTEST.NS, "N3");
 		Model model1 = getModel();
 		model1.removeAll();
 		model1.add(model);
 	}
 
-	public static void printModel() {
+	public void printModel() throws Exception {
 		Model model1 = getModel();
 		System.out.println("Model size is " + model1.size());
 		model1.write(System.out, "N3");
 	}
 
-	public static void main(String[] args) {
-		initModel();
-		printModel();
+	public DBModelFactory getFactory() {
+		return factory;
+	}
+
+	public void setFactory(DBModelFactory factory) {
+		this.factory = factory;
+	}
+
+	public String getSeedModel() {
+		return seedModel;
+	}
+
+	public void setSeedModel(String seedModel) {
+		this.seedModel = seedModel;
+	}
+	
+	/**
+	 * This can be used to initialize the RDF Data model from 
+	 * command line. 
+	 * @throws Exception 
+	 */
+	public static void main(String[] args) throws Exception {
+		InitUtility initUtility = new InitUtility();
+		initUtility.setFactory(new DBModelFactory());
+		initUtility.initModel();
+		initUtility.printModel();
 	}
 }

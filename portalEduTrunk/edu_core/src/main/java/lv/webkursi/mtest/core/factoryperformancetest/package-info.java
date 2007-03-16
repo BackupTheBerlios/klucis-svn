@@ -4,4 +4,4 @@
  * RDF factory. 
  * 
  */
-package lv.webkursi.mtest.factorytest;
+package lv.webkursi.mtest.core.factoryperformancetest;

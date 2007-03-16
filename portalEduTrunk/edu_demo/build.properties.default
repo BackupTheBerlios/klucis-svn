@@ -13,6 +13,8 @@ src.dir=src/main/java
 # Various resources (like log4j.properties), 
 # which should be copied directly to the classpath
 resources.dir=src/main/resources
+test.resources.dir=src/test/resources
+
 
 # Where all the build results are placed
 target.dir=target
@@ -72,6 +74,6 @@ tomcat.manager.password=tomcat
 
 # Manifest.mf constants
 mf.built.by=Some developers
-mf.implementation.vendor=HP Labs
-mf.implementation.vendor.id=com.hp.hpl.invent
-mf.extension.name=com.hp.hpl.mars.portal.core
+mf.implementation.vendor=Nobody
+mf.implementation.vendor.id=lv.webkursi
+mf.extension.name=lv.webkursi.mtest

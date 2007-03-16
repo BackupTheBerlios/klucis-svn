@@ -1,6 +1,6 @@
 package lv.webkursi.mtest.core.data;
 
-import lv.webkursi.mtest.mvc.vocabulary.MARS;
+import lv.webkursi.mtest.core.vocabulary.MTEST;
 
 import com.hp.hpl.jena.rdf.model.EmptyListException;
 import com.hp.hpl.jena.rdf.model.Model;
@@ -42,19 +42,19 @@ public class RdfUtilities {
 
 	public static Resource getPageSetByPath(Model portalDescription,
 			String pageSetName) {
-		return getResourceByProperty(portalDescription, MARS.PageSet,
-				MARS.name, pageSetName);
+		return getResourceByProperty(portalDescription, MTEST.PageSet,
+				MTEST.name, pageSetName);
 	}
 	
 	public static Seq findFacetAddList(Resource rComponent, Resource owner) {
 		if (owner == null) {
 			return null;
 		}
-		StmtIterator iter = rComponent.listProperties(MARS.facetAddList);
+		StmtIterator iter = rComponent.listProperties(MTEST.facetAddList);
 		while (iter.hasNext()) {
 			Statement candidate = iter.nextStatement();
 			Resource rCandidate = candidate.getResource();
-			Resource owner1 = rCandidate.getRequiredProperty(MARS.belongsTo)
+			Resource owner1 = rCandidate.getRequiredProperty(MTEST.belongsTo)
 					.getResource();
 			if (owner1.getLocalName().equals(owner.getLocalName())) {
 				return candidate.getSeq();

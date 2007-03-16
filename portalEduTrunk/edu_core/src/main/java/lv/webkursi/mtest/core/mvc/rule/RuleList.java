@@ -9,9 +9,6 @@ import java.util.List;
 public class RuleList implements RuleCollection {
     List rules;
 
-    /* (non-Javadoc)
-     * @see com.hp.hpl.mars.portal.core.mvc.rule.RuleCollection#ApplyRules()
-     */
     public void ApplyRules() {
         Iterator iter = rules.iterator();
         while (iter.hasNext()) {

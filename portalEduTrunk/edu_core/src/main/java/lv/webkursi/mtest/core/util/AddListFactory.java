@@ -3,7 +3,7 @@ package lv.webkursi.mtest.core.util;
 import java.util.ArrayList;
 import java.util.List;
 
-import lv.webkursi.mtest.mvc.vocabulary.MARS;
+import lv.webkursi.mtest.core.vocabulary.MTEST;
 
 import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.NodeIterator;
@@ -32,8 +32,8 @@ public class AddListFactory {
 	public static class FacetConfigurationEntryFactory {
 		
 		public static FacetConfigurationEntry getObject(Resource rEntry) {
-			String facetName = rEntry.getRequiredProperty(MARS.facet).getResource().getLocalName();
-			Statement stateStatement = rEntry.getProperty(MARS.state);
+			String facetName = rEntry.getRequiredProperty(MTEST.facet).getResource().getLocalName();
+			Statement stateStatement = rEntry.getProperty(MTEST.state);
 			FacetConfigurationEntry result = new FacetConfigurationEntry();
 			result.setFacetName(facetName);
 			if (stateStatement != null) {

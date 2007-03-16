@@ -5,7 +5,7 @@ import java.util.Map;
 
 import lv.webkursi.mtest.core.components.Component;
 import lv.webkursi.mtest.core.components.ModelAndViewComponent;
-import lv.webkursi.mtest.mvc.vocabulary.MARS;
+import lv.webkursi.mtest.core.vocabulary.MTEST;
 
 import com.hp.hpl.jena.rdf.model.Bag;
 import com.hp.hpl.jena.rdf.model.NodeIterator;
@@ -20,7 +20,7 @@ public class SimpleComponentFactory implements ComponentFactory {
 	
 	public Component getComponent(Resource rComponent) {
 		Map<String,Object> model = new HashMap<String,Object>();
-		String viewName = rComponent.getRequiredProperty(MARS.viewName).getString();
+		String viewName = rComponent.getRequiredProperty(MTEST.viewName).getString();
 		Component result = new ModelAndViewComponent(viewName, model);
 		populateModel(result,rComponent);
 		return result;
@@ -35,13 +35,13 @@ public class SimpleComponentFactory implements ComponentFactory {
 	}
 	
 	public void populateModel(Component c, Resource rComponent) {
-		Statement stmt = rComponent.getProperty(MARS.model);
+		Statement stmt = rComponent.getProperty(MTEST.model);
 		if (stmt != null) {
 			Bag itemBag = stmt.getBag();
 			for (NodeIterator i = itemBag.iterator(); i.hasNext(); ) {
 				Resource item = (Resource)i.nextNode();
-				String key = item.getRequiredProperty(MARS.modelKey).getString();
-				String value = item.getRequiredProperty(MARS.value).getString();
+				String key = item.getRequiredProperty(MTEST.modelKey).getString();
+				String value = item.getRequiredProperty(MTEST.value).getString();
 				((ModelAndViewComponent)c).addObject(key, value);
 			}
 		}

@@ -33,13 +33,17 @@
 		</property>
 	</bean>
 	
+	<!--
 	<bean id="userService" class="lv.webkursi.mtest.core.data.UserService">
 		<property name="model" ref="model"/>
 	</bean>
 	
 	<bean id="model" class="lv.webkursi.mtest.core.data.DBModelFactory">
 	</bean>
+		-->
 		
+	
+	<!--
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName">
@@ -56,7 +60,6 @@
 		</property>
 	</bean>
 	
-	<!-- Database Property -->
 	<bean id="exampleHibernateProperties"
 		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
 		<property name="properties">
@@ -67,7 +70,9 @@
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="cache.provider_class">org.hibernate.cache.NoCacheProvider</prop>
 				<prop key="current_session_context_class">thread</prop>
-				
+				-->
+	
+	
 				<!--
 				<prop key="hibernate.c3p0.minPoolSize">5</prop>
 				<prop key="hibernate.c3p0.maxPoolSize">20</prop>
@@ -75,11 +80,12 @@
 				<prop key="hibernate.c3p0.max_statement">50</prop>
 				<prop key="hibernate.c3p0.testConnectionOnCheckout">false</prop>
 					-->
+	
+	<!--
 			</props>
 		</property>
 	</bean>
 	
-	<!-- Hibernate SessionFactory -->
 	<bean id="exampleSessionFactory"
 		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
 		<property name="dataSource">
@@ -88,7 +94,7 @@
 		<property name="hibernateProperties">
 			<ref bean="exampleHibernateProperties"/>
 		</property>
-		<!--  OR mapping files. -->
+
 		<property name="mappingResources">
 			<list>
 				<value>QuestionType.hbm.xml</value>
@@ -96,9 +102,6 @@
 		</property>
 		
 	</bean>
-	
-	<bean id="questionTypeDao" class="lv.webkursi.mtest.dao.QuestionTypeDaoImpl">
-		
-	</bean>
+	-->
 	
 </beans>

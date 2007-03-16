@@ -1,4 +1,4 @@
-package lv.webkursi.mtest.factorytest;
+package lv.webkursi.mtest.core.factoryperformancetest;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
@@ -25,9 +25,9 @@ public class RdfContextTesting extends ContextTesting {
 		N = new long[] { 1000000L, 100000000L };
 		components = new Resource[] {
 				model
-						.getResource("http://www.hpl.hp.com/schema/portal#component_prototype"),
+						.getResource("http://www.webkursi.lv/schema/portal#component_prototype"),
 				model
-						.getResource("http://www.hpl.hp.com/schema/portal#component_singleton") };
+						.getResource("http://www.webkursi.lv/schema/portal#component_singleton") };
 	}
 
 	public static void main(String[] args) {

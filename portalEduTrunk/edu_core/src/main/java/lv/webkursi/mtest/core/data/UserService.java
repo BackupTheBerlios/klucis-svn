@@ -2,7 +2,7 @@ package lv.webkursi.mtest.core.data;
 
 import java.util.ArrayList;
 
-import lv.webkursi.mtest.mvc.vocabulary.MARS;
+import lv.webkursi.mtest.core.vocabulary.MTEST;
 
 import com.hp.hpl.jena.rdf.model.EmptyListException;
 import com.hp.hpl.jena.rdf.model.Model;
@@ -32,7 +32,7 @@ public class UserService {
 		if (userName == null) {
 			throw new NullPointerException("Username cannot be null");
 		}
-		return RdfUtilities.getResourceByProperty(model, MARS.User, MARS.userName, userName);
+		return RdfUtilities.getResourceByProperty(model, MTEST.User, MTEST.userName, userName);
 	}
 
 	/**
@@ -44,8 +44,8 @@ public class UserService {
 	 * TODO: user roles not initialized
 	 */
 	public User getObject(Resource resource) {
-		String userName = resource.getRequiredProperty(MARS.userName).getString();
-		String password = resource.getRequiredProperty(MARS.password).getString();
+		String userName = resource.getRequiredProperty(MTEST.userName).getString();
+		String password = resource.getRequiredProperty(MTEST.password).getString();
 		User result = new User(userName, password, new ArrayList<Role>());
 		return result;
 	}
@@ -58,12 +58,12 @@ public class UserService {
 		catch (EmptyListException e) { 
 			// this is expected behavior - should not have any users;
 		}
-		Resource r = model.createResource(MARS.NS + userForm.getUserName());
-		model.add(r, RDF.type, MARS.User);
-		model.add(r, MARS.userName, userForm.getUserName());
-		model.add(r, MARS.name, userForm.getName());
-		model.add(r, MARS.email, userForm.getEmail());
-		model.add(r, MARS.password, userForm.getPassword());		
+		Resource r = model.createResource(MTEST.NS + userForm.getUserName());
+		model.add(r, RDF.type, MTEST.User);
+		model.add(r, MTEST.userName, userForm.getUserName());
+		model.add(r, MTEST.name, userForm.getName());
+		model.add(r, MTEST.email, userForm.getEmail());
+		model.add(r, MTEST.password, userForm.getPassword());		
 
 	}
 }

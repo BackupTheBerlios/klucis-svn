@@ -14,7 +14,7 @@ public class ActionFactoryImpl implements ActionFactory {
 	private Map<String,ActionFactory> actionFactoryCatalog = new HashMap<String,ActionFactory>();
 	
 	public ActionFactoryImpl() {
-		actionFactoryCatalog.put("http://www.hpl.hp.com/schema/mars#AddFacetAction", new AddFacetActionFactory());
+		actionFactoryCatalog.put("http://www.webkursi.lv/schema/mtest#AddFacetAction", new AddFacetActionFactory());
 	}
 	
 	public Action getAction(Resource rAction) {

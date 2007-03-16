@@ -1,9 +1,9 @@
 <div class="${_class}" id="${_id}" >
-<a href="/user/login">Pieslēgties</a>|
-<a href="/user/home">Mājas</a> |
-<a href="/testmodule/list">Testa moduļi</a> |
-<a href="/testmodule/new">Izveidot testa moduli</a> |
-<a href="/assignment/list">Testa sagataves</a> |
-<a href="/assignment/new">Izveidot testa sagatavi</a> |
-<a href="/assignment/listall">Visas testa sagataves</a>
+<a href="/eduDemo/user/login">Pieslēgties</a>|
+<a href="/eduDemo/user/home">Mājas</a> |
+<a href="/eduDemo/testmodule/list">Testa moduļi</a> |
+<a href="/eduDemo/testmodule/new">Izveidot testa moduli</a> |
+<a href="/eduDemo/assignment/list">Testa sagataves</a> |
+<a href="/eduDemo/assignment/new">Izveidot testa sagatavi</a> |
+<a href="/eduDemo/assignment/listall">Visas testa sagataves</a>
 </div>

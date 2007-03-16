@@ -9,7 +9,7 @@ import lv.webkursi.mtest.core.mvc.ServiceFactory;
 import lv.webkursi.mtest.core.mvc.ServiceFactoryAware;
 import lv.webkursi.mtest.core.mvc.ServiceName;
 import lv.webkursi.mtest.core.scopes.UserSettings;
-import lv.webkursi.mtest.mvc.vocabulary.MARS;
+import lv.webkursi.mtest.core.vocabulary.MTEST;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -25,7 +25,7 @@ public class TopComponentFactory extends SimpleComponentFactory implements
 	public Component getComponent(Resource rComponent) {
 
 		Map<String, Object> model = new HashMap<String, Object>();
-		String viewName = rComponent.getRequiredProperty(MARS.viewName)
+		String viewName = rComponent.getRequiredProperty(MTEST.viewName)
 				.getString();
 		TopComponent result = new TopComponent(viewName, model);
 

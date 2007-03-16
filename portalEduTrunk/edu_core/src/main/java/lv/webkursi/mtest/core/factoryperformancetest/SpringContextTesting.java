@@ -1,4 +1,4 @@
-package lv.webkursi.mtest.factorytest;
+package lv.webkursi.mtest.core.factoryperformancetest;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;

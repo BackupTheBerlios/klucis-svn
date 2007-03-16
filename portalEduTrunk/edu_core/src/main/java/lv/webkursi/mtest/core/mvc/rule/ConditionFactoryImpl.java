@@ -13,7 +13,7 @@ public class ConditionFactoryImpl {
 	private Map<String,ConditionFactory> conditionFactoryCatalog = new HashMap<String,ConditionFactory>();
 	
 	public ConditionFactoryImpl() {
-		conditionFactoryCatalog.put("http://www.hpl.hp.com/schema/mars#IntegerRangeCondition", new IntegerRangeConditionFactory());
+		conditionFactoryCatalog.put("http://www.webkursi.lv/schema/mtest#IntegerRangeCondition", new IntegerRangeConditionFactory());
 	}
 
 	

@@ -1,4 +1,4 @@
-package lv.webkursi.mtest.factorytest;
+package lv.webkursi.mtest.core.factoryperformancetest;
 
 public abstract class ContextTesting {
 	public long testingTemplate(long times, Object componentId) {

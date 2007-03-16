@@ -1,4 +1,4 @@
-package lv.webkursi.mtest.mvc.util;
+package lv.webkursi.mtest.core.mvc.util;
 
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;

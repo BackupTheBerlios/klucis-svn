@@ -16,8 +16,6 @@ public class AddFacetAction implements Action {
 
 	/*
 	 * (non-Javadoc)
-	 * 
-	 * @see com.hp.hpl.mars.portal.core.mvc.rule.Action#doAction()
 	 */
 	public void doAction() {
 //		ComponentManager componentManager = stateManager.getComponentManager();
