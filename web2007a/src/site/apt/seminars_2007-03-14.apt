@@ -7,13 +7,20 @@ Seminārs 2007-03-14: Spring kontrolieri, formas, augšupielāde, PropertyEditor
     var uzkāpt 3.stāvā un zvanīt Kalvim: 29112997.)
     
     [Demonstrācijas piemērs:]
-    (Demo šobrīd tiek izstrādāts.)
+     Var lejupielādēt no SVG (tam nevajadzētu prasīt Jums paroli):
+    {{https://kalvis@svn.berlios.de/svnroot/repos/klucis/portalEduTrunk}}
 
     [Semināra dienaskārtība:]
     TBD
       
 * Demonstrācijas piemēru darbināšana 
 ~~~~
+
+  * Ar Subclipse atvērt SVN repozitoriju ar norādīto adresi un 
+  izčekot "portalEduTrunk" savā darbapgabalā (workspace), 
+  piemēram, kā jaunu projektu ar nosaukumu portalEdu. 
+  
+  * 
 
 * Bibliogrāfija
 ~~~~

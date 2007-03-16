@@ -108,3 +108,66 @@ so it follows ...
   
   * {{http://www.mutopiaproject.org/}} - lots of free sheet music
   annotated with LilyPond. 
+  
+  
+* Errata
+~~~~
+
+
+  * <<Kādā veidā vajag apstrādāt Textile markup? Vai to arī vajag konvertēt 
+  XHTML formatā?>>
+  Ideālā pasaulē vēlamais rezultāts būtu XML dokuments, kurš atbilstu teiksim 
+  XHTML+MathML dokumentu profilam (sk. {{http://www.w3.org/TR/XHTMLplusMathMLplusSVG/}}) 
+  UN ARĪ būtu redzams, teiksim, ar Internet Explorer, uz kura uzinstalēts 
+  MathPlayer plugins. Taču jauktu vārdapgabalu (mixed namespace) 
+  XML dokumenta validēšana pret daudzajiem DTD ir grūta un arī nepraktiska, 
+  jo nav pārlūkprogrammu, kuras prasītu atbilstošo dokumenta profilu - 
+  toties daudzas praksē sastopamas pārlūkprogrammas 
+  prasa nestandarta marķējumu inline MathML gabalu iekļaušanai. 
+  Tādēļ šajā gadījumā ir labāka pragmatiska pieeja: vajag pārstrādāt 
+  Textile+LateX marķējumu ar Ruby skriptu tā, lai pāris praksē biežāk 
+  sastopamās pārlūkprogrammas (MSIE un Firefox) to pareizi attēlotu - 
+  t.i. tas būtu daudzmaz pareizs HTML vai XHTML ar apzīmētām MathML 
+  "saliņām" (piemēram, tas, ko vieglāk dabūt no RedCloth; var arī 
+  marķējumu uzlabot par XHTML ar HTML Tidy, ja tas ir viegli un ērti izdarāms). 
+  Akūtas nepieciešamības gadījumā, Ruby skriptam var padot parametru, 
+  kurš pasaka, kurai pārlūkprogrammai gjenerējams rezultāts. Lai gan, 
+  manuprāt, var atrast tādu marķējumu, kurš strādā uz MSIE un uz Firefox vienlaikus. 
+
+  * Noteikti var un vajag lietot Ruby moduli "redcloth" 
+  (tāpat kā "ritex" un varbūt arī citas bibliotēkas, 
+  teiksim, "HTML Tidy") , ja tie atvieglo uzdevumu. 
+
+  * <<Mājasdarba aprakstā ir minēts, ka izejas failu formatam 
+  jābūt *.html. Bet vai tas var būt vienkārši *.xml?>>
+  Ja kādai pārlūkprogrammai ir iespējams atvērt tikai failu ar 
+  paplašinājumu XML (bet faktiski tā rāda HTML marķējumu 
+  ar MathML formulām), tad man ir vienalga. No otras puses, 
+  Internet Explorer šādus dokumentus (HTML un MathML sajaukumu) 
+  attēlo pareizi tad, ja faila paplašinājums ir *.html. 
+
+  Šajā sakarībā ir vēl cits interesants jautājums: 
+  Ja attiecīgais izvadāmais fails (HTML un MathML sajaukums) 
+  tiek piegādāts no Web Servera, tad kādam jābūt dokumenta MIME tipam 
+  (HTTP "Content-Type" hederim), lai tas pareizi attēlotos uz divām 
+  izplatītajām pārlūkprogrammām? Vai servletā ir jāraksta: 
+  
++----
+response.setContentType("text/html; charset=utf-8");
+vai 
+response.setContentType("application/xhtml+xml; charset=utf-8");
+vai 
+response.setContentType("text/xml; charset=utf-8");
+vai vēl kā citādi? 
++----
+
+  Web Serveris un eksperimentēšana ar to šajā uzdevumā 
+  gan vispār nav paredzēti, bet par pareizo MIME tipu  
+  varētu padiskutēt. Tas ir līdzīgi atjautības uzdevumam: 
+  <Ja Web serveris pārlūkprogrammai piegādā baitu plūsmu, 
+  kas ir sintaktiski pareizs xhtml (teiksim, UTF-8 kodējumā) 
+  ar atbilstošo XHTML 1.0 namespace ("xmlns" deklarāciju), 
+  toties HTTP hederī norādītais MIME tips ir "text/xml" - 
+  vai Web standartiem atbilstošai pārlūkprogrammai ir 
+  tiesības to attēlot kā HTMLu, vai arī tai jāzīmē atklikšķināms 
+  koks un/vai citādi jāizliekas, ka tā nezin, kā šo XMLu attēlot?>
