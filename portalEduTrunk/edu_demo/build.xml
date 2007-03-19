@@ -157,6 +157,10 @@
 		<copy todir="${war.classes.dir}">
 			<fileset dir="${jar.classes.dir}"/>
 		</copy>
+		<copy todir="${war.classes.dir}">
+			<fileset dir="${portal.core.dir}/src/main/resources" includes="**/*.hbm.xml"/>			
+		</copy>
+		
 		<unzip src="${test.resources.dir}/selenium-core-0.8.2.zip"
 			dest="${web.dir}">
 		</unzip>

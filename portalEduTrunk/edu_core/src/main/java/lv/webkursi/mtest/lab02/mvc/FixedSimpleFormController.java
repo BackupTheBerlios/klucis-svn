@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import lv.webkursi.mtest.lab02.dao.ICommonDao;
 import lv.webkursi.mtest.lab02.data.UserForm;
+import lv.webkursi.mtest.lab02.domain.Person;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -43,7 +44,13 @@ public class FixedSimpleFormController extends AbstractFormController {
 		UserForm userForm = (UserForm) command;
 		String success = null;
 		if (!errors.hasErrors()) {
-			dao.saveOrUpdate(userForm);
+			Person person = new Person();
+			person.setEmail(userForm.getEmail());
+			person.setFirstName(userForm.getFirstName());
+			person.setLastName(userForm.getLastName());
+			person.setLogin(userForm.getLogin());
+			person.setPassword(userForm.getPassword());
+			dao.saveOrUpdate(person);
 			success = "User successfully registered";
 		}
 				

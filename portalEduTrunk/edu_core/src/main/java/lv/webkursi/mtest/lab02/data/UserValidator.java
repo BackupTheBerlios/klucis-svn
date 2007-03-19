@@ -26,19 +26,21 @@ public class UserValidator implements Validator {
 
 		ValidationUtils.rejectIfEmpty(errors, "userName", "required.login",
 				"Login is required");
-		if (userForm.getUserName().length() < 2
-				|| userForm.getUserName().length() > 12) {
-			errors.rejectValue("userName", "userName.invalid.length",
+		if (userForm.getLogin().length() < 2
+				|| userForm.getLogin().length() > 12) {
+			errors.rejectValue("userName", "login.invalid.length",
 					"Login should be between 2 and 12 characters");
 		}
-		if (!Pattern.matches(USERNAME_REGEXP, userForm.getUserName())) {
+		if (!Pattern.matches(USERNAME_REGEXP, userForm.getLogin())) {
 			errors
 					.rejectValue("userName", "userName.invalid.chars",
 							"Login contains only English letters and digits and starts with a letter");
 		}
 
-		ValidationUtils.rejectIfEmpty(errors, "name", "required.name",
+		ValidationUtils.rejectIfEmpty(errors, "firstName", "required.firstName",
 				"Name is required");
+		ValidationUtils.rejectIfEmpty(errors, "lastName", "required.lastName",
+		"Name is required");
 		ValidationUtils.rejectIfEmpty(errors, "email", "required.email",
 				"Email is required");
 		Pattern pEmail = Pattern
@@ -52,7 +54,7 @@ public class UserValidator implements Validator {
 		ValidationUtils.rejectIfEmpty(errors, "password", "required.password",
 				"Password is required");
 		if (userForm.getPassword().length() < 6
-				|| userForm.getUserName().length() > 12) {
+				|| userForm.getPassword().length() > 12) {
 			errors.rejectValue("password", "password.invalid.length",
 					"Password should be between 6 and 12 characters");
 		}

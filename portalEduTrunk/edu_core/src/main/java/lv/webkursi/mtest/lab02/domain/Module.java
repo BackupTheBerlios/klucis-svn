@@ -6,6 +6,16 @@ import java.util.List;
 import java.util.Set;
 
 public class Module extends ContentItem {
+	
+	/**
+	 * Name (globally unique; module names are simple, other item names contain
+	 * two parts - module and item, separated with a dot (.). Legal characters
+	 * within parts are upper/lower case Latin letters, digits and underscores.
+	 * Must NOT be null for any initialized ContentItem and does not change
+	 * over the lifetime 
+	 */
+	protected String name;
+
 	/**
 	 * Size up to 255 bytes. May contain plaintext in Unicode
 	 */
@@ -17,9 +27,6 @@ public class Module extends ContentItem {
 	
 	public Question createQuestion() {
 		Question question = new Question();
-		// assign some unique name
-		question.setName(getName() + "_Q" + (questions.size() + 1));
-		
 		questions.add(question);
 		return question;
 	}
@@ -27,14 +34,10 @@ public class Module extends ContentItem {
 	public boolean removeQuestion(Question q) {
 		return questions.remove(q);
 	}
-	
-//	public void addQuestion(Question q) {
-//		q.setName(getName() + "_I"+(questions.size()) + 1);
-//	}
-	
-	public Image createImage() {
+		
+	public Image createImage(String name) {
 		Image image = new Image();
-		image.setName("img_" + (images.size() + 1));
+		image.setName(name);		
 		images.add(image);
 		return image;
 	}
@@ -62,4 +65,32 @@ public class Module extends ContentItem {
 	public void setQuestions(List<Question> questions) {
 		this.questions = questions;
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if (o instanceof Module) {
+			Module m = (Module)o;
+			boolean result = true;
+			result &= m.name.equals(name);
+			result &= m.title.equals(title);
+			result &= m.description.equals(description);
+			return result;
+		}
+		return false;
+	}
+	
+	@Override
+	public int hashCode() {
+		return name.hashCode() ^ title.hashCode() ^ description.hashCode();
+	}
+	
+	
 }

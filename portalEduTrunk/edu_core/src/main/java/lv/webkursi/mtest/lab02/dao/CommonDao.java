@@ -8,6 +8,7 @@ import java.util.Map;
 
 import lv.webkursi.mtest.lab02.domain.Image;
 import lv.webkursi.mtest.lab02.domain.Module;
+import lv.webkursi.mtest.lab02.domain.Person;
 import lv.webkursi.mtest.lab02.domain.Question;
 import lv.webkursi.mtest.lab02.domain.QuestionType;
 import lv.webkursi.mtest.lab02.domain.Variant;
@@ -22,7 +23,6 @@ public class CommonDao extends HibernateDaoSupport implements ICommonDao {
 
 	private static Map<Class, String> getAllQueries = new HashMap<Class, String>();
 
-	private static Map<Class, CommonDao> cache = new HashMap<Class, CommonDao>();
 
 	private static Map<String, String> lastIdQueries = new HashMap<String, String>();
 
@@ -30,23 +30,16 @@ public class CommonDao extends HibernateDaoSupport implements ICommonDao {
 		getAllQueries.put(QuestionType.class,
 				"from QuestionType qt order by qt.instruction");
 		getAllQueries.put(Module.class, "from Module m order by m.name");
-		getAllQueries.put(Question.class, "from Question q order by q.name");
-		getAllQueries.put(Variant.class, "from Variant v order by v.name");
+		getAllQueries.put(Question.class, "from Question q order by q.description");
+		getAllQueries.put(Variant.class, "from Variant v order by v.label");
 		getAllQueries.put(Image.class, "from Image i order by i.name");
+		getAllQueries.put(Person.class, "from Person p order by p.login");
 
 		// two dialects of SQL - find the last generated ID
 		lastIdQueries.put("Hsqldb", "CALL IDENTITY()");
 		lastIdQueries.put("Mysql", "SELECT LAST_INSERT_ID()");
 	}
 
-	public static CommonDao getInstance(Class clazz) {
-		if (!cache.containsKey(clazz)) {
-			CommonDao instance = new CommonDao();
-			instance.clazz = clazz;
-			cache.put(clazz, instance);
-		}
-		return cache.get(clazz);
-	}
 
 	public void close() {
 		getSessionFactory().close();
@@ -64,6 +57,8 @@ public class CommonDao extends HibernateDaoSupport implements ICommonDao {
 			return ((Question) o).getId();
 		} else if (o instanceof Variant) {
 			return ((Variant) o).getId();
+		} else if (o instanceof Person) {
+			return ((Person) o).getId();
 		} else {
 			throw new RuntimeException("Unsupported type: "
 					+ o.getClass().getName());
@@ -141,4 +136,15 @@ public class CommonDao extends HibernateDaoSupport implements ICommonDao {
 		}
 
 	}
+
+
+	public Class getClazz() {
+		return clazz;
+	}
+
+	public void setClazz(Class clazz) {
+		this.clazz = clazz;
+	}
+	
+	
 }

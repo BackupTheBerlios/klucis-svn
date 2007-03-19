@@ -10,7 +10,6 @@ import java.util.List;
  * is no association from Question to Module. 
  * 
  * @author kap
- *
  */
 public class Question extends ContentItem implements JsonSerializable {
 	protected QuestionType questionType;
@@ -19,7 +18,7 @@ public class Question extends ContentItem implements JsonSerializable {
 
 	public Variant createVariant(String label) {
 		Variant variant = new Variant();
-		variant.setName(getName() + "_" + label);
+		variant.setLabel(label);
 		variants.add(variant);
 		return variant;
 	}
@@ -46,17 +45,33 @@ public class Question extends ContentItem implements JsonSerializable {
 
 
 	public String[] getParamList() {
-		return new String[] { "id", "name", "description", 
+		return new String[] { "id", "description", 
 				"questionType" };
 	}
 
 	public Object[] getValueList() {
-		return new Object[] { id, name, description, questionType };
+		return new Object[] { id, description, questionType };
 	}
 
+	@Override
 	public String toString() {
 		return "{\"Question\":{"
 				+ Utils.jsonParamList(getParamList(), getValueList()) + "}}";
+	}
+	
+	public boolean equals(Object o) {
+		if (o instanceof Question) {
+			Question q = (Question)o;
+			boolean result = true;
+			result &= q.description.equals(description);
+			result &= q.questionType.equals(questionType);
+			return result;
+		}
+		return false;
+	}
+	
+	public int hashCode() {
+		return description.hashCode() ^ questionType.hashCode();
 	}
 
 }

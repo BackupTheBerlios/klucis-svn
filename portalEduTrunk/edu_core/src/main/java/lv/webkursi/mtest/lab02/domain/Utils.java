@@ -7,10 +7,6 @@ package lv.webkursi.mtest.lab02.domain;
  *
  */
 public class Utils {
-	public static boolean equalId(Long id1, Long id2) {
-		return true;
-		// return (id1 == null) || (id2 == null) || (id1.equals(id2));
-	}
 	
 	/**
 	 * Just for debugging - a helper to log domain object values with JSON 

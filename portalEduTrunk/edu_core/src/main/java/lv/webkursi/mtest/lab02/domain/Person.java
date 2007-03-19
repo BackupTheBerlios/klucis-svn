@@ -3,8 +3,6 @@ package lv.webkursi.mtest.lab02.domain;
 import java.util.HashSet;
 import java.util.Set;
 
-import lv.webkursi.mtest.lab02.dao.CommonDao;
-
 public class Person {
 	protected Long id; 
 	
@@ -18,24 +16,33 @@ public class Person {
 	
 	protected String password;
 
-	protected HashSet<Session> modules = new HashSet<Session>();
+	protected Set<Module> modules = new HashSet<Module>();
 	
 	protected Set<Session> sessions = new HashSet<Session>();
 	
 	protected Set<Assessment> assessments = new HashSet<Assessment>();
 	
-	protected CommonDao dao;
-	
-	
-		
-	public CommonDao getDao() {
-		return dao;
+	/**
+	 * Empty constructor (Notice, that person object does not become valid
+	 * until firstName, lastName, login and password are initialized
+	 */
+	public Person() {		
 	}
-
-	public void setDao(CommonDao dao) {
-		this.dao = dao;
+	
+	/**
+	 * Constructor, which sets all the mandatory attributes
+	 * @param firstName
+	 * @param lastName
+	 * @param login
+	 * @param email
+	 */
+	public Person(String firstName, String lastName, String login, String email) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.login = login;
+		this.email = email;
 	}
-
+	
 	public Long getId() {
 		return id;
 	}
@@ -44,30 +51,24 @@ public class Person {
 		this.id = id;
 	}
 
-	public HashSet<Session> getModules() {
+	public Set<Module> getModules() {
 		return modules;
 	}
 
-	public void setModules(HashSet<Session> modules) {
+	public void setModules(Set<Module> modules) {
 		this.modules = modules;
 	}
 
 	public void removeSession(Session s) {
 		sessions.remove(s);
-		// TODO
-//		dao.delete(s);
 	}
 	
 	public void removeAssessment(Assessment a) {
 		assessments.remove(a);
-		// TODO
-//		dao.delete(a);
 	}
 	
 	public void removeModule(Module m) {		
 		modules.remove(m);
-		// TODO
-//		dao.delete(m);
 	}
 	
 	public Session createSession(Assessment a) {
@@ -133,5 +134,24 @@ public class Person {
 		this.sessions = sessions;
 	}
 	
+	@Override
+	public boolean equals(Object o) {
+		if (!(o instanceof Person)) {
+			return false;
+		}
+		else {
+			boolean result = true;
+			Person p = (Person)o;
+			result &= p.getEmail().equals(email);
+			result &= p.getFirstName().equals(firstName);
+			result &= p.getLastName().equals(lastName);
+			result &= p.getLogin().equals(login);
+			return result;
+		}
+	}
 	
+	@Override
+	public int hashCode() {
+		return email.hashCode() ^ firstName.hashCode() ^ lastName.hashCode() ^ login.hashCode();
+	}	
 }

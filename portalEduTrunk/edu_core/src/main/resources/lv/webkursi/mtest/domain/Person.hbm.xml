@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+      "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+	<class name="lv.webkursi.mtest.lab02.domain.Person" table="PERSON"
+		dynamic-update="false" dynamic-insert="false">
+		
+		<id name="id" column="PERSON_ID" type="java.lang.Long"
+			unsaved-value="-1">
+			<generator class="native">
+			</generator>
+		</id>
+		
+		<property name="login" type="string" update="true" insert="true"
+			column="LOGIN" length="12" not-null="true"/>
+		
+		<property name="firstName" type="string" update="true" insert="true"
+			column="FIRST_NAME" length="20" not-null="true"/>
+
+		<property name="lastName" type="string" update="true" insert="true"
+			column="LAST_NAME" length="20" not-null="true"/>
+				
+		<property name="email" type="string" update="true" insert="true"
+			column="EMAIL" length="50" not-null="true"/>
+				
+		<property name="password" type="string" update="true" insert="true"
+			column="PASSWORD" length="50" not-null="true"/>
+		
+	</class>
+</hibernate-mapping>

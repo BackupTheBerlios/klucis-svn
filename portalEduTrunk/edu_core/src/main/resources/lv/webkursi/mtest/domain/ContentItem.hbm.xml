@@ -9,20 +9,21 @@
 		<id name="id" column="CONTENT_ID" type="java.lang.Long" unsaved-value="-1">
 			<generator class="native"/>
 		</id>
-		<property name="name" type="string" column="NAME" length="20"
-			not-null="true"/>
 		<property name="description" type="string" column="DESCRIPTION" length="255"
 			not-null="true"/>
 		
-		<joined-subclass name="lv.webkursi.mtest.lab02.domain.Module" table="MODULE">
+		<joined-subclass name="lv.webkursi.mtest.lab02.domain.Module"
+			table="MODULE">
 			<key column="CONTENT_ID"/>
 			
+			<property name="name" type="string" column="NAME" length="20"
+				not-null="true"/>
 			<property name="title" type="string" column="TITLE" length="255"
-			not-null="true"/>
-					
+				not-null="true"/>
+			
 			<list name="questions" cascade="all">
 				<key column="MODULE_ID"/>
-			    <list-index column="QUESTION_NUM"/>
+				<list-index column="QUESTION_NUM"/>
 				<one-to-many class="lv.webkursi.mtest.lab02.domain.Question"/>
 			</list>
 			<set name="images" cascade="all">
@@ -31,28 +32,33 @@
 			</set>
 		</joined-subclass>
 		
-		<joined-subclass name="lv.webkursi.mtest.lab02.domain.Image" table="IMAGE">
+		<joined-subclass name="lv.webkursi.mtest.lab02.domain.Image"
+			table="IMAGE">
 			<key column="CONTENT_ID"/>
+			<property name="name" type="string" column="NAME" length="20"
+				not-null="true"/>
+			
 		</joined-subclass>
-
+		
 		<joined-subclass name="lv.webkursi.mtest.lab02.domain.Question"
 			table="QUESTION">
 			<key column="CONTENT_ID"/>
 			<many-to-one name="questionType" column="QUESTION_TYPE_ID"
 				not-null="true" lazy="false"/>
 			
-			
 			<list name="variants" cascade="all-delete-orphan">
 				<key column="QUESTION_ID" not-null="true"/>
-			    <list-index column="VARIANT_NUM"/>
+				<list-index column="VARIANT_NUM"/>
 				<one-to-many class="lv.webkursi.mtest.lab02.domain.Variant"/>
 			</list>
 			
 		</joined-subclass>
-		<joined-subclass name="lv.webkursi.mtest.lab02.domain.Variant" table="VARIANT">
-			<key column="CONTENT_ID"/>			
+		<joined-subclass name="lv.webkursi.mtest.lab02.domain.Variant"
+			table="VARIANT">
+			<key column="CONTENT_ID"/>
+			<property name="label" type="string" column="NAME" length="20"
+				not-null="true"/>
 		</joined-subclass>
 		
-		
-	</class>	
+	</class>
 </hibernate-mapping>

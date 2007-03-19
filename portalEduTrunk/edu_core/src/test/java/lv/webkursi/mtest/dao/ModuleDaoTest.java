@@ -3,11 +3,11 @@ package lv.webkursi.mtest.dao;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import lv.webkursi.mtest.lab02.dao.CommonDao;
+import lv.webkursi.mtest.lab02.dao.DaoFactory;
 import lv.webkursi.mtest.lab02.dao.ICommonDao;
 import lv.webkursi.mtest.lab02.domain.Module;
 import lv.webkursi.mtest.lab02.domain.Question;
 import lv.webkursi.mtest.lab02.domain.QuestionType;
-import lv.webkursi.mtest.lab02.domain.Variant;
 
 import org.hibernate.LazyInitializationException;
 import org.junit.After;
@@ -21,7 +21,17 @@ import org.junit.runners.Suite;
 		ModuleDaoTest.LocalTests.class})
 public class ModuleDaoTest {
 
-	private static CommonDao dao = CommonDao.getInstance(Module.class);
+	private static DaoFactory factory;
+	private static CommonDao dao;	
+	static {
+		factory = new DaoFactory(Module.class);
+		try {
+			dao = (CommonDao) factory.getObject();
+		}
+		catch (Exception e) {
+			e.printStackTrace(System.err);
+		}
+	}
 
 	public static class CommonDaoTest extends AbstractDaoTest {
 
@@ -115,9 +125,9 @@ public class ModuleDaoTest {
 			Module m1 = (Module) dao.getModuleWithQuestions(id);
 			assertEquals(2,m1.getQuestions().size());
 			assertEquals("QA_desc",m1.getQuestions().get(0).getDescription());
-			assertEquals("QA",m1.getQuestions().get(0).getName());
+			assertEquals(qt,m1.getQuestions().get(0).getQuestionType());
 			assertEquals("QB_desc",m1.getQuestions().get(1).getDescription());
-			assertEquals("QB",m1.getQuestions().get(1).getName());
+			assertEquals(qt,m1.getQuestions().get(1).getQuestionType());
 			
 		}
 
@@ -140,11 +150,7 @@ public class ModuleDaoTest {
 			Question q1 = dao.getQuestionWithVariants(idQ0);
 			assertEquals(2,q1.getVariants().size());
 			assertEquals("varA_desc",q1.getVariants().get(0).getDescription());
-			assertEquals("QA_A",q1.getVariants().get(0).getName());
 			assertEquals("varB_desc",q1.getVariants().get(1).getDescription());
-			assertEquals("QA_B",q1.getVariants().get(1).getName());
-			
-			
 		}
 
 		/**
@@ -189,15 +195,12 @@ public class ModuleDaoTest {
 			Module m1 = (Module) dao.getModuleWithQuestions(id);
 			assertEquals(2,m1.getQuestions().size());			
 			assertEquals("QB_desc",m1.getQuestions().get(0).getDescription());
-			assertEquals("QB",m1.getQuestions().get(0).getName());
 			assertEquals("QD_desc",m1.getQuestions().get(1).getDescription());
-			assertEquals("QD",m1.getQuestions().get(1).getName());
 		}
 		
 		
 		public Question addDynamicObjectA(Module m) {
 			Question qA = m.createQuestion();
-			qA.setName("QA");
 			qA.setQuestionType(qt);
 			qA.setDescription("QA_desc");
 			return qA;
@@ -205,7 +208,6 @@ public class ModuleDaoTest {
 
 		public Question addDynamicObjectB(Module m) {
 			Question qB = m.createQuestion();
-			qB.setName("QB");
 			qB.setQuestionType(qt);
 			qB.setDescription("QB_desc");
 			return qB;
@@ -213,7 +215,6 @@ public class ModuleDaoTest {
 
 		public Question addDynamicObjectC(Module m) {
 			Question qC = m.createQuestion();
-			qC.setName("QC");
 			qC.setQuestionType(qt);
 			qC.setDescription("QC_desc");
 			return qC;
@@ -221,7 +222,6 @@ public class ModuleDaoTest {
 
 		public Question addDynamicObjectD(Module m) {
 			Question qD = m.createQuestion();
-			qD.setName("QD");
 			qD.setQuestionType(qt);
 			qD.setDescription("QD_desc");
 			return qD;

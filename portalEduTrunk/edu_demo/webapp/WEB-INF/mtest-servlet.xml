@@ -4,23 +4,6 @@
 	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 	
-	<!--
-	<bean id="velocityConfig"
-		class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
-		
-		<property name="resourceLoaderPath">
-			<value>/WEB-INF/velocity/</value>
-		</property>
-		
-		<property name="velocityProperties">
-			<props>
-				<prop key="input.encoding">UTF-8</prop>
-				<prop key="output.encoding">UTF-8</prop>
-			</props>
-		</property>
-	</bean>
-		-->
-	
 	<bean id="localeResolver"
 		class="org.springframework.web.servlet.i18n.CookieLocaleResolver"/>
 	
@@ -33,34 +16,9 @@
 		<property name="basename" value="messages"/>
 	</bean>
 	
-	<!--
-	<bean id="servletContextFactory"
-		class="org.springframework.web.context.support.ServletContextFactoryBean"/>
-     -->
-		
-	<!--	
-	<bean id="portalDescription"
-		class="lv.webkursi.mtest.core.data.FileModelFactory">
-		<property name="baseDir">
-			<value>WEB-INF/data</value>
-		</property>
-		<property name="fileName">
-			<value>portalDescription.n3</value>
-		</property>
-		<property name="servletContext">
-			<ref bean="servletContextFactory"/>
-		</property>
-	</bean>
-		-->
-	
 	<bean id="loginController" class="lv.webkursi.mtest.core.mvc.LoginController">
-		<!--
-		<property name="serviceFactory">
-			<ref bean="serviceFactory"/>
-		</property>
-			-->
 	</bean>
-
+	
 	<bean id="welcomeController"
 		class="lv.webkursi.mtest.lab02.mvc.FixedController">
 	</bean>
@@ -72,9 +30,123 @@
 		</property>
 		<property name="dao">
 			<bean class="lv.webkursi.mtest.lab02.dao.DummyDao"/>
-		</property>		
+		</property>
+	</bean>
+	
+	<bean id="dbInitController"
+		class="lv.webkursi.mtest.lab02.mvc.DBInitController">
+				<property name="dao" ref="commonDao"/>
+	</bean>
+	
+	<bean id="commonDao" class="lv.webkursi.mtest.lab02.dao.DaoFactory">
+ 		<property name="sessionFactory" ref="sessionFactory"/> 
+		<property name="clazz" value="lv.webkursi.mtest.lab02.domain.Person"/>
+	</bean>
+	
+	
+	
+	
+	
+		<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://localhost/portaledu"/>
+		<property name="username" value="root"/>
+		<property name="password" value="root"/>
 	</bean>
 
+
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="mappingResources">
+			<list>
+				<value>
+					/WEB-INF/classes/lv/webkursi/mtest/domain/QuestionType.hbm.xml</value>
+				<value>
+					/WEB-INF/classes/lv/webkursi/mtest/domain/Person.hbm.xml</value>
+				<value>
+					/WEB-INF/classes/lv/webkursi/mtest/domain/ContentItem.hbm.xml</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">create</prop>
+
+				<!--<prop key="hibernate.generate_statistics">true</prop>-->
+			</props>
+		</property>
+		<!--
+		<property name="eventListeners">
+			<map>
+				<entry key="merge">
+					<bean class="org.springframework.orm.hibernate3.support.IdTransferringMergeEventListener"/>
+				</entry>
+			</map>
+		</property>
+			-->
+	</bean>
+
+	
+<!--	
+	
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName">
+			<value>com.mysql.jdbc.Driver</value>
+		</property>
+		<property name="url">
+			<value>jdbc:mysql://localhost/portaledu</value>
+		</property>
+		<property name="username">
+			<value>root</value>
+		</property>
+		<property name="password">
+			<value>root</value>
+		</property>
+	</bean>
+	
+	<bean id="exampleHibernateProperties"
+		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="properties">
+			<props>
+				<prop key="hibernate.hbm2ddl.auto">create</prop>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="cache.provider_class">
+					org.hibernate.cache.NoCacheProvider</prop>
+				<prop key="current_session_context_class">thread</prop>
+				
+				
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="exampleSessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref local="dataSource"/>
+		</property>
+		<property name="hibernateProperties">
+			<ref bean="exampleHibernateProperties"/>
+		</property>
+		
+		<property name="mappingResources">
+			<list>
+				<value>
+					/WEB-INF/classes/lv/webkursi/mtest/domain/QuestionType.hbm.xml</value>
+				<value>
+					/WEB-INF/classes/lv/webkursi/mtest/domain/Person.hbm.xml</value>
+				<value>
+					/WEB-INF/classes/lv/webkursi/mtest/domain/ContentItem.hbm.xml</value>
+			</list>
+		</property>
+		
+	</bean>
+-->
+	
+		
 	<bean id="urlMapping"
 		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		
@@ -88,31 +160,15 @@
 			<props>
 				<prop key="/welcome.do">welcomeController</prop>
 				<prop key="/user_new.do">userSimpleController</prop>
+				<prop key="/dbinit.do">dbInitController</prop>
 			</props>
 		</property>
 	</bean>
-	
-	<!--
-	<bean id="serviceFactory" class="lv.webkursi.mtest.core.mvc.ServiceFactory">
-	</bean>
-	
-	<bean id="userService" class="lv.webkursi.mtest.core.data.UserService">
-		<property name="model" ref="model"/>
-	</bean>
-	
-	<bean id="model" class="lv.webkursi.mtest.core.data.DBModelFactory">
-	</bean>
-	
-	<bean id="userSettings" class="lv.webkursi.mtest.core.scopes.UserSettings"
-		scope="session">
-		<aop:scoped-proxy/>
-	</bean>
-		-->
 	
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.ResourceBundleViewResolver">
 		<property name="basename" value="views-portaledu"/>
 		<property name="defaultParentView" value="modelView"/>
 	</bean>
-
+	
 </beans>

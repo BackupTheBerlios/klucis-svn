@@ -47,7 +47,6 @@ public class QuestionType implements JsonSerializable {
 			boolean result = true; 
 			QuestionType qt = (QuestionType)o;
 			result &= instruction.equals(qt.instruction);
-			result &= Utils.equalId(qt.id, id); 			
 			return result;
 		}
 	}
@@ -72,17 +71,5 @@ public class QuestionType implements JsonSerializable {
 	public String toString() {
 		return "{\"QuestionType\":{"
 		+ Utils.jsonParamList(getParamList(), getValueList()) + "}}";
-
-		
-		/*
-		StringBuffer result = new StringBuffer();
-		result.append("{\"QuestionType\":{");
-		result.append("\"instruction\":\"");
-		result.append(instruction);
-		result.append("\"},{\"id\":\"");
-		result.append(id);
-		result.append("\"}}");
-		return result.toString();
-		*/
 	}
 }
