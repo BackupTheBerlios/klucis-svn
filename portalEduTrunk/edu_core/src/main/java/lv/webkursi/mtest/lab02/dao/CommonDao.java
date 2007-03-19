@@ -113,6 +113,14 @@ public class CommonDao extends HibernateDaoSupport implements ICommonDao {
 						id);
 		return (Module) list.get(0);
 	}
+	
+	public Person getPersonByLogin(String login) {
+		List list = getHibernateTemplate().find("from Person as p where p.login=?", login);
+		if (list.size() == 0) {
+			return null;
+		}
+		return (Person) list.get(0);
+	}
 
 	public static class CallbackQuestionWithVariants implements
 			HibernateCallback {

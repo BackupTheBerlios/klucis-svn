@@ -9,5 +9,6 @@
 <a href="/eduDemo/mtest/assignment/list">Manas sagataves</a> |
 <a href="/eduDemo/mtest/assignment/listall">Visas sagataves</a>
 <c:if test="${user.login == 'admin'}">
-| <a href="/eduDemo/mtest/user/listall">Visi lietotaaji</a>
+<br /><a href="/eduDemo/mtest/user/listall">Lietotaaji</a> |
+<a href="/eduDemo/mtest/questiontype/listall">Jautaajumu tipi</a>
 </c:if>
