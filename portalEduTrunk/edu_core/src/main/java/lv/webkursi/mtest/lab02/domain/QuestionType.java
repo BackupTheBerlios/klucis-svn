@@ -12,13 +12,23 @@ package lv.webkursi.mtest.lab02.domain;
 public class QuestionType implements JsonSerializable {
 
 	protected Long id;
+	
+	/**
+	 * A short, unique label for the question type (e.g. "Select 1 of N"). 
+	 */
+	protected String label;
 
+	/**
+	 * An explanation how to answer the question type (e.g. 
+	 * "Select one correct answer"
+	 */
 	protected String instruction;
 	
 	public QuestionType() {		
 	}
 	
-	public QuestionType(String instruction) {
+	public QuestionType(String label, String instruction) {
+		this.label = label;
 		this.instruction = instruction;
 	}
 
@@ -38,30 +48,34 @@ public class QuestionType implements JsonSerializable {
 		this.instruction = instruction;
 	}
 	
+	public String getLabel() {
+		return label;
+	}
+
+	public void setLabel(String label) {
+		this.label = label;
+	}
+
 	@Override
 	public boolean equals(Object o) {
-		if (!(o instanceof QuestionType)) {
-			return false;
-		}
-		else {
-			boolean result = true; 
+		if (o instanceof QuestionType) {
 			QuestionType qt = (QuestionType)o;
-			result &= instruction.equals(qt.instruction);
-			return result;
+			return qt.instruction.equals(instruction) && qt.label.equals(label);
 		}
+		return false;
 	}
 	
 	@Override
 	public int hashCode() {
-		return instruction.hashCode();
+		return instruction.hashCode() ^ label.hashCode();
 	}
 
 	public String[] getParamList() {
-		return new String[] { "id", "instruction" };
+		return new String[] { "id", "label", "instruction" };
 	}
 
 	public Object[] getValueList() {
-		return new Object[] { id, instruction };
+		return new Object[] { id, label, instruction };
 	}	
 	
 	/**

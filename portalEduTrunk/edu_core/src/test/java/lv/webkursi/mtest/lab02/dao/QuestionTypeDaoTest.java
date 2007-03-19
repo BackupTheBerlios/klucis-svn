@@ -41,22 +41,22 @@ public class QuestionTypeDaoTest {
 
 		@Override
 		public Object getDynamicObjectA() {
-			return new QuestionType("Instruction A");
+			return new QuestionType("LabelA", "Instruction A");
 		}
 
 		@Override
 		public Object getDynamicObjectB() {
-			return new QuestionType("Instruction B");
+			return new QuestionType("LabelB", "Instruction B");
 		}
 
 		@Override
 		public Object getDynamicObjectC() {
-			return new QuestionType("Instruction C");
+			return new QuestionType("LabelC", "Instruction C");
 		}
 
 		@Override
 		public Object getDynamicObjectD() {
-			return new QuestionType("Instruction D");
+			return new QuestionType("LabelD", "Instruction D");
 		}
 	}
 
@@ -70,7 +70,7 @@ public class QuestionTypeDaoTest {
 		@SuppressWarnings("unchecked")
 		@Test
 		public void updatingInstruction() {
-			QuestionType qt0 = new QuestionType("Instr0");
+			QuestionType qt0 = new QuestionType("Label0", "Instr0");
 			long id0 = dao.saveOrUpdate(qt0);
 
 			QuestionType qt1 = (QuestionType) dao.get(id0);
@@ -110,7 +110,7 @@ public class QuestionTypeDaoTest {
 			QuestionType qt1 = (QuestionType) dao.get(id);
 			assertEquals(255, qt1.getInstruction().length());
 			try {
-				QuestionType qt2 = new QuestionType(s255 + ".");
+				QuestionType qt2 = new QuestionType("unique", s255 + ".");
 				dao.saveOrUpdate(qt2);
 				fail("Should fail for too long instructions");
 			} catch (Exception expected) {
@@ -124,6 +124,7 @@ public class QuestionTypeDaoTest {
 					+ s16 + s16 + s16 + s16 + s16 + s16;
 			QuestionType questionType = new QuestionType();
 			questionType.setInstruction(s240);
+			questionType.setLabel("unique1");
 			long id = dao.saveOrUpdate(questionType);
 			QuestionType qt1 = (QuestionType) dao.get(id);
 			assertEquals(s240, qt1.getInstruction());

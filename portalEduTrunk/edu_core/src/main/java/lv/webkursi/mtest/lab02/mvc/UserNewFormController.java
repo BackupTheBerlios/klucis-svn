@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import lv.webkursi.mtest.lab02.dao.ICommonDao;
-import lv.webkursi.mtest.lab02.data.UserForm;
+import lv.webkursi.mtest.lab02.data.PersonForm;
 import lv.webkursi.mtest.lab02.domain.Person;
 
 import org.apache.commons.logging.Log;
@@ -19,7 +19,7 @@ public class UserNewFormController extends AbstractFormController {
 	protected ICommonDao dao;
 
 	public UserNewFormController() {
-		setCommandClass(UserForm.class);
+		setCommandClass(PersonForm.class);
 	}
 
 	protected ModelAndView showForm(HttpServletRequest request,
@@ -30,7 +30,7 @@ public class UserNewFormController extends AbstractFormController {
 
 		ModelAndView result = new ModelAndView("newUser");
 		result.addAllObjects(errors.getModel());
-		result.addObject("command", new UserForm());
+		result.addObject("command", new PersonForm());
 
 		return result;
 	}
@@ -41,7 +41,7 @@ public class UserNewFormController extends AbstractFormController {
 		String pageSetName = request.getServletPath();
 		log.info("FORM SUBMIT FOR PAGESET " + pageSetName);
 
-		UserForm userForm = (UserForm) command;
+		PersonForm userForm = (PersonForm) command;
 		String success = null;
 		System.err.println("AA");
 		if (!errors.hasErrors()) {
@@ -65,7 +65,7 @@ public class UserNewFormController extends AbstractFormController {
 
 		ModelAndView result = new ModelAndView("newUser");
 		result.addAllObjects(errors.getModel());		
-		result.addObject("command", new UserForm());
+		result.addObject("command", new PersonForm());
 		if (success != null) {
 			result.addObject("success", success);
 		}

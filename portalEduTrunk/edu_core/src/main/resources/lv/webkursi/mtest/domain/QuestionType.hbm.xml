@@ -12,6 +12,9 @@
 			<generator class="native">
 			</generator>
 		</id>
+
+		<property name="label" type="string" update="true" insert="true"
+			column="LABEL" length="20" not-null="true" unique="true"/>
 		
 		<property name="instruction" type="string" update="true" insert="true"
 			column="INSTRUCTION" length="255" not-null="true"/>

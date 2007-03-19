@@ -9,20 +9,20 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-public class UserValidator implements Validator {
+public class PersonValidator implements Validator {
 
 	private static final String EMAIL_REGEXP = "^[a-z0-9]+([_\\.-][a-z0-9]+)*@([a-z0-9]+([\\.-][a-z0-9]+)*)+\\.[a-z]{2,}$";
 
 	private static final String USERNAME_REGEXP = "^[a-zA-Z][a-zA-Z0-9]*$";
 
-	private Log log = LogFactory.getLog(UserValidator.class);
+	private Log log = LogFactory.getLog(PersonValidator.class);
 
 	public boolean supports(Class clazz) {
-		return clazz.equals(UserForm.class);
+		return clazz.equals(PersonForm.class);
 	}
 
 	public void validate(Object command, Errors errors) {
-		UserForm userForm = (UserForm) command;
+		PersonForm userForm = (PersonForm) command;
 
 		ValidationUtils.rejectIfEmpty(errors, "login", "required.login",
 				"Login is required");

@@ -1,6 +1,6 @@
 package lv.webkursi.mtest.lab02.data;
 
-public class UserForm {
+public class PersonForm {
 	private String login;
 
 	private String firstName;
@@ -13,7 +13,7 @@ public class UserForm {
 
 	private String password2;
 
-	public UserForm() {
+	public PersonForm() {
 		login = "";
 		firstName = "";
 		lastName = "";
