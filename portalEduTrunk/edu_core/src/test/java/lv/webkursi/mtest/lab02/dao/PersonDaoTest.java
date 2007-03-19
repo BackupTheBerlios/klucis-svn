@@ -1,4 +1,4 @@
-package lv.webkursi.mtest.dao;
+package lv.webkursi.mtest.lab02.dao;
 
 import lv.webkursi.mtest.lab02.dao.CommonDao;
 import lv.webkursi.mtest.lab02.dao.DaoFactory;
