@@ -13,12 +13,12 @@ import org.springframework.validation.BindException;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractFormController;
 
-public class FixedSimpleFormController extends AbstractFormController {
-	private Log log = LogFactory.getLog(FixedSimpleFormController.class);
+public class UserNewFormController extends AbstractFormController {
+	private Log log = LogFactory.getLog(UserNewFormController.class);
 	
 	protected ICommonDao dao;
 
-	public FixedSimpleFormController() {
+	public UserNewFormController() {
 		setCommandClass(UserForm.class);
 	}
 
@@ -43,7 +43,10 @@ public class FixedSimpleFormController extends AbstractFormController {
 
 		UserForm userForm = (UserForm) command;
 		String success = null;
+		System.err.println("AA");
 		if (!errors.hasErrors()) {
+			System.err.println("BB");
+
 			Person person = new Person();
 			person.setEmail(userForm.getEmail());
 			person.setFirstName(userForm.getFirstName());
@@ -53,7 +56,13 @@ public class FixedSimpleFormController extends AbstractFormController {
 			dao.saveOrUpdate(person);
 			success = "User successfully registered";
 		}
-				
+		else {
+		System.err.println("CC");
+		System.err.println("errorCount = " + errors.getErrorCount());
+		System.err.println("errorMessage = " + errors.getMessage());
+		}
+		System.err.println("DD");
+
 		ModelAndView result = new ModelAndView("newUser");
 		result.addAllObjects(errors.getModel());		
 		result.addObject("command", new UserForm());

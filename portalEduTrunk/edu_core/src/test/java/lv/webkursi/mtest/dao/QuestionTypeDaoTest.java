@@ -6,7 +6,6 @@ import static org.junit.Assert.fail;
 import java.util.List;
 
 import lv.webkursi.mtest.lab02.dao.CommonDao;
-import lv.webkursi.mtest.lab02.dao.DaoFactory;
 import lv.webkursi.mtest.lab02.dao.ICommonDao;
 import lv.webkursi.mtest.lab02.domain.QuestionType;
 
@@ -22,17 +21,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 		QuestionTypeDaoTest.LocalTests.class })
 public class QuestionTypeDaoTest {
 
-	private static DaoFactory factory;
-	private static CommonDao dao;	
-	static {
-		factory = new DaoFactory(QuestionType.class);
-		try {
-			dao = (CommonDao) factory.getObject();
-		}
-		catch (Exception e) {
-			e.printStackTrace(System.err);
-		}
-	}
+	private static CommonDao dao = DaoUtils.getDao(QuestionType.class);
 
 	public static class CommonDaoTest extends AbstractDaoTest {
 

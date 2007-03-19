@@ -23,39 +23,39 @@
 		class="lv.webkursi.mtest.lab02.mvc.FixedController">
 	</bean>
 	
-	<bean id="userSimpleController"
-		class="lv.webkursi.mtest.lab02.mvc.FixedSimpleFormController">
+	<bean id="userNewFormController"
+		class="lv.webkursi.mtest.lab02.mvc.UserNewFormController">
 		<property name="validator">
 			<bean class="lv.webkursi.mtest.lab02.data.UserValidator"/>
 		</property>
-		<property name="dao">
-			<bean class="lv.webkursi.mtest.lab02.dao.DummyDao"/>
-		</property>
+		<property name="dao" ref="personDao"/>
 	</bean>
 	
 	<bean id="dbInitController"
 		class="lv.webkursi.mtest.lab02.mvc.DBInitController">
-				<property name="dao" ref="commonDao"/>
+		<property name="dao" ref="personDao"/>
 	</bean>
 	
-	<bean id="commonDao" class="lv.webkursi.mtest.lab02.dao.DaoFactory">
- 		<property name="sessionFactory" ref="sessionFactory"/> 
+	<bean id="userListAllController"
+		class="lv.webkursi.mtest.lab02.mvc.ListAllController">
+		<property name="dao" ref="personDao"/>
+	</bean>
+	
+	<bean id="personDao" class="lv.webkursi.mtest.lab02.dao.DaoFactory">
+		<property name="sessionFactory" ref="sessionFactory"/>
 		<property name="clazz" value="lv.webkursi.mtest.lab02.domain.Person"/>
 	</bean>
 	
-	
-	
-	
-	
-		<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
 		<property name="url" value="jdbc:mysql://localhost/portaledu"/>
 		<property name="username" value="root"/>
 		<property name="password" value="root"/>
 	</bean>
-
-
-	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+	
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
 		<property name="mappingResources">
 			<list>
@@ -69,84 +69,83 @@
 		</property>
 		<property name="hibernateProperties">
 			<props>
-				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.hbm2ddl.auto">create</prop>
-
+				
 				<!--<prop key="hibernate.generate_statistics">true</prop>-->
 			</props>
 		</property>
 		<!--
 		<property name="eventListeners">
-			<map>
-				<entry key="merge">
-					<bean class="org.springframework.orm.hibernate3.support.IdTransferringMergeEventListener"/>
-				</entry>
-			</map>
+		<map>
+		<entry key="merge">
+		<bean class="org.springframework.orm.hibernate3.support.IdTransferringMergeEventListener"/>
+		</entry>
+		</map>
 		</property>
-			-->
+		-->
 	</bean>
-
 	
-<!--	
+	<!--	
 	
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
-		destroy-method="close">
-		<property name="driverClassName">
-			<value>com.mysql.jdbc.Driver</value>
-		</property>
-		<property name="url">
-			<value>jdbc:mysql://localhost/portaledu</value>
-		</property>
-		<property name="username">
-			<value>root</value>
-		</property>
-		<property name="password">
-			<value>root</value>
-		</property>
+	destroy-method="close">
+	<property name="driverClassName">
+	<value>com.mysql.jdbc.Driver</value>
+	</property>
+	<property name="url">
+	<value>jdbc:mysql://localhost/portaledu</value>
+	</property>
+	<property name="username">
+	<value>root</value>
+	</property>
+	<property name="password">
+	<value>root</value>
+	</property>
 	</bean>
 	
 	<bean id="exampleHibernateProperties"
-		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
-		<property name="properties">
-			<props>
-				<prop key="hibernate.hbm2ddl.auto">create</prop>
-				<prop key="hibernate.dialect">
-					org.hibernate.dialect.MySQLDialect</prop>
-				<prop key="hibernate.show_sql">true</prop>
-				<prop key="cache.provider_class">
-					org.hibernate.cache.NoCacheProvider</prop>
-				<prop key="current_session_context_class">thread</prop>
-				
-				
-			</props>
-		</property>
+	class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+	<property name="properties">
+	<props>
+	<prop key="hibernate.hbm2ddl.auto">create</prop>
+	<prop key="hibernate.dialect">
+	org.hibernate.dialect.MySQLDialect</prop>
+	<prop key="hibernate.show_sql">true</prop>
+	<prop key="cache.provider_class">
+	org.hibernate.cache.NoCacheProvider</prop>
+	<prop key="current_session_context_class">thread</prop>
+	
+	
+	</props>
+	</property>
 	</bean>
 	
 	<bean id="exampleSessionFactory"
-		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
-		<property name="dataSource">
-			<ref local="dataSource"/>
-		</property>
-		<property name="hibernateProperties">
-			<ref bean="exampleHibernateProperties"/>
-		</property>
-		
-		<property name="mappingResources">
-			<list>
-				<value>
-					/WEB-INF/classes/lv/webkursi/mtest/domain/QuestionType.hbm.xml</value>
-				<value>
-					/WEB-INF/classes/lv/webkursi/mtest/domain/Person.hbm.xml</value>
-				<value>
-					/WEB-INF/classes/lv/webkursi/mtest/domain/ContentItem.hbm.xml</value>
-			</list>
-		</property>
-		
-	</bean>
--->
+	class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+	<property name="dataSource">
+	<ref local="dataSource"/>
+	</property>
+	<property name="hibernateProperties">
+	<ref bean="exampleHibernateProperties"/>
+	</property>
 	
-		
+	<property name="mappingResources">
+	<list>
+	<value>
+	/WEB-INF/classes/lv/webkursi/mtest/domain/QuestionType.hbm.xml</value>
+	<value>
+	/WEB-INF/classes/lv/webkursi/mtest/domain/Person.hbm.xml</value>
+	<value>
+	/WEB-INF/classes/lv/webkursi/mtest/domain/ContentItem.hbm.xml</value>
+	</list>
+	</property>
+	
+	</bean>
+	-->
+	
 	<bean id="urlMapping"
 		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		
@@ -158,9 +157,10 @@
 		
 		<property name="mappings">
 			<props>
-				<prop key="/welcome.do">welcomeController</prop>
-				<prop key="/user_new.do">userSimpleController</prop>
-				<prop key="/dbinit.do">dbInitController</prop>
+				<prop key="/welcome">welcomeController</prop>
+				<prop key="/user/new">userNewFormController</prop>
+				<prop key="/dbinit">dbInitController</prop>
+				<prop key="/user/listall">userListAllController</prop>
 			</props>
 		</property>
 	</bean>

@@ -6,6 +6,7 @@ import lv.webkursi.mtest.lab02.dao.CommonDao;
 import lv.webkursi.mtest.lab02.dao.DaoFactory;
 import lv.webkursi.mtest.lab02.dao.ICommonDao;
 import lv.webkursi.mtest.lab02.domain.Module;
+import lv.webkursi.mtest.lab02.domain.Person;
 import lv.webkursi.mtest.lab02.domain.Question;
 import lv.webkursi.mtest.lab02.domain.QuestionType;
 
@@ -21,17 +22,7 @@ import org.junit.runners.Suite;
 		ModuleDaoTest.LocalTests.class})
 public class ModuleDaoTest {
 
-	private static DaoFactory factory;
-	private static CommonDao dao;	
-	static {
-		factory = new DaoFactory(Module.class);
-		try {
-			dao = (CommonDao) factory.getObject();
-		}
-		catch (Exception e) {
-			e.printStackTrace(System.err);
-		}
-	}
+	private static CommonDao dao = DaoUtils.getDao(Module.class);
 
 	public static class CommonDaoTest extends AbstractDaoTest {
 

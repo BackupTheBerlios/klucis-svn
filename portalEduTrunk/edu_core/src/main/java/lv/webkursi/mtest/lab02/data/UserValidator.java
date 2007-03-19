@@ -24,16 +24,16 @@ public class UserValidator implements Validator {
 	public void validate(Object command, Errors errors) {
 		UserForm userForm = (UserForm) command;
 
-		ValidationUtils.rejectIfEmpty(errors, "userName", "required.login",
+		ValidationUtils.rejectIfEmpty(errors, "login", "required.login",
 				"Login is required");
 		if (userForm.getLogin().length() < 2
 				|| userForm.getLogin().length() > 12) {
-			errors.rejectValue("userName", "login.invalid.length",
+			errors.rejectValue("login", "login.invalid.length",
 					"Login should be between 2 and 12 characters");
 		}
 		if (!Pattern.matches(USERNAME_REGEXP, userForm.getLogin())) {
 			errors
-					.rejectValue("userName", "userName.invalid.chars",
+					.rejectValue("login", "login.invalid.chars",
 							"Login contains only English letters and digits and starts with a letter");
 		}
 

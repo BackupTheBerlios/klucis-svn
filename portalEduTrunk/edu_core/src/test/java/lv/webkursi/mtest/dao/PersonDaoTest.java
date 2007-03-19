@@ -14,17 +14,7 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses(value = { PersonDaoTest.CommonDaoTest.class })
 public class PersonDaoTest {
 
-	private static DaoFactory factory;
-	private static CommonDao dao;	
-	static {
-		factory = new DaoFactory(Person.class);
-		try {
-			dao = (CommonDao) factory.getObject();
-		}
-		catch (Exception e) {
-			e.printStackTrace(System.err);
-		}
-	}
+	private static CommonDao dao = DaoUtils.getDao(Person.class);
 
 	public static class CommonDaoTest extends AbstractDaoTest {
 

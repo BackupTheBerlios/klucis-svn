@@ -4,6 +4,7 @@ import lv.webkursi.mtest.lab02.dao.CommonDao;
 import lv.webkursi.mtest.lab02.dao.DaoFactory;
 import lv.webkursi.mtest.lab02.dao.ICommonDao;
 import lv.webkursi.mtest.lab02.domain.Image;
+import lv.webkursi.mtest.lab02.domain.Person;
 
 import org.junit.After;
 import org.junit.Before;
@@ -15,19 +16,7 @@ import org.junit.runners.Suite;
 		})
 public class ImageDaoTest {
 
-	private static DaoFactory factory;
-	private static CommonDao dao;	
-	static {
-		factory = new DaoFactory(Image.class);
-		try {
-			dao = (CommonDao) factory.getObject();
-		}
-		catch (Exception e) {
-			e.printStackTrace(System.err);
-		}
-	}
-	
-	
+	private static CommonDao dao = DaoUtils.getDao(Image.class);
 
 	public static class CommonDaoTest extends AbstractDaoTest {
 

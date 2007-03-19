@@ -1,20 +1,20 @@
 package lv.webkursi.mtest.lab02.mvc;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import lv.webkursi.mtest.lab02.dao.ICommonDao;
-import lv.webkursi.mtest.lab02.domain.Person;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
-public class DBInitController implements Controller {
+public class ListAllController implements Controller {
 
-	private Log log = LogFactory.getLog(DBInitController.class);
-	
+	Log log = LogFactory.getLog(ListAllController.class);
 	protected ICommonDao dao;
 
 	public ICommonDao getDao() {
@@ -25,16 +25,11 @@ public class DBInitController implements Controller {
 		this.dao = dao;
 	}
 
-	private void initModel() {
-		Person admin = new Person("AdminFirstName","AdminLastName", "admin", "admin@admin.com");
-		admin.setPassword("admin");
-		dao.saveOrUpdate(admin);		
-	}
-
 	public ModelAndView handleRequest(HttpServletRequest request,
-			HttpServletResponse response) {
-		ModelAndView result = new ModelAndView("dbinit");
-		initModel();
+			HttpServletResponse response) throws Exception {		
+		ModelAndView result = new ModelAndView("listall");
+		List list = dao.getAll();
+		result.addObject("list",list);
 		return result;
 	}
 

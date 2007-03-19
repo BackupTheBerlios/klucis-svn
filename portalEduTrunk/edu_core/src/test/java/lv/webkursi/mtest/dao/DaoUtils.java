@@ -2,6 +2,10 @@ package lv.webkursi.mtest.dao;
 
 import java.io.File;
 
+import lv.webkursi.mtest.lab02.dao.CommonDao;
+import lv.webkursi.mtest.lab02.dao.DaoFactory;
+import lv.webkursi.mtest.lab02.domain.Person;
+
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
@@ -10,34 +14,45 @@ import org.hibernate.dialect.MySQLDialect;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
 public class DaoUtils {
-	
-	
+
 	private static String implementation = "Hsqldb";
-//	private static String implementation = "Mysql";
-	
+
+	// private static String implementation = "Mysql";
+
 	public static String getImplementation() {
 		return implementation;
 	}
-	
+
 	public static SessionFactory getSessionFactory() {
 		if (implementation.equals("Hsqldb")) {
 			return getHsqldbSessionFactory();
-		}
-		else {
+		} else {
 			return getMysqlSessionFactory();
 		}
 	}
-	
+
+	public static CommonDao getDao(Class clazz) {
+		CommonDao dao = null;
+		DaoFactory factory = new DaoFactory(clazz);
+		factory.setSessionFactory(getSessionFactory());
+		try {
+			dao = (CommonDao) factory.getObject();
+		} catch (Exception e) {
+			e.printStackTrace(System.err);
+			throw new RuntimeException(e);
+		}
+		return dao;
+	}
+
 	public static HibernateTemplate getTemplate() {
 		return new HibernateTemplate(getSessionFactory());
 	}
-	
+
 	private static SessionFactory getHsqldbSessionFactory() {
 		Configuration configuration = new Configuration();
 
 		configuration.setProperty(Environment.DRIVER, "org.hsqldb.jdbcDriver");
-		configuration.setProperty(Environment.URL,
-				"jdbc:hsqldb:mem:portaledu");
+		configuration.setProperty(Environment.URL, "jdbc:hsqldb:mem:portaledu");
 		configuration.setProperty(Environment.DIALECT, HSQLDialect.class
 				.getName());
 		configuration.setProperty(Environment.USER, "sa");
@@ -50,7 +65,6 @@ public class DaoUtils {
 		return sessionFactory;
 	}
 
-	
 	private static SessionFactory getMysqlSessionFactory() {
 		Configuration configuration = new Configuration();
 

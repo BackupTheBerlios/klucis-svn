@@ -1,11 +1,19 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <title><fmt:message key="${htitle}"/></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="/eduDemo/stylesheets/style.css" type="text/css"  />
+<script type="text/javascript">
+function verify() {
+    msg = "Do you want to delete?";
+    }
+</script>
+    
+    
   </head>
   <body>
     <div id="indent"><a href="/eduDemo">

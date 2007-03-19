@@ -5,7 +5,7 @@
 --%>
 
 <ul>
-<li><a href="mtest/welcome.do">mtest</a></li>
+<li><a href="mtest/welcome">mtest</a></li>
 </ul>
 <hr/>
 
