@@ -31,15 +31,15 @@ war.classes.dir=${web.dir}/WEB-INF/classes
 
 # For JAR projects - the lib directory and the classes directory
 # jar.lib.dir=lib
-jar.lib.dir=${portal.core.dir}/../edu_demo/webapp/WEB-INF/lib
+jar.lib.dir=${edu.core.dir}/../edu_demo/webapp/WEB-INF/lib
 jar.classes.dir=${target.dir}/classes
 jar.test.classes.dir=${target.dir}/test-classes
 
 # JAR files, which should not end up in the WAR-file, but are used for compilation only
 compile-lib.dir=compile-lib
 
-# The relative path from portalTest to portalCore
-portal.core.dir=../edu_core
+# The relative path from edu_demo to edu_core
+edu.core.dir=../edu_core
 
 # distribution directory under each project, where the compiled artifact end up
 dist.dir=target

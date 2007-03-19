@@ -141,6 +141,7 @@ public class PersonDaoTest {
 		public void getPersonByLogin() {
 			Person p2 = dao.getPersonByLogin("aLogin");
 			assertEquals(p0, p2);
+			assertEquals("aPassword", p2.getPassword());
 			assertNotSame(p0, p2);
 		}
 

@@ -3,7 +3,7 @@ package lv.webkursi.mtest.lab02.domain;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Person {
+public class Person implements JsonSerializable {
 	protected Long id; 
 	
 	protected String login;
@@ -154,4 +154,19 @@ public class Person {
 	public int hashCode() {
 		return email.hashCode() ^ firstName.hashCode() ^ lastName.hashCode() ^ login.hashCode();
 	}	
+	
+	@Override
+	public String toString() {
+		return "{\"Person\":{"
+		+ Utils.jsonParamList(getParamList(), getValueList()) + "}}";
+
+	}
+
+	public String[] getParamList() {
+		return new String[] { "id", "firstName", "lastName", "login", "email" };
+	}
+
+	public Object[] getValueList() {
+		return new Object[] { id, firstName, lastName, login, email };
+	}
 }

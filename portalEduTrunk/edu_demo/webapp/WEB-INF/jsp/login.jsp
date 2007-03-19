@@ -1,16 +1,15 @@
 <div class="box_content">
-<form action="/eduDemo/mtest/user/new" method="post">
+<form action="/eduDemo/mtest/user/login" method="POST">
   
 <p><label for="login">Login</label></br>
-<spring:bind path="command.login"/>
-<input id="login" name="${status.expression}" size="30" type="text" value='<c:out value="${status.value}"/>' />
-<font color="#FF0000">${status.errorMessage}</font>
+<input id="login" name="login" size="30" type="text"/>
 </p>
 
-<p><label for="firstName">Vards</label></br>
-<spring:bind path="command.firstName"/>
-<input id="firstName" name="${status.expression}" size="30" type="text" value='<c:out value="${status.value}"/>' />
-<font color="#FF0000">${status.errorMessage}</font>
+<p><label for="password">Password</label></br>
+<input id="password" name="password" type="password"/>
 </p>
+
+<p><input type="submit" value="Login"/>
+<font color="#FF0000">${error}</font></p>
 
 </div><!--box_content-->

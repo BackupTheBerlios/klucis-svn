@@ -16,9 +16,6 @@
 		<property name="basename" value="messages"/>
 	</bean>
 	
-	<bean id="loginController" class="lv.webkursi.mtest.core.mvc.LoginController">
-	</bean>
-	
 	<bean id="welcomeController"
 		class="lv.webkursi.mtest.lab02.mvc.FixedController">
 	</bean>
@@ -26,11 +23,16 @@
 	<bean id="userNewFormController"
 		class="lv.webkursi.mtest.lab02.mvc.UserNewFormController">
 		<property name="validator">
-			<bean class="lv.webkursi.mtest.lab02.data.UserValidator"/>
+			<bean class="lv.webkursi.mtest.lab02.data.PersonValidator"/>
 		</property>
 		<property name="dao" ref="personDao"/>
 	</bean>
-	
+
+	<bean id="loginController"
+		class="lv.webkursi.mtest.lab02.mvc.LoginController">
+		<property name="dao" ref="personDao"/>
+	</bean>
+		
 	<bean id="dbInitController"
 		class="lv.webkursi.mtest.lab02.mvc.DBInitController">
 		<property name="dao" ref="personDao"/>
@@ -159,6 +161,7 @@
 			<props>
 				<prop key="/welcome">welcomeController</prop>
 				<prop key="/user/new">userNewFormController</prop>
+				<prop key="/user/login">loginController</prop>
 				<prop key="/dbinit">dbInitController</prop>
 				<prop key="/user/listall">userListAllController</prop>
 			</props>

@@ -16,7 +16,7 @@
 	
 	<filter>
 		<filter-name>CharsetFilter</filter-name>
-		<filter-class>lv.webkursi.mtest.mvc.util.CharsetFilter</filter-class>
+		<filter-class>lv.webkursi.mtest.core.mvc.util.CharsetFilter</filter-class>
 	</filter>
 	
 	<filter-mapping>

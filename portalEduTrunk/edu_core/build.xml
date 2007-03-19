@@ -1,6 +1,6 @@
 <?xml version = "1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE project SYSTEM "project.dtd"> 
-<project name="portalCore" basedir="." default="compile_core">
+<project name="eduCore" basedir="." default="compile_core">
   <property file="build.properties" />
 
   <property file="build.properties.default" />

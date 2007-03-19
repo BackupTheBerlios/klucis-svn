@@ -1,5 +1,4 @@
 <?xml version = "1.0" encoding="UTF-8" standalone="no"?>
-
 <project name="eduDemo" basedir="." default="war">
 	
 	<property file="build.properties"/>
@@ -93,9 +92,11 @@
 	
 	<target name="compile" description="Compiles the Java code"
 		depends="precompile">
-		<ant antfile="${portal.core.dir}/build.xml" dir="${portal.core.dir}"
+		<ant antfile="${edu.core.dir}/build.xml" dir="${edu.core.dir}"
+			target="clean"/>
+		<ant antfile="${edu.core.dir}/build.xml" dir="${edu.core.dir}"
 			target="jar"/>
-		<copy file="${portal.core.dir}/target/portalCore.jar"
+		<copy file="${edu.core.dir}/target/eduCore.jar"
 			todir="${war.lib.dir}"/>
 		
 		<javac srcdir="${src.dir}" destdir="${jar.classes.dir}"
@@ -158,9 +159,8 @@
 			<fileset dir="${jar.classes.dir}"/>
 		</copy>
 		<copy todir="${war.classes.dir}">
-			<fileset dir="${portal.core.dir}/src/main/resources" includes="**/*.hbm.xml"/>			
+		<fileset dir="${edu.core.dir}/src/main/resources" includes="**/*.hbm.xml"/>
 		</copy>
-		
 		<unzip src="${test.resources.dir}/selenium-core-0.8.2.zip"
 			dest="${web.dir}">
 		</unzip>
@@ -207,4 +207,3 @@
 	-->
 	
 </project>
-
