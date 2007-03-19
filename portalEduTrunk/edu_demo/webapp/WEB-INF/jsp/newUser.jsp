@@ -4,49 +4,52 @@
 
 <div class="box_content">
 <form action="/eduDemo/mtest/user/new" method="post">
-  
-<!--[form:user]-->
+
+<spring:nestedPath path="command">  
+<spring:bind path="login">
 <p><label for="login">Lietotaja vards</label></br>
-<spring:bind path="command.login"/>
 <input id="login" name="${status.expression}" size="30" type="text" value='<c:out value="${status.value}"/>' />
 <font color="#FF0000">${status.errorMessage}</font>
-</p>
+</p></spring:bind>
 
+<spring:bind path="firstName">
 <p><label for="firstName">Vards</label></br>
-<spring:bind path="command.firstName"/>
 <input id="firstName" name="${status.expression}" size="30" type="text" value='<c:out value="${status.value}"/>' />
 <font color="#FF0000">${status.errorMessage}</font>
-</p>
+</p></spring:bind>
 
+<spring:bind path="lastName">
 <p><label for="lastName">Uzvards</label></br>
-<spring:bind path="command.lastName"/>
 <input id="lastName" name="${status.expression}" size="30" type="text" value='<c:out value="${status.value}"/>' />
 <font color="#FF0000">${status.errorMessage}</font>
-</p>
+</p></spring:bind>
 
+<spring:bind path="email">
 <p><label for="email">Epasts</label></br>
-<spring:bind path="command.email"/>
 <input id="email" name="${status.expression}" size="30" type="text" value='<c:out value="${status.value}"/>' />
 <font color="#FF0000">${status.errorMessage}</font>
-</p>
+</p></spring:bind>
 
+<spring:bind path="password">
 <p><label for="password">Parole</label></br>
-<spring:bind path="command.password"/>
 <input id="password" name="${status.expression}" size="30" type="password" value="" />
 <font color="#FF0000">${status.errorMessage}</font>
-</p>
+</p></spring:bind>
 
+<spring:bind path="password2">
 <p><label for="password2">Parole veelreiz</label></br>
-<spring:bind path="command.password2"/>
 <input id="password2" name="${status.expression}" size="30" type="password" value="" />
 <font color="#FF0000">${status.errorMessage}</font>
-</p>
-<!--[eoform:user]-->
+</p></spring:bind>
+
+</spring:nestedPath>
+
 <input name="commit" type="submit" value="Izveidot" />
 </form>
-<c:if test="$success">
-<p>${success}</p>
-</c:if>
+
+<p><font color="#FF0000">${success}</font></p>
+
 
 <a href="/eduDemo/mtest/welcome">Atpakalj</a>
-</div><!--box_content-->
+
+</div>
