@@ -3,4 +3,4 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <p>Initialization done. 
-Return to the <a href="/eduDemo/portalEdu/mtest/welcome">start page</a>.</p>
+Return to the <a href="/eduDemo/mtest/welcome">start page</a>.</p>

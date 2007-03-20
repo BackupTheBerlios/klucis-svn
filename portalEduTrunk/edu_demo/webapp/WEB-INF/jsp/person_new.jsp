@@ -3,7 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <div class="box_content">
-<form action="/eduDemo/mtest/user/new" method="post">
+<form action="/eduDemo/mtest/person/new" method="post">
 
 <spring:nestedPath path="command">  
 <spring:bind path="login">

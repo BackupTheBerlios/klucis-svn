@@ -11,5 +11,5 @@
     <li>paarbaudi zinaashanas par konkreetu teemu</li>
   </ul>
   <p>Ierosinaajumiem <code>somebody</code> (at) <code>someplace.com</code></p>
-  <h1><a href="/eduDemo/mtest/user/new">Registreeties</a></h1>  
+  <h1><a href="/eduDemo/mtest/person/new">Registreeties</a></h1>  
 </div>

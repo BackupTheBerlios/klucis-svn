@@ -1,5 +1,5 @@
 <div class="box_content">
-<form action="/eduDemo/mtest/user/login" method="POST">
+<form action="/eduDemo/mtest/person/login" method="POST">
   
 <p><label for="login">Login</label></br>
 <input id="login" name="login" size="30" type="text"/>

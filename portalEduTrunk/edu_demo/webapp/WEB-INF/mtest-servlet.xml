@@ -20,32 +20,84 @@
 		class="lv.webkursi.mtest.lab02.mvc.FixedController">
 	</bean>
 	
-	<bean id="userNewFormController"
-		class="lv.webkursi.mtest.lab02.mvc.UserNewFormController">
-		<property name="validator">
-			<bean class="lv.webkursi.mtest.lab02.data.PersonValidator"/>
-		</property>
-		<property name="dao" ref="personDao"/>
-	</bean>
-
 	<bean id="loginController"
 		class="lv.webkursi.mtest.lab02.mvc.LoginController">
 		<property name="dao" ref="personDao"/>
 	</bean>
-		
+	
+	<bean id="logoutController"
+		class="lv.webkursi.mtest.lab02.mvc.LogoutController">
+	</bean>
+	
 	<bean id="dbInitController"
 		class="lv.webkursi.mtest.lab02.mvc.DBInitController">
 		<property name="dao" ref="personDao"/>
 	</bean>
 	
-	<bean id="userListAllController"
-		class="lv.webkursi.mtest.lab02.mvc.ListAllController">
+	<bean id="personNewFormController"
+		class="lv.webkursi.mtest.lab02.mvc.PersonNewFormController">
+		<property name="validator">
+			<bean class="lv.webkursi.mtest.lab02.data.PersonValidator"/>
+		</property>
 		<property name="dao" ref="personDao"/>
 	</bean>
 	
+<!--
+		<bean id="personEditFormController"
+		class="lv.webkursi.mtest.lab02.mvc.PersonNewFormController">
+		<property name="validator">
+			<bean class="lv.webkursi.mtest.lab02.data.PersonValidator"/>
+		</property>
+		<property name="dao" ref="personDao"/>
+	</bean>
+-->	
+	
+	<bean id="personListAllController"
+		class="lv.webkursi.mtest.lab02.mvc.ListAllController">
+		<property name="dao" ref="personDao"/>
+		<property name="viewName"><value>person_listall</value></property>
+	</bean>
+
+	<bean id="personDeleteController"
+		class="lv.webkursi.mtest.lab02.mvc.DeleteController">
+		<property name="dao" ref="personDao"/>
+		<property name="viewName"><value>person_listall</value></property>
+	</bean>
+		
+	
+	<bean id="questionTypeNewFormController"
+		class="lv.webkursi.mtest.lab02.mvc.QuestionTypeNewFormController">
+		<property name="validator">
+			<bean class="lv.webkursi.mtest.lab02.data.QuestionTypeValidator"/>
+		</property>
+		<property name="dao" ref="questionTypeDao"/>
+	</bean>
+		
+	<bean id="questionTypeListAllController"
+		class="lv.webkursi.mtest.lab02.mvc.ListAllController">
+		<property name="dao" ref="questionTypeDao"/>
+		<property name="viewName"><value>questiontype_listall</value></property>
+	</bean>
+	
+	<bean id="questionTypeDeleteController"
+		class="lv.webkursi.mtest.lab02.mvc.DeleteController">
+		<property name="dao" ref="questionTypeDao"/>
+		<property name="viewName"><value>questiontype_listall</value></property>
+	</bean>
+	
+	
+
+	
+		
 	<bean id="personDao" class="lv.webkursi.mtest.lab02.dao.DaoFactory">
 		<property name="sessionFactory" ref="sessionFactory"/>
 		<property name="clazz" value="lv.webkursi.mtest.lab02.domain.Person"/>
+	</bean>
+	
+	<bean id="questionTypeDao" class="lv.webkursi.mtest.lab02.dao.DaoFactory">
+		<property name="sessionFactory" ref="sessionFactory"/>
+		<property name="clazz"
+			value="lv.webkursi.mtest.lab02.domain.QuestionType"/>
 	</bean>
 	
 	<bean id="dataSource"
@@ -75,19 +127,14 @@
 					org.hibernate.dialect.MySQLDialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.hbm2ddl.auto">create</prop>
+				<!-- 
+				<prop key="cache.provider_class">
+				org.hibernate.cache.NoCacheProvider</prop>
+				<prop key="current_session_context_class">thread</prop>
 				
-				<!--<prop key="hibernate.generate_statistics">true</prop>-->
+				-->
 			</props>
 		</property>
-		<!--
-		<property name="eventListeners">
-		<map>
-		<entry key="merge">
-		<bean class="org.springframework.orm.hibernate3.support.IdTransferringMergeEventListener"/>
-		</entry>
-		</map>
-		</property>
-		-->
 	</bean>
 	
 	<!--	
@@ -108,44 +155,6 @@
 	</property>
 	</bean>
 	
-	<bean id="exampleHibernateProperties"
-	class="org.springframework.beans.factory.config.PropertiesFactoryBean">
-	<property name="properties">
-	<props>
-	<prop key="hibernate.hbm2ddl.auto">create</prop>
-	<prop key="hibernate.dialect">
-	org.hibernate.dialect.MySQLDialect</prop>
-	<prop key="hibernate.show_sql">true</prop>
-	<prop key="cache.provider_class">
-	org.hibernate.cache.NoCacheProvider</prop>
-	<prop key="current_session_context_class">thread</prop>
-	
-	
-	</props>
-	</property>
-	</bean>
-	
-	<bean id="exampleSessionFactory"
-	class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
-	<property name="dataSource">
-	<ref local="dataSource"/>
-	</property>
-	<property name="hibernateProperties">
-	<ref bean="exampleHibernateProperties"/>
-	</property>
-	
-	<property name="mappingResources">
-	<list>
-	<value>
-	/WEB-INF/classes/lv/webkursi/mtest/domain/QuestionType.hbm.xml</value>
-	<value>
-	/WEB-INF/classes/lv/webkursi/mtest/domain/Person.hbm.xml</value>
-	<value>
-	/WEB-INF/classes/lv/webkursi/mtest/domain/ContentItem.hbm.xml</value>
-	</list>
-	</property>
-	
-	</bean>
 	-->
 	
 	<bean id="urlMapping"
@@ -160,10 +169,21 @@
 		<property name="mappings">
 			<props>
 				<prop key="/welcome">welcomeController</prop>
-				<prop key="/user/new">userNewFormController</prop>
-				<prop key="/user/login">loginController</prop>
 				<prop key="/dbinit">dbInitController</prop>
-				<prop key="/user/listall">userListAllController</prop>
+				<prop key="/person/login">loginController</prop>
+				<prop key="/person/logout">logoutController</prop>
+				<prop key="/person/new">personNewFormController</prop>
+				<prop key="/person/edit">personNewFormController</prop>
+				<prop key="/person/listall">personListAllController</prop>
+				<prop key="/person/delete">personDeleteController</prop>
+				<prop key="/questiontype/new">
+					questionTypeNewFormController</prop>
+				<prop key="/questiontype/edit">
+					questionTypeNewFormController</prop>
+				<prop key="/questiontype/listall">
+					questionTypeListAllController</prop>
+				<prop key="/questiontype/delete">
+					questionTypeDeleteController</prop>
 			</props>
 		</property>
 	</bean>

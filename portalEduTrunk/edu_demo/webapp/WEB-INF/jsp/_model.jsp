@@ -7,13 +7,7 @@
     <title><fmt:message key="${htitle}"/></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="/eduDemo/stylesheets/style.css" type="text/css"  />
-<script type="text/javascript">
-function verify() {
-    msg = "Do you want to delete?";
-    }
-</script>
-    
-    
+    <script type="text/javascript" src="/eduDemo/javascripts/validations.js"></script>
   </head>
   <body>
     <div id="indent"><a href="/eduDemo">

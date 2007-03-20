@@ -7,14 +7,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import lv.webkursi.mtest.lab02.dao.ICommonDao;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
-public class ListAllController implements Controller {
+public class DeleteController implements Controller {
 
-	Log log = LogFactory.getLog(ListAllController.class);
 	protected ICommonDao dao;
 	protected String viewName;
 
@@ -35,10 +32,12 @@ public class ListAllController implements Controller {
 	}
 
 	public ModelAndView handleRequest(HttpServletRequest request,
-			HttpServletResponse response) throws Exception {		
-		ModelAndView result = new ModelAndView(viewName);
+			HttpServletResponse response) throws Exception {
+		Long id = Long.parseLong(request.getParameter("id"));
+		dao.delete(id);
 		List list = dao.getAll();
-		result.addObject("list",list);
+		ModelAndView result = new ModelAndView(viewName);
+		result.addObject("list",list);		
 		return result;
 	}
 }
