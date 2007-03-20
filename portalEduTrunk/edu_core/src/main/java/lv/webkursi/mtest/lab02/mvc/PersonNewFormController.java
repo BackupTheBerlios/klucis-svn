@@ -26,14 +26,13 @@ public class PersonNewFormController extends AbstractFormController {
 			HttpServletResponse response, BindException errors) {
 		String pageSetName = request.getServletPath();
 		log.info("REQUEST FOR PAGESET " + pageSetName);
-
-
 		ModelAndView result = new ModelAndView("person_new");
 		result.addAllObjects(errors.getModel());
 		PersonForm personForm = new PersonForm();
 		if (request.getParameter("id") != null) {
 			long id = Long.parseLong(request.getParameter("id"));
 			Person p = (Person)dao.get(id);
+			log.info("Editing person " + p);
 			personForm.setFirstName(p.getFirstName());
 			personForm.setLastName(p.getLastName());
 			personForm.setLogin(p.getLogin());
@@ -55,8 +54,15 @@ public class PersonNewFormController extends AbstractFormController {
 
 		PersonForm userForm = (PersonForm) command;
 		String success = null;
-		if (!errors.hasErrors()) {
-			Person person = new Person();
+		if (!errors.hasErrors()) {			
+			Person person = null;
+			if (request.getParameter("id") != null) {
+				long id = Long.parseLong(request.getParameter("id"));
+				person = (Person)dao.get(id);
+			}
+			else {
+				person = new Person();
+			}
 			person.setEmail(userForm.getEmail());
 			person.setFirstName(userForm.getFirstName());
 			person.setLastName(userForm.getLastName());

@@ -4,7 +4,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import lv.webkursi.mtest.lab02.dao.ICommonDao;
-import lv.webkursi.mtest.lab02.data.PersonForm;
 import lv.webkursi.mtest.lab02.data.QuestionTypeForm;
 import lv.webkursi.mtest.lab02.domain.QuestionType;
 
@@ -13,28 +12,33 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.validation.BindException;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractFormController;
+import org.springframework.web.servlet.mvc.SimpleFormController;
 
-public class QuestionTypeNewFormController extends AbstractFormController {
-	private Log log = LogFactory.getLog(QuestionTypeNewFormController.class);
+public class QuestionTypeFormController extends SimpleFormController {
+	private Log log = LogFactory.getLog(QuestionTypeFormController.class);
 	
 	protected ICommonDao dao;
 
-	public QuestionTypeNewFormController() {
-		setCommandClass(QuestionTypeForm.class);
+	public QuestionTypeFormController() {
+		setCommandClass(QuestionType.class);
 	}
 	
 	protected Object formBackingObject(HttpServletRequest request) {
-		QuestionTypeForm qtForm = new QuestionTypeForm();
+		QuestionType qt = new QuestionType();
 		if (request.getParameter("id") != null) {
 			long id = Long.parseLong(request.getParameter("id"));
-			QuestionType qt = (QuestionType)dao.get(id);
-			qtForm.setLabel(qt.getLabel());
-			qtForm.setInstruction(qt.getInstruction());
+			qt = (QuestionType)dao.get(id);
 		}
-		return qtForm;
+		return qt;
 	}
 
+	protected void doSubmitAction(Object command) {
+		QuestionType qt = (QuestionType) command;
+		dao.saveOrUpdate(qt);
+	}
 
+	
+	/*
 	protected ModelAndView showForm(HttpServletRequest request,
 			HttpServletResponse response, BindException errors) {
 		String pageSetName = request.getServletPath();
@@ -42,7 +46,9 @@ public class QuestionTypeNewFormController extends AbstractFormController {
 
 		ModelAndView result = new ModelAndView("questiontype_new");
 		result.addAllObjects(errors.getModel());
-		/*
+		
+		
+		
 		QuestionTypeForm qtForm = new QuestionTypeForm();
 		if (request.getParameter("id") != null) {
 			long id = Long.parseLong(request.getParameter("id"));
@@ -52,7 +58,9 @@ public class QuestionTypeNewFormController extends AbstractFormController {
 		}
 
 		result.addObject("command", qtForm);
-		*/
+		
+		
+		
 		return result;
 	}
 
@@ -83,6 +91,7 @@ public class QuestionTypeNewFormController extends AbstractFormController {
 //		result.addObject("command", new PersonForm());
 		return result;
 	}
+	*/
 
 	public ICommonDao getDao() {
 		return dao;

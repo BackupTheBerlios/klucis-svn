@@ -31,7 +31,8 @@
 	
 	<bean id="dbInitController"
 		class="lv.webkursi.mtest.lab02.mvc.DBInitController">
-		<property name="dao" ref="personDao"/>
+		<property name="personDao" ref="personDao"/>
+		<property name="questionTypeDao" ref="questionTypeDao"/>
 	</bean>
 	
 	<bean id="personNewFormController"
@@ -40,17 +41,9 @@
 			<bean class="lv.webkursi.mtest.lab02.data.PersonValidator"/>
 		</property>
 		<property name="dao" ref="personDao"/>
+		<property name="sessionForm"><value>true</value></property>
 	</bean>
-	
-<!--
-		<bean id="personEditFormController"
-		class="lv.webkursi.mtest.lab02.mvc.PersonNewFormController">
-		<property name="validator">
-			<bean class="lv.webkursi.mtest.lab02.data.PersonValidator"/>
-		</property>
-		<property name="dao" ref="personDao"/>
-	</bean>
--->	
+
 	
 	<bean id="personListAllController"
 		class="lv.webkursi.mtest.lab02.mvc.ListAllController">
@@ -65,12 +58,15 @@
 	</bean>
 		
 	
-	<bean id="questionTypeNewFormController"
-		class="lv.webkursi.mtest.lab02.mvc.QuestionTypeNewFormController">
+	<bean id="questionTypeFormController"
+		class="lv.webkursi.mtest.lab02.mvc.QuestionTypeFormController">
 		<property name="validator">
 			<bean class="lv.webkursi.mtest.lab02.data.QuestionTypeValidator"/>
 		</property>
 		<property name="dao" ref="questionTypeDao"/>
+		<property name="formView"><value>questiontype_new</value></property>
+		<property name="successView"><value>questiontype_listall</value></property>
+<!--		<property name="sessionForm"><value>true</value></property> -->
 	</bean>
 		
 	<bean id="questionTypeListAllController"
@@ -177,9 +173,9 @@
 				<prop key="/person/listall">personListAllController</prop>
 				<prop key="/person/delete">personDeleteController</prop>
 				<prop key="/questiontype/new">
-					questionTypeNewFormController</prop>
+					questionTypeFormController</prop>
 				<prop key="/questiontype/edit">
-					questionTypeNewFormController</prop>
+					questionTypeFormController</prop>
 				<prop key="/questiontype/listall">
 					questionTypeListAllController</prop>
 				<prop key="/questiontype/delete">
