@@ -64,10 +64,10 @@
       <question>What are the requirements?</question>
       <answer>
         To get a positive grade student must successfully submit 
-	at least 1 individual homework and complete all 3 lab exercises 
+	at least 1 individual homework and complete first two lab exercises 
 	by his/her team.        
 	A multiple-choice test and an opportunity to do more than one 
-	individual homework is also being offered - this would 
+	individual homework and the 3rd lab exercise is also being offered - this would 
 	count for a higher grade. 
       </answer>
     </faq>
@@ -141,7 +141,7 @@
     <faq id="final_discussion">
       <question>Final discussion</question>
       <answer>
-        After your team has submitted all the lab exercises, 
+        After your team has submitted the lab exercises, 
         there is a discussion between the project team and the instructor. 
 	Office hours will be set up, and each team will pick a timeslot.
 	All the team members are expected to understand all portions of the 

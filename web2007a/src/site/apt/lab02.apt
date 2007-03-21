@@ -5,29 +5,111 @@ Lab Exercise 02. Quiz App: MVC Pattern and Data Access
     "Web technologies", Spring 2007. 
 
     [Due:]
-    Monday, March 19th, 2007
+    Monday, April 16th, 2007
+
+    [Code Freeze:]
+    The Lab02 description and its sample Java code in BerliOS won't
+    change after Monday 26th, 23:59 (i.e. at that point all 
+    the requirements become finalized). Before this date you 
+    can suggest all kinds of improvements; after that date only the
+    errors will be changed (and documented under "Errata"). 
 
     [Purpose:]
-    The purpose of this exercise is to learn more about 
-    data models - relational databases (queries by SQL), XML (XPath/XQuery/XSLT),
-    RDF (SPARQL), optimized data access to optimize between fetch size and number 
-    of roundtrips, to ensure proper back-end of the Web app, also SELECT vs. DESCRIBE
-    queries for SPARQL. 
-    This Web application includes user sessions, logging and error handling, 
-    uniform layout and navigation, internationalization for an educational testing application.
+    The purpose of this exercise is to learn more about Spring and Hibernate
+    to make data access to relational databases. 
+
 
 * Background
-~~~~
+~~~
+
+  A simple multiple-choice testing application illustrates how a domain 
+  model can be mapped to a relational database, and how a Spring MVC application
+  may be used to be the Web layer for that database application. 
 
 
 * Preparing for the Exercise
 ~~~  
 
+  In this exercise you will create a Java analogue to an 
+  existing application done in Ruby/Rails. 
+  Here are instructions (in Latvian) how to run 
+  the RubyRails prototype application 
+  {{{./lab02/Mtest.lv20060824.rar}Mtest.lv}}:
+  
++---
+RubyRails instalācijas instrukciju sk. www.rubyonrails.com. 
+Aptuvena solju seciiba:
+
+(1) Instaleet Ruby (piemeeram ruby186-25.exe no 
+http://rubyforge.org/frs/?group_id=167 ). 
+
+(2) Ja atrodaties aiz PROXY servera, 
+tad DOS lodzinjaa uzstaadiet pagaidu mainiigo:
+set HTTP_PROXY=http://your.proxyserver.url:8080
+Preteejaa gadiijumaa izlaidiet sho instrukciju.
+
+(3) Izpildiet DOS komandu:
+gem install rails --include-dependencies
+
+Pēc Ruby un Rails instalēšanas 
+var sagatavot un izpildīt mtest.lv aplikāciju:
+
+(4) Palaist BAT failu initialize-db-and-run-webrick.bat. 
+Šis .bat failiņš:
+-izveido localhost datubāzi 'mtest' (mysql login/parole root/root)
+-izveido lietotāju Admin (mtest login/PAROLE admin/admin)
+-ieraksta datubāzē pāris testa moduļus
+-startē Webrick (http://localhost:3000)
++---
+
+
 
 * Design Problem 
 ~~~
 
+  [[1]] 
+  Consider the RubyRails application as a sample and 
+  add functionality to create new modules ("Testa moduļi"), 
+  add questions ("Jautājumi") to the modules, 
+  create assignments ("Testa sagataves") and take tests ("Veikt testus"). 
+  (The database schema is somewhat different for the Ruby application, e.g. 
+  it allows some enum fields - "status" and "visibility" for test modules, etc.
+  You may assume for the sake of simplicity that everything is public and
+  visible, i.e. you do not need to implement these enum fields, unless
+  you want to.). 
 
+  [[2]] 
+  Create a utility program (a Java console application with its main() method), 
+  which can import questions annotated as XML (see <<<csdd_fragmenti.xml>>>) 
+  into the MySQL database "portaledu". 
+
+  [[3]] 
+  Create functionality to upload images for the tests. 
+  Each image belongs to a certain testmodule and has a unique name
+  within that module. Image size does not exceed 64K, so you can 
+  use the regular MySQL BLOBs to store the image data. 
+
+  [[4]] 
+  Whenever the application displays a list of something
+  (e.g. "/person/listall", "/module/listall", etc.), 
+  implement a paging functionality - results should be displayed 
+  in pages - 20 results per page. 
+
+  [[5]] 
+  Implement reasonable security restrictions - links/buttons 
+  like "Edit" and "Delete" should 
+  not allow the non-admin users to update data in table Person and QuestionType. 
+  Each user sees only his/her own testmodules, but can take assignments
+  made by anyone else. 
+
+  [[6]] 
+  Have a correct and efficient process of obtaining/releasing database 
+  connections. Namely, use connection pool instead of "drivermanager"
+  (see commented section in file <<<mtest-servlet.xml>>>). 
+  Also, call the "close()" method on various instances of <<<CommonDao>>>, 
+  when the beans, which need them become garbage or are unloaded by 
+  the Web container. (This way your application will not crash or run
+  out of memory as often as it does now.)
 
 
 
@@ -36,33 +118,105 @@ Lab Exercise 02. Quiz App: MVC Pattern and Data Access
 
 ** Provided Code
 ~~~~
-
+  
+  Check out the code from the following BerliOS repository (e.g. with Subclipse):
+  {{https://kalvis@svn.berlios.de/svnroot/repos/klucis/portalEduTrunk}}. 
+  It should not ask for any passwords, if you access that repository 
+  in read-only mode. 
+  
 
 * Mechanics
 ~~~
+   
+  You will mostly edit files under the packages <<<lv.webkursi.mtest.lab02.*>>>
+  under the "edu_core", and also all kinds of files under the "edu_demo". 
+  There should be very few dependencies from "lv.webkursi.mtest.lab02.*"
+  packages to any "lv.webkursi.mtest.core" (the latter deals with 
+  RDF data processing and is not needed for this exercise). 
+
+  * The JUnit tests can be run by executing all test methods under
+  <<<portalEdu\edu_core\src\test\java>>>. 
+
+  * The Selenium tests for lab02 can be executed from the URL
+  {{http://localhost:9080/eduDemo/tests/}}. Select the link 
+  "Run MTest tests". 
+
+  * In case you need to modify something under the 
+  "lv.webkursi.mtest.core.*" packages, also execute the
+  other Selenium test suite - pick the link 
+  "Click here to run PortalEdu tests" in the above Web address. 
 
 
 * Expectations
 ~~~~
 
+  In this exercise a special attention will be paid to the 
+  completeness to your test suites. Make sure that all the 
+  DAO methods you need are tested (i.e. you would need tests
+  for the new DAO methods regarding Assignments, Sessions and
+  Answers, which persist the domain objects 
+  from the package lv.webkursi.mtest.lab02.domain), and also 
+  JUnit tests for various other objects, e.g. validators. 
+
+  Your Selenium tests would need to cover all kinds of normal 
+  behaviors and also abnormal ones (invalid form submissions, 
+  someone attempting to do something without proper authorization, 
+  e.g. a non-admin user doing admin functionality, etc.)
+
 ** Deliverables 
 ~~~~
 
+  As before, you are requested to write a presentation lab02.ppt, 
+  which you can include under "portalEduTrunk/doc" directory. 
+  This presentation should contain short description of all your
+  main activities and design solutions taken for this exercise
+  and also the full names of all participants in your team. 
+  <<Having a PPT presentation is mandatory>>; submissions, which 
+  do not contain it will be rejected. 
+
+  When you are finished doing all the things described under "Design Problem", 
+  please run the Ant task "ant submit" in the root directory of "portalEduTrunk". 
+  It should create a file <<<lab02.not_a_zip>>>, which one of your team can send
+  as a regular e-mail attachment to the "kalvis.apsitis" account at "gmail.com". 
+  (The file actually IS a ZIP file, but it has a different extension to 
+  bypass checking for executable BAT files, which may be contained in this attachment.)
 
 ** Prerequisite knowledge
 ~~~~
   
+  It is recommended that you understand Hibernate and Spring MVC before attempting 
+  this exercise.  
 
 ** What is learned during this exercise
 ~~~~
+
+  Design and configuration for a typical Spring/Hibernate database application; 
+  also its development steps and testing. 
   
 
 ** Guidelines for evaluation
 ~~~~
 
+  Each of the 6 exercises in "Design problems" is worth 3 points. 
+  Points may be reduced, if your code is not properly object-oriented
+  (e.g. if you write the command-line utility as a huge main() method), 
+  also, if the code is not well readable and does not properly handle resources
+  (like database connections, uploaded image files, etc.), 
+  is potentially insecure or iniefficient. Also, if the JUnit/Selenium 
+  tests are incomplete. 
+  The remaining 2 points will be given for the PPT presentation. 
+
+  
 
 * Bibliography
 ~~~~
+  * Good resources to learn Hibernate and Spring is their standard documentation 
+  (one can unpack the distributions of <<<spring-framework-2.0.2-with-dependencies.zip>>>
+  and <<<hibernate-3.2.2.ga.zip>>> to a local directory. 
+
+  * For advanced Spring features the textbook 
+  <<<Apress - Expert Spring Mvc And Web Flow - Feb 2006>>> is recommended. 
+
 
 * Errata
 ~~~~

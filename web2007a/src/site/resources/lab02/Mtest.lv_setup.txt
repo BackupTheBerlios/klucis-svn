@@ -1,0 +1,25 @@
+RubyRails instalācijas instrukciju sk. www.rubyonrails.com. 
+Aptuvena solju seciiba:
+
+(1) Instaleet Ruby (piemeeram ruby186-25.exe no 
+http://rubyforge.org/frs/?group_id=167 ). 
+
+(2) Ja atrodaties aiz PROXY servera, 
+tad DOS lodzinjaa uzstaadiet pagaidu mainiigo:
+set HTTP_PROXY=http://your.proxyserver.url:8080
+Preteejaa gadiijumaa izlaidiet sho instrukciju.
+
+(3) Izpildiet DOS komandu:
+gem install rails --include-dependencies
+
+Pēc Ruby un Rails instalēšanas 
+var sagatavot un izpildīt mtest.lv aplikāciju:
+
+(4) Palaist BAT failu initialize-db-and-run-webrick.bat. 
+Šis .bat failiņš:
+-izveido localhost datubāzi 'mtest' (mysql login/parole root/root)
+-izveido lietotāju Admin (mtest login/PAROLE admin/admin)
+-ieraksta datubāzē pāris testa moduļus
+-startē Webrick (http://localhost:3000)
+
+

@@ -1,11 +1,20 @@
-Lab Exercise 03. Quiz Composing: Dynamic Layout and Component State
+Lab Exercise 03. Facetted Browse
 ~~~
+
+    [Note:]
+    <<This lab exercise is optional, but it is still worth
+    20 grade points.>> If you have enough grade points from 
+    other activities in this course, you may skip this exercise. 
+    
+    [Note1:]
+    This description is incomplete; it is not enought to 
+    start doing this lab exercise. It will be updated soon. 
 
     [Course:]
     "Web technologies", Spring 2007. 
 
     [Due:]
-    Monday, April 2nd, 2007
+    Monday, May 14th, 2007
 
     [Purpose:]
     The purpose of this exercise is to 
@@ -168,12 +177,12 @@ Lab Exercise 03. Quiz Composing: Dynamic Layout and Component State
   [[3]] {b_spring_scopes} {{http://static.springframework.org/spring/docs/2.0.x/reference/beans.html#beans-factory-scopes}} 
   - Spring bean scopes
 
-  [[4]] {{http://en.wikipedia.org/wiki/Permalink}} (vai arî permalinku 
-  uz ðo rakstu - {{http://en.wikipedia.org/w/index.php?title=Permalink&oldid=75994548}})
+  [[4]] {{http://en.wikipedia.org/wiki/Permalink}} (vai arï¿½ permalinku 
+  uz ï¿½o rakstu - {{http://en.wikipedia.org/w/index.php?title=Permalink&oldid=75994548}})
 
-  [[5]] {{http://tinyurl.com/km5qe}} - adaptîvas filtrçðanas piemçrs no EBay.com
+  [[5]] {{http://tinyurl.com/km5qe}} - adaptï¿½vas filtrï¿½ï¿½anas piemï¿½rs no EBay.com
 
-  [[6]] {{http://tinyurl.com/qwbzx}} - daudzdimensiju filtrçðanas piemçrs no Amazon.co.uk
+  [[6]] {{http://tinyurl.com/qwbzx}} - daudzdimensiju filtrï¿½ï¿½anas piemï¿½rs no Amazon.co.uk
 
 
 
