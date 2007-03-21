@@ -1,15 +1,15 @@
+<%@ page contentType="text/html;charset=UTF-8" %> 
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <div class="box_content">
-  <p>Mtest.lv ir vietne izveelju testu kaartoshanai.<br>
+  <p>Mtest.lv ir vietne izvēļu testu kārtošanai.<br>
   Ir pieejama Mtest.lv BETA versija!
   </p>
   <ul>
-    <li>meegjini eerti un aatri izveidot testu </li>
-    <li>paarbaudi zinaashanas par konkreetu teemu</li>
+    <li>izveido savus testus</li>
+    <li>pārbaudi zināšanas par konkrētu tēmu</li>
   </ul>
-  <p>Ierosinaajumiem <code>somebody</code> (at) <code>someplace.com</code></p>
-  <h1><a href="/eduDemo/mtest/person/new">Registreeties</a></h1>  
+  <h1><a href="/eduDemo/mtest/person/new">Reģistrēties</a></h1>  
 </div>

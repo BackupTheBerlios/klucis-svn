@@ -2,10 +2,6 @@ package lv.webkursi.mtest.lab02.dao;
 
 import java.io.File;
 
-import lv.webkursi.mtest.lab02.dao.CommonDao;
-import lv.webkursi.mtest.lab02.dao.DaoFactory;
-import lv.webkursi.mtest.lab02.domain.Person;
-
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;

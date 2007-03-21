@@ -3,6 +3,8 @@ package lv.webkursi.mtest.lab02.data;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import lv.webkursi.mtest.lab02.domain.Person;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.validation.Errors;
@@ -18,11 +20,11 @@ public class PersonValidator implements Validator {
 	private Log log = LogFactory.getLog(PersonValidator.class);
 
 	public boolean supports(Class clazz) {
-		return clazz.equals(PersonForm.class);
+		return clazz.equals(Person.class);
 	}
 
 	public void validate(Object command, Errors errors) {
-		PersonForm userForm = (PersonForm) command;
+		Person userForm = (Person) command;
 
 		ValidationUtils.rejectIfEmpty(errors, "login", "required.login",
 				"Login is required");

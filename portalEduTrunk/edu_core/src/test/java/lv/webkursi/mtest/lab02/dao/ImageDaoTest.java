@@ -1,10 +1,6 @@
 package lv.webkursi.mtest.lab02.dao;
 
-import lv.webkursi.mtest.lab02.dao.CommonDao;
-import lv.webkursi.mtest.lab02.dao.DaoFactory;
-import lv.webkursi.mtest.lab02.dao.ICommonDao;
 import lv.webkursi.mtest.lab02.domain.Image;
-import lv.webkursi.mtest.lab02.domain.Person;
 
 import org.junit.After;
 import org.junit.Before;
@@ -12,14 +8,12 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses(value = { ImageDaoTest.CommonDaoTest.class 
-		})
+@Suite.SuiteClasses(value = { ImageDaoTest.CommonDaoTest.class })
 public class ImageDaoTest {
 
 	private static CommonDao dao = DaoUtils.getDao(Image.class);
 
 	public static class CommonDaoTest extends AbstractDaoTest {
-
 
 		@Before
 		public void setUp() {
@@ -74,16 +68,14 @@ public class ImageDaoTest {
 
 		@Before
 		public void setUp() throws Exception {
-			dao.setSessionFactory(DaoUtils.getSessionFactory());			
+			dao.setSessionFactory(DaoUtils.getSessionFactory());
 		}
-		
+
 		@After
 		public void tearDown() {
 			dao.close();
-			
+
 		}
-		
-	
-		
-	}	
+
+	}
 }

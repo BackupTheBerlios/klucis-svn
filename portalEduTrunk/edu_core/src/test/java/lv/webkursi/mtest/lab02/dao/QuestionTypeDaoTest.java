@@ -95,8 +95,8 @@ public class QuestionTypeDaoTest {
 		 * QuestionType (max is 255 unicode chars), but Hibernate does not seem
 		 * to care...
 		 * 
-		 * TODO correct this testcase, so that for too long instruction values
-		 * (>255 or something like that), an exception is thrown even for HSQLDB
+		 * Unfortunately, for HSQLDB the field length is not 
+		 * checked and this does not cause an exception... 
 		 */
 		@Ignore
 		@Test

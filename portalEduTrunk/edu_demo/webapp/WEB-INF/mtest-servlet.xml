@@ -35,28 +35,35 @@
 		<property name="questionTypeDao" ref="questionTypeDao"/>
 	</bean>
 	
-	<bean id="personNewFormController"
-		class="lv.webkursi.mtest.lab02.mvc.PersonNewFormController">
+	<bean id="personFormController"
+		class="lv.webkursi.mtest.lab02.mvc.PersonFormController">
 		<property name="validator">
 			<bean class="lv.webkursi.mtest.lab02.data.PersonValidator"/>
 		</property>
 		<property name="dao" ref="personDao"/>
-		<property name="sessionForm"><value>true</value></property>
+		<property name="formView">
+			<value>person_new</value>
+		</property>
+		<property name="successView">
+			<value>fw_person_listall</value>
+		</property>
 	</bean>
-
 	
 	<bean id="personListAllController"
 		class="lv.webkursi.mtest.lab02.mvc.ListAllController">
 		<property name="dao" ref="personDao"/>
-		<property name="viewName"><value>person_listall</value></property>
+		<property name="viewName">
+			<value>person_listall</value>
+		</property>
 	</bean>
-
+	
 	<bean id="personDeleteController"
 		class="lv.webkursi.mtest.lab02.mvc.DeleteController">
 		<property name="dao" ref="personDao"/>
-		<property name="viewName"><value>person_listall</value></property>
+		<property name="viewName">
+			<value>person_listall</value>
+		</property>
 	</bean>
-		
 	
 	<bean id="questionTypeFormController"
 		class="lv.webkursi.mtest.lab02.mvc.QuestionTypeFormController">
@@ -64,27 +71,30 @@
 			<bean class="lv.webkursi.mtest.lab02.data.QuestionTypeValidator"/>
 		</property>
 		<property name="dao" ref="questionTypeDao"/>
-		<property name="formView"><value>questiontype_new</value></property>
-		<property name="successView"><value>questiontype_listall</value></property>
-<!--		<property name="sessionForm"><value>true</value></property> -->
+		<property name="formView">
+			<value>questiontype_new</value>
+		</property>
+		<property name="successView">
+			<value>fw_questiontype_listall</value>
+		</property>
 	</bean>
-		
+	
 	<bean id="questionTypeListAllController"
 		class="lv.webkursi.mtest.lab02.mvc.ListAllController">
 		<property name="dao" ref="questionTypeDao"/>
-		<property name="viewName"><value>questiontype_listall</value></property>
+		<property name="viewName">
+			<value>questiontype_listall</value>
+		</property>
 	</bean>
 	
 	<bean id="questionTypeDeleteController"
 		class="lv.webkursi.mtest.lab02.mvc.DeleteController">
 		<property name="dao" ref="questionTypeDao"/>
-		<property name="viewName"><value>questiontype_listall</value></property>
+		<property name="viewName">
+			<value>questiontype_listall</value>
+		</property>
 	</bean>
 	
-	
-
-	
-		
 	<bean id="personDao" class="lv.webkursi.mtest.lab02.dao.DaoFactory">
 		<property name="sessionFactory" ref="sessionFactory"/>
 		<property name="clazz" value="lv.webkursi.mtest.lab02.domain.Person"/>
@@ -103,6 +113,24 @@
 		<property name="username" value="root"/>
 		<property name="password" value="root"/>
 	</bean>
+	
+	<!--		
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+	destroy-method="close">
+	<property name="driverClassName">
+	<value>com.mysql.jdbc.Driver</value>
+	</property>
+	<property name="url">
+	<value>jdbc:mysql://localhost/portaledu</value>
+	</property>
+	<property name="username">
+	<value>root</value>
+	</property>
+	<property name="password">
+	<value>root</value>
+	</property>
+	</bean>	
+	-->
 	
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
@@ -123,35 +151,9 @@
 					org.hibernate.dialect.MySQLDialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.hbm2ddl.auto">create</prop>
-				<!-- 
-				<prop key="cache.provider_class">
-				org.hibernate.cache.NoCacheProvider</prop>
-				<prop key="current_session_context_class">thread</prop>
-				
-				-->
 			</props>
 		</property>
 	</bean>
-	
-	<!--	
-	
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
-	destroy-method="close">
-	<property name="driverClassName">
-	<value>com.mysql.jdbc.Driver</value>
-	</property>
-	<property name="url">
-	<value>jdbc:mysql://localhost/portaledu</value>
-	</property>
-	<property name="username">
-	<value>root</value>
-	</property>
-	<property name="password">
-	<value>root</value>
-	</property>
-	</bean>
-	
-	-->
 	
 	<bean id="urlMapping"
 		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
@@ -168,14 +170,12 @@
 				<prop key="/dbinit">dbInitController</prop>
 				<prop key="/person/login">loginController</prop>
 				<prop key="/person/logout">logoutController</prop>
-				<prop key="/person/new">personNewFormController</prop>
-				<prop key="/person/edit">personNewFormController</prop>
+				<prop key="/person/new">personFormController</prop>
+				<prop key="/person/edit">personFormController</prop>
 				<prop key="/person/listall">personListAllController</prop>
 				<prop key="/person/delete">personDeleteController</prop>
-				<prop key="/questiontype/new">
-					questionTypeFormController</prop>
-				<prop key="/questiontype/edit">
-					questionTypeFormController</prop>
+				<prop key="/questiontype/new"> questionTypeFormController</prop>
+				<prop key="/questiontype/edit"> questionTypeFormController</prop>
 				<prop key="/questiontype/listall">
 					questionTypeListAllController</prop>
 				<prop key="/questiontype/delete">
@@ -188,6 +188,18 @@
 		class="org.springframework.web.servlet.view.ResourceBundleViewResolver">
 		<property name="basename" value="views-portaledu"/>
 		<property name="defaultParentView" value="modelView"/>
+		<property name="order">
+			<value>0</value>
+		</property>
+	</bean>
+	
+	<bean id="viewResolverPlain"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/jsp/plain/"/>
+		<property name="suffix" value=".jsp"/>
+		<property name="order">
+			<value>1</value>
+		</property>
 	</bean>
 	
 </beans>

@@ -2,11 +2,7 @@ package lv.webkursi.mtest.lab02.dao;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import lv.webkursi.mtest.lab02.dao.CommonDao;
-import lv.webkursi.mtest.lab02.dao.DaoFactory;
-import lv.webkursi.mtest.lab02.dao.ICommonDao;
 import lv.webkursi.mtest.lab02.domain.Module;
-import lv.webkursi.mtest.lab02.domain.Person;
 import lv.webkursi.mtest.lab02.domain.Question;
 import lv.webkursi.mtest.lab02.domain.QuestionType;
 

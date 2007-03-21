@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" %> 
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -5,7 +6,11 @@
 <div class="box_content">
 <form action="/eduDemo/mtest/questiontype/new" method="post">
 
-<spring:nestedPath path="command">  
+<spring:nestedPath path="command">
+<spring:bind path="id">
+<input name="${status.expression}" type="hidden" value='<c:out value="${status.value}"/>' />
+</spring:bind>
+
 <spring:bind path="label">
 <p><label for="label">Simbolisks vaards (label)</label></br>
 <input id="label" name="${status.expression}" size="30" type="text" value='<c:out value="${status.value}"/>' />

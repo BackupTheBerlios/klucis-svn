@@ -1,33 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project name="klucisTrunk" basedir="." default="clean">
+<project name="portalEdu" basedir="." default="clean">
 	
-  <target name="clean"
-		description="Deletes Subversion directories">
-	<defaultexcludes remove="**/.svn"/>
-    <defaultexcludes remove="**/.svn/**"/>
-    <delete includeemptydirs="true"> 
-	    <fileset dir=".">
-          <include name="**/.svn/**"/>
-        </fileset>
-    </delete>
-    <defaultexcludes default="true"/>
-  </target>
+	<target name="clean" description="Deletes Subversion directories">
+		<defaultexcludes remove="**/.svn"/>
+		<defaultexcludes remove="**/.svn/**"/>
+		<delete includeemptydirs="true">
+			<fileset dir=".">
+				<include name="**/.svn/**"/>
+			</fileset>
+		</delete>
+		<defaultexcludes default="true"/>
+	</target>
 	
-	<target name="transform"
-		description="Converts SVG to HTML">
-		<xslt in="klucis_core/bilde_11a.svg" out="temp.html"
-			style="klucis_demo/src/main/webapp/xslt/html.xsl">
-			<!--
-			<xmlcatalog>
-				<dtd publicId="-//SPRING//DTD BEAN//EN"
-					location="schemas/spring-beans.dtd"/>
-			</xmlcatalog>
-			-->
-			<!--
-			<param name="default_namespace"
-				expression="http://example.com/portal#"/>
-				-->
-		</xslt>
-    </target>
-
+	<target name="submit" description="Create a ZIP file ready for submission">
+		<ant antfile="build.xml" dir="edu_core" target="clean"/>
+		<ant antfile="build.xml" dir="edu_demo" target="clean"/>
+		<delete dir="target/submit" failonerror="false"/>
+		<mkdir dir="target/submit"/>
+		<copy todir="target/submit">
+			<fileset dir="." includes="**/*"
+				excludes="target/**,bin/**,.*,**/*.jar,**/*.zip,**/*.log">
+			</fileset>
+		</copy>
+		<zip destfile="target/lab02.not_a_zip">
+			<fileset dir="target/submit"/>
+		</zip>
+	</target>
+	
 </project>

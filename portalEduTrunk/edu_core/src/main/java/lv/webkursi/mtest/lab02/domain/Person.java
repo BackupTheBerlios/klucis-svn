@@ -15,6 +15,12 @@ public class Person implements JsonSerializable {
 	protected String email;
 	
 	protected String password;
+	
+	/**
+	 * This field is not persisted in the database, but is used only 
+	 * as a backup object in a form. 
+	 */
+	protected String password2;
 
 	protected Set<Module> modules = new HashSet<Module>();
 	
@@ -124,6 +130,14 @@ public class Person implements JsonSerializable {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getPassword2() {
+		return password2;
+	}
+
+	public void setPassword2(String password2) {
+		this.password2 = password2;
 	}
 
 	public Set<Session> getSessions() {
