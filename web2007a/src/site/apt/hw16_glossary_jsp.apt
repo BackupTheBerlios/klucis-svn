@@ -5,6 +5,9 @@ Homework 16: Glossary with JSP
     Develop a JSP custom taglib, which generates fragments of
     DHTML markup, which display glossary term definitions
     in response to user's mouse over events. 
+    Familiarize yourself with the SKOS ontology of thesauri
+    (<<data/glossary.n3>>), and make the custom JSP tags read
+    definitions from this file. 
 
     [Description:]
     Repetitive and verbose HTML/CSS/JavaScript constructs are sometimes the
@@ -14,4 +17,137 @@ Homework 16: Glossary with JSP
 	In contrast to the previous exercise the JSP taglib
 	should ensure dynamic glossary term evaluation, e.g. 
 	taking them from some XML file or a database. 
+	
+    [Download:]
+    See {{{./downloads/taglib_demo.zip}taglib_demo.zip}} - 
+    a demo of JSP taglibs (which does something else than is required here).  
+    
+    []
+	
+	
+* Preparation
+~~~~~~~
+
+  Here are the steps to deploy the application: 
   
+  [[1]] Download Apache Tomcat (e.g. the newest version 
+  <<<apache-tomcat-6.0.10>>>) and unzip it under <<<c:\tools>>>
+  or in some other directory. Start the Tomcat server by calling
+  bin/startup.bat (and at the end close it down by 
+  bin/shutdown.bat). 
+  
+  [[2]] Download the code sample and create an Eclipse project 
+  from it. Add <<<jsp-api.jar>>> and <<<servlet-api.jar>>> 
+  to your Eclipse classpath.
+  
+  [[3]] Open file <<<build.xml>>> and check, if the 
+  variables "catalina.home", "manager.url", 
+  "manager.username" and "manager.password" have correct values. 
+  Open the file <<<c:\tools\apache-tomcat-6.0.10\conf\tomcat-users.xml>>>. 
+  It should contain the following line: 
+  
++----
+<user username="tomcat" password="tomcat" roles="tomcat,manager"/>
++----
+
+  You probably need to add the role "manager" by yourself. 
+
+  [[4]] Execute the Ant script: 
+  
++---  
+ant -lib compile-lib install
++---
+
+  in the home directory of "taglib_demo". Notice that you cannot
+  write simpley "ant install", since there is a file "catalina-ant.jar"
+  in the "compile-lib" directory, which is needed for some custom 
+  Ant tasks. (You can also copy the catalina-ant.jar to your 
+  Ant's "lib" directory. Then you can type simply "ant install"). 
+  
+  [[5]] When you update something and need to reload your application, 
+  run the script
+  
++----
+ant -lib compile-lib reload
++----
+
+  []
+    
+  You can see the glossary terms, when you deploy 
+  the application and see the static file
+  {{http://localhost:8080/CustomTaglib/dict/7kyu.html}}. 
+  The challenge is to see the same thing, when calling
+  {{http://localhost:8080/CustomTaglib/dict/7kyu.jsp}}
+  and to read the glossary definitions from <<<data/glossary.n3>>>. 
+
+* Design Problem
+~~~~
+  
+  [[1]] Develop a custom JSP taglib (e.g. by correcting the
+  file <<<GlossaryRef.java>>> and perhaps adding a few helper
+  classes) to display the popup rectangles with dictionary definitions. 
+  
+  [[2]] Develop a servlet or a JSP page, which displays the
+  whole glossary with terms as an easy to read HTML.
+  This is necessary to have links from all the JSP pages to the
+  glossary. (See e.g. the link between the page
+  {{http://www.milonskarate.lv/exams.php?page=main&item_id=7&action=details&validated=8&params=}}
+  and the glossary 
+  {{http://www.milonskarate.lv/exams.php?page=termini&item_id=9&action=show&validated=8&params=#Oi-zuki}}. 
+  Your solution should have passive bookmarks in the glossary, 
+  so that you can jump to the relevant place in that glossary. 
+
+
+ 
+* Characteristics of the Application
+~~~~
+
+  [Code:] 
+  Submit a ZIPped application containing your Java Web application
+  without any JAR files and compilation results (i.e. 
+  the Java project without 
+  the "compile-lib" and "build" subdirectories).
+  
+  [Input:] 
+  Request for a JSP page, containing the custom tags. 
+  E.g. {{http://localhost:8080/CustomTaglib/dict/7kyu.jsp}}
+  
+  [Output:]
+  A page, which has each term (i.e. word enclosed within
+  the custom tags \<dict:ref term="SOME-TERM"\> and \</dict:ref\>)
+  as a hyperlink, on mouse-over it displays definition of the term
+  in a small colored popup rectangle, but on mouse click it opens
+  the whole glossary with all the terms scrolled to an appropriate place. 
+  A static HTML file with the desired result is here
+  {{http://localhost:8080/CustomTaglib/dict/7kyu.html}} (your 
+  JSP page should produce something similar, when one opens it with 
+  View-Source). 
+
+  
+* Bibliography
+~~~~
+ 
+   * {{http://www.milonskarate.lv/exams.php?page=main&item_id=7&action=details&validated=8&params=}}
+   This shows the pop-up glossary in a real Web application. 
+   
+   * {{http://www.w3.org/TR/2005/WD-swbp-skos-core-guide-20050510/}} - 
+   SKOS ontology (in this format the karate terms are given in 
+   the file <<<data/glossary.n3>>>). 
+   
+   * {{http://jena.sourceforge.net/}} - Jena library to process RDF and
+   to extract the needed glossary term definitions. 
+   
+   * Marty Hall. Core Servlets and Java Server Pages. (Chapter 14). 
+   Information on how to program custom JSP tag libraries. 
+   
+   
+* Remarks
+~~~
+  
+  In modern Web applications such Web-based glossaries are usually 
+  done with AJAX - HTTP requests in the background. 
+  If you wish, you can do this exercise with AJAX as well 
+  (in this case glossary definitions are not hard-coded in the 
+  HTML file we send to the client, but are transmitted over the
+  network only if the user asks for them, i.e. hovers the mouse
+  over the terms.).

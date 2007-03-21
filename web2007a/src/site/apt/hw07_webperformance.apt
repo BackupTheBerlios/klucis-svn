@@ -13,7 +13,7 @@ Homework 07: Compare Web Application Server Performance
     Tomcat Servlet container by doing a simple load test. 
     
     [Download:]
-    {{{http://www.webkursi.lv/web2007a/site/downloads/wrhapi_demo.zip}wrhapi_demo.zip}} - a simple
+    {{{./downloads/wrhapi_demo.zip}wrhapi_demo.zip}} - a simple
     Spring configurable application on top of JUnit, which 
     displays the current time on the server machine and some message. 
 

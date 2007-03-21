@@ -18,6 +18,40 @@ Lab Exercise 02. Quiz App: MVC Pattern and Data Access
     The purpose of this exercise is to learn more about Spring and Hibernate
     to make data access to relational databases. 
 
+* Special Thanks
+~~~
+
+  A few Master program students have contributed to this exercise. 
+  Thanks to Anete Ozola for providing her application Mtest.lv 
+  written in RubyRails. 
+  Vladimirs Potapovs suggested the Spring's solution for an internationalization
+  filter. (Prior to that a more complicated custom solution was used
+  to support UTF-8 encoding for Web forms.) Here is the solution (see
+  also the file <<<edu_demo/webapp/WEB-INF/web.xml>>>):  
+  
++----
+...
+<filter>
+    <filter-name>CharacterEncodingFilter</filter-name>
+    <filter-class>
+        org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+    <init-param>
+        <param-name>encoding</param-name>
+        <param-value>UTF-8</param-value>
+    </init-param>
+    <init-param>
+        <param-name>forceEncoding</param-name>
+        <param-value>true</param-value>
+    </init-param>
+</filter>
+
+<filter-mapping>
+    <filter-name>CharacterEncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+</filter-mapping>
+...
++----
+
 
 * Background
 ~~~
@@ -32,7 +66,7 @@ Lab Exercise 02. Quiz App: MVC Pattern and Data Access
 
   In this exercise you will create a Java analogue to an 
   existing application done in Ruby/Rails. 
-  Here are instructions (in Latvian) how to run 
+  Here are instructions how to run 
   the RubyRails prototype application 
   {{{./lab02/Mtest.lv20060824.rar}Mtest.lv}}:
   
