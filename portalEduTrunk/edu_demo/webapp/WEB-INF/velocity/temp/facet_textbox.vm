@@ -1,0 +1,14 @@
+<form method="GET">
+<table class="${_class} facet" cellspacing="0">
+<tr class="facettitle"><th>${_title}</th></tr>
+<tr><td>
+Value: <code>${_state}</code>
+</td></tr>
+<tr><td>
+<input style="background-color:#ffffff" type="text" name="${_name}" value="${_state}"/>
+<input type="hidden" name="_action" value="set"/>
+<input type="hidden" name="_ac" value="${_name}"/>
+<input type="submit" value="Set"/>
+</td></tr>
+</table>
+</form>

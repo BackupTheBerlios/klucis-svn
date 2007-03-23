@@ -1,0 +1,6 @@
+<table class="${_class} facet" id="${_id}" cellspacing="0">
+<tr class="facettitle"><th>${_title}</th></tr>
+<tr><td>
+${_state}
+</td></tr>
+</table>
