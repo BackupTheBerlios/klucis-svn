@@ -18,6 +18,7 @@ public class UserService {
 	}
 
 	/**
+	 * TODO: userService is not using the injected model here
 	 * A convenience method returning a user Java object by its name
 	 * 
 	 * @param dataModel
@@ -28,6 +29,9 @@ public class UserService {
 		return getObject(getUserResourceByName(model, userName));
 	}
 
+	/**
+	 * TODO: userService is not using the injected model here
+	 */
 	public Resource getUserResourceByName(Model model, String userName) {
 		if (userName == null) {
 			throw new NullPointerException("Username cannot be null");

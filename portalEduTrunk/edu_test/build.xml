@@ -1,4 +1,4 @@
-<?xml version = "1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project name="portalTest" basedir="." default="jboss-deploy">
 	
 	<property file="build.properties"/>
@@ -78,10 +78,18 @@
 	
 	<target name="compile" description="Compiles the Java code"
 		depends="precompile">
-		<ant antfile="${portal.core.dir}/build.xml" dir="${portal.core.dir}"
+		<ant antfile="${edu.core.dir}/build.xml" dir="${edu.core.dir}"
+			target="clean"/>
+		<ant antfile="${edu.core.dir}/build.xml" dir="${edu.core.dir}"
 			target="jar"/>
-		<copy file="${portal.core.dir}/target/portalCore.jar"
-			todir="${war.lib.dir}"/>
+		<copy file="${edu.core.dir}/target/eduCore.jar" todir="${war.lib.dir}"/>
+		<!--
+		<copy todir="${war.lib.dir}">
+			<fileset dir="${demo.war.lib.dir}">
+				<include name="**/*.jar"/>
+			</fileset>
+		</copy>
+			-->
 		
 		<javac srcdir="${src.dir}" destdir="${jar.classes.dir}"
 			excludes="**/Test*.java" debug="on" deprecation="on">
@@ -146,24 +154,18 @@
 		<copy todir="${war.classes.dir}">
 			<fileset dir="${jar.classes.dir}"/>
 		</copy>
-
 		<unzip src="${test.resources.dir}/selenium-core-0.8.2.zip"
 			dest="${web.dir}">
 		</unzip>
 		<move todir="${web.dir}/selenium-core">
 			<fileset dir="${web.dir}/selenium-core-0.8.2"/>
 		</move>
-		
-		
-		
 		<war destFile="${target.dir}/${ant.project.name}.war"
 			webxml="${web.dir}/WEB-INF/web.xml">
 			
 			<fileset dir="${web.dir}" excludes="WEB-INF/web.xml"/>
 		</war>
-		
 		<delete dir="${web.dir}/selenium-core"/>
-
 	</target>
 	
 	<target name="jboss-deploy" depends="war"

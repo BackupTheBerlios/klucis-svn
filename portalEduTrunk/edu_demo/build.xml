@@ -206,4 +206,25 @@
 	</target>
 	-->
 	
+	<target name="validate-message" unless="validate.xml">
+		<echo>Skipping validation - variable "validate.xml" is not set.</echo>
+		<echo>Your Ant version is ${ant.version}.</echo>
+		<echo>To validate you need Ant version 1.7.</echo>
+	</target>
+	
+	<target name="validate" if="validate.xml">
+		<schemavalidate file="webapp/WEB-INF/web.xml">
+			<schema namespace="http://java.sun.com/xml/ns/j2ee"
+				file="${schema.dir}/web-app_2_4.xsd"/>
+			<schema namespace="http://www.w3.org/XML/1998/namespace"
+				file="${schema.dir}/xml.xsd"/>
+		</schemavalidate>
+		<schemavalidate file="webapp/WEB-INF/portalTest-servlet.xml">
+			<schema namespace="http://www.springframework.org/schema/beans"
+				file="${schema.dir}/spring-beans.xsd"/>
+			<schema namespace="http://www.springframework.org/schema/aop"
+				file="${schema.dir}/spring-aop.xsd"/>
+		</schemavalidate>
+	</target>
+	
 </project>

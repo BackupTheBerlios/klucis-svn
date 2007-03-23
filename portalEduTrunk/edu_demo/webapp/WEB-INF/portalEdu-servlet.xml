@@ -59,6 +59,13 @@
 			<ref bean="serviceFactory"/>
 		</property>
 	</bean>
+
+	<bean id="fixedController"
+		class="lv.webkursi.mtest.core.mvc.FixedController">
+		<property name="serviceFactory">
+			<ref bean="serviceFactory"/>
+		</property>
+	</bean>
 	
 	<bean id="userSimpleController"
 		class="lv.webkursi.mtest.core.mvc.FixedSimpleFormController">
@@ -161,6 +168,11 @@
 				<prop key="/welcome.do">welcomeController</prop>
 				<prop key="/user_new.do">userSimpleController</prop>
 				<prop key="/dbinit.do">dbInitController</prop>
+
+				<!-- for facetted browse app -->
+				<prop key="/fixed.do">fixedController</prop>
+				<prop key="/login.do">loginController</prop>
+
 			</props>
 		</property>
 	</bean>
@@ -177,6 +189,12 @@
 	
 	<bean id="userSettings" class="lv.webkursi.mtest.core.scopes.UserSettings"
 		scope="session">
+		<aop:scoped-proxy/>
+	</bean>
+
+	<!-- Probably is not needed -->
+	<bean id="requestHolder"
+		class="lv.webkursi.mtest.core.scopes.RequestHolder" scope="request">
 		<aop:scoped-proxy/>
 	</bean>
 	

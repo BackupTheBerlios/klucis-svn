@@ -1,1 +1,0 @@
-$model.get("_rootView").render($model.get("_writer"))

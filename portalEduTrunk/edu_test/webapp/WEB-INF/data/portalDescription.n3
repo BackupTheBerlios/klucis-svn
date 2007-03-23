@@ -17,7 +17,7 @@ portal:Ezekiel
         
 portal:fixedPageset
     rdf:type mtest:PageSet ;
-    mtest:name "/fixed.do" ;
+    mtest:name "fixed.do" ;
     mtest:rootComponent portal:fixedRootComponent ;
     mtest:ruleList [
         a rdf:Seq ;
@@ -40,7 +40,7 @@ portal:rule1
 
 portal:loginPageset
     rdf:type mtest:PageSet ;
-    mtest:name "/login.do" ;
+    mtest:name "login.do" ;
     mtest:rootComponent portal:fixedRootComponent ;
     mtest:ruleList [
         a rdf:Seq ;
