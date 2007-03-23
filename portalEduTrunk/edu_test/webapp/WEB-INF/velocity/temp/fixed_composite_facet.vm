@@ -1,6 +1,0 @@
-<u>$message</u><br />
-#foreach ( $_mvNode in $_subNodes )
-#if ($_mvNode) 
-$_renderContext.render($_mvNode)
-#end
-#end
