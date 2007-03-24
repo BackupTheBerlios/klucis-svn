@@ -17,25 +17,7 @@ public abstract class ContentItem {
 	protected String description;
 	
 
-	/**
-	 * Just compare the "name" attribute, since they are unique
-	 */
-	/*
-	@Override
-	public boolean equals(Object o) {
-		if (o instanceof ContentItem) {
-			return name.equals(((ContentItem) o).getName());
-		} else {
-			return false;
-		}
-	}
-
-	@Override
-	public int hashCode() {
-		return name.hashCode();
-	}
-	*/
-
+	// GET/SET methods
 	public String getDescription() {
 		return description;
 	}
@@ -43,16 +25,6 @@ public abstract class ContentItem {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
-	/*
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-	*/
 
 	public Long getId() {
 		return id;

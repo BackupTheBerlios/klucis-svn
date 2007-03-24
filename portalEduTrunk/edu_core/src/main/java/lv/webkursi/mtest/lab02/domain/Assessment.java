@@ -11,6 +11,11 @@ public class Assessment {
 	
 	protected Date endDate;
 	
+	/**
+	 * Maximum time allowed for this assessment (in minutes)
+	 */
+	protected int maxTime;
+	
 	protected Map<Module,Integer> weights = new HashMap<Module,Integer>();
 	
 	public void addModule(Module m, int weight) {

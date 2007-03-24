@@ -3,14 +3,12 @@ package lv.webkursi.mtest.core.data;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
-import lv.webkursi.mtest.core.util.UnitTestUtils;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import com.hp.hpl.jena.rdf.model.EmptyListException;
 import com.hp.hpl.jena.rdf.model.Model;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
 
 public class UserServiceTest {
 
@@ -18,11 +16,20 @@ public class UserServiceTest {
 
 	private Model model;
 
+	private static final String userServiceTestData = MockDescriptionFactory.PREFIXES
+			+ "portal:Amos"
+			+ "    rdf:type mtest:User ;"
+			+ "    mtest:userName \"Amos\" ;"
+			+ "    mtest:password \"Amos\" . "
+			+ "portal:Ezekiel"
+			+ "    rdf:type mtest:User ;"
+			+ "    mtest:userName \"Ezekiel\" ;"
+			+ "    mtest:password \"Ezekiel\" .";
+
 	@Before
 	public void setUp() {
-		model = ModelFactory.createFileModelMaker(
-				UnitTestUtils.getRdfDataDir()).openModel(
-				"portalDescription.n3", false);
+		model = MockDescriptionFactory.getInstance().createModel(
+				"userServiceTest", userServiceTestData);
 		userService = new UserService();
 		userService.setModel(model);
 

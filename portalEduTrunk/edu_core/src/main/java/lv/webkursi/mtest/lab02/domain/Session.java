@@ -11,11 +11,6 @@ public class Session {
 
 	protected Date sessionClosed;
 
-	/**
-	 * Maximum time allowed for this test (in minutes)
-	 */
-	protected int maxTime;
-
 	protected List<Answer> answers;
 
 	protected int rawGrade;
@@ -39,10 +34,16 @@ public class Session {
 		}
 	}
 
+	/**
+	 * Record another answer or throw an exception, if the time
+	 * has expired. 
+	 * @param i
+	 * @param value
+	 */
 	public void setAnswer(int i, String value) {
 		Date now = new Date();
 		long timespan = (now.getTime() - sessionOpened.getTime());
-		if (sessionClosed != null || timespan > maxTime * 60 * 1000) {
+		if (sessionClosed != null || timespan > assessment.maxTime * 60 * 1000) {
 			if (sessionClosed == null) {
 				close();
 			}

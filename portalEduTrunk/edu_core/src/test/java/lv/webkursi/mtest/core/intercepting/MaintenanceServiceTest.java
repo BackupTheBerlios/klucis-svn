@@ -1,7 +1,5 @@
 package lv.webkursi.mtest.core.intercepting;
 
-import lv.webkursi.mtest.core.util.UnitTestUtils;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -17,8 +15,7 @@ public class MaintenanceServiceTest {
 	@Before
 	public void setUp() {
 		ctx = new FileSystemXmlApplicationContext(
-				UnitTestUtils.getContextFilePath()
-//				"../portalTest-ex03/webapp/WEB-INF/portalTest-data.xml"
+				"edu_core/src/test/resources/proxyFactoryBean.xml"
 				);
 		service  = (IMaintenanceService)ctx.getBean("maintenanceServiceBean");
 	}

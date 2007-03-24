@@ -7,6 +7,9 @@ public class Answer {
 	
 	protected String value;
 
+	
+	// GET/SET methods
+	
 	public Question getQuestion() {
 		return question;
 	}
