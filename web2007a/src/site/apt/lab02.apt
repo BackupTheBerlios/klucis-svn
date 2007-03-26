@@ -59,6 +59,9 @@ Lab Exercise 02. Quiz App: MVC Pattern and Data Access
   A simple multiple-choice testing application illustrates how a domain 
   model can be mapped to a relational database, and how a Spring MVC application
   may be used to be the Web layer for that database application. 
+  The domain model (the design of lv.webkursi.mtest.lab02.domain) 
+  is available as an image in {{{./lab02/domain.png}PNG}} and
+  {{{./lab02/domain.svg}SVG}} formats. 
 
 
 * Preparing for the Exercise
@@ -122,6 +125,14 @@ var sagatavot un izpildīt mtest.lv aplikāciju:
   Each image belongs to a certain testmodule and has a unique name
   within that module. Image size does not exceed 64K, so you can 
   use the regular MySQL BLOBs to store the image data. 
+  Currently Image objects are partly mapped to the database
+  using Hibernate (see ContentItem.hbm.xml mapping), but 
+  the binary BLOB is not mapped. You may choose to 
+  implement the access to BLOB via normal JDBC. 
+  There is a command-line utility lv.webkursi.mtest.lab02.dao.BlobDemo, 
+  which inserts into a database table some JPEG images. 
+  You may use this as a code sample (notice that it is easy to 
+  get a JDBC connection from a Hibernate session object). 
 
   [[4]] 
   Whenever the application displays a list of something
@@ -254,3 +265,35 @@ var sagatavot un izpildīt mtest.lv aplikāciju:
 
 * Errata
 ~~~~
+
+** Remarks regarding Unix and similar environments
+~~~
+
+  Mārtiņš Barinskis atzīmē sekojošas izmaiņas, ja 
+  darbina Mtest.lv (t.i. Ruby/Rails aplikāciju) uz Unix-veida platformas.
+
+  * Lai palaistu ROR aplikāciju, MTest direktorijā ir jāraksta
+  sekojoša komandrinda: "ruby script/server". Tad tiek izmesta kļūda
+  "Permission denied", kas bija saistīta ar FastCGI moduli. Problēma
+  atrisinājās ar sekojošu komandrindu: 
+
++---  
+chmod 755 public/dispatch.fcgi
++---
+
+  acīmredzot, kaut kas bija noticis ar šī faila
+  piekļuves tiesībām.
+   
+  * Vajadzēja mazliet pamainīt arī <<<simple_import.rb>>> scriptu, lai tas
+  izpildītos. Sākotnēji Ruby žēlojās par to, ka neatrod
+  active_record moduli. Lai to laistu ārpus ROR ietvara,
+  vajag iekļaut papildus moduli - 'rubygems'. Man viss aizgāja ar
+  sekojošu <<<simple_import.rb>>> skripta sākuma daļu:
+
++---
+#!/usr/local/bin/ruby
+require 'rubygems'
+require 'active_record'
+require 'rexml/document'
+require 'logger'
++---  
