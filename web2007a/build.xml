@@ -45,6 +45,9 @@
        <param name="subdir" value="../sem02_demo"/>
       </antcall>
       <antcall target="pack-subproject">
+       <param name="subdir" value="../sem05_demo"/>
+      </antcall>
+      <antcall target="pack-subproject">
        <param name="subdir" value="../wrhapi_demo"/>
       </antcall>
       <antcall target="pack-subproject">

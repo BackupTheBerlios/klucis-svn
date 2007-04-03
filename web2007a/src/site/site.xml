@@ -28,11 +28,12 @@
         <item name="1.Objects" href="lecture01.html"/>      
         <item name="2.Testing" href="lecture02.html"/>      
       </item>
-      <item name="Seminars" href="seminars.html">
-        <item name="1.seminar" href="seminars_2007-02-21.html"/>      
-        <item name="2.seminar" href="seminars_2007-02-28.html"/>      
-        <item name="3.seminar" href="seminars_2007-03-07.html"/>      
-        <item name="4.seminar" href="seminars_2007-03-14.html"/>      
+      <item name="Semin&#x0101;ri" href="seminars.html">
+        <item name="1.semin&#x0101;rs" href="seminars_2007-02-21.html"/>      
+        <item name="2.semin&#x0101;rs" href="seminars_2007-02-28.html"/>      
+        <item name="3.semin&#x0101;rs" href="seminars_2007-03-07.html"/>      
+        <item name="4.semin&#x0101;rs" href="seminars_2007-03-14.html"/>      
+        <item name="5.semin&#x0101;rs" href="seminars_2007-03-28.html"/>      
       </item>
 
 		<item name="Indiv.Homeworks" href="homeworks.html">

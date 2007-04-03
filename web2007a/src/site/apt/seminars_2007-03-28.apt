@@ -1,0 +1,61 @@
+Seminārs 2007-03-28: SPARQL pieprasījumi
+~~~~
+
+    [Vieta un laiks:]
+    Brīvības 214 Accentures mācību klase.
+    (VEF admin. ēka; ieeja pa sētas durvīm; 
+    var uzkāpt 3.stāvā un zvanīt Kalvim: 29112997.)
+    
+    [Demonstrācijas piemērs:]
+    {{{./downloads/sem05_demo.zip}Demo lejupielāde}} 
+
+    [Semināra dienaskārtība:]
+    Aplūkot SPARQL piemērus
+      
+* Demonstrācijas piemēru darbināšana 
+~~~~
+
+  * Lejupielādēt {{{http://jena.sourceforge.net/downloads.html}Jena}} 
+  un {{{http://jena.sourceforge.net/ARQ/}ARQ}} rīkus. 
+  ARQ bibliotēka ir daļa no Jena, 
+  bet SPARQL komandrindas interfeisam ir ērtāk to darbināt no 
+  atsevišķās ARQ instalācijas. 
+  
+  * Atpakot abus lejupielādētos ZIP failus atsevišķās direktorijās, 
+  piemēram, <<<C:\tools\Jena-2.5.2>>> un <<<C:\tools\ARQ-2.0-beta>>>. 
+  
+  * Definēt jaunu sistēmas vides mainīgo - ARQROOT. 
+  ("My Computer"->Properties->Advanced->Environment Variables). 
+  Uzstādīt to vienādu ar <<<ARQROOT=C:\tools\ARQ-2.0-beta>>> vai citu 
+  direktoriju, kur atpakots ARQ. Pievienot vides mainīgajam <<<PATH>>>
+  jaunu direktoriju - <<<%ARQROOT%\bat>>>, lai ARQ rīkus (piemēram, 
+  "sparql.bat") varētu darbināt no jebkuras DOS komandrindas. 
+  
+  * Atpakot demonstrācijas piemēru "sem05_demo". 
+  Apakšdirektorijās "compile-lib" un "lib" iekopēt JAR failus, kuru 
+  nosaukumi ir doti atbilstošajos readme.txt failos (tie nav 
+  iekļauti sem05_demo, jo citādi ZIP būtu ļoti liels). 
+  Šos failus var atrast Jena, Spring instalācijās, kā arī ar Google. 
+  
+  * Darbināt komandrindas SPARQL procesoru direktorijā 
+  <<<sem05_demo/src/main/resources>>>.  Piemēram, 
+
++---
+sparql --data=test.n3 --query=query1.rq
++---
+
+  
+  
+  * Padarīt sem05_demo par Eclipse projektu. 
+  Darbināt visus JUnit testus projektam sem05_demo. 
+
+* Bibliogrāfija
+~~~~
+
+  * {{{http://www-128.ibm.com/developerworks/xml/library/j-sparql/}Philip McCarthy. 
+  "Search RDF data with SPARQL"}}
+
+  * {{http://seaborne.blogspot.com/2006/05/parameterized-queries_07.html}}
+
+  
+    
