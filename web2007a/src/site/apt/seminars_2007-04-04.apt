@@ -1,0 +1,104 @@
+Seminārs 2007-04-04: Web Servisi
+~~~~
+
+    [Vieta un laiks:]
+    Brīvības 214 Accentures mācību klase.
+    (VEF admin. ēka; ieeja pa sētas durvīm; 
+    var uzkāpt 3.stāvā un zvanīt Kalvim: 29112997.)
+    
+    [Demonstrācijas piemēri:]
+    {{{./downloads/sem06_axiom.zip}AXIOM Demonstrācija}}; 
+    {{{./downloads/sem06_upload.zip}Failu augšupielādes demonstrācija}}
+~~~~    {{{./downlaods/sem06_digester.zip}Apache Commons Digester}}
+~~~~    {{{./downloads/sem06_plsql.zip}PL/SQL procedūra kā Web Serviss}}
+
+    [Semināra dienaskārtība:]
+    TBD
+      
+* Axis2 demonstrācijas piemēru darbināšana 
+~~~~
+
+  * Lejupielādēt TCPMon aplikāciju (sk. {{http://ws.apache.org/commons/tcpmon/}}); 
+  atarhivēt un palaist <<<build/tcpmon.bat>>>.
+  
+  * Administrēt šo aplikāciju tā, lai TCPMon klausītos portu 7080, 
+  bet tālāk pārraidītu HTTP pieprasījumus uz portu 8080 
+  (vai to, uz kuru klausās JBoss). 
+  
+  * Lejupielādēt Apache Axis2 un atarhivēt to, piemēram, 
+  direktorijā <<c:/tools>>. 
+  
+  * Pārkopēt direktoriju <<<C:\tools\axis2-1.1.1\webapp>>> zem 
+  <<<C:\tools\jboss-4.0.5.GA\server\default\deploy>>> 
+  un pārsaukt direktoriju "webapp" par "axis2.war" (t.i. 
+  uzstādīt to kā atpakotu Web aplikāciju uz sava Javas aplikāciju servera). 
+  
+  * Piestartēt aplikācijas serveri, piemēram JBoss vai Tomcat. 
+  
+   
+  * Uzstādīt vides mainīgo 
++---
+AXIS2_HOME=C:\tools\axis2-1.1.1
++---
+  (t.i. "System"->"Properties"->"Advanced"->"Environment Variables"...
+
+  * Ieiet direktorijā zem "C:\tools\axis2-1.1.1\samples\" un 
+  censties darbināt visus piemērus pēc kārtas. Parasti, lai kompilētu 
+  un palaistu Web Servisu, ir jāpalaiž komandas
+
++---
+ant -projecthelp
+ant generate.service
+ant run.client
++---  
+   
+   Pirms darbināt klientu, jāpārkopē *.aar fails zem 
+   <<<C:\tools\jboss-4.0.5.GA\server\default\deploy\axis2.war\WEB-INF\services>>>
+  
+  * Pamainīt klienta Javas failā porta numuru uz 7080. 
+  Ar TCPMon skatīties, kāda SOAP komunikācija rodas. 
+  
+  
+* Failu augšupielādes utml. HTTP lietojumu demonstrācijas
+~~~~
+  
+  * Atpakot un darbināt "sem06_upload" demo piemēru ar faila 
+  augšupielādi.
+  
+  * Izveidot MySQL datubāzi "uploads". T.i. izpildīt konsolē 
+  sekojošas MySQL komandas:
+  
++-----
+create database uploads;
+use uploads;
+create table image (image_id INT NOT NULL AUTO_INCREMENT, 
+    content BLOB,
+    tstamp datetime, 
+    mime VARCHAR(20),
+    description VARCHAR(255), 
+    status VARCHAR(1), 
+    PRIMARY KEY(image_id));
++-----
+  
+  * Mēgjināt aplūkot daudzdaļīgo HTTP pieprasījumu ar TCPMon.  
+  
+  * Mēgjināt aplūkot dažādus citus pieprasījumus ar TCPMon
+  (piemēram, uzstādīt "Accept-Language" hederi; censties izveidot 
+  klienta pusē pastāvīgo sīkdatni/cookie; izmēgjināt kādu piemēru 
+  ar HTML elementu IMAGEMAP, ar formas nosūtīšanu ar GET/POST). 
+  Visi šie veido dažādus HTTP pieprasījumus.
+  
+  
+  
+
+* Bibliogrāfija
+~~~~
+
+  * {{{http://ws.apache.org/axis2/}Apache AXIS2}}
+  
+  * {{{http://www.springframework.org/docs/reference/mvc.html#mvc-multipart}File Upload in Spring}}
+
+  * {{http://seaborne.blogspot.com/2006/05/parameterized-queries_07.html}}
+
+  
+    
