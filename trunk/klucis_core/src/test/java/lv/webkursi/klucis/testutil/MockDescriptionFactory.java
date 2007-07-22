@@ -23,6 +23,7 @@ public class MockDescriptionFactory {
 
 	private static MockDescriptionFactory instance = new MockDescriptionFactory();
 
+	/*
 	private static final String COMPONENT_DEFAULTS = ":applicationDefaultPath "
 			+ "a klucis:AbstractComponent ; " + "a klucis:Path ; "
 			+ "klucis:context \"/\" ; " + "klucis:hasColor \"black\" ; "
@@ -40,6 +41,32 @@ public class MockDescriptionFactory {
 			+ "klucis:hasRectHeight \"200\" ; " + "klucis:rotate \"0\" ; "
 			+ "klucis:showRectangle \"true\" ; "
 			+ "klucis:hasViewName \"Rectangle\" . ";
+			*/
+	
+	
+	/*
+	 * After Vladimir Potapov's correction
+	 */
+	private static final String COMPONENT_DEFAULTS = ":applicationDefaultPath "
+		   + "a klucis:AbstractComponent ; " + "a klucis:Path ; "
+		   + "klucis:context \"/\" ; " + "klucis:hasColor \"black\" ; " 
+		   + "klucis:hasViewName \"Path\" ; " + "klucis:hasWidth \"200\" ; "
+		   + "klucis:hasHeight \"200\" ; " + "klucis:hasStrokeWidth \"0\" . " 
+
+		   + ":applicationDefaultHorizontalRow "
+		   + "a klucis:AbstractComponent ; " + "a klucis:HorizontalRow ; "
+		   + "klucis:context \"/\" ; " + "klucis:hasGap \"60\" ; " 
+		   + "klucis:hasViewName \"HorizontalRow\" . "
+		            /*!!!!!some changes hasRectHeight->hasCoreHeight possible errors
+		                    hasRectWidth->hasCoreWidth
+		           */ 
+		   + ":applicationDefaultRectangle " + "a klucis:AbstractComponent ; "
+		   + "a klucis:Rectangle ; " + "klucis:context \"/\" ; "
+		/*!!!*/     + "klucis:hasLabel \"\" ; " + "klucis:hasCoreWidth \"200\" ; " 
+		/*!!!*/  + "klucis:hasCoreHeight \"200\" ; " + "klucis:rotate \"0\" ; "
+		   + "klucis:showRectangle \"true\" ; "
+		   + "klucis:hasViewName \"Rectangle\" . "; 
+
 
 	/**
 	 * Singleton - constructor called only once per class initialization.
